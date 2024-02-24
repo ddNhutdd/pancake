@@ -1,0 +1,35 @@
+.border-0 {
+    border: none;
+}
+
+.border-1 {
+    border: 1px solid $border-color;
+}
+
+.border-t-1 {
+    border-top: 1px solid $border-color;
+}
+
+.border-b-1 {
+    border-bottom: 1px solid $border-color;
+}
+
+@each $breakpoint, $width in $responsive {
+    @media screen and (max-width: $width) {
+        .border-#{$breakpoint}-0 {
+            border: none;
+        }
+
+        .border-#{$breakpoint}-1 {
+            border: 1px solid $border-color;
+        }
+
+        .border-t-#{$breakpoint}-1 {
+            border-top: 1px solid $border-color;
+        }
+
+        .border-b-#{$breakpoint}-1 {
+            border-bottom: 1px solid $border-color;
+        }
+    }
+}

@@ -1,0 +1,127 @@
+// margin --------------------
+.m-0 {
+    margin: 0;
+}
+
+.m-1 {
+    margin: $space;
+}
+
+.m-2 {
+    margin: $space * 2;
+}
+
+// margin top ----------------------------------------------------------------
+
+.mt-1 {
+    margin-top: $space * 1;
+}
+
+.mt-2 {
+    margin-top: $space * 2;
+}
+
+.mt-3 {
+    margin-top: $space * 3;
+}
+
+// margin bottom  ----------------------------------------------------------------
+
+.mb-0 {
+    margin-bottom: 0;
+}
+
+.mb-1 {
+    margin-bottom: $space * 1;
+}
+
+.mb-2 {
+    margin-bottom: $space * 2;
+}
+
+.mb-3 {
+    margin-bottom: $space * 3;
+}
+
+.mb-4 {
+    margin-bottom: $space * 4;
+}
+
+// margin left----------------------------------------------------------------
+
+.ml-a {
+    margin-left: auto;
+}
+
+.ml-0 {
+    margin-left: 0;
+}
+
+.ml-2 {
+    margin-left: $space * 2;
+}
+
+
+@each $breakpoint, $width in $responsive {
+    @media screen and (max-width: $width) {
+
+        // margin ----------------------------------------------------------------
+        .m-#{$breakpoint}-0 {
+            margin: 0;
+        }
+
+        .m-#{$breakpoint}-1 {
+            margin: $space;
+        }
+
+        // margin top ----------------------------------------------------------------
+
+        .mt-#{$breakpoint}-1 {
+            margin-top: $space * 1;
+        }
+
+        .mt-#{$breakpoint}-2 {
+            margin-top: $space * 2;
+        }
+
+        .mt-#{$breakpoint}-3 {
+            margin-top: $space * 3;
+        }
+
+        // margin bottom ----------------------------------------------------------------
+
+        .mb-#{$breakpoint}-0 {
+            margin-bottom: 0;
+        }
+
+        .mb-#{$breakpoint}-1 {
+            margin-bottom: $space * 1;
+        }
+
+        .mb-#{$breakpoint}-2 {
+            margin-bottom: $space * 2;
+        }
+
+        .mb-#{$breakpoint}-3 {
+            margin-bottom: $space * 3;
+        }
+
+        .mb-#{$breakpoint}-4 {
+            margin-bottom: $space * 3;
+        }
+
+        // margin left ----------------------------------------------------------------
+
+        .ml-#{$breakpoint}-a {
+            margin-left: auto;
+        }
+
+        .ml-#{$breakpoint}-0 {
+            margin-left: 0;
+        }
+
+        .ml-#{$breakpoint}-2 {
+            margin-left: $space * 2;
+        }
+    }
+}

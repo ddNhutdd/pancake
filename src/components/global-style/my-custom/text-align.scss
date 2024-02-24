@@ -1,0 +1,11 @@
+.text-right {
+    text-align: right;
+}
+
+@each $breakpoint, $width in $responsive {
+    @media screen and (max-width: $width) {
+        .text-#{$breakpoint}-right {
+            text-align: right;
+        }
+    }
+}
