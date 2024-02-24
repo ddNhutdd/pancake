@@ -10,11 +10,11 @@
 @each $breakpoint, $width in $responsive {
     @media screen and (max-width: $width) {
         .w-#{$breakpoint}-25 {
-            width: 25%;
+            width: 25% !important;
         }
 
         .w-#{$breakpoint}-100 {
-            width: 100%;
+            width: 100% !important;
         }
     }
 }
