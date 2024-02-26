@@ -61,6 +61,14 @@
     margin-left: $space * 2;
 }
 
+.ml-3 {
+    margin-left: $space * 3;
+}
+
+.ml-5 {
+    margin-left: $space * 5;
+}
+
 
 @each $breakpoint, $width in $responsive {
     @media screen and (max-width: $width) {
@@ -122,6 +130,14 @@
 
         .ml-#{$breakpoint}-2 {
             margin-left: $space * 2;
+        }
+
+        .ml-#{$breakpoint}-3 {
+            margin-left: $space * 3;
+        }
+
+        .ml-#{$breakpoint}-5 {
+            margin-left: $space * 5;
         }
     }
 }

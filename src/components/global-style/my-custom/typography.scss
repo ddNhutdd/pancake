@@ -1,0 +1,7 @@
+.no-underline {
+    text-decoration: none;
+}
+
+@each $breakpoint, $width in $responsive {
+    @media screen and (max-width: $width) {}
+}

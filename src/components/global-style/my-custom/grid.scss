@@ -61,7 +61,7 @@
     @media only screen and (max-width: $width) {
         @for $i from 1 through 12 {
             .col-#{$breakpoint}-#{$i} {
-                width: percentage($i / 12);
+                width: calc($i / 12);
             }
         }
     }

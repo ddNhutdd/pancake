@@ -1,0 +1,45 @@
+@import "src/components/global-style/base.scss";
+
+.dropdownHeader {
+    position: relative;
+    height: 100%;
+
+    &:hover {
+        .headerMenu {
+            display: block;
+        }
+    }
+
+    .headerContainer {
+        height: 100%;
+        transition: .4s;
+        border-radius: 15px;
+
+        &:hover {
+            background-color: $hover-1;
+        }
+
+        svg {
+            font-size: 25px;
+        }
+    }
+
+    .headerMenu {
+        position: absolute;
+        top: 66px;
+        width: 100%;
+
+        border-radius: 15px;
+        width: 250px;
+        overflow: hidden;
+
+        .headerMenu__item {
+            padding: 10px;
+            transition: .2s;
+
+            &:hover {
+                background-color: $hover-1;
+            }
+        }
+    }
+}

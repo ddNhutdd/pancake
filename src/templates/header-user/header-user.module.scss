@@ -19,9 +19,6 @@
             width: 70%;
             height: 100%;
 
-
-
-
             .header1__imageContainer {
                 overflow: hidden;
                 width: 120px;
@@ -80,4 +77,15 @@
         font-size: 40px;
         color: $text-color-white;
     }
+}
+
+.header2 {
+    .header2__left {
+        .header2__icon__image {
+            display: block;
+            width: 160px;
+        }
+    }
+
+    .header2__right {}
 }

@@ -58,11 +58,21 @@
     padding-right: 0;
 }
 
+.px-3 {
+    padding-left: $space * 3;
+    padding-right: $space * 3;
+}
+
 // padding y ----------------------------------------------------------------
 
 .py-0 {
     padding-top: 0;
     padding-bottom: 0;
+}
+
+.py-1 {
+    padding-top: $space * 1;
+    padding-bottom: $space * 1;
 }
 
 .py-2 {
@@ -129,10 +139,20 @@
             padding-right: 0;
         }
 
+        .px-#{$breakpoint}-3 {
+            padding-left: $space * 3;
+            padding-right: $space * 3;
+        }
+
         // padding y ----------------------------------------------------------------
         .py-#{$breakpoint}-0 {
             padding-left: 0;
             padding-right: 0;
+        }
+
+        .py-#{$breakpoint}-1 {
+            padding-top: $space;
+            padding-bottom: $space;
         }
 
         .py-#{$breakpoint}-2 {
