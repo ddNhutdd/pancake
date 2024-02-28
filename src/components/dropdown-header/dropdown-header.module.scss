@@ -4,19 +4,19 @@
     position: relative;
     height: 100%;
 
-    &:hover {
-        .headerMenu {
-            display: block;
-        }
-    }
-
     .headerContainer {
+        position: relative;
         height: 100%;
         transition: .4s;
         border-radius: 15px;
+        z-index: 30;
 
         &:hover {
             background-color: $hover-1;
+
+            &+.headerMenuContainer {
+                display: block;
+            }
         }
 
         svg {
@@ -24,21 +24,31 @@
         }
     }
 
-    .headerMenu {
+    .headerMenuContainer {
         position: absolute;
-        top: 66px;
-        width: 100%;
-
-        border-radius: 15px;
+        top: 35px;
         width: 250px;
-        overflow: hidden;
+        padding-top: 31px;
+        z-index: 10;
 
-        .headerMenu__item {
-            padding: 10px;
-            transition: .2s;
+        &:hover {
 
-            &:hover {
-                background-color: $hover-1;
+            display: block;
+        }
+
+        .headerMenu {
+            width: 100%;
+            border-radius: 15px;
+            background-color: $background-1;
+            overflow: hidden;
+
+            .headerMenu__item {
+                padding: 10px;
+                transition: .2s;
+
+                &:hover {
+                    background-color: $hover-1;
+                }
             }
         }
     }

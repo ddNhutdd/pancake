@@ -1,0 +1,58 @@
+@import "src/components/global-style/base.scss";
+
+.footer {
+    background-color: $background-2;
+    color: $text-color-white-2;
+    padding: 56px 40px 32px;
+
+    .footer__container {
+        @include container;
+
+        .footer__nav {
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 36px;
+
+            ul {
+                list-style-type: none;
+
+                li {
+                    margin-bottom: 8px;
+
+                    &:first-child {
+                        color: $text-color-2;
+                    }
+
+                    a {
+                        text-decoration: none;
+
+                        color: $text-color-white-2;
+
+                        &:hover {
+                            text-decoration: underline;
+                        }
+                    }
+                }
+            }
+        }
+
+        .footer__social {
+            padding-bottom: 32px;
+            margin-bottom: 32px;
+            border-bottom: 1px solid #383241;
+
+            a {
+                margin-right: 24px;
+                display: block;
+
+                img {
+                    width: 20px;
+                    height: 20px;
+                    object-fit: covrer;
+                }
+            }
+        }
+    }
+}

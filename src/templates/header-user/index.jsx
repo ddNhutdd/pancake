@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import css from "./header-user.module.scss";
 import { IoIosClose } from "react-icons/io";
 import { NavLink } from "react-router-dom";
@@ -7,9 +7,13 @@ import { MdLanguage } from "react-icons/md";
 import { IoSettingsSharp } from "react-icons/io5";
 import { IoIosNotifications } from "react-icons/io";
 import Logo1 from "/src/assets/imgs/logo.svg";
-import DropdownHeader, {
-  dropdownHeaderAlignEnum,
-} from "../../components/dropdown-header";
+import DropdownHeader from "../../components/dropdown-header";
+import DropdownHeader2, {
+  dropdownItemAlignType,
+} from "../../components/dropdown-header-2";
+import Button, { buttonClassesType } from "../../components/button";
+import { FaChevronDown } from "react-icons/fa6";
+import Money from "../money";
 
 function Header() {
   const threeDotMenuList = [
@@ -41,7 +45,7 @@ function Header() {
       icon: true,
     },
     {
-      id: 6,
+      id: 7,
       content: "Docs",
       icon: true,
     },
@@ -137,9 +141,187 @@ function Header() {
       content: "Trading Reward",
     },
   ];
+  const languageList = [
+    {
+      id: 1,
+      content: "العربية",
+    },
+    {
+      id: 2,
+      content: "বাংলা",
+    },
+    {
+      id: 3,
+      content: "English",
+    },
+    {
+      id: 4,
+      content: "Deutsch",
+    },
+    {
+      id: 5,
+      content: "Ελληνικά",
+    },
+    {
+      id: 6,
+      content: "Español",
+    },
+    {
+      id: 7,
+      content: "Suomalainen",
+    },
+    {
+      id: 8,
+      content: "Filipino",
+    },
+    {
+      id: 9,
+      content: "Français",
+    },
+    {
+      id: 10,
+      content: "हिंदी",
+    },
+    {
+      id: 11,
+      content: "Magyar",
+    },
+    {
+      id: 12,
+      content: "Bahasa Indonesia",
+    },
+    {
+      id: 13,
+      content: "Italiano",
+    },
+    {
+      id: 14,
+      content: "日本語",
+    },
+    {
+      id: 15,
+      content: "한국어",
+    },
+    {
+      id: 16,
+      content: "Nederlands",
+    },
+    {
+      id: 17,
+      content: "Polski",
+    },
+    {
+      id: 18,
+      content: "Português (Brazil)",
+    },
+    {
+      id: 19,
+      content: "Português",
+    },
+    {
+      id: 20,
+      content: "Română",
+    },
+    {
+      id: 21,
+      content: "Русский",
+    },
+    {
+      id: 22,
+      content: "Svenska",
+    },
+    {
+      id: 23,
+      content: "தமிழ்",
+    },
+    {
+      id: 24,
+      content: "Türkçe",
+    },
+    {
+      id: 25,
+      content: "Українська",
+    },
+    {
+      id: 26,
+      content: "Tiếng Việt",
+    },
+    {
+      id: 27,
+      content: "简体中文",
+    },
+    {
+      id: 28,
+      content: "繁體中文",
+    },
+  ];
+  const listChain = [
+    {
+      id: 1,
+      content: "العربية",
+      borderBottom: true,
+    },
+    {
+      id: 2,
+      content: "বাংলা",
+      image: "src/assets/imgs/arbitrumicon.png",
+    },
+    {
+      id: 3,
+      content: "English",
+      image: "src/assets/imgs/arbitrumicon.png",
+    },
+    {
+      id: 4,
+      content: "Deutsch",
+      image: "src/assets/imgs/arbitrumicon.png",
+    },
+    {
+      id: 5,
+      content: "Ελληνικά",
+      image: "src/assets/imgs/arbitrumicon.png",
+    },
+    {
+      id: 6,
+      content: "Español",
+      image: "src/assets/imgs/arbitrumicon.png",
+    },
+    {
+      id: 7,
+      content: "Suomalainen",
+      image: "src/assets/imgs/arbitrumicon.png",
+    },
+  ];
+
+  const [isShowMenu, setIsShowMenu] = useState(true);
+
+  useEffect(() => {
+    window.addEventListener("scroll", onScrollHandle());
+
+    return () => {
+      window.removeEventListener("scroll", onScrollHandle());
+    };
+  }, []);
+
+  const onScrollHandle = () => {
+    let lastScrollTop = 0;
+    return function () {
+      let currentScroll = document.documentElement.scrollTop;
+      if (currentScroll > lastScrollTop && currentScroll > 40) {
+        setIsShowMenu(false);
+      } else {
+        setIsShowMenu(true);
+      }
+
+      lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+    };
+  };
+  const renderShowMenu = function () {
+    return isShowMenu ? {} : { top: "-170px" };
+  };
 
   return (
-    <>
+    <div style={renderShowMenu()} className={`${css["header"]}`}>
       <div className={`${css["header1"]} flex w-100`}>
         <div
           className={`${css["header1__container"]} grow-1 flex items-center justify-center`}
@@ -168,9 +350,9 @@ function Header() {
         </div>
       </div>
       <div
-        className={`${css["header2"]} border-b-1 px-3 flex align-center justify-between`}
+        className={`${css["header2"]} border-b-1 px-3 flex items-center justify-between`}
       >
-        <div className={`${css["header2__left"]} flex align-center`}>
+        <div className={`${css["header2__left"]} flex items-center`}>
           <div
             className={`${css["header2__icon"]} flex align-center justify-between`}
           >
@@ -188,49 +370,76 @@ function Header() {
             </NavLink>
           </div>
           <div className={`${css["header2__menu"]} flex align-center ml-3`}>
-            <div className={`${css["header2__menu__item"]}`}>
-              <DropdownHeader header={"Trade"} list={tradeMenu} />
-            </div>
-            <div className={`${css["header2__menu__item"]}`}>
-              <DropdownHeader header={`Earn`} list={earnList} />
-            </div>
-            <div className={`${css["header2__menu__item"]}`}>
-              <DropdownHeader header={`Game`} list={gameMenuList} />
-            </div>
-            <div className={`${css["header2__menu__item"]}`}>
-              <DropdownHeader header={`NFT`} list={nftMenuList} />
-            </div>
-            <div
-              className={`${css["header2__menu__item"]} flex align-center justify-center`}
-            >
-              <DropdownHeader
-                header={<HiOutlineDotsHorizontal />}
-                list={threeDotMenuList}
-              />
-            </div>
+            <DropdownHeader header={"Trade"} list={tradeMenu} />
+            <DropdownHeader header={`Earn`} list={earnList} />
+            <DropdownHeader header={`Game`} list={gameMenuList} />
+            <DropdownHeader header={`NFT`} list={nftMenuList} />
+            <DropdownHeader
+              header={<HiOutlineDotsHorizontal />}
+              list={threeDotMenuList}
+            />
           </div>
         </div>
-        <div className={`${css["header2__right"]} flex`}>
-          <div>
-            <span className={`${css["header2__money__image"]}`}>
-              <img src="src/assets/imgs/pancakeswap-logo.png" />
-            </span>
-            <span>$3.107</span>
+        <div
+          className={`${css["header2__right"]} flex items-center justify-center`}
+        >
+          <div
+            className={`${css["header2__money"]} flex items-center justify-center px-3 gap-1`}
+          >
+            <Money></Money>
           </div>
-          <div>
-            <MdLanguage />
+          <div className="px-3">
+            <DropdownHeader2
+              positionMenu={{
+                top: "26px",
+                right: "-103px",
+                paddingTop: "22px",
+              }}
+              header={<MdLanguage />}
+              list={languageList}
+            />
           </div>
-          <div>
-            <IoSettingsSharp />
+          <div className="flex align-center items-center px-3">
+            <IoSettingsSharp style={{ fontSize: "25px" }} />
           </div>
-          <div>
-            <IoIosNotifications />
+          <div className="flex align-center items-center px-3">
+            <IoIosNotifications style={{ fontSize: "25px" }} />
           </div>
-          <div>BNB Chain</div>
-          <div>connenct wallet</div>
+          <div className={`${css["header2__chain"]} px-3 relative`}>
+            <DropdownHeader2
+              positionMenu={{
+                top: "26px",
+                right: "-55px",
+                paddingTop: "23px",
+              }}
+              dropdownItemAlign={dropdownItemAlignType.left}
+              header={
+                <>
+                  <div className={`${css["header2__chainImage"]}`}>
+                    <img src="src/assets/imgs/polygonicon.png" />
+                  </div>
+                  <Button
+                    style={{ paddingLeft: 35 }}
+                    type={buttonClassesType.secondThin}
+                  >
+                    <span>BNB Chain</span>
+                    <span style={{ fontSize: "1.2rem" }}>
+                      <FaChevronDown />
+                    </span>
+                  </Button>
+                </>
+              }
+              list={listChain}
+            />
+          </div>
+          <div className="px-3">
+            <Button type={buttonClassesType.primaryThin}>
+              Connenct Wallet
+            </Button>
+          </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

@@ -53,11 +53,13 @@ function DropdownHeader(props) {
       >
         {header}
       </div>
-      <div
-        style={renderAlign(align)}
-        className={`${css["headerMenu"]} py-2 d-0 border-1`}
-      >
-        {renderListItem()}
+      <div className={css["headerMenuContainer"] + ` d-0`}>
+        <div
+          style={renderAlign(align)}
+          className={`${css["headerMenu"]} py-2  border-1`}
+        >
+          {renderListItem()}
+        </div>
       </div>
     </div>
   );

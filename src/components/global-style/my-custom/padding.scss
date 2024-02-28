@@ -58,6 +58,11 @@
     padding-right: 0;
 }
 
+.px-1 {
+    padding-left: $space * 1;
+    padding-right: $space * 1;
+}
+
 .px-3 {
     padding-left: $space * 3;
     padding-right: $space * 3;
@@ -137,6 +142,11 @@
         .px-#{$breakpoint}-0 {
             padding-left: 0;
             padding-right: 0;
+        }
+
+        .px-#{$breakpoint}-1 {
+            padding-left: $space * 1;
+            padding-right: $space * 1;
         }
 
         .px-#{$breakpoint}-3 {
