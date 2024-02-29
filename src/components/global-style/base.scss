@@ -1,6 +1,7 @@
 // Variable
 $text-color-white-1: white;
 $text-color-white-2: #f4eeff;
+$text-color-dark-1: #090909;
 $text-color-1: #7a6eaa;
 $text-color-2: #a881fc;
 
@@ -12,6 +13,8 @@ $primary-1: #a881fc;
 
 $background-1: #fff;
 $background-2: #27262C;
+
+$border-color: #e7e3eb;
 
 // ----------------------------------------------------------------
 @mixin container {
@@ -315,7 +318,7 @@ $background-2: #27262C;
 }
 
 .fadeIn {
-  animation: fadeIn 0.5s ease-out;
+  animation: fadeIn 0.8s ease-out;
 }
 
 .fadeIn-long {
