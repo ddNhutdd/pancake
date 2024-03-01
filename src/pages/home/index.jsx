@@ -1,12 +1,15 @@
-import React from "react";
 import css from "./home.module.scss";
 import Home1 from "./home1";
+import Home2 from "./home2";
+import Home3 from "./home3";
 
 function Home() {
   return (
-    <div className={css["home"]}>
+    <>
       <Home1 />
-    </div>
+      <Home2 />
+      <Home3 />
+    </>
   );
 }
 

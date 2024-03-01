@@ -1,0 +1,95 @@
+@import "src/components/global-style/base.scss";
+
+.home2 {
+    padding: 48px 0;
+    background: linear-gradient(180deg, #fff 22%, #d7caec 100%);
+    position: relative;
+
+    .container {
+        @include container;
+
+        .home2__title1 {
+            color: $text-color-3;
+            margin-bottom: 4px;
+            text-align: center;
+            line-height: 110%;
+            font-weight: 600;
+            font-size: 32px;
+        }
+
+        .home2__title2 {
+            color: $text-color-3;
+            margin-bottom: 48px;
+            text-align: center;
+            line-height: 110%;
+            font-weight: 600;
+            font-size: 32px;
+        }
+
+        .home2__info {
+            padding-left: 100px;
+            padding-right: 100px;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-around;
+            margin-bottom: 48px;
+            gap: 48px;
+
+            .home2__info__name {
+                color: $text-color-3;
+                font-size: 20px;
+                text-align: center;
+                font-weight: 600;
+                line-height: 120%;
+            }
+
+            .home2__info__number {
+                color: $text-color-4;
+                line-height: 110%;
+                text-align: center;
+                font-weight: 600;
+                font-size: 40px;
+            }
+
+            .home2__info__text {
+                font-size: 16px;
+                text-align: center;
+                font-weight: 600;
+                line-height: 120%;
+            }
+        }
+    }
+
+    .home2__imageLeft {
+        position: absolute;
+        left: 30px;
+        top: 0;
+
+        img {
+            width: 200px;
+        }
+    }
+
+    .home2__imageRight {
+        position: absolute;
+        right: 0;
+        top: 0;
+
+        img {
+            width: 130px;
+        }
+    }
+
+    .home2__backgroundShape {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -50px;
+
+        img {
+            width: 100%;
+            height: 50px;
+            object-fit: fill;
+        }
+    }
+}

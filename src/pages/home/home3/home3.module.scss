@@ -1,0 +1,100 @@
+@import "src/components/global-style/base.scss";
+
+.home3 {
+    padding-top: 60px;
+    background-color: $background-3;
+
+    .container {
+        @include container;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        align-items: center;
+
+        .home3__header {
+            .home3__header__text {
+                span {
+                    &:first-child {
+                        color: $text-color-3;
+                        font-weight: 600;
+                        font-size: 4rem;
+                        line-height: 110%;
+                        display: inline-block;
+                    }
+
+                    &:last-child {
+                        color: $text-color-4;
+                        font-weight: 600;
+                        margin-left: 8px;
+                        font-size: 32px;
+                        line-height: 110%;
+                        display: inline-block;
+                    }
+                }
+
+            }
+        }
+
+        .home3__card {
+            background-color: $background-1;
+            width: 100%;
+            border-radius: 24px;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 48px 24px 24px;
+
+            .home3__mainPic {
+                width: 30%;
+                position: relative;
+                top: 0;
+                left: -65px;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+
+            .home3__mainContent {
+                width: 70%;
+
+                .home3__title {
+                    font-size: 32px;
+                    margin-bottom: 24px;
+                    font-weight: 600;
+                    line-height: 110%;
+                    padding-left: 12px;
+                    color: $text-color-4;
+                }
+
+                .home3__list {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    .home3__list__item {
+                        .home3__list__image {
+                            position: relative;
+
+                            img {
+                                width: 150px;
+                                height: 150px;
+
+                                &:last-child {
+                                    position: absolute;
+                                    top: 0;
+                                    left: 0;
+                                }
+                            }
+                        }
+                    }
+                }
+
+
+
+
+            }
+        }
+    }
+}

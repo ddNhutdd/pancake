@@ -393,7 +393,7 @@ function Header() {
               positionMenu={{
                 top: "26px",
                 right: "-103px",
-                paddingTop: "22px",
+                paddingTop: "18px",
               }}
               header={<MdLanguage />}
               list={languageList}
@@ -410,7 +410,7 @@ function Header() {
               positionMenu={{
                 top: "26px",
                 right: "-55px",
-                paddingTop: "23px",
+                paddingTop: "18px",
               }}
               dropdownItemAlign={dropdownItemAlignType.left}
               header={

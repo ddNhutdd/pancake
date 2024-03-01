@@ -11,9 +11,11 @@
     justify-content: center;
     gap: 10px;
     transition: background-color 0.2s ease 0s, opacity 0.2s ease 0s;
-    background: #1fc7d4;
+    background: $primary-2;
     font-weight: bold;
     border: none;
+    padding: 0px 24px;
+    height: 48px;
 
     &:hover {
         opacity: 65%;
@@ -27,8 +29,6 @@
 
 .button-primary {
     @include buttonCustom;
-    height: 48px;
-    padding: 0px 24px;
 }
 
 .button-primaryThin {
@@ -49,4 +49,14 @@
         box-shadow: rgba(0, 0, 0, 0.1) 0px -2px 0px inset;
         transform: translateY(0)
     }
+}
+
+.button-outline {
+    @include buttonCustom;
+    border-color: $primary-2;
+    border-style: solid;
+    border-width: 2px;
+    box-shadow: none;
+    color: $primary-2;
+    background-color: transparent;
 }

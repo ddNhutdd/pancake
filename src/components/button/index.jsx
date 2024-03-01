@@ -22,6 +22,9 @@ function Button(props) {
       case buttonClassesType.secondThin:
         return "button-secondThin";
 
+      case buttonClassesType.outline:
+        return "button-outline";
+
       default:
         return "button-primary";
     }

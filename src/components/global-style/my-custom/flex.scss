@@ -48,6 +48,10 @@
     gap: $space * 2;
 }
 
+.gap-3 {
+    gap: $space * 3;
+}
+
 // grow --------------------
 .grow-0 {
     flex-grow: 0;
@@ -112,6 +116,10 @@
 
         .gap-#{$breakpoint}-2 {
             gap: $space * 2;
+        }
+
+        .gap-#{$breakpoint}-3 {
+            gap: $space * 3;
         }
 
         // grow --------------------

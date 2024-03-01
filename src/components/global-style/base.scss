@@ -4,15 +4,19 @@ $text-color-white-2: #f4eeff;
 $text-color-dark-1: #090909;
 $text-color-1: #7a6eaa;
 $text-color-2: #a881fc;
+$text-color-3: #280d5f;
+$text-color-4: #7645d9;
 
 $yellow-1: #ffb237;
 
 $hover-1: #e1e9ec;
 
 $primary-1: #a881fc;
+$primary-2: #1fc7d4;
 
 $background-1: #fff;
 $background-2: #27262C;
+$background-3: #faf9fa;
 
 $border-color: #e7e3eb;
 
@@ -318,7 +322,7 @@ $border-color: #e7e3eb;
 }
 
 .fadeIn {
-  animation: fadeIn 0.8s ease-out;
+  animation: fadeIn 1.4s ease-out;
 }
 
 .fadeIn-long {
@@ -331,7 +335,7 @@ $border-color: #e7e3eb;
 }
 
 .fadeOut {
-  animation: fadeOut 0.5s ease-out;
+  animation: fadeOut 1.4s ease-out;
 }
 
 .loader {

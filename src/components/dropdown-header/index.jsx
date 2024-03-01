@@ -53,7 +53,7 @@ function DropdownHeader(props) {
       >
         {header}
       </div>
-      <div className={css["headerMenuContainer"] + ` d-0`}>
+      <div className={css["headerMenuContainer"]}>
         <div
           style={renderAlign(align)}
           className={`${css["headerMenu"]} py-2  border-1`}
