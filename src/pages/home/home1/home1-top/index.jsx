@@ -27,15 +27,14 @@ function Home1Top() {
     setShowItem(value);
   };
   const showSlider = function (value) {
-    return value === showItem ? "" : "d-0";
+    return value === showItem ? { opacity: 1 } : { opacity: 0, zIndex: "-1" };
   };
 
   return (
     <div className={css["home1Top"]}>
       <div
-        className={`${css["home1top__item"]} fadeIn ${
-          css["home1top__slider1"]
-        } ${showSlider(0)}`}
+        style={showSlider(0)}
+        className={`${css["home1top__item"]} ${css["home1top__slider1"]}`}
       >
         <div className={`${css["home1top__slider1__left"]}`}>
           <div className={`flex items-center justify-st rt gap-1 mb-2`}>
@@ -76,9 +75,8 @@ function Home1Top() {
         </div>
       </div>
       <div
-        className={`${css["home1top__item"]} ${
-          css["home1top__slider2"]
-        } ${showSlider(1)} fadeIn`}
+        style={showSlider(1)}
+        className={`${css["home1top__item"]} ${css["home1top__slider2"]}`}
       >
         <div className={`${css["home1top__slider2__left"]}`}>
           <div className={`flex items-center justify-st rt gap-1 mb-2`}>
@@ -110,9 +108,8 @@ function Home1Top() {
         </div>
       </div>
       <div
-        className={`${css["home1top__item"]} ${
-          css["home1top__slider3"]
-        } ${showSlider(2)} fadeIn`}
+        style={showSlider(2)}
+        className={`${css["home1top__item"]} ${css["home1top__slider3"]}`}
       >
         <div className={`${css["home1top__slider3__left"]}`}>
           <div className={`flex items-center justify-st rt gap-1 mb-2`}>
@@ -148,16 +145,14 @@ function Home1Top() {
         </div>
       </div>
       <div
-        className={`${css["home1top__item"]} ${
-          css["home1top__slider4"]
-        } ${showSlider(3)} fadeIn`}
+        style={showSlider(3)}
+        className={`${css["home1top__item"]} ${css["home1top__slider4"]}`}
       >
         slider4
       </div>
       <div
-        className={`${css["home1top__item"]} ${
-          css["home1top__slider5"]
-        } ${showSlider(4)} fadeIn`}
+        style={showSlider(4)}
+        className={`${css["home1top__item"]} ${css["home1top__slider5"]}`}
       >
         slider5
       </div>

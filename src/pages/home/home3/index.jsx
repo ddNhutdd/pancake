@@ -36,11 +36,9 @@ function Home3() {
                 <div className={css["home3__list__text"]}>
                   Trade crypto instantly across multiple chains
                 </div>
-                <div className={css["home3__list__nav"]}>
+                <div className={`${css["home3__list__nav"]}`}>
                   <div>Trade Now</div>
-                  <div>
-                    <FaChevronRight />
-                  </div>
+                  <FaChevronRight />
                 </div>
               </div>
               <div className={css["home3__list__item"]}>
@@ -54,9 +52,7 @@ function Home3() {
                 </div>
                 <div className={css["home3__list__nav"]}>
                   <div>Add Now</div>
-                  <div>
-                    <FaChevronRight />
-                  </div>
+                  <FaChevronRight />
                 </div>
               </div>
               <div className={css["home3__list__item"]}>
@@ -70,9 +66,7 @@ function Home3() {
                 </div>
                 <div className={css["home3__list__nav"]}>
                   <div>Bridge Now</div>
-                  <div>
-                    <FaChevronRight />
-                  </div>
+                  <FaChevronRight />
                 </div>
               </div>
               <div className={css["home3__list__item"]}>
@@ -86,9 +80,7 @@ function Home3() {
                 </div>
                 <div className={css["home3__list__nav"]}>
                   <div>Trade Now</div>
-                  <div>
-                    <FaChevronRight />
-                  </div>
+                  <FaChevronRight />
                 </div>
               </div>
               <div className={css["home3__list__item"]}>
@@ -102,9 +94,7 @@ function Home3() {
                 </div>
                 <div className={css["home3__list__nav"]}>
                   <div>Buy Now</div>
-                  <div>
-                    <FaChevronRight />
-                  </div>
+                  <FaChevronRight />
                 </div>
               </div>
             </div>
@@ -126,9 +116,7 @@ function Home3() {
                 </div>
                 <div className={css["home3__list__nav"]}>
                   <div>Stake Now</div>
-                  <div>
-                    <FaChevronRight />
-                  </div>
+                  <FaChevronRight />
                 </div>
               </div>
               <div className={css["home3__list__item"]}>
@@ -142,9 +130,7 @@ function Home3() {
                 </div>
                 <div className={css["home3__list__nav"]}>
                   <div>Stake Now</div>
-                  <div>
-                    <FaChevronRight />
-                  </div>
+                  <FaChevronRight />
                 </div>
               </div>
               <div className={css["home3__list__item"]}>
@@ -158,9 +144,7 @@ function Home3() {
                 </div>
                 <div className={css["home3__list__nav"]}>
                   <div>Add Now</div>
-                  <div>
-                    <FaChevronRight />
-                  </div>
+                  <FaChevronRight />
                 </div>
               </div>
               <div className={css["home3__list__item"]}>
@@ -174,9 +158,7 @@ function Home3() {
                 </div>
                 <div className={css["home3__list__nav"]}>
                   <div>Stake Now</div>
-                  <div>
-                    <FaChevronRight />
-                  </div>
+                  <FaChevronRight />
                 </div>
               </div>
               <div className={css["home3__list__item"]}>
@@ -190,14 +172,12 @@ function Home3() {
                 </div>
                 <div className={css["home3__list__nav"]}>
                   <div>Stake Now</div>
-                  <div>
-                    <FaChevronRight />
-                  </div>
+                  <FaChevronRight />
                 </div>
               </div>
             </div>
           </div>
-          <div className={css["home3__mainPic"]}>
+          <div className={`${css["home3__mainPic"]} ${css["right"]}`}>
             <img src="src/assets/imgs/image-26.png" alt="logo" />
           </div>
         </div>
@@ -222,9 +202,7 @@ function Home3() {
                 </div>
                 <div className={css["home3__list__nav"]}>
                   <div>Play Now</div>
-                  <div>
-                    <FaChevronRight />
-                  </div>
+                  <FaChevronRight />
                 </div>
               </div>
               <div className={css["home3__list__item"]}>
@@ -238,9 +216,7 @@ function Home3() {
                 </div>
                 <div className={css["home3__list__nav"]}>
                   <div>Try Now</div>
-                  <div>
-                    <FaChevronRight />
-                  </div>
+                  <FaChevronRight />
                 </div>
               </div>
               <div className={css["home3__list__item"]}>
@@ -254,9 +230,7 @@ function Home3() {
                 </div>
                 <div className={css["home3__list__nav"]}>
                   <div>Trade Now</div>
-                  <div>
-                    <FaChevronRight />
-                  </div>
+                  <FaChevronRight />
                 </div>
               </div>
             </div>

@@ -2,6 +2,10 @@
     display: none !important;
 }
 
+.d-b {
+    display: block !important;
+}
+
 .flex {
     display: flex;
 }
@@ -9,7 +13,11 @@
 @each $breakpoint, $width in $responsive {
     @media screen and (max-width: $width) {
         .d-#{$breakpoint}-0 {
-            display: none;
+            display: none !important;
+        }
+
+        .d-#{$breakpoint}-b {
+            display: block !important;
         }
 
         .flex-#{$breakpoint} {

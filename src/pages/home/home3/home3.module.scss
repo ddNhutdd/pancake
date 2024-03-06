@@ -40,9 +40,7 @@
             width: 100%;
             border-radius: 24px;
             display: flex;
-            align-items: flex-start;
-            justify-content: center;
-            padding: 48px 24px 24px;
+            padding: 24px;
 
             .home3__mainPic {
                 width: 30%;
@@ -50,49 +48,104 @@
                 top: 0;
                 left: -65px;
 
+                &.right {
+                    right: -65px;
+                    left: unset;
+                }
+
                 img {
                     width: 100%;
-                    height: 100%;
                 }
             }
 
             .home3__mainContent {
                 width: 70%;
+                display: flex;
+                flex-direction: column;
 
                 .home3__title {
                     font-size: 32px;
                     margin-bottom: 24px;
                     font-weight: 600;
                     line-height: 110%;
-                    padding-left: 12px;
                     color: $text-color-4;
                 }
 
                 .home3__list {
+                    flex: 1;
                     display: flex;
-                    align-items: center;
                     justify-content: center;
+                    gap: 40px;
 
                     .home3__list__item {
-                        .home3__list__image {
-                            position: relative;
+                        height: 100%;
+                        flex: 1;
+                        display: flex;
+                        flex-direction: column;
 
-                            img {
-                                width: 150px;
-                                height: 150px;
+                        &:hover {
+                            cursor: pointer;
+
+                            .home3__list__image img {
+                                &:first-child {
+                                    opacity: 0;
+                                }
 
                                 &:last-child {
-                                    position: absolute;
-                                    top: 0;
-                                    left: 0;
+                                    opacity: 1;
                                 }
                             }
                         }
+
+                        .home3__list__image {
+                            position: relative;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+
+                            img {
+                                width: 100px;
+                                height: 100px;
+                                transition: opacity 1s linear;
+
+                                &:first-child {
+                                    opacity: 1;
+                                }
+
+                                &:last-child {
+                                    transform: translateX(-50%);
+                                    opacity: 0;
+                                    position: absolute;
+                                    top: 0;
+                                    left: 50%;
+                                }
+                            }
+                        }
+
+                        .home3__list__name {
+                            color: $text-color-3;
+                            margin-bottom: 8px;
+                            font-size: 20px;
+                            line-height: 110%;
+                            font-weight: 600;
+                        }
+
+                        .home3__list__text {
+                            color: $text-color-3;
+                            font-weight: 400;
+                            font-size: 14px;
+                            line-height: 120%;
+                        }
+
+                        .home3__list__nav {
+                            display: flex;
+                            margin-top: auto;
+                            align-items: center;
+                            justify-content: center;
+                            padding-bottom: 20px;
+                        }
                     }
                 }
-
-
-
 
             }
         }
