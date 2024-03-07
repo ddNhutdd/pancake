@@ -14,8 +14,8 @@
     background: $primary-2;
     font-weight: bold;
     border: none;
-    padding: 0px 24px;
-    height: 48px;
+    padding: 10px 24px;
+    min-height: 48px;
 
     &:hover {
         opacity: 65%;
@@ -33,14 +33,14 @@
 
 .button-primaryThin {
     @include buttonCustom;
-    height: 32px;
+    min-height: 32px;
     padding: 0px 16px;
 }
 
 .button-secondThin {
     @include buttonCustom;
-    height: 32px;
-    padding: 0px 12px;
+    min-height: 32px;
+    padding: 5px 12px;
     background-color: #eff4f5;
     color: #0C0D13;
     box-shadow: rgba(0, 0, 0, 0.1) 0px -2px 0px inset;

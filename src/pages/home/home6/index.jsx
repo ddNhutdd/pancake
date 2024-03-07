@@ -4,30 +4,18 @@ import { GrFormPrevious } from "react-icons/gr";
 import React, { useState, useRef, useEffect } from "react";
 
 function Home6() {
-  const [showCount, setShowCount] = useState(0);
+  const slideContainer = useRef();
 
-  const renderStyleMove = () => {
-    if (showCount === 5) {
-      return {
-        transform: `translateX(${-100 * showCount}%)`,
-        paddingRight: 0,
-        paddingLeft: 30,
-        margin: "-1px",
-        width: "25%",
-      };
-    } else {
-      return { transform: `translateX(${-100 * showCount}%)` };
-    }
-  };
   const preClickHandle = () => {
-    setShowCount((c) => {
-      const newc = c - 1;
-      return newc < 0 ? c : newc;
+    slideContainer.current.scrollBy({
+      left: -40,
+      behavior: "smooth",
     });
   };
   const nextClickHandle = () => {
-    setShowCount((c) => {
-      return c >= 5 ? c : c + 1;
+    slideContainer.current.scrollBy({
+      left: 40,
+      behavior: "smooth",
     });
   };
 
@@ -44,8 +32,8 @@ function Home6() {
               <GrFormPrevious />
             </div>
           </div>
-          <div className={css.home6__show}>
-            <div style={renderStyleMove()} className={css.home6__slide}>
+          <div ref={slideContainer} className={css.home6__show}>
+            <div className={css.home6__slide}>
               <div className={css.home6__card}>
                 <div className={css.home6__image}>
                   <img src="src/assets/imgs/homeBotSlide-1.jpg" alt="image" />
@@ -65,7 +53,7 @@ function Home6() {
                 </div>
               </div>
             </div>
-            <div style={renderStyleMove()} className={css.home6__slide}>
+            <div className={css.home6__slide}>
               <div className={css.home6__card}>
                 <div className={css.home6__image}>
                   <img src="src/assets/imgs/homeBotSlide-2.avif" alt="image" />
@@ -85,7 +73,7 @@ function Home6() {
                 </div>
               </div>
             </div>
-            <div style={renderStyleMove()} className={css.home6__slide}>
+            <div className={css.home6__slide}>
               <div className={css.home6__card}>
                 <div className={css.home6__image}>
                   <img src="src/assets/imgs/homeBotSlide-3.jpg" alt="image" />
@@ -104,7 +92,7 @@ function Home6() {
                 </div>
               </div>
             </div>
-            <div style={renderStyleMove()} className={css.home6__slide}>
+            <div className={css.home6__slide}>
               <div className={css.home6__card}>
                 <div className={css.home6__image}>
                   <img src="src/assets/imgs/homeBotSlide-4.jpg" alt="image" />
@@ -125,7 +113,7 @@ function Home6() {
                 </div>
               </div>
             </div>
-            <div style={renderStyleMove()} className={css.home6__slide}>
+            <div className={css.home6__slide}>
               <div className={css.home6__card}>
                 <div className={css.home6__image}>
                   <img src="src/assets/imgs/homeBotSlide-5.jpg" alt="image" />
@@ -144,7 +132,7 @@ function Home6() {
                 </div>
               </div>
             </div>
-            <div style={renderStyleMove()} className={css.home6__slide}>
+            <div className={css.home6__slide}>
               <div className={css.home6__card}>
                 <div className={css.home6__image}>
                   <img src="src/assets/imgs/homeBotSlide-6.jpg" alt="image" />
@@ -164,7 +152,7 @@ function Home6() {
                 </div>
               </div>
             </div>
-            <div style={renderStyleMove()} className={css.home6__slide}>
+            <div className={css.home6__slide}>
               <div className={css.home6__card}>
                 <div className={css.home6__image}>
                   <img src="src/assets/imgs/homeBotSlide-7.jpg" alt="image" />
@@ -185,7 +173,7 @@ function Home6() {
                 </div>
               </div>
             </div>
-            <div style={renderStyleMove()} className={css.home6__slide}>
+            <div className={css.home6__slide}>
               <div className={css.home6__card}>
                 <div className={css.home6__image}>
                   <img src="src/assets/imgs/homeBotSlide-8.jpg" alt="image" />
@@ -203,7 +191,7 @@ function Home6() {
                 </div>
               </div>
             </div>
-            <div style={renderStyleMove()} className={css.home6__slide}>
+            <div className={css.home6__slide}>
               <div className={css.home6__card}>
                 <div className={css.home6__image}>
                   <img src="src/assets/imgs/homeBotSlide-9.jpg" alt="image" />

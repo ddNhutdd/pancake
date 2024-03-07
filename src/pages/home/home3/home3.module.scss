@@ -31,7 +31,6 @@
                         display: inline-block;
                     }
                 }
-
             }
         }
 
@@ -42,15 +41,36 @@
             display: flex;
             padding: 24px;
 
+            @media screen and (max-width:850px) {
+                flex-direction: column;
+            }
+
             .home3__mainPic {
                 width: 30%;
                 position: relative;
                 top: 0;
                 left: -65px;
 
+                @media screen and (max-width:850px) {
+                    width: 50%;
+                }
+
+                @media screen and (max-width:1200px) {
+                    left: unset;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    padding-right: 20px;
+                }
+
                 &.right {
                     right: -65px;
                     left: unset;
+
+                    @media screen and (max-width:1200px) {
+                        right: unset;
+                        padding-left: 20px;
+                    }
                 }
 
                 img {
@@ -63,6 +83,11 @@
                 display: flex;
                 flex-direction: column;
 
+                @media screen and (max-width:850px) {
+                    width: 100%;
+                    order: 1;
+                }
+
                 .home3__title {
                     font-size: 32px;
                     margin-bottom: 24px;
@@ -71,17 +96,38 @@
                     color: $text-color-4;
                 }
 
+
                 .home3__list {
                     flex: 1;
                     display: flex;
                     justify-content: center;
-                    gap: 40px;
+
+                    @media screen and (max-width:1200px) {
+                        flex-wrap: wrap;
+                        justify-content: flex-start;
+                    }
 
                     .home3__list__item {
-                        height: 100%;
-                        flex: 1;
+                        width: 20%;
                         display: flex;
                         flex-direction: column;
+                        padding-right: 20px;
+
+                        @media screen and (max-width:1200px) {
+                            width: 33.33333%;
+                        }
+
+                        @media screen and (max-width:576px) {
+                            width: 50%;
+                        }
+
+                        @media screen and (max-width:576px) {
+                            width: 100%;
+                        }
+
+                        &:last-child {
+                            padding-right: 0;
+                        }
 
                         &:hover {
                             cursor: pointer;
@@ -141,8 +187,12 @@
                             display: flex;
                             margin-top: auto;
                             align-items: center;
-                            justify-content: center;
+                            justify-content: flex-start;
                             padding-bottom: 20px;
+
+                            @media screen and (max-width:1200px) {
+                                margin-top: 20px
+                            }
                         }
                     }
                 }

@@ -358,12 +358,12 @@ function Header() {
           >
             <NavLink className={`flex align-center justify-between`} to="/">
               <img
-                className={`${css["header2__icon__image"]}`}
+                className={`${css["header2__icon__image1"]}`}
                 src={Logo1}
                 alt="React Logo"
               />
               <img
-                className="d-0"
+                className={css.header2__icon__image2}
                 src={"src/assets/imgs/logo2.svg"}
                 alt="logo"
               />

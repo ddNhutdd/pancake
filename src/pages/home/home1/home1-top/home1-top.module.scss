@@ -13,6 +13,18 @@
             width: 468px;
             height: 224px;
             transform: translateY(-17px);
+
+            @media screen and (max-width:992px) {
+                width: 362px;
+                height: unset;
+                transform: translateY(8px);
+            }
+
+            @media screen and (max-width:768px) {
+                width: 100%;
+                height: unset;
+                transform: translateY(0);
+            }
         }
     }
 
@@ -25,6 +37,11 @@
             animation: 2.5s ease-in-out 0s infinite normal none running move1;
             width: 99px;
             height: 99px;
+
+            @media screen and (max-width:992px) {
+                width: 20%;
+                height: 20%;
+            }
         }
     }
 }
@@ -71,6 +88,7 @@
     font-weight: 600;
     font-size: 1.6rem;
     line-height: 20px;
+
 }
 
 @mixin sliderLeftText2($color, $shadow) {
@@ -79,6 +97,10 @@
     text-shadow: $shadow;
     color: $color;
     font-weight: 800;
+
+    @media screen and (max-width:576px) {
+        font-size: 16px;
+    }
 }
 
 @mixin sliderLeftText2_2() {
@@ -200,6 +222,10 @@
             button {
                 background-color: rgb(129, 43, 33);
                 box-shadow: rgba(0, 0, 0, 0.2) 0px -2px 0px inset;
+
+                @media screen and (max-width:576px) {
+                    display: none;
+                }
             }
         }
 

@@ -53,10 +53,11 @@ function Home1Top() {
             </div>
           </div>
           <div className={`${css["home1top__slider1__text2"]} mb-4`}>
-            Nemesis Downfall Now Live on PancakeSwap Gaming Marketplace
+            Nemesis Downfall Now <span className="d-lg-0"> Live</span> on
+            PancakeSwap <span className="d-lg-0">Gaming Marketplace</span>
           </div>
           <div className={`flex items-center justify-start gap-2`}>
-            <Button>
+            <Button className="d-lg-0">
               <span>Play Now</span>
               <span>
                 <HiMiniArrowTopRightOnSquare />

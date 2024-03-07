@@ -88,19 +88,45 @@
 
     .header2 {
         background-color: $background-1;
+        height: 58px;
 
         .header2__left {
-            .header2__icon__image {
+            .header2__icon__image1 {
                 display: block;
                 width: 160px;
+
+                @media screen and (max-width: 987px) {
+                    display: none;
+                }
+            }
+
+            .header2__icon__image2 {
+                display: none;
+
+                @media screen and (max-width: 987px) {
+                    display: block;
+                }
+            }
+
+            .header2__menu {
+                @media screen and (max-width:850px) {
+                    display: none;
+                }
             }
         }
 
         .header2__right {
+            .header2__money {
+                @media screen and (max-width: 987px) {
+                    display: none;
+                }
+            }
+
             .header2__chain {
                 .header2__chainImage {
                     position: absolute;
-                    top: -2px;
+                    top: 50%;
+                    transform: translateY(-50%);
                     left: -5px;
                     z-index: 10;
 

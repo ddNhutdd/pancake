@@ -7,6 +7,7 @@
     z-index: 1;
     border-radius: 10px;
     mask-image: linear-gradient(to left, transparent, black 80px, black calc(100% - 80px), transparent);
+    padding-bottom: 10px;
 
     &.pause:hover .marquee__slice {
         animation-play-state: paused;

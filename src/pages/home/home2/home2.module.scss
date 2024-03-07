@@ -15,6 +15,10 @@
             line-height: 110%;
             font-weight: 600;
             font-size: 32px;
+
+            @media screen and (max-width: 576px) {
+                font-size: 2rem;
+            }
         }
 
         .home2__title2 {
@@ -24,6 +28,10 @@
             line-height: 110%;
             font-weight: 600;
             font-size: 32px;
+
+            @media screen and (max-width: 576px) {
+                font-size: 2rem;
+            }
         }
 
         .home2__info {
@@ -35,38 +43,70 @@
             margin-bottom: 48px;
             gap: 48px;
 
-            .home2__info__name {
-                color: $text-color-3;
-                font-size: 20px;
-                text-align: center;
-                font-weight: 600;
-                line-height: 120%;
+            @media screen and (max-width: 768px) {
+                flex-wrap: wrap;
             }
 
-            .home2__info__number {
-                color: $text-color-4;
-                line-height: 110%;
-                text-align: center;
-                font-weight: 600;
-                font-size: 40px;
-            }
+            .home2__info__item {
+                &:nth-of-type(1) {
+                    @media screen and (max-width:768px) {
+                        width: 100%;
+                    }
+                }
 
-            .home2__info__text {
-                font-size: 16px;
-                text-align: center;
-                font-weight: 600;
-                line-height: 120%;
+                &:nth-of-type(2) {
+                    @media screen and (max-width:576px) {
+                        width: 100%;
+                    }
+                }
+
+                &:nth-of-type(3) {
+                    @media screen and (max-width:576px) {
+                        width: 100%;
+                    }
+                }
+
+                .home2__info__name {
+                    color: $text-color-3;
+                    font-size: 20px;
+                    text-align: center;
+                    font-weight: 600;
+                    line-height: 120%;
+                }
+
+                .home2__info__number {
+                    color: $text-color-4;
+                    line-height: 110%;
+                    text-align: center;
+                    font-weight: 600;
+                    font-size: 40px;
+                }
+
+                .home2__info__text {
+                    font-size: 16px;
+                    text-align: center;
+                    font-weight: 600;
+                    line-height: 120%;
+                }
             }
         }
     }
 
     .home2__imageLeft {
         position: absolute;
-        left: 30px;
+        left: 20px;
         top: 0;
 
         img {
             width: 200px;
+
+            @media screen and (max-width:1200px) {
+                width: 100px;
+            }
+
+            @media screen and (max-width:968px) {
+                display: none;
+            }
         }
     }
 
@@ -77,6 +117,14 @@
 
         img {
             width: 130px;
+
+            @media screen and (max-width:1200px) {
+                width: 65px;
+            }
+
+            @media screen and (max-width:968px) {
+                display: none;
+            }
         }
     }
 
@@ -84,7 +132,7 @@
         position: absolute;
         left: 0;
         right: 0;
-        bottom: -50px;
+        bottom: -49px;
 
         img {
             width: 100%;

@@ -28,10 +28,12 @@
         }
 
         .home6__content {
-            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: space-between;
+            overflow-y: hidden;
 
             .home6__prev {
                 width: fit-content;
@@ -39,15 +41,20 @@
             }
 
             .home6__show {
-                overflow: hidden;
+                overflow-x: auto;
                 white-space: nowrap;
                 border-radius: 24px;
+                scroll-snap-type: x mandatory;
+                height: 385px;
+
 
                 .home6__slide {
-                    width: 24%;
+                    scroll-snap-align: start;
+                    width: 260px;
                     display: inline-block;
                     vertical-align: top;
-                    padding-right: 30px;
+                    padding-left: 15px;
+                    padding-right: 15px;
                     transition: transform 0.2s linear, padding 0.2s linear;
 
                     .home6__card {
@@ -59,6 +66,10 @@
                         cursor: pointer;
                         border: 1px solid $border-color;
                         margin-bottom: 10px;
+
+                        @media screen and (max-width:1000px) {
+                            height: 410px;
+                        }
 
                         .home6__image {
                             border-top-left-radius: 24px;
@@ -83,6 +94,10 @@
                             font-weight: 600;
                             font-size: 12px;
                             line-height: 120%;
+
+                            @media screen and (max-width:1200px) {
+                                flex-direction: column;
+                            }
                         }
 
                         .home6__contact__title {
@@ -97,7 +112,6 @@
                         }
 
                         .home6__text {
-                            display: -webkit-box;
                             -webkit-line-clamp: 3;
                             -webkit-box-orient: vertical;
                             white-space: pre-wrap;
@@ -107,7 +121,7 @@
                             line-height: 120%;
                             margin-top: 16px;
                             max-height: 56px;
-                            padding: 20px;
+                            padding: 0 20px;
                         }
                     }
                 }

@@ -17,6 +17,11 @@
     align-items: flex-start;
 }
 
+// align-seft --------------------
+.self-end {
+    align-self: flex-end;
+}
+
 // justify-content --------------------
 .justify-center {
     justify-content: center;
@@ -85,6 +90,11 @@
 
         .items-#{$breakpoint}-start {
             align-items: center;
+        }
+
+        // align-seft --------------------
+        .self-#{$breakpoint}-end {
+            align-self: flex-end;
         }
 
         // justify-content --------------------
