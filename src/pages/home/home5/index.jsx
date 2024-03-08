@@ -10,8 +10,11 @@ import YoutubeIcon from "src/assets/icons/youtube.icon.jsx";
 import { FiBarChart2 } from "react-icons/fi";
 import { CiHeart } from "react-icons/ci";
 import { CiShare1 } from "react-icons/ci";
+import { useTheme } from "src/context/dark-theme";
 
 function Home5() {
+  const { isDarkMode } = useTheme();
+
   const [showSlide, setShowSlide] = useState(1);
 
   const counterLong = useRef(5);
@@ -31,6 +34,10 @@ function Home5() {
   };
   const renderClassShowActiveDot = (value) => {
     return value === showSlide ? css.active : "";
+  };
+
+  const renderDarkTheme = () => {
+    return isDarkMode ? css.dark : "";
   };
 
   useEffect(() => {
@@ -54,9 +61,9 @@ function Home5() {
   }, []);
 
   return (
-    <div className={`${css.home5}`}>
+    <div className={`${css.home5} ${renderDarkTheme()}`}>
       <div className={`${css.container}`}>
-        <div className={`${css.home5__card}`}>
+        <div className={`${css.home5__card} ${renderDarkTheme()}`}>
           <div className={`${css.home5__header}`}>
             <div className={`${css.home5__title}`}>
               <span>Join our</span>

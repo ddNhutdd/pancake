@@ -7,6 +7,8 @@ import { useCountUp } from "react-countup";
 import MarqueeItem from "./marquee-item";
 import { BiAtom } from "react-icons/bi";
 import Marquee from "../../../components/marquee";
+import { useTheme } from "src/context/dark-theme";
+import Theme2 from "src/assets/theme/theme-2.theme.jsx";
 
 function Home4() {
   const circulatingCountRef = useRef(null);
@@ -107,15 +109,21 @@ function Home4() {
     []
   );
 
+  const { isDarkMode } = useTheme();
+
+  const renderDarkTheme = () => {
+    return isDarkMode ? css.dark : "";
+  };
+
   return (
-    <div className={css.home4}>
+    <div className={`${css.home4} ${renderDarkTheme()}`}>
       <div className={css.container}>
         <div className={css.home4__top}>
-          <h2 className={css.home4__top__header}>
-            Unlock the Full Potential of DeFi
-            <span> withCAKE</span>
+          <h2 className={`${css.home4__top__header} ${renderDarkTheme()}`}>
+            Unlock the Full Potential of DeFi with
+            <span className={renderDarkTheme()}> CAKE</span>
           </h2>
-          <div className={css.home4__top__text}>
+          <div className={`${css.home4__top__text} ${renderDarkTheme()}`}>
             Experience the power of community ownership, global governance, and
             explore infinite use cases within the PancakeSwap ecosystem
           </div>
@@ -128,7 +136,9 @@ function Home4() {
         <div className={css.home4__mid}>
           <div className={css.home4__mid__left}>
             <div className={css.home4__mid__left__container}>
-              <div className={css.home4__mid__title}>Partners</div>
+              <div className={`${css.home4__mid__title} ${renderDarkTheme()}`}>
+                Partners
+              </div>
               <div className={css.home4__marqueeYContainer}>
                 <MarqueeY style={{ height: "75%" }} list={marqueeLeftList} />
               </div>
@@ -142,7 +152,9 @@ function Home4() {
           </div>
           <div className={css.home4__mid__right}>
             <div className={css.home4__mid__right__container}>
-              <div className={css.home4__mid__title}>Partners</div>
+              <div className={`${css.home4__mid__title} ${renderDarkTheme()}`}>
+                Partners
+              </div>
               <div className={css.home4__marqueeYContainer}>
                 <MarqueeY style={{ height: "75%" }} list={marqueeLeftList} />
               </div>
@@ -155,10 +167,10 @@ function Home4() {
           <div className={css.home4__mid__lineRight}></div>
         </div>
         <div className={css.home4__bot}>
-          <h2 className={css.home4__bot__title}>
-            CAKE <span>Figures</span>
+          <h2 className={`${css.home4__bot__title} ${renderDarkTheme()}`}>
+            CAKE <span className={`${renderDarkTheme()}`}>Figures</span>
           </h2>
-          <div className={css.home4__bot__list}>
+          <div className={`${css.home4__bot__list} ${renderDarkTheme()}`}>
             <div className={css.home4__bot__item}>
               <div>Circulating Supply</div>
               <div ref={circulatingCountRef}></div>
@@ -186,8 +198,8 @@ function Home4() {
           </div>
         </div>
       </div>
-      <div className={css.home4__background}>
-        <img src="src/assets/imgs/background-3.png" alt="background" />
+      <div className={`${css.home4__background} ${renderDarkTheme()}`}>
+        <Theme2 />
       </div>
     </div>
   );

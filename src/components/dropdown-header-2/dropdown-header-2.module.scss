@@ -3,6 +3,21 @@
 .dropdownHeader2 {
     position: relative;
 
+    &.dark {
+        .dropdownHeader2__menuContainer {
+            .dropdownHeader2__menu {
+                background-color: $background-2;
+                border-color: $border-color-3;
+
+                .dropdownHeader2__item {
+                    &.border {
+                        border-color: $border-color-3;
+                    }
+                }
+            }
+        }
+    }
+
     .dropdownHeader2__header {
         font-size: 30px;
         display: flex;
@@ -33,12 +48,16 @@
             width: 250px;
             border-radius: 15px;
             max-height: 350px;
-            overflow-y: scroll;
+            overflow-y: auto;
 
             .dropdownHeader2__item {
                 padding: 10px;
                 text-align: center;
                 transition: .4s;
+
+                &.border {
+                    border-bottom: 1px solid $border-color;
+                }
 
                 &.hover-p {
                     &:hover {
@@ -55,6 +74,5 @@
             }
         }
     }
-
 
 }

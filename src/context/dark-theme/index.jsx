@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, useEffect } from "react";
-import { getLocalStorage, setLocalStorage } from "../utils";
-import { localStorageVariable } from "../constants";
+import { getLocalStorage, setLocalStorage } from "../../utils";
+import { localStorageVariable } from "../../constants";
 
 const ThemeContext = createContext();
 

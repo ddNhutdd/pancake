@@ -1,5 +1,6 @@
 import React from "react";
 import css from "./button.module.scss";
+import { useTheme } from "src/context/dark-theme";
 
 export const buttonClassesType = {
   primary: "primary",
@@ -9,7 +10,9 @@ export const buttonClassesType = {
 };
 
 function Button(props) {
-  const { type, children, style } = props;
+  const { type, children, style, className, isDark } = props;
+
+  const { isDarkMode } = useTheme();
 
   const getButtonClasses = (type) => {
     switch (type) {
@@ -30,8 +33,15 @@ function Button(props) {
     }
   };
 
+  const renderDark = () => {
+    return isDark ? css.dark : "";
+  };
+
   return (
-    <button style={style} className={`${css[getButtonClasses(type)]}`}>
+    <button
+      style={style}
+      className={`${css[getButtonClasses(type)]} ${renderDark()} ${className}`}
+    >
       {children}
     </button>
   );
@@ -39,6 +49,8 @@ function Button(props) {
 
 Button.propDefault = {
   type: buttonClassesType.primary,
+  className: "",
+  isDark: false,
 };
 
 export default Button;

@@ -1,26 +1,39 @@
 import css from "./home6.module.scss";
 import { MdNavigateNext } from "react-icons/md";
 import { GrFormPrevious } from "react-icons/gr";
-import React, { useState, useRef, useEffect } from "react";
+import React from "react";
+import { useDragScroll } from "src/hooks/use-drag-scroll";
+import { useTheme } from "src/context/dark-theme";
 
 function Home6() {
-  const slideContainer = useRef();
+  const [ref] = useDragScroll();
+  const { isDarkMode } = useTheme();
+
+  const renderDarkTheme = () => {
+    return isDarkMode ? css.dark : "";
+  };
 
   const preClickHandle = () => {
-    slideContainer.current.scrollBy({
+    const container = document.getElementById("home6SlideContainer");
+    container.style = `scroll-snap-type: x mandatory`;
+    container.scrollBy({
       left: -40,
       behavior: "smooth",
     });
+    container.style = ``;
   };
   const nextClickHandle = () => {
-    slideContainer.current.scrollBy({
+    const container = document.getElementById("home6SlideContainer");
+    container.style = `scroll-snap-type: x mandatory`;
+    container.scrollBy({
       left: 40,
       behavior: "smooth",
     });
+    container.style = ``;
   };
 
   return (
-    <div className={css.home6}>
+    <div className={`${css.home6} ${renderDarkTheme()}`}>
       <div className={css.container}>
         <div className={css.home6__title}>
           <div>Featured</div>
@@ -32,7 +45,7 @@ function Home6() {
               <GrFormPrevious />
             </div>
           </div>
-          <div ref={slideContainer} className={css.home6__show}>
+          <div id="home6SlideContainer" ref={ref} className={css.home6__show}>
             <div className={css.home6__slide}>
               <div className={css.home6__card}>
                 <div className={css.home6__image}>

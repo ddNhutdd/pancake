@@ -90,6 +90,11 @@
         background-color: $background-1;
         height: 58px;
 
+        &.dark {
+            background-color: $background-2;
+            border-bottom: 1px solid $border-color-3;
+        }
+
         .header2__left {
             .header2__icon__image1 {
                 display: block;
@@ -136,6 +141,12 @@
                         display: block;
                         object-fit: cover;
                     }
+                }
+            }
+
+            .header2__buttonText {
+                @media screen and (max-width:450px) {
+                    display: none;
                 }
             }
         }

@@ -1,9 +1,14 @@
 @import "src/components/global-style/base.scss";
 
 .home4 {
-    padding: 48px 0;
+    padding-top: 48px;
+    padding-bottom: 96px;
     background-color: $background-3;
     position: relative;
+
+    &.dark {
+        background: $background-6;
+    }
 
     .container {
         @include container;
@@ -24,19 +29,31 @@
                 text-align: center;
                 font-size: 4rem;
 
+                &.dark {
+                    color: $text-color-white-2;
+                }
+
                 span {
                     color: $text-color-4;
                     margin-left: 5px;
+
+                    &.dark {
+                        color: $primary-1;
+                    }
                 }
             }
 
             .home4__top__text {
-                color: #7a6eaa;
+                color: $text-color-1;
                 padding: 0px 16px;
                 font-size: 2rem;
                 font-weight: 600;
                 text-align: center;
                 line-height: 110%;
+
+                &.dark {
+                    color: $text-color-6;
+                }
             }
 
             .home4__top__action {
@@ -102,6 +119,10 @@
                         text-align: center;
                         font-size: 40px;
                         font-weight: 600;
+
+                        &.dark {
+                            color: $text-color-white-2
+                        }
                     }
 
                     .home4__marqueeYContainer {
@@ -159,6 +180,10 @@
                         text-align: center;
                         font-size: 40px;
                         font-weight: 600;
+
+                        &.dark {
+                            color: $text-color-white-2
+                        }
                     }
 
                     .home4__marqueeYContainer {
@@ -243,8 +268,16 @@
                 line-height: 1.5;
                 font-size: 24px;
 
+                &.dark {
+                    color: $text-color-white-2;
+                }
+
                 span {
                     color: $text-color-4;
+
+                    &.dark {
+                        color: $primary-1;
+                    }
                 }
             }
 
@@ -252,6 +285,21 @@
                 display: flex;
                 align-items: flex-start;
                 justify-content: center;
+
+                &.dark {
+                    .home4__bot__item {
+                        div {
+                            &:first-child {
+                                color: $text-color-white-2;
+                            }
+
+                            &:last-child {
+                                color: $primary-1;
+                            }
+                        }
+                    }
+
+                }
 
                 @media screen and (max-width:968px) {
                     flex-wrap: wrap;
@@ -328,11 +376,25 @@
 
     .home4__background {
         position: absolute;
-        bottom: -1px;
+        bottom: -7px;
         left: 0;
+        width: 100%;
 
-        img {
+        &.dark {
+            svg {
+                path {
+                    fill: #0b4576;
+                }
+            }
+        }
+
+        svg {
             width: 100%;
+            height: 100%;
+
+            path {
+                fill: #72b8f2;
+            }
         }
     }
 }

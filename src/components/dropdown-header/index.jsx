@@ -1,17 +1,25 @@
 import css from "src/components/dropdown-header/dropdown-header.module.scss";
 import React from "react";
 import { FaArrowRightFromBracket } from "react-icons/fa6";
+import { useTheme } from "src/context/dark-theme";
 
 export const dropdownHeaderAlignEnum = {
   left: "left",
   center: "center",
   right: "right",
 };
+
 function DropdownHeader(props) {
   const { header, list, align } = props;
 
+  const { isDarkMode } = useTheme();
+
+  const renderDarkTheme = () => {
+    return isDarkMode ? css.dark : "";
+  };
+
   const renderBorder = function (value) {
-    return value ? "border-b-1" : "";
+    return value ? css.border : "";
   };
   const renderIcon = function (value) {
     return value ? <FaArrowRightFromBracket /> : "";
@@ -47,7 +55,7 @@ function DropdownHeader(props) {
   };
 
   return (
-    <div className={`${css["dropdownHeader"]} py-1`}>
+    <div className={`${css["dropdownHeader"]} py-1 ${renderDarkTheme()}`}>
       <div
         className={`${css["headerContainer"]} flex align-center justify-center p-3 select-none hover-p`}
       >

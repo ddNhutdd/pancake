@@ -9,17 +9,32 @@ import videoSrc4 from "src/assets/videos/4.webm";
 import videoSrc5 from "src/assets/videos/5.webm";
 import videoSrc6 from "src/assets/videos/6.webm";
 import { buttonClassesType } from "../../../components/button";
+import { useTheme } from "src/context/dark-theme";
 
 function Home1() {
+  const { isDarkMode } = useTheme();
+
+  const renderDarkTheme = () => {
+    return isDarkMode ? css.dark : "";
+  };
+  const renderBotTheme = () => {
+    return isDarkMode ? (
+      <img src="src/assets/imgs/image-10-dark.svg" alt="back" />
+    ) : (
+      <img src="src/assets/imgs/image-10.svg" alt="back" />
+    );
+  };
   return (
-    <div className={css["home1"]}>
+    <div className={`${css["home1"]} ${renderDarkTheme()}`}>
       <div className={css["home1__container"]}>
         <div className={css["home1__top"]}>
           <Home1Top></Home1Top>
         </div>
         <div className={css["home1__bottom"]}>
           <div className={css["home1__bottom__left"]}>
-            <div className={css["home1__bottom__title"]}>
+            <div
+              className={`${css["home1__bottom__title"]} ${renderDarkTheme()}`}
+            >
               Everyone's{" "}
               <span className={css["home1__bottom__favorite"]}>Favorite</span>{" "}
               DEX
@@ -28,7 +43,7 @@ function Home1() {
               Trade, earn, and own crypto on the all-in-one multichain DEX
             </div>
             <div className={`flex items-center justify-start gap-3`}>
-              <Button>Connect Wallet</Button>
+              <Button isDark={isDarkMode}>Connect Wallet</Button>
               <Button type={buttonClassesType.outline}>Trade Now</Button>
             </div>
           </div>
@@ -68,9 +83,7 @@ function Home1() {
           </div>
         </div>
       </div>
-      <div className={css["home1__background"]}>
-        <img src="src/assets/imgs/image-10.svg" alt="back" />
-      </div>
+      <div className={css["home1__background"]}>{renderBotTheme()}</div>
     </div>
   );
 }

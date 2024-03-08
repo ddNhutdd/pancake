@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import css from "./footer-user.module.scss";
 import { NavLink } from "react-router-dom";
 import { url } from "../../constants";
@@ -16,7 +16,7 @@ import Money from "../money/index";
 import Button from "src/components/button";
 import { buttonClassesType } from "../../components/button";
 import SwitchTheme from "../../components/switch/switch-theme";
-import { useTheme } from "src/context";
+import { useTheme } from "src/context/dark-theme";
 
 function Footer() {
   const { isDarkMode, toggleTheme } = useTheme();
@@ -105,11 +105,19 @@ function Footer() {
           </ul>
           <ul>
             <li>
-              <NavLink>
+              <NavLink className={css.footer__logo1}>
                 <img
                   style={{ width: "160px" }}
                   className={`${css["header2__icon__image"]}`}
                   src={logoTextLight}
+                  alt="React Logo"
+                />
+              </NavLink>
+              <NavLink className={css.footer__logo2}>
+                <img
+                  style={{ width: "20px" }}
+                  className={`${css["header2__icon__image"]}`}
+                  src={`src/assets/imgs/pancakeswap-logo.png`}
                   alt="React Logo"
                 />
               </NavLink>
@@ -162,7 +170,7 @@ function Footer() {
               <Money></Money>
             </div>
             <div>
-              <Button type={buttonClassesType.primaryThin}>
+              <Button isDark={isDarkMode} type={buttonClassesType.primaryThin}>
                 <span>Buy Cake</span>
                 <span>
                   <FaArrowRight />

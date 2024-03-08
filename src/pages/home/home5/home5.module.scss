@@ -5,6 +5,10 @@
     position: relative;
     padding: 48px 0;
 
+    &.dark {
+        background: linear-gradient(180deg, #0b4576 0%, #091115 100%);
+    }
+
     .container {
         @include container;
 
@@ -20,6 +24,74 @@
             box-sizing: border-box;
             backdrop-filter: blur(20px);
             border-radius: 72px;
+
+            &.dark {
+                background: #000000cc;
+                border: 1px solid $border-color-2;
+
+                .home5__header {
+                    .home5__title {
+                        span {
+                            color: $text-color-white-2 !important;
+
+                            &:last-child {
+                                color: $primary-1 !important;
+
+                            }
+                        }
+                    }
+
+                    .home5__smallTitle {
+                        color: $text-color-6
+                    }
+                }
+
+                .home5__mainContent {
+                    .home5__right {
+                        border: 1px solid $border-color-2;
+                        background: $background-2;
+                        box-shadow: 0px 2px 0px 0px $border-color-2;
+
+                        .home5__right__slide1 {
+
+                            .home5__right__slide1__header,
+                            .home5__right__slide1__title,
+                            .home5__right__slide1__text {
+                                color: $text-color-white-2;
+                            }
+                        }
+
+                        .home5__right__slide2 {
+
+                            .home5__right__slide2__header,
+                            .home5__right__slide2__text {
+                                color: $text-color-white-2;
+                            }
+                        }
+
+                        .home5__right__paging__item {
+                            background: #383241 !important;
+
+                        }
+                    }
+                }
+
+                .home5__footer {
+                    .home5__footer__container {
+                        background-color: $background-2 !important;
+
+                        &:hover {
+                            background-color: $primary-2 !important;
+
+                            svg {
+                                path {
+                                    fill: black !important;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
 
             .home5__header {
                 .home5__title {
@@ -283,7 +355,7 @@
                             }
 
                             &.active {
-                                background-color: rgb(118, 69, 217);
+                                background-color: #7645d9 !important;
                             }
 
                             &:first-child {
@@ -326,7 +398,7 @@
                         align-items: center;
                         border-radius: 32px;
                         background-color: $background-1;
-                        transition: background-color 0.25s ease-in-out 0s;
+                        transition: background-color 0.6s ease-in-out 0s;
 
                         @media screen and (max-width: 576px) {
                             width: 32px;
@@ -345,6 +417,7 @@
 
                         svg {
                             path {
+                                transition: fill 0.6s ease-in-out 0s;
                                 fill: $primary-2;
                             }
                         }
@@ -361,6 +434,10 @@
         position: absolute;
         top: 110px;
         left: 10px;
+
+        @media screen and (max-width:430px) {
+            display: none;
+        }
 
         img {
             position: absolute;
@@ -403,6 +480,10 @@
         top: -180px;
         z-index: 1;
         transform-origin: center center;
+
+        @media screen and (max-width:430px) {
+            display: none;
+        }
 
         img {
             position: absolute;

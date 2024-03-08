@@ -1,10 +1,17 @@
 import React from "react";
 import css from "./home3.module.scss";
 import { FaChevronRight } from "react-icons/fa";
+import { useTheme } from "src/context/dark-theme";
 
 function Home3() {
+  const { isDarkMode } = useTheme();
+
+  const renderDarkTheme = () => {
+    return isDarkMode ? css.dark : "";
+  };
+
   return (
-    <div className={css["home3"]}>
+    <div className={`${css["home3"]} ${renderDarkTheme()}`}>
       <div className={css["container"]}>
         <div className={css["home3__header"]}>
           <div
@@ -16,11 +23,11 @@ function Home3() {
             <img src="src/assets/imgs/image-30.svg" alt="logo" />
           </div>
           <div className={css["home3__header__text"]}>
-            <span>Discover the</span>
+            <span className={renderDarkTheme()}>Discover the</span>
             <span>Ecosystem</span>
           </div>
         </div>
-        <div className={css["home3__card"]}>
+        <div className={`${css["home3__card"]} ${renderDarkTheme()}`}>
           <div className={css["home3__mainPic"]}>
             <img src="src/assets/imgs/image-14.png" alt="logo" />
           </div>
@@ -101,7 +108,7 @@ function Home3() {
           </div>
         </div>
 
-        <div className={css["home3__card"]}>
+        <div className={`${css["home3__card"]} ${renderDarkTheme()}`}>
           <div className={css["home3__mainContent"]}>
             <div className={css["home3__title"]}>Trade</div>
             <div className={css["home3__list"]}>
@@ -182,7 +189,7 @@ function Home3() {
           </div>
         </div>
 
-        <div className={css["home3__card"]}>
+        <div className={`${css["home3__card"]} ${renderDarkTheme()}`}>
           <div className={css["home3__mainPic"]}>
             <img src="src/assets/imgs/image-25.png" alt="logo" />
           </div>

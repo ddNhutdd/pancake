@@ -4,9 +4,10 @@ $text-color-white-2: #f4eeff;
 $text-color-dark-1: #090909;
 $text-color-dark-2: #262626;
 $text-color-1: #7a6eaa;
-$text-color-2: #a881fc;
 $text-color-3: #280d5f;
 $text-color-4: #7645d9;
+$text-color-5: #191326;
+$text-color-6: #b8add2;
 
 $yellow-1: #ffb237;
 
@@ -19,8 +20,15 @@ $background-1: #fff;
 $background-2: #27262C;
 $background-3: #faf9fa;
 $background-4: #edebf5;
+$background-5: #353547;
+$background-6: #08060b;
+$background-7: linear-gradient(139.73deg, #313d5c, #3d2a54);
+$background-8: #eff4f5;
+$background-9: #1d1d22;
 
 $border-color: #e7e3eb;
+$border-color-2: #fefdfe;
+$border-color-3: #383241;
 
 // ----------------------------------------------------------------
 @mixin container {

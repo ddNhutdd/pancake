@@ -2,6 +2,8 @@ import { MarqueeType } from "../../../components/marquee";
 import css from "./home2.module.scss";
 import Marquee from "src/components/marquee";
 import MarqueeItem from "./marquee-item";
+import { useTheme } from "src/context/dark-theme";
+import Theme1 from "src/assets/theme/theme-1.theme.jsx";
 
 function Home2() {
   const listMarkquee = [
@@ -98,16 +100,22 @@ function Home2() {
     },
   ];
 
+  const { isDarkMode } = useTheme();
+
+  const renderDarkTheme = () => {
+    return isDarkMode ? css.dark : "";
+  };
+
   return (
-    <div className={`${css["home2"]}`}>
+    <div className={`${css["home2"]} ${renderDarkTheme()}`}>
       <div className={`${css["container"]}`}>
-        <div className={`${css["home2__title1"]}`}>
+        <div className={`${css["home2__title1"]} ${renderDarkTheme()}`}>
           Shaping the Future of Decentralized Trading:
         </div>
-        <div className={`${css["home2__title2"]}`}>
+        <div className={`${css["home2__title2"]} ${renderDarkTheme()}`}>
           PancakeSwap’s Unstoppable Expansion
         </div>
-        <div className={`${css["home2__info"]}`}>
+        <div className={`${css["home2__info"]} ${renderDarkTheme()}`}>
           <div className={`${css["home2__info__item"]}`}>
             <div className={`${css["home2__info__name"]}`}>Total Users:</div>
             <div className={`${css["home2__info__number"]}`}>1,348,104</div>
@@ -149,8 +157,8 @@ function Home2() {
       <div className={`${css["home2__imageRight"]}`}>
         <img src="src/assets/imgs/image-12.png" alt="right" />
       </div>
-      <div className={`${css["home2__backgroundShape"]}`}>
-        <img src="src/assets/imgs/image-13.svg" alt="back" />
+      <div className={`${css["home2__backgroundShape"]} ${renderDarkTheme()}`}>
+        <Theme1 />
       </div>
     </div>
   );

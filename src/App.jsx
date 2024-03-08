@@ -3,17 +3,21 @@ import { Provider as ReduxProvider } from "react-redux";
 import { store } from "./redux/config-store";
 import { router } from "./router";
 import { GlobalStyle } from "./components/global-style";
-import { ThemeProvider } from "./context";
+import { ThemeProvider } from "./context/dark-theme";
+import { I18nextProvider } from "react-i18next";
+import i18n from "src/translate/i18n.js";
 
 function App() {
   return (
-    <ReduxProvider store={store}>
-      <GlobalStyle>
-        <ThemeProvider>
-          <RouterProvider router={router} />
-        </ThemeProvider>
-      </GlobalStyle>
-    </ReduxProvider>
+    <I18nextProvider i18n={i18n}>
+      <ReduxProvider store={store}>
+        <GlobalStyle>
+          <ThemeProvider>
+            <RouterProvider router={router} />
+          </ThemeProvider>
+        </GlobalStyle>
+      </ReduxProvider>
+    </I18nextProvider>
   );
 }
 

@@ -5,6 +5,10 @@
     background: linear-gradient(180deg, #fff 22%, #d7caec 100%);
     position: relative;
 
+    &.dark {
+        background: linear-gradient(180deg, #09070c 22%, #201335 100%);
+    }
+
     .container {
         @include container;
 
@@ -15,6 +19,10 @@
             line-height: 110%;
             font-weight: 600;
             font-size: 32px;
+
+            &.dark {
+                color: $text-color-white-2
+            }
 
             @media screen and (max-width: 576px) {
                 font-size: 2rem;
@@ -29,6 +37,10 @@
             font-weight: 600;
             font-size: 32px;
 
+            &.dark {
+                color: $text-color-white-2
+            }
+
             @media screen and (max-width: 576px) {
                 font-size: 2rem;
             }
@@ -42,6 +54,22 @@
             justify-content: space-around;
             margin-bottom: 48px;
             gap: 48px;
+
+            &.dark {
+                .home2__info__item {
+                    .home2__info__name {
+                        color: $text-color-white-2;
+                    }
+
+                    .home2__info__number {
+                        color: $primary-1
+                    }
+
+                    .home2__info__text {
+                        color: $text-color-6;
+                    }
+                }
+            }
 
             @media screen and (max-width: 768px) {
                 flex-wrap: wrap;
@@ -79,7 +107,11 @@
                     line-height: 110%;
                     text-align: center;
                     font-weight: 600;
-                    font-size: 40px;
+                    font-size: 4rem;
+
+                    @media screen and (max-width:576px) {
+                        font-size: 2rem;
+                    }
                 }
 
                 .home2__info__text {
@@ -132,12 +164,17 @@
         position: absolute;
         left: 0;
         right: 0;
-        bottom: -49px;
+        bottom: -62px;
 
-        img {
+        &.dark {
+            svg path {
+                fill: #201335;
+            }
+        }
+
+        svg {
             width: 100%;
-            height: 50px;
-            object-fit: fill;
+            height: 100%;
         }
     }
 }

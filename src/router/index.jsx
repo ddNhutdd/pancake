@@ -2,7 +2,9 @@ import { createBrowserRouter } from "react-router-dom";
 import { Suspense, lazy } from "react";
 import UserTemplate from "../templates/user/user.template";
 import { url } from "src/constants";
+
 const Home = lazy(() => import("../pages/home"));
+const Swap = lazy(() => import("../pages/swap"));
 
 export const router = createBrowserRouter([
   {
@@ -14,6 +16,14 @@ export const router = createBrowserRouter([
         element: (
           <Suspense>
             <Home />
+          </Suspense>
+        ),
+      },
+      {
+        path: url.swap,
+        element: (
+          <Suspense>
+            <Swap />
           </Suspense>
         ),
       },

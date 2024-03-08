@@ -4,6 +4,10 @@
     padding-top: 60px;
     background-color: $background-3;
 
+    &.dark {
+        background-color: $background-6;
+    }
+
     .container {
         @include container;
         display: flex;
@@ -13,6 +17,8 @@
 
         .home3__header {
             .home3__header__text {
+                text-align: center;
+
                 span {
                     &:first-child {
                         color: $text-color-3;
@@ -20,6 +26,10 @@
                         font-size: 4rem;
                         line-height: 110%;
                         display: inline-block;
+
+                        &.dark {
+                            color: $text-color-white-2;
+                        }
                     }
 
                     &:last-child {
@@ -40,6 +50,22 @@
             border-radius: 24px;
             display: flex;
             padding: 24px;
+
+            &.dark {
+                background: $background-7;
+
+                .home3__list__name {
+                    color: $text-color-white-2 !important;
+                }
+
+                .home3__list__text {
+                    color: $text-color-white-2 !important;
+                }
+
+                .home3__list__nav {
+                    color: $text-color-6;
+                }
+            }
 
             @media screen and (max-width:850px) {
                 flex-direction: column;
@@ -141,6 +167,10 @@
                                     opacity: 1;
                                 }
                             }
+
+                            .home3__list__nav {
+                                color: $primary-2 !important;
+                            }
                         }
 
                         .home3__list__image {
@@ -174,6 +204,7 @@
                             font-size: 20px;
                             line-height: 110%;
                             font-weight: 600;
+
                         }
 
                         .home3__list__text {
@@ -189,6 +220,10 @@
                             align-items: center;
                             justify-content: flex-start;
                             padding-bottom: 20px;
+                            font-weight: 600;
+                            font-size: 1.6rem;
+                            line-height: 1.5;
+                            transition: color .4s;
 
                             @media screen and (max-width:1200px) {
                                 margin-top: 20px

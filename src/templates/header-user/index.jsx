@@ -14,8 +14,12 @@ import DropdownHeader2, {
 import Button, { buttonClassesType } from "../../components/button";
 import { FaChevronDown } from "react-icons/fa6";
 import Money from "../money";
+import { useTheme } from "src/context/dark-theme";
+import logoTextLight from "src/assets/imgs/logo-text-light.svg";
 
 function Header() {
+  const { isDarkMode } = useTheme();
+
   const threeDotMenuList = [
     {
       id: 1,
@@ -293,6 +297,25 @@ function Header() {
     },
   ];
 
+  const renderDarkTheme = () => {
+    return isDarkMode ? css.dark : "";
+  };
+  const renderLogoByTheme = () => {
+    return isDarkMode ? (
+      <img
+        className={`${css["header2__icon__image1"]}`}
+        src={logoTextLight}
+        alt="React Logo"
+      />
+    ) : (
+      <img
+        className={`${css["header2__icon__image1"]}`}
+        src={Logo1}
+        alt="React Logo"
+      />
+    );
+  };
+
   const [isShowMenu, setIsShowMenu] = useState(true);
 
   useEffect(() => {
@@ -350,18 +373,16 @@ function Header() {
         </div>
       </div>
       <div
-        className={`${css["header2"]} border-b-1 px-3 flex items-center justify-between`}
+        className={`${
+          css["header2"]
+        } ${renderDarkTheme()} border-b-1 px-3 flex items-center justify-between`}
       >
         <div className={`${css["header2__left"]} flex items-center`}>
           <div
             className={`${css["header2__icon"]} flex align-center justify-between`}
           >
             <NavLink className={`flex align-center justify-between`} to="/">
-              <img
-                className={`${css["header2__icon__image1"]}`}
-                src={Logo1}
-                alt="React Logo"
-              />
+              {renderLogoByTheme()}
               <img
                 className={css.header2__icon__image2}
                 src={"src/assets/imgs/logo2.svg"}
@@ -399,13 +420,13 @@ function Header() {
               list={languageList}
             />
           </div>
-          <div className="flex align-center items-center px-3">
+          <div className="flex align-center items-center px-3 px-sm-1">
             <IoSettingsSharp style={{ fontSize: "25px" }} />
           </div>
-          <div className="flex align-center items-center px-3">
+          <div className="flex align-center items-center px-3 px-sm-1">
             <IoIosNotifications style={{ fontSize: "25px" }} />
           </div>
-          <div className={`${css["header2__chain"]} px-3 relative`}>
+          <div className={`${css["header2__chain"]} px-3 px-sm-1 relative`}>
             <DropdownHeader2
               positionMenu={{
                 top: "26px",
@@ -419,10 +440,13 @@ function Header() {
                     <img src="src/assets/imgs/polygonicon.png" />
                   </div>
                   <Button
+                    isDark={isDarkMode}
                     style={{ paddingLeft: 35 }}
                     type={buttonClassesType.secondThin}
                   >
-                    <span>BNB Chain</span>
+                    <span className={`${css.header2__buttonText}`}>
+                      BNB Chain
+                    </span>
                     <span style={{ fontSize: "1.2rem" }}>
                       <FaChevronDown />
                     </span>
@@ -432,9 +456,10 @@ function Header() {
               list={listChain}
             />
           </div>
-          <div className="px-3">
-            <Button type={buttonClassesType.primaryThin}>
-              Connenct Wallet
+          <div className="px-3  px-sm-1">
+            <Button isDark={isDarkMode} type={buttonClassesType.primaryThin}>
+              Connenct{" "}
+              <span className={`${css.header2__buttonText}`}>Wallet</span>
             </Button>
           </div>
         </div>

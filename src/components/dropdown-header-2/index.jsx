@@ -1,5 +1,6 @@
 import React from "react";
 import css from "./dropdown-header-2.module.scss";
+import { useTheme } from "src/context/dark-theme";
 
 export const dropdownItemAlignType = {
   left: "left",
@@ -8,6 +9,7 @@ export const dropdownItemAlignType = {
 
 function DropdownHeader2(props) {
   const { list, header, dropdownItemAlign, positionMenu } = props;
+  const { isDarkMode } = useTheme();
 
   const renderList = function () {
     if (!list || list.length <= 0) return <></>;
@@ -39,7 +41,7 @@ function DropdownHeader2(props) {
   };
   const renderBorderBottom = function (value) {
     if (value === null || value === undefined) return "";
-    return value ? "border-b-1" : "";
+    return value ? css.border : "";
   };
   const renderHover = function (value) {
     if (value === null || value === undefined) return "hover-p";
@@ -53,9 +55,12 @@ function DropdownHeader2(props) {
       </span>
     );
   };
+  const renderDarkTheme = () => {
+    return isDarkMode ? css.dark : "";
+  };
 
   return (
-    <div className={css["dropdownHeader2"]}>
+    <div className={`${css["dropdownHeader2"]} ${renderDarkTheme()}`}>
       <div className={css["dropdownHeader2__header"]}>{header}</div>
       <div
         style={positionMenu}
