@@ -69,6 +69,32 @@
     margin-left: $space * 5;
 }
 
+// margin y ----------------------------------------------------------------
+
+.my-1 {
+    margin-top: $space ;
+    margin-bottom: $space;
+}
+
+.my-2 {
+    margin-top: $space * 2;
+    margin-bottom: $space * 2;
+}
+
+.my-3 {
+    margin-top: $space * 3;
+    margin-bottom: $space * 3;
+}
+
+.my-4 {
+    margin-top: $space * 4;
+    margin-bottom: $space * 4;
+}
+
+.my-5 {
+    margin-top: $space * 5;
+    margin-bottom: $space * 5;
+}
 
 @each $breakpoint, $width in $responsive {
     @media screen and (max-width: $width) {
@@ -138,6 +164,33 @@
 
         .ml-#{$breakpoint}-5 {
             margin-left: $space * 5;
+        }
+
+        // margin y ----------------------------------------------------------------
+
+        .my-#{$breakpoint}-1 {
+            margin-top: $space ;
+            margin-bottom: $space;
+        }
+
+        .my-#{$breakpoint}-2 {
+            margin-top: $space * 2;
+            margin-bottom: $space * 2;
+        }
+
+        .my-#{$breakpoint}-3 {
+            margin-top: $space * 3;
+            margin-bottom: $space * 3;
+        }
+
+        .my-#{$breakpoint}-4 {
+            margin-top: $space * 4;
+            margin-bottom: $space * 4;
+        }
+
+        .my-#{$breakpoint}-5 {
+            margin-top: $space * 5;
+            margin-bottom: $space * 5;
         }
     }
 }
