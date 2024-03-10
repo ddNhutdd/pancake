@@ -6,14 +6,14 @@ export default defineConfig({
 	plugins: [react()],
 	server: {
 		port: 3001,
-		baseUrl: '/src',
 	},
 	resolve: {
 		alias: {
-			src: '/src',
-		},
-		paths: {
-			src: '/src',
+			src: "/src",
+			icons:"/src/assets/icons",
+			imgs:"/src/assets/imgs",
+			themes:"/src/assets/theme",
+			components:'/src/components'
 		},
 	},
 });

@@ -1,9 +1,9 @@
-import { MarqueeType } from "../../../components/marquee";
+import Marquee, { MarqueeType } from "components/marquee";
 import css from "./home2.module.scss";
-import Marquee from "src/components/marquee";
 import MarqueeItem from "./marquee-item";
 import { useTheme } from "src/context/dark-theme";
 import Theme1 from "src/assets/theme/theme-1.theme.jsx";
+
 
 function Home2() {
   const listMarkquee = [
