@@ -23,6 +23,12 @@
                 background-color: $text-color-6;
                 color: $background-2;
             }
+
+            svg {
+                path {
+                    fill: $text-color-6;
+                }
+            }
         }
     }
 

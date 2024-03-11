@@ -6,6 +6,7 @@ import { GlobalStyle } from "./components/global-style";
 import { ThemeProvider } from "./context/dark-theme";
 import { I18nextProvider } from "react-i18next";
 import i18n from "src/translate/i18n.js";
+import AlertContainer from "./context/alert-container";
 
 function App() {
   return (
@@ -13,7 +14,9 @@ function App() {
       <ReduxProvider store={store}>
         <GlobalStyle>
           <ThemeProvider>
-            <RouterProvider router={router} />
+            <AlertContainer>
+              <RouterProvider router={router} />
+            </AlertContainer>
           </ThemeProvider>
         </GlobalStyle>
       </ReduxProvider>

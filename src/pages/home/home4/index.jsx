@@ -1,5 +1,5 @@
 import css from "./home4.module.scss";
-import React, { useCallback, useRef } from "react";
+import { useCallback, useRef } from "react";
 import Button from "src/components/button";
 import { CiShare1 } from "react-icons/ci";
 import MarqueeY from "src/components/marquee-y";

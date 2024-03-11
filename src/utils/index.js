@@ -2,7 +2,7 @@ export const setLocalStorage = (key, data) => {
   try {
     localStorage.setItem(key, JSON.stringify(data));
   } catch (error) {
-    console.log(e);
+    console.log(error);
   }
 };
 

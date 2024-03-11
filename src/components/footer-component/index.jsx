@@ -3,7 +3,6 @@ import css from "./footer-component.module.scss";
 import { CiShare1 } from "react-icons/ci";
 import Theme3 from "src/assets/theme/theme-3.theme.jsx";
 import { useTheme } from "src/context/dark-theme";
-import React from "react";
 
 function FooterComponent() {
   const { isDarkMode } = useTheme();
