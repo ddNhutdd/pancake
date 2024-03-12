@@ -4,7 +4,7 @@
     background: linear-gradient(139.73deg, #e5fdff, #f3efff);
 
     &.dark {
-        background: linear-gradient(139.73deg, #313d5c, #3d2a54);
+        background: $background-7;
 
         .swap__container {
             .swap__content {

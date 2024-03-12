@@ -34,7 +34,7 @@ $background-12: #d7caec;
 $background-13: #f6f6f6;
 $background-14: #1E1D20;
 
-$border-color: #e7e3eb;
+$border-color: rgb(231, 227, 235);
 $border-color-2: #fefdfe;
 $border-color-3: #383241;
 $border-color-4: #262130;
@@ -56,6 +56,36 @@ $border-color-4: #262130;
   @media screen and (max-width: 767px) {}
 
   @media screen and (max-width: 575px) {}
+}
+
+@mixin box($addBorder: false, $addShadow: false) {
+  width: 100%;
+  border-radius: 24px;
+  padding: 24px;
+  background-color: $background-1;
+
+  @if $addBorder {
+    border: 1px solid $border-color;
+  }
+
+  @if $addShadow {
+    box-shadow: 0px 2px 0px 0px rgba(231, 227, 235, 0.76);
+  }
+}
+
+@mixin boxDark ($addBorder: false, $addShadow: false) {
+  width: 100%;
+  border-radius: 24px;
+  padding: 24px;
+  background-color: $background-2;
+
+  @if $addBorder {
+    border-color: $border-color-3;
+  }
+
+  @if $addShadow {
+    box-shadow: 0px 2px 0px 0px rgba(56, 50, 65, 0.76);
+  }
 }
 
 //----------------------------------------------------------------

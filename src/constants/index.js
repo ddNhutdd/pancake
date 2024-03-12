@@ -1,7 +1,8 @@
 export const url = {
   home: "/",
   swap: "/swap",
-  staking: '/staking'
+  staking: '/staking',
+  cakeStaking: '/cake-staking'
 };
 
 export const localStorageVariable = {

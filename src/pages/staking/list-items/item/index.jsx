@@ -56,7 +56,6 @@ function Item(props) {
                 <div className={`${css.item__section} ${css.fifth}`}>
                     <SectionButtonInfo isShowInfo={isShowInfo} setIsShowInfo={setIsShowInfo} />
                 </div>
-
             </div>
             <div className={`${css.item__info} ${renderShowInfo()}`}>
                 <div className={`${css.item__info__left}`}>

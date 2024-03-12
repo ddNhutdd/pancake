@@ -1,5 +1,5 @@
 import {defineConfig} from 'vite';
-import react from '@vitejs/plugin-react';
+import react from '@vitejs/plugin-react';	
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -14,7 +14,8 @@ export default defineConfig({
 			imgs:"/src/assets/imgs",
 			themes:"/src/assets/theme",
 			components:'/src/components',
-			context:'/src/context'
+			context:'/src/context',
+			pages:'/src/pages',
 		},
 	},
 });

@@ -6,8 +6,6 @@ import { FaChevronLeft } from 'react-icons/fa';
 import { FaChevronRight } from 'react-icons/fa';
 import PropTypes from 'prop-types';
 import { useLocation } from 'react-router-dom';
-import { current } from '@reduxjs/toolkit';
-
 
 function HeaderComponent(props) {
 	const { list } = props;
