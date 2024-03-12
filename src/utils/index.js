@@ -21,3 +21,44 @@ export const removeLocalStorage = (key) => {
     console.log(error);
   }
 };
+
+export const debounce = function (func, ms) {
+  let timeout;
+  return function (...args) {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => func.apply(this, args), ms);
+  };
+};
+
+export const createIntersectionObserve = (
+  htmlElement,
+  animationClass
+) => {
+  const options = {
+    root: null,
+    rootMargin: "0px",
+    threshold: 0.2,
+  };
+  const callback = function (entries) {
+    for (const entry of entries) {
+      const element = entry.target;
+      if (!entry.isIntersecting) return;
+      else
+        !element.classList.contains(animationClass) &&
+          element.classList.add(animationClass);
+    }
+  };
+
+  const observer = new IntersectionObserver(callback, options);
+  const element = document.getElementById(htmlElement);
+  observer.observe(element);
+  return observer;
+};
+export const addAnimation = (listId, listAnimation) => {
+  const listObserse = [];
+  for (let i = 0; i < listId.length; i++) {
+    const temp = createIntersectionObserve(listId.at(i), listAnimation.at(i));
+    listObserse.push(temp);
+  }
+  return listObserse;
+};

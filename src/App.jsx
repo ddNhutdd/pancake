@@ -7,6 +7,10 @@ import { ThemeProvider } from "./context/dark-theme";
 import { I18nextProvider } from "react-i18next";
 import i18n from "src/translate/i18n.js";
 import AlertContainer from "./context/alert-container";
+import { create, all } from 'mathjs'
+
+const config = {}
+export const math = create(all, config)
 
 function App() {
   return (
