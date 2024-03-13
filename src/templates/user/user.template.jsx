@@ -1,4 +1,3 @@
-import React from "react";
 import { Outlet } from "react-router-dom";
 import ConfigComponent from "src/components/config-component";
 import Header from "src/templates/header-user";

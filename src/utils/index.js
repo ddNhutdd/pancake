@@ -62,3 +62,13 @@ export const addAnimation = (listId, listAnimation) => {
   }
   return listObserse;
 };
+
+export const truncatedWalletAddress = (address) => {
+  try {
+    const last4Chars = address.slice(-4);
+    return `0x...${last4Chars}`;
+  } catch (error) {
+    console.log(error);
+    return`0x...`
+  }
+}

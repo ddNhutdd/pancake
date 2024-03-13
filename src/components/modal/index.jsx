@@ -1,7 +1,7 @@
 import css from './modal.module.scss';
-import {IoClose} from 'react-icons/io5';
+import { IoClose } from 'react-icons/io5';
 import PropTypes from 'prop-types';
-import {useRef} from 'react';
+import { useRef } from 'react';
 
 function Modal(props) {
 	const {

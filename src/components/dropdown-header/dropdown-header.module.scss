@@ -6,8 +6,10 @@
 
     &.dark {
         .headerContainer {
-            &:hover {
-                background-color: $background-5;
+            &.canHover {
+                &:hover {
+                    background-color: $background-5;
+                }
             }
         }
 
@@ -17,7 +19,6 @@
                 border-color: $border-color-3;
 
                 .headerMenu__item {
-
                     &:hover {
                         background-color: $background-5;
                     }
@@ -36,11 +37,13 @@
         transition: .4s;
         border-radius: 15px;
 
-        &:hover {
-            background-color: $hover-1;
+        &.canHover {
+            &:hover {
+                background-color: $hover-1;
 
-            &+.headerMenuContainer {
-                display: block;
+                &+.headerMenuContainer {
+                    display: block;
+                }
             }
         }
 
@@ -56,8 +59,10 @@
         padding-top: 7px;
         display: none;
 
-        &:hover {
-            display: block;
+        &.canHover {
+            &:hover {
+                display: block;
+            }
         }
 
         .headerMenu {
@@ -69,6 +74,8 @@
             .headerMenu__item {
                 padding: 10px;
                 transition: .2s;
+                display: flex;
+                align-items: center;
 
                 &:hover {
                     background-color: $hover-1;

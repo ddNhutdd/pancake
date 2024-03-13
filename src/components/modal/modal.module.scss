@@ -53,6 +53,9 @@
             justify-content: space-between;
             border-bottom: 1px solid $border-color;
             background: linear-gradient(111.68deg, #f2ecf2, #e8f2f6);
+            font-size: 2rem;
+            color: $text-color-3;
+            font-weight: 600;
 
             .modal__close {
                 color: $primary-2;

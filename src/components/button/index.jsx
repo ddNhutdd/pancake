@@ -9,7 +9,7 @@ export const buttonClassesType = {
 };
 
 function Button(props) {
-	const {type, children, style, className, isDark} = props;
+	const { type, children, style, className, isDark, onClick } = props;
 
 	const getButtonClasses = (type) => {
 		switch (type) {
@@ -36,6 +36,7 @@ function Button(props) {
 
 	return (
 		<button
+			onClick={onClick}
 			style={style}
 			className={`${css[getButtonClasses(type)]} ${renderDark()} ${className}`}
 		>
@@ -48,6 +49,7 @@ Button.propDefault = {
 	type: buttonClassesType.primary,
 	className: '',
 	isDark: false,
+	onclick: () => { }
 };
 
 Button.propTypes = {
@@ -56,6 +58,7 @@ Button.propTypes = {
 	children: PropTypes.node,
 	className: PropTypes.string,
 	isDark: PropTypes.bool,
+	onClick: PropTypes.func
 };
 
 export default Button;

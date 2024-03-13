@@ -2,8 +2,11 @@ import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { getPaddingTop } from "../../redux/slices/paddingTopPage";
+import PropTypes from 'prop-types';
 
-function ConfigComponent({ children }) {
+function ConfigComponent(props) {
+  const { children } = props;
+
   const location = useLocation();
   const paddingTop = useSelector(getPaddingTop);
 
@@ -16,6 +19,10 @@ function ConfigComponent({ children }) {
   }, [location]);
 
   return <div style={{ paddingTop }}>{children}</div>;
+}
+
+ConfigComponent.propTypes = {
+  children: PropTypes.node
 }
 
 export default ConfigComponent;

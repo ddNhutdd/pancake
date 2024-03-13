@@ -1,7 +1,7 @@
 import css from "src/components/dropdown-header/dropdown-header.module.scss";
-import React from "react";
-import { FaArrowRightFromBracket } from "react-icons/fa6";
+
 import { useTheme } from "src/context/dark-theme";
+import PropTypes from 'prop-types';
 
 export const dropdownHeaderAlignEnum = {
   left: "left",
@@ -10,7 +10,7 @@ export const dropdownHeaderAlignEnum = {
 };
 
 function DropdownHeader(props) {
-  const { header, list, align } = props;
+  const { header, list, align, disabled } = props;
 
   const { isDarkMode } = useTheme();
 
@@ -21,22 +21,19 @@ function DropdownHeader(props) {
   const renderBorder = function (value) {
     return value ? css.border : "";
   };
-  const renderIcon = function (value) {
-    return value ? <FaArrowRightFromBracket /> : "";
-  };
+
   const renderListItem = function () {
-    return list.map((item, index) => {
+    return list.map((item) => {
       return (
         <div
+          onClick={item.onClick}
           key={item.id}
-          className={`${
-            css["headerMenu__item"]
-          } hover-p flex align-center justify-between ${renderBorder(
+          className={`${css.headerMenu__item} hover-p flex align-center justify-between ${renderBorder(
             item.borderBottom
           )}`}
         >
           <div>{item.content}</div>
-          {renderIcon(item.icon)}
+          {item.icon}
         </div>
       );
     });
@@ -53,17 +50,19 @@ function DropdownHeader(props) {
         break;
     }
   };
+  const renderCanHover = () => {
+    return disabled ? '' : css.canHover;
+  }
 
   return (
     <div className={`${css["dropdownHeader"]} py-1 ${renderDarkTheme()}`}>
       <div
-        className={`${css["headerContainer"]} flex align-center justify-center p-3 select-none hover-p`}
+        className={`${css.headerContainer} ${renderCanHover()} flex align-center justify-center p-3 select-none hover-p`}
       >
         {header}
       </div>
-      <div className={css["headerMenuContainer"]}>
+      <div style={renderAlign(align)} className={`${css.headerMenuContainer} ${renderCanHover()}`}>
         <div
-          style={renderAlign(align)}
           className={`${css["headerMenu"]} py-2  border-1`}
         >
           {renderListItem()}
@@ -77,6 +76,16 @@ DropdownHeader.defaultProps = {
   header: "test",
   list: [],
   align: dropdownHeaderAlignEnum.left,
+  disabled: false,
+  onClick: () => { }
 };
+
+DropdownHeader.propTypes = {
+  header: PropTypes.node,
+  list: PropTypes.array,
+  align: PropTypes.oneOf(Object.values(dropdownHeaderAlignEnum)),
+  disabled: PropTypes.bool,
+  onClick: PropTypes.func
+}
 
 export default DropdownHeader;
