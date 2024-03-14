@@ -434,9 +434,6 @@ function Header() {
 			setUserChainId(null);
 		}
 	}, [isConnected])
-	useEffect(() => {
-		console.log(balance);
-	}, [balance])
 
 	return (
 		<div
@@ -584,6 +581,7 @@ function Header() {
 							list={listWallerConnected}
 							align={dropdownHeaderAlignEnum.right}
 							disabled={!walletAddress}
+							headerHoverEffect={false}
 						/>
 					</div>
 				</div>

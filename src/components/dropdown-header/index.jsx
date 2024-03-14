@@ -10,7 +10,7 @@ export const dropdownHeaderAlignEnum = {
 };
 
 function DropdownHeader(props) {
-  const { header, list, align, disabled } = props;
+  const { header, list, align, disabled, headerHoverEffect } = props;
 
   const { isDarkMode } = useTheme();
 
@@ -53,11 +53,14 @@ function DropdownHeader(props) {
   const renderCanHover = () => {
     return disabled ? '' : css.canHover;
   }
+  const renderHeaderHoverEffect = () => {
+    return headerHoverEffect ? '' : css.disableHoverEffect;
+  }
 
   return (
     <div className={`${css["dropdownHeader"]} py-1 ${renderDarkTheme()}`}>
       <div
-        className={`${css.headerContainer} ${renderCanHover()} flex align-center justify-center p-3 select-none hover-p`}
+        className={`${css.headerContainer} ${renderCanHover()} ${renderHeaderHoverEffect()} flex align-center justify-center p-3 select-none hover-p`}
       >
         {header}
       </div>
@@ -77,7 +80,7 @@ DropdownHeader.defaultProps = {
   list: [],
   align: dropdownHeaderAlignEnum.left,
   disabled: false,
-  onClick: () => { }
+  headerHoverEffect: true,
 };
 
 DropdownHeader.propTypes = {
@@ -85,7 +88,7 @@ DropdownHeader.propTypes = {
   list: PropTypes.array,
   align: PropTypes.oneOf(Object.values(dropdownHeaderAlignEnum)),
   disabled: PropTypes.bool,
-  onClick: PropTypes.func
+  headerHoverEffect: PropTypes.bool,
 }
 
 export default DropdownHeader;

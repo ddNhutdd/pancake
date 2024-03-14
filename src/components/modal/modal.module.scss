@@ -17,6 +17,23 @@
     overflow: hidden;
     z-index: 100;
 
+    &.dark {
+        .modal__modal {
+            border-color: $border-color-3;
+            background: $background-2;
+
+            .modal__header {
+                background: $background-7;
+                color: $text-color-white-2;
+                border-bottom: $border-color-3;
+
+                .modal__close {
+                    color: $text-color-white-2;
+                }
+            }
+        }
+    }
+
     &.show {
         opacity: 1;
         left: 0;

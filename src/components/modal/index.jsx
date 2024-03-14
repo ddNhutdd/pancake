@@ -2,6 +2,7 @@ import css from './modal.module.scss';
 import { IoClose } from 'react-icons/io5';
 import PropTypes from 'prop-types';
 import { useRef } from 'react';
+import { useTheme } from 'context/dark-theme';
 
 function Modal(props) {
 	const {
@@ -14,6 +15,8 @@ function Modal(props) {
 		customCssContent,
 		customCssModal,
 	} = props;
+
+	const { isDarkMode } = useTheme();
 
 	const showModal = () => {
 		return show ? css.show : '';
@@ -37,6 +40,9 @@ function Modal(props) {
 	const renderShowHeader = () => {
 		return showHeader ? '' : 'd-0';
 	};
+	const renderDarkTheme = () => {
+		return isDarkMode ? css.dark : '';
+	}
 
 	const overlayElement = useRef(null);
 	const closeElement = useRef(null);
@@ -46,7 +52,7 @@ function Modal(props) {
 		<div
 			ref={overlayElement}
 			onClick={closeClick}
-			className={`${css.modal__overlay} ${showModal()} ${customCssContainer}`}
+			className={`${css.modal__overlay} ${renderDarkTheme()} ${showModal()} ${customCssContainer}`}
 		>
 			<div
 				onClick={modalClickHandle}

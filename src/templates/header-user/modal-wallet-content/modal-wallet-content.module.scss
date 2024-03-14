@@ -1,14 +1,45 @@
 @import "components/global-style/base.scss";
 
 .modalWalletContent {
-    .modalWalletContent__tabs {}
+
+    &.dark {
+        .modalWalletContent__address {
+            label {
+                color: $primary-1;
+            }
+        }
+
+        .modalWalletContent__warning {
+            .modalWalletContent__right {
+                div {
+                    color: $text-color-white-2;
+                }
+
+                a {
+                    color: $primary-2;
+                }
+            }
+        }
+
+        .modalWalletContent__balace {
+            div {
+                &:first-child {
+                    color: $primary-1;
+                }
+            }
+
+        }
+    }
 
     .modalWalletContent__address {
+        display: flex;
+        flex-direction: column;
+
         label {
             color: $text-color-4;
             line-height: 1.5;
             text-transform: uppercase;
-            margin-bottom: 8px;
+            margin-bottom: 16px;
             font-size: 12px;
             font-weight: bold;
         }
@@ -25,6 +56,7 @@
         background: rgba(255, 178, 55, 0.098);
         border-color: $yellow-1;
         gap: 8px;
+        margin-top: 20px;
 
         .modalWalletContent__left {
             position: relative;

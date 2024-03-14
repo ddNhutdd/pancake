@@ -61,11 +61,11 @@ const AlertContainer = (props) => {
     };
 
     return (<AlertContext.Provider value={{
-        success: (message) => showAlert("success", message),
-        info: (message) => showAlert("info", message),
-        warning: (message) => showAlert("warning", message),
-        error: (message) => showAlert("error", message),
-        dark: (message) => showAlert("dark", message),
+        success: (message) => showAlert(alertType.success, message),
+        info: (message) => showAlert(alertType.info, message),
+        warning: (message) => showAlert(alertType.warning, message),
+        error: (message) => showAlert(alertType.error, message),
+        dark: (message) => showAlert(alertType.dark, message),
     }}>
 
         {children}

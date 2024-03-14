@@ -39,6 +39,10 @@
 
         &.canHover {
             &:hover {
+                &.disableHoverEffect {
+                    background-color: transparent;
+                }
+
                 background-color: $hover-1;
 
                 &+.headerMenuContainer {

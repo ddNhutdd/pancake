@@ -51,3 +51,8 @@ export const ethersConfig = defaultConfig({
   rpcUrl: '...',
   defaultChainId: 1,
 })
+
+// string 
+export const commonString = {
+  success: 'success'
+}
