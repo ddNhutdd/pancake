@@ -1,7 +1,7 @@
 import {useState, useRef} from 'react';
 
 export const useForm = (submitCallback, initialValues) => {
-    const [values, setValues] = useState(initialValues);
+    const [values, setValues] = useState(initialValues || {});
     const [errors, setErrors] = useState({});
     const allowValidate = useRef(false);
 
@@ -16,7 +16,6 @@ export const useForm = (submitCallback, initialValues) => {
             validate(target)
         }
     }
-
     const validate = (target) => {
         let valid = false;
 
@@ -62,7 +61,6 @@ export const useForm = (submitCallback, initialValues) => {
 
         return valid;
     }
-
     const submitHandle = (ev) => {
         ev.preventDefault();
         allowValidate.current = true;
@@ -74,6 +72,19 @@ export const useForm = (submitCallback, initialValues) => {
         if(!valid) return;
         submitCallback(values);
     }
+    const register = (name) => {
+        if(!Object.keys(values).find(item => item === name)) {
+            setValues(state => ({
+                ...state,
+                [name]: ''
+            }))
+        }
 
-    return [handleChange, errors, submitHandle];
+        return {
+            onChange: handleChange,
+            id: name
+        }
+    }
+
+    return [handleChange, errors, submitHandle, register];
 }

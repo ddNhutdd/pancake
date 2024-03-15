@@ -1,0 +1,99 @@
+@import "src/components/global-style/base.scss";
+
+@mixin arrow {
+    border: solid $background-11;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+    background-color: $background-11;
+    position: absolute;
+}
+
+@mixin content {
+    padding: 8px;
+    background-color: $background-11;
+    border-radius: 4px;
+}
+
+.popover {
+    position: relative;
+    cursor: pointer;
+
+    &:hover {
+        .popoverMain {
+            display: block;
+            z-index: 1;
+            opacity: 1;
+        }
+    }
+
+    .popoverMain {
+        position: absolute;
+        z-index: -100;
+        opacity: 0;
+        transition: opacity .4s;
+        white-space: nowrap;
+        color: $background-1 !important;
+
+
+        &.bottom {
+            left: 50%;
+            bottom: 0;
+            transform: translate(-50%, calc(100% + 5px));
+            @include content;
+
+            &::after {
+                content: '';
+                @include arrow;
+                top: -4px;
+                left: 50%;
+                transform: translate(-50%, 0) rotate(-135deg);
+            }
+        }
+
+        &.top {
+            left: 50%;
+            top: 0;
+            transform: translate(-50%, calc(-100% - 5px));
+            @include content;
+
+            &::after {
+                content: '';
+                @include arrow;
+                bottom: -4px;
+                left: 50%;
+                transform: rotate(45deg);
+            }
+        }
+
+        &.left {
+            left: 0;
+            top: 50%;
+            transform: translate(calc(-100% - 10px), -50%);
+            @include content;
+
+            &::after {
+                content: '';
+                @include arrow;
+                top: 50%;
+                right: -4px;
+                transform: translate(0, -50%) rotate(-45deg);
+            }
+        }
+
+        &.right {
+            right: 0;
+            top: 50%;
+            transform: translate(calc(100% + 10px), -50%);
+            @include content;
+
+            &::after {
+                content: '';
+                @include arrow;
+                top: 50%;
+                left: -4px;
+                transform: translate(0, -50%) rotate(135deg);
+            }
+        }
+    }
+}

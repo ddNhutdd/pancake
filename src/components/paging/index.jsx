@@ -8,6 +8,9 @@ function Paging(props) {
     const { totalItems, pageSize, currentPage, onChange } = props;
 
     const totalPage = useRef(Math.ceil(totalItems / pageSize));
+    const nextElement = useRef(null);
+    const prevElement = useRef(null);
+
     const [currentPageInner, setCurrentPageInner] = useState(currentPage);
 
     const nextClickHandle = (ev) => {
@@ -16,10 +19,6 @@ function Paging(props) {
         //
         let newPage = currentPageInner + 1;
         if (newPage > totalPage.current) return;
-        //
-        if (newPage === totalPage.current) {
-            !element.classList.contains(css.disable) && element.classList.add(css.disable)
-        }
         //
         setCurrentPageInner(newPage);
         onChange(newPage);
@@ -33,12 +32,44 @@ function Paging(props) {
         setCurrentPageInner(newPage);
         onChange(newPage);
     }
+    const renderClassNext = () => {
+        if (!nextElement || !nextElement.current) {
+            return
+        }
+        if (currentPageInner === totalPage.current) {
+            !nextElement.current.classList.contains(css.disable) && nextElement.current.classList.add(css.disable)
+        } else {
+            nextElement.current.classList.remove(css.disable);
+        }
+    }
+    const renderClassPrev = () => {
+        if (!prevElement || !prevElement.current) {
+            return
+        }
+        if (currentPageInner === 1) {
+            !prevElement.current.classList.contains(css.disable) && prevElement.current.classList.add(css.disable)
+        } else {
+            prevElement.current.classList.remove(css.disable);
+        }
+    }
 
     return (
         <div className={css.paging}>
-            <span onClick={preClickHandle}><FaArrowLeft /></span>
-            <span>{`Page ${currentPageInner} of ${totalPage.current}`}</span>
-            <span onClick={nextClickHandle}><FaArrowRight /></span>
+            <span
+                className={`${css.disable} ${renderClassPrev()}`}
+                ref={prevElement}
+                onClick={preClickHandle} >
+                <FaArrowLeft />
+            </span>
+            <span>
+                {`Page ${currentPageInner} of ${totalPage.current}`}
+            </span>
+            <span
+                ref={nextElement}
+                onClick={nextClickHandle}
+                className={renderClassNext()}>
+                <FaArrowRight />
+            </span>
         </div>
     )
 }

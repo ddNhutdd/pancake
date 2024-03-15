@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import { Suspense, lazy } from "react";
 import UserTemplate from "../templates/user/user.template";
+import UserTemplate2 from "src/templates/user2/user2.template";
 import { url } from "src/constants";
 
 const Home = lazy(() => import("../pages/home"));
@@ -8,6 +9,7 @@ const Swap = lazy(() => import("../pages/swap"));
 const Staking = lazy(() => import("../pages/staking"));
 const CakeStaking = lazy(() => import("../pages/cake-staking"))
 const Profile = lazy(() => import("../pages/profile"))
+const Home2 = lazy(() => import("../pages/home-2"))
 
 export const router = createBrowserRouter([
   {
@@ -56,4 +58,15 @@ export const router = createBrowserRouter([
       }
     ],
   },
+  {
+    element: <UserTemplate2 />,
+    children: [{
+      path: url.home2,
+      element: (
+        <Suspense>
+          <Home2 />
+        </Suspense>
+      )
+    }]
+  }
 ]);

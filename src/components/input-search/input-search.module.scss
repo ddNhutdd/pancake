@@ -1,0 +1,28 @@
+@import 'src/components/global-style/base.scss';
+
+.inputSearch {
+    background-color: rgb(248, 249, 250);
+    border: 1px solid rgb(233, 236, 239);
+    color: rgb(33, 37, 41);
+    padding: 8px 10px;
+    border-radius: 8px;
+
+    .inputSearch__icon {
+        font-size: 20px;
+    }
+
+    .inputSearch__input {
+        flex: 1;
+        background-color: transparent;
+        outline: none;
+        border: none;
+        font-size: 16px;
+
+    }
+
+    .inputSearch__button {
+        border: none;
+        background-color: #BFC0C0;
+        color: $text-color-white-1;
+    }
+}
