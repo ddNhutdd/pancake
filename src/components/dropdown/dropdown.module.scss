@@ -1,0 +1,47 @@
+@import "components/global-style/base.scss";
+
+.dropdown {
+    color: $text-color-dark;
+    position: relative;
+
+    input {
+        display: none;
+    }
+
+    input[type='checkbox']:checked+label.dropdown__header+.dropdown__menuContainer {
+        display: block;
+    }
+
+    .dropdown__header {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        cursor: pointer;
+        user-select: none;
+    }
+
+    .dropdown__menuContainer {
+        display: none;
+        position: absolute;
+        top: 31px;
+        left: -6px;
+        z-index: 30;
+
+        .dropdown__menu {
+            border: 1px solid $border-color-5;
+            background-color: $background-1;
+            padding: 6px;
+            border-radius: 5px;
+
+            .dropdown__item {
+                padding: 6px 12px;
+                border-radius: 5px;
+
+                &:hover {
+                    background-color: $border-color;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}

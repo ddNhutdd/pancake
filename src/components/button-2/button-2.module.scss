@@ -39,4 +39,16 @@
             background-color: $border-color-5;
         }
     }
+
+    &.primarySmall {
+        border: 1px solid $background-15;
+        background-color: $background-15;
+        color: $background-1;
+        padding: 2px 8px;
+
+        &:hover {
+            background-color: $background-16;
+            border-color: $background-16;
+        }
+    }
 }

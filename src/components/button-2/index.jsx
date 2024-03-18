@@ -4,7 +4,8 @@ import PropTypes from 'prop-types';
 export const button2Type = {
     outline: 'outline',
     primary: 'primary',
-    outlineSmall: 'outlineSmall'
+    outlineSmall: 'outlineSmall',
+    primarySmall: 'primarySmall'
 }
 
 function Button2(props) {
@@ -18,6 +19,8 @@ function Button2(props) {
                 return css.primary;
             case button2Type.outlineSmall:
                 return css.outlineSmall;
+            case button2Type.primarySmall:
+                return css.primarySmall
             default:
                 return css.outline;
         }

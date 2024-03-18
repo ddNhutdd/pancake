@@ -1,0 +1,14 @@
+@import "src/components/global-style/base.scss";
+
+.pill {
+    padding: 4px 8px;
+    color: $text-color-white-1 ;
+    font-size: 11px;
+    border-radius: 800px;
+    cursor: pointer;
+    width: fit-content;
+
+    &.blue {
+        background-color: $background-15;
+    }
+}

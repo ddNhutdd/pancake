@@ -1,0 +1,9 @@
+@import "components/global-style/base.scss";
+
+.card {
+    background-color: (189, 197, 209, 0.2) 0px 8px 19.2px 0px;
+    border-radius: 12px;
+    border: 1px solid $border-color-5;
+    background-color: $background-1;
+    width: 100%;
+}

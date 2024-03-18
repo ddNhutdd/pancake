@@ -1,6 +1,7 @@
 // Variable
 $text-color-white-1: white;
 $text-color-white-2: #f4eeff;
+$text-color-dark: #000;
 $text-color-dark-1: #090909;
 $text-color-dark-2: #262626;
 $text-color-1: #7a6eaa;
@@ -11,6 +12,7 @@ $text-color-6: #b8add2;
 $text-color-7: #31d0aa;
 $text-color-8: #a299c4;
 $text-color-9: #7F7594;
+$text-color-10: #212529;
 
 $yellow-1: #ffb237;
 
@@ -35,7 +37,9 @@ $background-13: #f6f6f6;
 $background-14: #1E1D20;
 $background-15: #0784c3;
 $background-16: #0670a6;
-
+$background-17: #f8f9fa;
+$background-18: #dc3545;
+$background-19: #131313;
 $border-color: rgb(231, 227, 235);
 $border-color-2: #fefdfe;
 $border-color-3: #383241;
@@ -102,10 +106,10 @@ $border-color-5: #e9ecef;
 }
 
 //----------------------------------------------------------------
-@keyframes fadeInBottomToTop {
+@keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(10px);
   }
 
   to {
@@ -363,8 +367,8 @@ $border-color-5: #e9ecef;
   animation: fadeInUpBig 1s ease-out;
 }
 
-.fadeInBottomToTop {
-  animation: fadeInBottomToTop 0.5s ease-out;
+.fadeInUp {
+  animation: fadeInUp 0.2s ease-out;
 }
 
 .fadeInBottomToTop-long {

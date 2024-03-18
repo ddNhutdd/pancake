@@ -1,0 +1,28 @@
+@import "components/global-style/base.scss";
+
+.modal2 {
+    display: none;
+
+    &.show {
+        display: block;
+    }
+
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #b4b4b4ab;
+        z-index: 100;
+
+        .modal__container {
+            animation: .4s ease fadeInUp;
+            position: fixed;
+            top: 20%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            min-width: 300px;
+        }
+    }
+}
