@@ -10,6 +10,7 @@ const Staking = lazy(() => import("../pages/staking"));
 const CakeStaking = lazy(() => import("../pages/cake-staking"))
 const Profile = lazy(() => import("../pages/profile"))
 const Home2 = lazy(() => import("../pages/home-2"))
+const Transactions = lazy(() => import("../pages/transactions"))
 
 export const router = createBrowserRouter([
   {
@@ -65,6 +66,14 @@ export const router = createBrowserRouter([
       element: (
         <Suspense>
           <Home2 />
+        </Suspense>
+      )
+    },
+    {
+      path: url.transactions,
+      element: (
+        <Suspense>
+          <Transactions />
         </Suspense>
       )
     }]

@@ -1,0 +1,78 @@
+@import "components/global-style/base.scss";
+
+.table {
+    .table__header {
+        padding: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .table__header__left {
+            div {
+                &:last-child {
+                    color: $text-color-11;
+                    font-size: 13px;
+                }
+            }
+        }
+    }
+
+    .table__container {
+        overflow-x: auto;
+        overflow-y: visible;
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+
+            thead {
+                tr {
+                    &:hover {
+                        background: transparent;
+                    }
+                }
+            }
+
+            th,
+            td {
+                padding: 8px;
+                text-align: left;
+                border-bottom: 1px solid $border-color-5;
+                white-space: nowrap;
+            }
+
+            th {
+                font-weight: 400;
+            }
+
+            tr {
+                &:hover {
+                    background: #F9F9F9;
+                }
+            }
+        }
+
+
+    }
+
+    .table__footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 16px;
+
+        .table__footer__left {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+
+            span {
+                &:last-child {
+                    padding: 7px 5px;
+                    border: 1px solid $border-color-5;
+                    border-radius: 8px;
+                }
+            }
+        }
+    }
+}

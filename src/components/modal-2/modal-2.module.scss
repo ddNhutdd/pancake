@@ -2,6 +2,8 @@
 
 .modal2 {
     display: none;
+    color: $text-color-dark;
+    font-weight: 300;
 
     &.show {
         display: block;
@@ -15,14 +17,91 @@
         bottom: 0;
         background-color: #b4b4b4ab;
         z-index: 100;
+        animation: .4s ease fadeIn;
+
+        &.fadeOut {
+            animation: .4s ease fadeOut;
+            opacity: 0;
+        }
 
         .modal__container {
-            animation: .4s ease fadeInUp;
+            animation: .4s ease fadeDown;
             position: fixed;
             top: 20%;
             left: 50%;
             transform: translate(-50%, -50%);
             min-width: 300px;
+
+            @media screen and (max-width: 576px) {
+                max-width: 95%;
+
+            }
+
+            &.modalOut {
+                animation: .4s ease fadeDownOut;
+                opacity: 0;
+            }
+
+            .modal__header {
+                padding: 16px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                border-bottom: 1px solid $border-color-5;
+
+                .modal__header__close {
+                    cursor: pointer;
+                    font-size: 20px;
+                }
+            }
+
+            .modal__content {
+                overflow: auto;
+            }
         }
+    }
+}
+
+@keyframes fadeDown {
+    0% {
+        top: 0;
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+        top: 20%;
+    }
+}
+
+@keyframes fadeDownOut {
+    0% {
+        opacity: 1;
+        top: 20%;
+    }
+
+    100% {
+        top: 0;
+        opacity: 0;
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opcacity: 100%
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 100%;
+    }
+
+    100% {
+        opcacity: 0;
     }
 }

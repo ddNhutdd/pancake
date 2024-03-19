@@ -1,0 +1,16 @@
+@import 'components/global-style/base.scss';
+
+.paging2 {
+    display: flex;
+    gap: 5px;
+
+    .paging2__button {
+        cursor: pointer;
+        color: $background-15;
+
+        &:hover {
+            background-color: $background-15;
+            color: $text-color-white-1;
+        }
+    }
+}

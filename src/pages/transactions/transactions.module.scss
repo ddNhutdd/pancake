@@ -1,0 +1,83 @@
+@import "components/global-style/base.scss";
+
+.transactions {
+    font-size: 15px;
+    font-weight: 300;
+    color: $text-color-dark;
+
+    .container {
+        @include container2;
+
+        .transactions__header {
+            padding-top: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid $border-color-5;
+            font-weight: 400;
+            font-size: 18.75px;
+
+        }
+
+        .transactions__content {
+            padding-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+
+            .transactions__item {
+                width: calc((100% - 48px) / 4);
+                cursor: pointer;
+                transition: color .2s;
+
+                .transactions__item--green {
+                    color: $text-color-14;
+                }
+
+                .transactions__item--red {
+                    color: $background-18;
+                }
+
+                &:hover {
+                    position: relative;
+
+                    .transactions__item__arrow {
+                        opacity: 1;
+                    }
+
+                    .transactions__item--hoverBlue {
+                        color: $background-15;
+                    }
+                }
+
+                .transactions__item__row {
+                    &:first-child {
+                        padding: 16px 16px 0 16px;
+                        color: $text-color-11;
+                    }
+
+                    &:last-child {
+                        padding: 0 16px 16px 16px;
+
+                        &>span {
+                            &:first-child {
+                                font-size: 20px;
+                            }
+                        }
+                    }
+                }
+
+                .transactions__item__arrow {
+                    color: $text-color-11;
+                    opacity: 0;
+                    top: 10px;
+                    right: 10px;
+                    position: absolute;
+                    transition: opacity .2s;
+                }
+            }
+
+            .transactions__item__table {
+                width: 100%;
+            }
+        }
+    }
+}

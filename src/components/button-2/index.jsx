@@ -9,7 +9,7 @@ export const button2Type = {
 }
 
 function Button2(props) {
-    const { children, classname, type, onClick } = props
+    const { children, classname, type, onClick, disabled } = props
 
     const renderTypeButton = () => {
         switch (type) {
@@ -27,7 +27,10 @@ function Button2(props) {
     }
 
     return (
-        <button onClick={onClick} className={`${css.button} ${renderTypeButton()}  ${classname}`}>
+        <button
+            onClick={onClick}
+            className={`${css.button} ${renderTypeButton()}  ${classname}`}
+            disabled={disabled}>
             {children}
         </button>
     )
@@ -35,14 +38,19 @@ function Button2(props) {
 
 Button2.propTypes = {
     children: PropTypes.node,
-    classname: PropTypes.object,
+    classname: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.object
+    ]),
     type: PropTypes.oneOf(Object.keys(button2Type)),
-    onClick: PropTypes.func
+    onClick: PropTypes.func,
+    disabled: PropTypes.bool
 }
 
 Button2.defaultProps = {
     type: button2Type.outline,
-    onClick: () => { }
+    onClick: () => { },
+    disabled: false
 };
 
 export default Button2

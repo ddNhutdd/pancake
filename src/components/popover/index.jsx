@@ -5,7 +5,7 @@ export const placementType = {
     top: 'top',
     left: 'left',
     right: 'right',
-    bottom: 'buttom'
+    bottom: 'bottom'
 }
 
 function Popover(props) {
@@ -43,11 +43,17 @@ Popover.defaultProps = {
 };
 
 Popover.propTypes = {
-    placement: PropTypes.oneOf(Object.keys(placementType)),
+    placement: PropTypes.oneOf(Object.values(placementType)),
     content: PropTypes.node,
     children: PropTypes.node,
-    className: PropTypes.object,
-    classNamePopover: PropTypes.object
+    className: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.object
+    ]),
+    classNamePopover: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.object
+    ]),
 };
 
 export default Popover

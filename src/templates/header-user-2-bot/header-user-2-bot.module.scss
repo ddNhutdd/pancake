@@ -1,6 +1,8 @@
 @import "src/components/global-style/base.scss";
 
 .headerUser2Bot {
+    border-bottom: 1px solid $border-color-5;
+
     .container {
         @include container2();
         display: flex;

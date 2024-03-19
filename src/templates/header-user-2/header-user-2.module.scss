@@ -4,6 +4,12 @@
     height: 54px;
     border-bottom: 1px solid $border-color-5;
     padding: 8px 0;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 30;
+    background-color: $background-1;
 
     .container {
         @include container2;

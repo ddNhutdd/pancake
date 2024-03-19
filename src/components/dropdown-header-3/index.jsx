@@ -73,7 +73,7 @@ DropdownHeader3.defaultProps = {
     notShowMenu: false,
     menuWidthFull: false,
     content: ``,
-    cssHeader: {},
+    cssHeader: <></>,
     showMenu: false,
     setShowMenu: () => { }
 }
