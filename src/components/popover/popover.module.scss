@@ -18,6 +18,8 @@
 .popover {
     position: relative;
     cursor: pointer;
+    width: fit-content;
+    display: inline-block;
 
     .popoverMain {
         position: absolute;
@@ -163,20 +165,5 @@
 
     100% {
         opacity: 1;
-    }
-}
-
-.fadeOut {
-    animation: fadeOut .4s ease;
-    opacity: 0;
-}
-
-@keyframes fadeOut {
-    0% {
-        opacity: 1;
-    }
-
-    100% {
-        opacity: 0;
     }
 }

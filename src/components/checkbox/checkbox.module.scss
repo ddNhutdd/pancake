@@ -1,0 +1,19 @@
+@import "components/global-style/base.scss";
+
+.checkbox {
+    font-size: 15px;
+    font-weight: 300;
+    color: $text-color-dark;
+    user-select: none;
+
+    input[type="checkbox"]:checked+label>.checkbox__square {
+        background-color: red;
+    }
+
+    .checkbox__square {
+        width: 15px;
+        height: 15px;
+        border: 1px solid $border-color-5;
+        border-radius: 5px;
+    }
+}

@@ -7,7 +7,16 @@ import Empty from "../empty";
 import PropTypes from 'prop-types';
 
 function Table(props) {
-    const { listCol, listRecord, fetching } = props;
+    const {
+        listCol,
+        listRecord,
+        fetching,
+        headerLeftContent,
+        page,
+        totalPage,
+        pageChangeHandle
+    } = props;
+
     const listShowRow = [
         {
             id: 1,
@@ -30,13 +39,8 @@ function Table(props) {
 
     const totalCol = useRef(0);
 
-    const [page, setpage] = useState(1);
-    const [totalPage] = useState(90);
     const [dropdownRowSelected, setDropdownRowSelected] = useState(listShowRow.at(0));
 
-    const pageChangeHandle = (page) => {
-        setpage(page)
-    }
     const dropdownRowChangeHandle = (item) => {
         setDropdownRowSelected(item)
     }
@@ -84,12 +88,7 @@ function Table(props) {
         <div className={css.table}>
             <div className={css.table__header}>
                 <div className={css.table__header__left}>
-                    <div>
-                        More than 5,506,373,037 transactions found
-                    </div>
-                    <div>
-                        (Showing the last 500k records)
-                    </div>
+                    {headerLeftContent}
                 </div>
                 <div className={css.table__header__right}>
                     <Paging2
@@ -151,11 +150,18 @@ function Table(props) {
 Table.propTypes = {
     listCol: PropTypes.array,
     listRecord: PropTypes.array,
-    fetching: PropTypes.bool
+    fetching: PropTypes.bool,
+    headerLeftContent: PropTypes.node,
+    page: PropTypes.number,
+    totalPage: PropTypes.number,
+    pageChangeHandle: PropTypes.func
 };
 
 Table.defaultProps = {
-    fetching: false
+    fetching: false,
+    page: 1,
+    totalPage: 1,
+    pageChangeHandle: () => { }
 };
 
 export default Table

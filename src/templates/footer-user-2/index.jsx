@@ -7,6 +7,7 @@ import metamask from "imgs/metamask.svg";
 import Pill from 'src/components/pill';
 import { CiShare1 } from "react-icons/ci";
 import { FaHeart } from "react-icons/fa";
+import { scrollToTop } from 'src/utils';
 
 function FooterUser2() {
     return (
@@ -17,7 +18,7 @@ function FooterUser2() {
                         <BsTwitterX />
                         (Twitter)
                     </div>
-                    <div className={css.footer__top__item}>
+                    <div onClick={scrollToTop} className={css.footer__top__item}>
                         <BiArrowToTop />
                         Back To Top
                     </div>

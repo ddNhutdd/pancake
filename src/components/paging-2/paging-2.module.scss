@@ -3,10 +3,12 @@
 .paging2 {
     display: flex;
     gap: 5px;
+    flex-wrap: wrap;
 
     .paging2__button {
         cursor: pointer;
         color: $background-15;
+        width: fit-content;
 
         &:hover {
             background-color: $background-15;

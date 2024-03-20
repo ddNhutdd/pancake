@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import css from './popover.module.scss';
-import { useRef } from 'react';
+import { forwardRef, useEffect, useRef } from 'react';
 
 export const placementType = {
     top: 'top',
@@ -8,9 +8,13 @@ export const placementType = {
     right: 'right',
     bottom: 'bottom'
 }
+export const triggerType = {
+    runtime: 'runtime',
+    hover: 'hover'
+}
 
-function Popover(props) {
-    const { placement, content, children, className, classNamePopover } = props;
+const Popover = forwardRef((props, ref) => {
+    const { placement, content, children, className, classNamePopover, trigger, show } = props;
     const popoverElement = useRef(null);
     const popoverShowElement = useRef(null);
 
@@ -43,22 +47,31 @@ function Popover(props) {
         document.body.appendChild(newElement);
     }
     const mouseLeaveHandle = () => {
-        popoverShowElement.current.classList.add(css.fadeOut);
-
-        const idTimeout = setTimeout(() => {
-            const elements = document.querySelectorAll('[data-name="popover"]');
-            for (const element of elements) {
-                document.body.removeChild(element);
-            }
-
-            clearTimeout(idTimeout);
-        }, 400);
+        if (!popoverShowElement?.current) return;
+        document.body.removeChild(popoverShowElement.current);
+        popoverShowElement.current = null;
     }
+    const renderTrigger = () => {
+        if (trigger === triggerType.hover) {
+            return {
+                onMouseEnter: mouseEnterHandle,
+                onMouseLeave: mouseLeaveHandle
+            };
+        }
+    }
+
+    useEffect(() => {
+        if (trigger === triggerType.runtime && show) {
+            mouseEnterHandle();
+        } else if (trigger === triggerType.runtime && !show) {
+            mouseLeaveHandle();
+        }
+    }, [show])
 
     return (
         <span
-            onMouseEnter={mouseEnterHandle}
-            onMouseLeave={mouseLeaveHandle}
+            ref={ref}
+            {...renderTrigger()}
             className={`${css.popover} ${className}`}>
             {children}
             <span
@@ -68,13 +81,15 @@ function Popover(props) {
             </span>
         </span>
     )
-}
+})
 
 Popover.defaultProps = {
-    placement: placementType.bottom
+    placement: placementType.bottom,
+    trigger: triggerType.hover,
 };
 
 Popover.propTypes = {
+    show: PropTypes.bool,
     placement: PropTypes.oneOf(Object.values(placementType)),
     content: PropTypes.node,
     children: PropTypes.node,
@@ -86,6 +101,7 @@ Popover.propTypes = {
         PropTypes.string,
         PropTypes.object
     ]),
+    trigger: PropTypes.oneOf(Object.values(triggerType)),
 };
 
 export default Popover

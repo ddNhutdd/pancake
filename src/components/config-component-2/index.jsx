@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import { scrollToTop } from 'src/utils';
 
 function ConfigComponent2(props) {
     const { children } = props;
@@ -9,11 +10,7 @@ function ConfigComponent2(props) {
     const [paddingTop] = useState(54);
 
     useEffect(() => {
-        document.documentElement.scrollTo({
-            top: 0,
-            left: 0,
-            behavior: "smooth",
-        });
+        scrollToTop();
     }, [location]);
 
     return <div style={{ paddingTop }}>{children}</div>;

@@ -17,6 +17,7 @@ $text-color-11: #6c757d;
 $text-color-12: #081d35;
 $text-color-13: #066a9c;
 $text-color-14: #00a186;
+$text-color-15: #adb5bd;
 
 $yellow-1: #ffb237;
 
@@ -44,11 +45,15 @@ $background-16: #0670a6;
 $background-17: #f8f9fa;
 $background-18: #dc3545;
 $background-19: #131313;
+$background-20: #00a1861a;
+
 $border-color: #e7e3eb;
 $border-color-2: #fefdfe;
 $border-color-3: #383241;
 $border-color-4: #262130;
 $border-color-5: #e9ecef;
+$border-color-6: #dee2e6;
+$border-color-7: #dee2e6;
 
 // ----------------------------------------------------------------
 @mixin container {
@@ -79,6 +84,20 @@ $border-color-5: #e9ecef;
   max-width: 1400px;
 }
 
+@mixin container3 {
+  width: 100%;
+  height: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 600px;
+
+  @media screen and (max-width: 576px) {
+    width: 100%;
+  }
+}
+
 @mixin box($addBorder: false, $addShadow: false) {
   width: 100%;
   border-radius: 24px;
@@ -106,6 +125,24 @@ $border-color-5: #e9ecef;
 
   @if $addShadow {
     box-shadow: 0px 2px 0px 0px rgba(56, 50, 65, 0.76);
+  }
+}
+
+.--text-blue {
+  color: $background-15;
+  cursor: pointer;
+}
+
+.--hover-yellow {
+  border: 1px dashed transparent;
+  border-radius: 5px;
+  transition: border-color .2s;
+  padding-left: 4px;
+  padding-right: 4px;
+
+  &:hover {
+    background-color: rgba(255, 193, 7, 0.15) !important;
+    border-color: rgb(255, 193, 7) !important;
   }
 }
 

@@ -5,17 +5,13 @@
     font-weight: 300;
     color: $text-color-dark;
 
+    .transactions--blue {
+        color: $background-15;
+        cursor: pointer;
+    }
+
     .container {
         @include container2;
-
-        .transactions__header {
-            padding-top: 20px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid $border-color-5;
-            font-weight: 400;
-            font-size: 18.75px;
-
-        }
 
         .transactions__content {
             padding-top: 20px;
@@ -27,6 +23,14 @@
                 width: calc((100% - 48px) / 4);
                 cursor: pointer;
                 transition: color .2s;
+
+                @media screen and (max-width:992px) {
+                    width: calc((100% - 16px) / 2);
+                }
+
+                @media screen and (max-width:576px) {
+                    width: 100%;
+                }
 
                 .transactions__item--green {
                     color: $text-color-14;
@@ -78,6 +82,64 @@
             .transactions__item__table {
                 width: 100%;
             }
+
+            .transactions__last {
+                color: $text-color-11;
+            }
         }
     }
+}
+
+.customButton {
+    padding-top: 6px !important;
+    padding-bottom: 6px !important;
+}
+
+.customButton2 {
+    padding-top: 6px !important;
+    padding-bottom: 6px !important;
+
+    &:hover {
+        background-color: rgba(255, 193, 7, 0.15) !important;
+        border: 1px dashed rgb(255, 193, 7);
+    }
+}
+
+.customButton3 {
+    display: inline-block;
+    border-color: transparent !important;
+    background-color: transparent !important;
+    color: $background-15 !important;
+
+    &:hover {
+        background-color: rgba(255, 193, 7, 0.15) !important;
+        border: 1px dashed rgb(255, 193, 7) !important;
+    }
+}
+
+.customPopover {
+    background-color: $background-1 !important;
+    border: 1px solid $border-color-6 !important;
+    padding: 16px !important;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 8px 16px 0px;
+    width: 200px;
+
+    &::after {
+        background-color: $background-1 !important;
+        border-right: 1px solid $border-color-6 !important;
+        border-bottom: 1px solid $border-color-6 !important;
+        z-index: 101;
+    }
+}
+
+.rightArrow {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $background-20;
+    border: 1px solid $border-color-7;
+    color: $text-color-14;
 }

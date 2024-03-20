@@ -72,3 +72,11 @@ export const truncatedWalletAddress = (address) => {
     return`0x...`
   }
 }
+
+export const scrollToTop = () => {
+  document.documentElement.scrollTo({
+    top: 0,
+    left: 0,
+    behavior: "smooth",
+});
+}

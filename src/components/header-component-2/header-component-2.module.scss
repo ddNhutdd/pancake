@@ -1,0 +1,14 @@
+@import "components/global-style/base.scss";
+
+.headerComponent2 {
+    color: $text-color-dark;
+
+    .headerComponent2__mainContent {
+        padding-top: 20px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid $border-color-5;
+        font-weight: 400;
+        font-size: 18.75px;
+
+    }
+}
