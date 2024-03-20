@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import css from './popover.module.scss';
+import { useRef } from 'react';
 
 export const placementType = {
     top: 'top',
@@ -10,6 +11,8 @@ export const placementType = {
 
 function Popover(props) {
     const { placement, content, children, className, classNamePopover } = props;
+    const popoverElement = useRef(null);
+    const popoverShowElement = useRef(null);
 
     const renderPlacement = () => {
         switch (placement) {
@@ -21,16 +24,45 @@ function Popover(props) {
                 return css.right;
             case placementType.left:
                 return css.left;
-
             default:
                 return css.top;
         }
     }
+    const mouseEnterHandle = () => {
+        const rect = popoverElement.current.getBoundingClientRect();
+        const top = rect.top + window.scrollY;
+        const left = rect.left + window.scrollX;
+        const html = popoverElement.current.outerHTML;
+        const newElement = document.createElement("span");
+        popoverShowElement.current = newElement;
+        newElement.innerHTML = html;
+        newElement.style.position = "absolute";
+        newElement.style.top = top + "px";
+        newElement.style.left = left + "px";
+        newElement.dataset.name = 'popover';
+        document.body.appendChild(newElement);
+    }
+    const mouseLeaveHandle = () => {
+        popoverShowElement.current.classList.add(css.fadeOut);
+
+        const idTimeout = setTimeout(() => {
+            const elements = document.querySelectorAll('[data-name="popover"]');
+            for (const element of elements) {
+                document.body.removeChild(element);
+            }
+
+            clearTimeout(idTimeout);
+        }, 400);
+    }
 
     return (
-        <span className={`${css.popover} ${className}`}>
+        <span
+            onMouseEnter={mouseEnterHandle}
+            onMouseLeave={mouseLeaveHandle}
+            className={`${css.popover} ${className}`}>
             {children}
             <span
+                ref={popoverElement}
                 className={`${css.popoverMain} ${renderPlacement()} ${classNamePopover}`}>
                 {content}
             </span>
