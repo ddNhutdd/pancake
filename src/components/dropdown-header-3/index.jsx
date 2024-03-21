@@ -3,7 +3,16 @@ import css from './dropdown-header-3.module.scss';
 import { FaAngleDown } from "react-icons/fa";
 
 export const DropdownHeader3 = (props) => {
-    const { header, list, notShowMenu, menuWidthFull, content, cssHeader, showMenu, setShowMenu } = props;
+    const {
+        header,
+        list,
+        notShowMenu,
+        menuWidthFull,
+        content,
+        cssHeader,
+        showMenu,
+        setShowMenu,
+    } = props;
 
     const renderMenuItem = () => {
         if (!list || list.length <= 0) {
@@ -15,7 +24,7 @@ export const DropdownHeader3 = (props) => {
         }
 
         return list.map(item => (
-            <div key={item.id}  >
+            <div onClick={item.onClick} key={item.id}  >
                 <div className={css.dropdownHeader3__item}>
                     {item.content}
                 </div>
@@ -27,7 +36,7 @@ export const DropdownHeader3 = (props) => {
         return notShowMenu ? 'd-0' : ''
     }
     const renderClassMenuWidthFullHeader = () => {
-        return menuWidthFull ? '' : 'relative';
+        return menuWidthFull ? css.menuFullWith : '';
     }
     const renderClassMenuWithFullContainer = () => {
         return menuWidthFull ? 'w-100' : ''

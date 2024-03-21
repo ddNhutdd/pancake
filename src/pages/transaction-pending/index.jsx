@@ -8,7 +8,6 @@ import Popover, { placementType } from 'src/components/popover';
 import { IoIosSearch } from "react-icons/io";
 import { FaMountainSun } from "react-icons/fa6";
 import { useState } from 'react';
-import CheckBox from 'src/components/checkbox';
 
 function TransactionPending() {
 

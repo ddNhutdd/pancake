@@ -6,30 +6,38 @@ import { FaBars } from "react-icons/fa6";
 import { DropdownHeader3 } from 'src/components/dropdown-header-3';
 import { MoreContent } from './more-content';
 import { useRef, useState } from 'react';
-
+import { useNavigate } from 'react-router-dom';
+import { url } from 'src/constants';
 
 function HeaderUser2Bot() {
-
+    const redirectPage = (page) => {
+        navigate(page);
+        return;
+    }
     const list = [
         {
             id: 1,
             content: 'transactions',
             borderBottom: false,
+            onClick: redirectPage.bind(null, url.transactions)
         },
         {
             id: 2,
-            content: 'transactions',
+            content: 'transactions-pending',
             borderBottom: false,
+            onClick: redirectPage.bind(null, url.transactionsPending)
         },
         {
             id: 3,
-            content: 'Validator',
+            content: 'Contract Internal Transactions',
             borderBottom: true,
+            onClick: redirectPage.bind(null, url.contractInternalTransactions)
         },
         {
             id: 4,
-            content: 'Tokens',
+            content: 'View Blocks',
             borderBottom: false,
+            onClick: redirectPage.bind(null, url.viewBlock)
         },
         {
             id: 5,
@@ -68,6 +76,7 @@ function HeaderUser2Bot() {
         [menus.current.developers]: false,
         [menus.current.more]: false
     });
+    const navigate = useNavigate();
 
     const barClickHandle = () => {
         setShowMenuList(s => !s);
@@ -95,16 +104,19 @@ function HeaderUser2Bot() {
     return (
         <div className={css.headerUser2Bot}>
             <div className={css.container}>
-                <div className={css.headerUser2Bot__logo}>
+                <div
+                    onClick={redirectPage.bind(null, url.home2)}
+                    className={css.headerUser2Bot__logo}>
                     <img src={logo} alt="logo" />
                 </div>
                 <ul className={`${css.headerUser2Bot__menu} ${renderShowMenu()}`}>
-                    <li>
+                    <li onClick={redirectPage.bind(null, url.home2)}>
                         <DropdownHeader3
                             notShowMenu={true}
                             header={`Home`}
                             list={[]}
-                            cssHeader={css.headerUser2Bot__menu__custom} />
+                            cssHeader={css.headerUser2Bot__menu__custom}
+                        />
                     </li>
                     <li onClick={menuCLickHandle.bind(null, menus.current.blockChain)}>
                         <DropdownHeader3
@@ -150,11 +162,15 @@ function HeaderUser2Bot() {
                             content={<MoreContent />} />
                     </li>
                 </ul>
-                <div className={css.headerUser2Bot__sign}>
-                    <DropdownHeader3 header={<>
-                        <LuUserCircle2 />
-                        Sign In
-                    </>}
+                <div
+                    onClick={redirectPage.bind(null, url.login)}
+                    className={css.headerUser2Bot__sign}>
+
+                    <DropdownHeader3
+                        header={<>
+                            <LuUserCircle2 />
+                            Sign In
+                        </>}
                         notShowMenu={true}
                         cssHeader={css.headerUser2Bot__sign__custom}
                     />

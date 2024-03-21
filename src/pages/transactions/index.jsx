@@ -9,9 +9,10 @@ import { MdOutlineRemoveRedEye } from "react-icons/md";
 import HeaderComponent2 from 'src/components/header-component-2';
 import Button2, { button2Type } from 'src/components/button-2';
 import InfoTransaction from './info-transaction';
-import { GoArrowRight } from "react-icons/go";
+
 import CopyButton from 'src/components/copy-button';
 import { useEffect, useState } from 'react';
+import CirclePointRight from 'src/components/circle-point-right';
 
 function Transactions() {
 
@@ -149,9 +150,7 @@ function Transactions() {
                     <CopyButton content='0x123456...185' />
                 </span>
                 ,
-                <span key={`a4`} className={css.rightArrow}>
-                    <GoArrowRight />
-                </span>
+                <CirclePointRight key={`a4`} />
                 ,
                 <span key={`a5`} className={css['transactions--blue']}>
 
@@ -218,9 +217,7 @@ function Transactions() {
                     <CopyButton content='0x123456...185' />
                 </span>
                 ,
-                <span key={`a4`} className={css.rightArrow}>
-                    <GoArrowRight />
-                </span>
+                <CirclePointRight key={`a4`} />
                 ,
                 <span key={`a5`} className={css['transactions--blue']}>
                     <Button2
@@ -286,9 +283,7 @@ function Transactions() {
                     <CopyButton content='0x123456...185' />
                 </span>
                 ,
-                <span key={`a4`} className={css.rightArrow}>
-                    <GoArrowRight />
-                </span>
+                <CirclePointRight key={`a4`} />
                 ,
                 <span key={`a5`} className={css['transactions--blue']}>
                     <Button2
@@ -354,9 +349,7 @@ function Transactions() {
                     <CopyButton content='0x123456...185' />
                 </span>
                 ,
-                <span key={`a4`} className={css.rightArrow}>
-                    <GoArrowRight />
-                </span>
+                <CirclePointRight key={`a4`} />
                 ,
                 <span key={`a5`} className={css['transactions--blue']}>
                     <Button2

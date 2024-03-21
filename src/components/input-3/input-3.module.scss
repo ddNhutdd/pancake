@@ -1,0 +1,46 @@
+@import "components/global-style/base.scss";
+
+.inputContainer {
+    color: $text-color-dark;
+    font-weight: 300;
+
+    .input {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        position: relative;
+
+        input {
+            padding: 12px;
+            font-size: 15px;
+            border-radius: 8px;
+            outline: none;
+            border: 1px solid $border-color-5;
+            width: 100%;
+            padding-right: 58px;
+
+            &.err {
+                border-color: $background-18;
+            }
+        }
+
+        .input__eye {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            height: 80%;
+            z-index: 2;
+
+            button {
+                height: 100%;
+                border: none;
+            }
+        }
+    }
+
+    .input__error {
+        color: $background-18;
+    }
+}

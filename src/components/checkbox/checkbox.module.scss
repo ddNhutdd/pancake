@@ -4,16 +4,43 @@
     font-size: 15px;
     font-weight: 300;
     color: $text-color-dark;
-    user-select: none;
 
     input[type="checkbox"]:checked+label>.checkbox__square {
-        background-color: red;
+        background-color: $background-15;
+
+        svg {
+            opacity: 1;
+        }
     }
 
-    .checkbox__square {
-        width: 15px;
-        height: 15px;
-        border: 1px solid $border-color-5;
-        border-radius: 5px;
+    .checkbox__container {
+        display: inline-flex;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 5px;
+
+        .checkbox__square {
+            width: 17px;
+            height: 17px;
+            flex-shrink: 0;
+            flex-grow: 0;
+            border: 1px solid $border-color-5;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: $background-1;
+            margin-top: 3px;
+
+            svg {
+                opacity: 0;
+            }
+        }
+    }
+
+
+
+    .checkbox__error {
+        color: $background-18;
     }
 }

@@ -8,7 +8,11 @@ export const url = {
   profile: '/profile',
   home2: "/home2",
   transactions: "/transactions",
-  transactionsPending: '/transactions-pending'
+  transactionsPending: '/transactions-pending',
+  login: '/login',
+  register: '/register',
+  contractInternalTransactions: 'contract-internal-transactions',
+  viewBlock: 'view-blocks'
 };
 
 export const localStorageVariable = {
@@ -57,5 +61,15 @@ export const ethersConfig = defaultConfig({
 
 // string 
 export const commonString = {
-  success: 'success'
+  success: 'Success',
+  tooLong: 'Too long',
+  tooShort: 'Too short',
+  require: 'Require',
+  formatInvalid: 'Format invalid',
+  emailNotMatch: 'Email not match',
+  passwordNotMatch: 'Password not match'
 }
+
+export const regular = {
+  email: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/,
+} 

@@ -12,6 +12,10 @@ const Profile = lazy(() => import("../pages/profile"))
 const Home2 = lazy(() => import("../pages/home-2"))
 const Transactions = lazy(() => import("../pages/transactions"))
 const TransactionsPending = lazy(() => import("../pages/transaction-pending"))
+const Login = lazy(() => import("../pages/login"))
+const Register = lazy(() => import("../pages/register"))
+const ContractInternalTransactions = lazy(() => import("../pages/contract-internal-transactions"))
+const ViewBlocks = lazy(() => import("../pages/view-blocks"))
 
 export const router = createBrowserRouter([
   {
@@ -83,6 +87,38 @@ export const router = createBrowserRouter([
       element: (
         <Suspense>
           <TransactionsPending />
+        </Suspense>
+      )
+    },
+    {
+      path: url.login,
+      element: (
+        <Suspense>
+          <Login />
+        </Suspense>
+      )
+    },
+    {
+      path: url.register,
+      element: (
+        <Suspense>
+          <Register />
+        </Suspense>
+      )
+    },
+    {
+      path: url.contractInternalTransactions,
+      element: (
+        <Suspense>
+          <ContractInternalTransactions />
+        </Suspense>
+      )
+    },
+    {
+      path: url.viewBlock,
+      element: (
+        <Suspense>
+          <ViewBlocks />
         </Suspense>
       )
     }]

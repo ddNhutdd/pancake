@@ -1,6 +1,7 @@
 @import "components/global-style/base.scss";
 
 .transactionPending {
+    padding-bottom: 30px;
 
     .container {
         @include container2;

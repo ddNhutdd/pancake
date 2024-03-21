@@ -1,0 +1,17 @@
+@import "components/global-style/base.scss";
+
+.contractInternalTransactions {
+    font-size: 15px;
+    font-weight: 300px;
+    color: $text-color-dark;
+
+    .contractInternalTransactions__container {
+        @include container2;
+
+        .contractInternalTransactions__card {
+            padding: 16px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+    }
+}

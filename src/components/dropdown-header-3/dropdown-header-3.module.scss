@@ -1,6 +1,17 @@
 @import "src/components/global-style/base.scss";
 
 .dropdownHeader3 {
+
+    position: relative;
+
+    &.menuFullWith {
+        position: static;
+
+        .dropdownHeader3__menuContainer {
+            width: fit-content !important;
+        }
+    }
+
     @media screen and (max-width: 1100px) {
         width: 100%;
     }
@@ -20,6 +31,7 @@
 
         @media screen and (max-width: 1100px) {
             justify-content: space-between;
+
         }
 
         &:hover {
@@ -42,6 +54,7 @@
         top: 54;
         left: 0;
         z-index: 25;
+        width: 300px;
 
         &.show {
             @media screen and (max-width:1100px) {
@@ -52,6 +65,7 @@
         @media screen and (max-width: 1100px) {
             position: relative;
             padding-top: 0;
+            width: 100%;
         }
 
         &:hover {
@@ -71,7 +85,6 @@
             animation: fadeInUp .2s ease;
             padding-left: 12px;
             padding-right: 12px;
-
 
             @media screen and (max-width: 1100px) {
                 justify-content: space-between;

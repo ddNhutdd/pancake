@@ -1,0 +1,30 @@
+@import "components/global-style/base.scss";
+
+.register {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-size: 15px;
+    font-weight: 300;
+    color: $text-color-dark;
+
+    .container {
+        @include container3;
+    }
+
+    .register__card {
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+
+        .register__header {
+            text-align: center;
+            font-size: 20px;
+            font-weight: 400;
+        }
+
+        .register__headerSmall {
+            text-align: center;
+        }
+    }
+}
