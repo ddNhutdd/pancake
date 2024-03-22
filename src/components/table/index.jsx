@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { Dropdown } from "../dropdown";
 import Paging2 from "../paging-2";
 import css from "./table.module.scss"
@@ -14,7 +14,8 @@ function Table(props) {
         headerLeftContent,
         page,
         totalPage,
-        pageChangeHandle
+        pageChangeHandle,
+        showPagingTop
     } = props;
 
     const listShowRow = [
@@ -37,7 +38,7 @@ function Table(props) {
 
     ]
 
-    const totalCol = useRef(0);
+    const [totalCol, setTotalCol] = useState(0);
 
     const [dropdownRowSelected, setDropdownRowSelected] = useState(listShowRow.at(0));
 
@@ -79,9 +80,12 @@ function Table(props) {
             </tr>
         ))
     }
+    const renderClassShowTopPaging = () => {
+        return showPagingTop ? '' : 'd-0'
+    }
 
     useEffect(() => {
-        totalCol.current = listCol?.length || 0;
+        setTotalCol(listCol?.length || 0);
     }, [listCol])
 
     return (
@@ -90,7 +94,7 @@ function Table(props) {
                 <div className={css.table__header__left}>
                     {headerLeftContent}
                 </div>
-                <div className={css.table__header__right}>
+                <div className={`${css.table__header__right} ${renderClassShowTopPaging()}`}>
                     <Paging2
                         page={page}
                         totalPage={totalPage}
@@ -109,14 +113,14 @@ function Table(props) {
                     </tbody>
                     <tbody className={renderShowFetching()}>
                         <tr>
-                            <td colSpan={totalCol.current}>
+                            <td colSpan={totalCol}>
                                 <Loader />
                             </td>
                         </tr>
                     </tbody>
                     <tbody className={renderShowEmpty()}>
                         <tr>
-                            <td colSpan={totalCol.current}>
+                            <td colSpan={totalCol}>
                                 <Empty />
                             </td>
                         </tr>
@@ -154,14 +158,16 @@ Table.propTypes = {
     headerLeftContent: PropTypes.node,
     page: PropTypes.number,
     totalPage: PropTypes.number,
-    pageChangeHandle: PropTypes.func
+    pageChangeHandle: PropTypes.func,
+    showPagingTop: PropTypes.bool
 };
 
 Table.defaultProps = {
     fetching: false,
     page: 1,
     totalPage: 1,
-    pageChangeHandle: () => { }
+    pageChangeHandle: () => { },
+    showPagingTop: false
 };
 
 export default Table

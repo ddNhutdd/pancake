@@ -215,7 +215,6 @@ function Home2() {
                     } else {
                         return <BlockRecord key={item.id} content={item} />
                     }
-
                 });
             default:
                 break;

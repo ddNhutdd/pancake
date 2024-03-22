@@ -17,14 +17,10 @@
         cursor: pointer;
 
         @media screen and (max-width: 992px) {
-            width: calc((100% - 32px) / 3);
-        }
-
-        @media screen and (max-width: 768px) {
             width: calc((100% - 16px) / 2);
         }
 
-        @media screen and (max-width: 992px) {
+        @media screen and (max-width: 576px) {
             width: 100%;
         }
 

@@ -1,0 +1,31 @@
+@import 'components/global-style/base.scss';
+
+.validatorsLeaderboard {
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+    .validatorsLeaderboard--red {
+        color: $background-18
+    }
+
+    .validatorsLeaderboard__container {
+        @include container2;
+
+        .validatorsLeaderboard__card {
+            margin-top: 20px;
+        }
+    }
+}
+
+.validatorsLeaderboard__header {
+    div {
+        width: 20px;
+        height: 20px;
+
+        span {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    }
+}

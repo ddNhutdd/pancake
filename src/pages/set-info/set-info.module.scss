@@ -1,0 +1,18 @@
+@import 'components/global-style/base.scss';
+
+.setInfo {
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+    .container {
+        @include container2;
+
+        .setInfo__card {
+            margin-top: 20px;
+        }
+    }
+}
+
+.setInfo__buttonUser {
+    background: $border-color-5 !important;
+}

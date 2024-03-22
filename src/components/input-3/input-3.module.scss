@@ -3,6 +3,7 @@
 .inputContainer {
     color: $text-color-dark;
     font-weight: 300;
+    width: 100%;
 
     .input {
         display: flex;
@@ -41,6 +42,7 @@
     }
 
     .input__error {
+        text-align: left;
         color: $background-18;
     }
 }

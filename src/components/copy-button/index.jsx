@@ -35,9 +35,10 @@ function CopyButton(props) {
             text={content}
             onCopy={onCopyCLickHandle}>
             <span className='inline-flex items-center ml-2'>
-                <span ref={copyElement} >
+                <span
+                    ref={copyElement} >
                     <Popover
-                        className={css.customPopover}
+                        className={`${css.customPopover} flex items-center`}
                         placement={placementType.top}
                         content={`Copy`}>
                         <FaRegCopy />
@@ -45,7 +46,7 @@ function CopyButton(props) {
                 </span>
                 <span ref={tickElement} className='d-0'>
                     <Popover
-                        className={css.customPopover}
+                        className={`${css.customPopover} flex items-center`}
                         placement={placementType.top}
                         content={`Success`}>
                         <FaCheck />

@@ -55,7 +55,9 @@ function Login() {
                                 <label htmlFor="loginUsername">
                                     Username
                                 </label>
-                                <div className='d-sm-0 --text-blue'>
+                                <div
+                                    onClick={redirectPage.bind(null, url.passwordRecovery)}
+                                    className='d-sm-0 --text-blue'>
                                     Forgot your password?
                                 </div>
                             </div>
@@ -84,7 +86,9 @@ function Login() {
                                     }>
                                     Remember & auto login
                                 </Popover>} />
-                            <div className='d-0 d-sm-b --text-blue'>
+                            <div
+                                onClick={redirectPage.bind(null, url.passwordRecovery)}
+                                className='d-0 d-sm-b --text-blue'>
                                 Forgot your password?
                             </div>
                         </div>

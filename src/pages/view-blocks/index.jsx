@@ -6,6 +6,7 @@ import Table from 'src/components/table'
 import Popover, { placementType } from 'src/components/popover'
 import CopyButton from 'src/components/copy-button'
 import { useState } from 'react'
+import Process from './process'
 
 function ViewBlocks() {
 
@@ -46,7 +47,7 @@ function ViewBlocks() {
         {
             id: 2,
             header: <Popover
-                className='--color-blue'
+                className='--text-blue'
                 placement={placementType.top}
                 content={`31434312`}
             >
@@ -87,7 +88,7 @@ function ViewBlocks() {
             cols: [
                 <span
                     key={`1-1`}
-                    className='--color-blue p-0'
+                    className='--text-blue'
                 >
                     37158414
                 </span>
@@ -102,30 +103,36 @@ function ViewBlocks() {
                 ,
                 <span
                     key={`1-3`}
-                    className='--color-blue'
+                    className='--text-blue'
                 >
                     185
                 </span>
                 ,
-                <>
+                <div
+                    key={`1-4`}
+                    className='flex items-center '
+                >
                     <Popover
                         key={`1-4`}
                         placement={placementType.top}
                         content={`6 secs ago`}
                     >
                         <span
-                            className='--hover-yellow'
+                            className='--text-blue --hover-yellow'
                         >
-                            Public Tag: Validator: TW Staking<br />(0x2465176c461afb316ebc773c61faee85a6515daa)
+                            Validator: Ciscox
                         </span>
                     </Popover>
                     <CopyButton content={`43214312`} />
-                </>
+                </div>
                 ,
                 <span
                     key={`1-5`}
                 >
-                    process
+                    <Process
+                        number={123321321}
+                        percent={40}
+                    />
                 </span>
                 ,
                 `321321`

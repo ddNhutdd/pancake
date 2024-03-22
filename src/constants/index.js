@@ -11,8 +11,16 @@ export const url = {
   transactionsPending: '/transactions-pending',
   login: '/login',
   register: '/register',
-  contractInternalTransactions: 'contract-internal-transactions',
-  viewBlock: 'view-blocks'
+  contractInternalTransactions: '/contract-internal-transactions',
+  viewBlock: '/view-blocks',
+  passwordRecovery: '/password-recovery',
+  forkedBlocks: '/forked-blocks',
+  topAccount: '/top-account',
+  verifiedContracts: "/verified-contracts",
+  validatorsLeaderboard: "/validators-leaderboard",
+  setInfo: '/set-info',
+  topToken: '/top-token',
+  settings: '/settings'
 };
 
 export const localStorageVariable = {

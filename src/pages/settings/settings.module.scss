@@ -1,0 +1,77 @@
+@import 'components/global-style/base.scss';
+
+
+.settings {
+    padding-top: 30px;
+    padding-bottom: 80px;
+
+    .container {
+        @include container3;
+
+        .settings__header {
+            font-size: 30px;
+            font-weight: 400;
+            text-align: center;
+            margin-bottom: 30px;
+
+            .settings__headerSmall {
+                font-size: 15px;
+                font-weight: 300;
+            }
+        }
+
+        .settings__cardContent {
+            padding: 16px;
+
+            .settings__record {
+                display: flex;
+                align-items: center;
+                gap: 30px;
+                justify-content: space-between;
+
+                .settings__title {
+                    font-weight: 400;
+                    margin-bottom: 10px;
+                }
+
+                .settings__text {
+                    margin-bottom: 5px;
+                }
+
+                .settings__small {
+                    font-size: 13px;
+                    color: $text-color-11;
+                    margin-bottom: 5px;
+                }
+            }
+
+            .settings__line {
+                border-top: 1px solid $border-color;
+                width: 100%;
+                margin-top: 16px;
+                margin-bottom: 16px;
+            }
+        }
+
+        .settings__cardFooter {
+            padding: 16px;
+            border-top: 1px solid $border-color-5;
+            background: $background-17;
+            display: flex;
+            justify-content: flex-end;
+            border-bottom-left-radius: 12px;
+            border-bottom-right-radius: 12px;
+        }
+    }
+}
+
+.dropdownHeader {
+    padding: 5px 10px;
+    border: 1px solid $border-color-5;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 150px;
+    cursor: pointer;
+}

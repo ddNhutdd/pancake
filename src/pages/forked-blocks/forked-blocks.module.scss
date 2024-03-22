@@ -1,0 +1,19 @@
+@import 'components/global-style/base.scss';
+
+.forkedBlocks {
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+    .container {
+        @include container2;
+
+        .forkedBlocks__card {
+            margin-top: 20px;
+        }
+    }
+}
+
+.forkedBlocks__headerComponent {
+    font-size: 15px;
+    color: $text-color-11;
+}

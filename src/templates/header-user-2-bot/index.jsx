@@ -14,12 +14,13 @@ function HeaderUser2Bot() {
         navigate(page);
         return;
     }
-    const list = [
+    const listBlockchain = [
         {
             id: 1,
             content: 'transactions',
             borderBottom: false,
-            onClick: redirectPage.bind(null, url.transactions)
+            onClick: redirectPage.bind(null, url.transactions),
+            info: `Blockchain,transactions`
         },
         {
             id: 2,
@@ -41,20 +42,51 @@ function HeaderUser2Bot() {
         },
         {
             id: 5,
-            content: 'NFTs',
+            content: 'Forked Blocks',
             borderBottom: true,
+            onClick: redirectPage.bind(null, url.forkedBlocks)
         },
         {
             id: 6,
-            content: 'Resources',
+            content: 'Top Account',
             borderBottom: false,
+            onClick: redirectPage.bind(null, url.topAccount)
         },
         {
             id: 7,
-            content: 'Developer',
+            content: 'Verified Contracts',
             borderBottom: false,
+            onClick: redirectPage.bind(null, url.verifiedContracts)
         },
     ];
+    const listValidators = [
+        {
+            id: 1,
+            content: 'Validators Leaderboard',
+            borderBottom: false,
+            onClick: redirectPage.bind(null, url.validatorsLeaderboard)
+        },
+        {
+            id: 2,
+            content: 'View Validators Set Info',
+            borderBottom: false,
+            onClick: redirectPage.bind(null, url.setInfo)
+        },
+    ]
+    const listTokens = [
+        {
+            id: 1,
+            content: 'Top Token',
+            borderBottom: false,
+            onClick: redirectPage.bind(null, url.topToken)
+        },
+        {
+            id: 2,
+            content: 'View Validators Set Info',
+            borderBottom: false,
+            onClick: redirectPage.bind(null, url.setInfo)
+        },
+    ]
 
     const menus = useRef({
         blockChain: "BlockChain",
@@ -122,37 +154,37 @@ function HeaderUser2Bot() {
                         <DropdownHeader3
                             showMenu={showMenus[menus.current.blockChain]}
                             header={`BlockChain`}
-                            list={list} />
+                            list={listBlockchain} />
                     </li>
                     <li onClick={menuCLickHandle.bind(null, menus.current.validators)}>
                         <DropdownHeader3
                             showMenu={showMenus[menus.current.validators]}
                             header={`Validators`}
-                            list={list} />
+                            list={listValidators} />
                     </li>
                     <li onClick={menuCLickHandle.bind(null, menus.current.tokens)}>
                         <DropdownHeader3
                             showMenu={showMenus[menus.current.tokens]}
                             header={`Tokens`}
-                            list={list} />
+                            list={listTokens} />
                     </li>
                     <li onClick={menuCLickHandle.bind(null, menus.current.nFTs)}>
                         <DropdownHeader3
                             showMenu={showMenus[menus.current.nFTs]}
                             header={`NFTs`}
-                            list={list} />
+                            list={listBlockchain} />
                     </li>
                     <li onClick={menuCLickHandle.bind(null, menus.current.resources)}>
                         <DropdownHeader3
                             showMenu={showMenus[menus.current.resources]}
                             header={`Resources`}
-                            list={list} />
+                            list={listBlockchain} />
                     </li>
                     <li onClick={menuCLickHandle.bind(null, menus.current.developers)}>
                         <DropdownHeader3
                             showMenu={showMenus[menus.current.developers]}
                             header={`Developers`}
-                            list={list} />
+                            list={listBlockchain} />
                     </li>
                     <li onClick={menuCLickHandle.bind(null, menus.current.more)}>
                         <DropdownHeader3

@@ -16,6 +16,14 @@ const Login = lazy(() => import("../pages/login"))
 const Register = lazy(() => import("../pages/register"))
 const ContractInternalTransactions = lazy(() => import("../pages/contract-internal-transactions"))
 const ViewBlocks = lazy(() => import("../pages/view-blocks"))
+const PasswordRecovery = lazy(() => import("../pages/password-recovery"))
+const ForkedBlocks = lazy(() => import("../pages/forked-blocks"))
+const TopAccount = lazy(() => import("../pages/top-account"))
+const VerifiedContracts = lazy(() => import("../pages/verified-contracts"))
+const ValidatorsLeaderboard = lazy(() => import("../pages/validators-leaderboard"))
+const SetInfo = lazy(() => import("../pages/set-info"))
+const TopToken = lazy(() => import("../pages/top-token"))
+const Settings = lazy(() => import("../pages/settings"))
 
 export const router = createBrowserRouter([
   {
@@ -66,61 +74,127 @@ export const router = createBrowserRouter([
   },
   {
     element: <UserTemplate2 />,
-    children: [{
-      path: url.home2,
-      element: (
-        <Suspense>
-          <Home2 />
-        </Suspense>
-      )
-    },
-    {
-      path: url.transactions,
-      element: (
-        <Suspense>
-          <Transactions />
-        </Suspense>
-      )
-    },
-    {
-      path: url.transactionsPending,
-      element: (
-        <Suspense>
-          <TransactionsPending />
-        </Suspense>
-      )
-    },
-    {
-      path: url.login,
-      element: (
-        <Suspense>
-          <Login />
-        </Suspense>
-      )
-    },
-    {
-      path: url.register,
-      element: (
-        <Suspense>
-          <Register />
-        </Suspense>
-      )
-    },
-    {
-      path: url.contractInternalTransactions,
-      element: (
-        <Suspense>
-          <ContractInternalTransactions />
-        </Suspense>
-      )
-    },
-    {
-      path: url.viewBlock,
-      element: (
-        <Suspense>
-          <ViewBlocks />
-        </Suspense>
-      )
-    }]
+    children: [
+      {
+        path: url.home2,
+        element: (
+          <Suspense>
+            <Home2 />
+          </Suspense>
+        )
+      },
+      {
+        path: url.transactions,
+        element: (
+          <Suspense>
+            <Transactions />
+          </Suspense>
+        )
+      },
+      {
+        path: url.transactionsPending,
+        element: (
+          <Suspense>
+            <TransactionsPending />
+          </Suspense>
+        )
+      },
+      {
+        path: url.login,
+        element: (
+          <Suspense>
+            <Login />
+          </Suspense>
+        )
+      },
+      {
+        path: url.register,
+        element: (
+          <Suspense>
+            <Register />
+          </Suspense>
+        )
+      },
+      {
+        path: url.contractInternalTransactions,
+        element: (
+          <Suspense>
+            <ContractInternalTransactions />
+          </Suspense>
+        )
+      },
+      {
+        path: url.viewBlock,
+        element: (
+          <Suspense>
+            <ViewBlocks />
+          </Suspense>
+        )
+      },
+      {
+        path: url.passwordRecovery,
+        element: (
+          <Suspense>
+            <PasswordRecovery />
+          </Suspense>
+        )
+      },
+      {
+        path: url.forkedBlocks,
+        element: (
+          <Suspense>
+            <ForkedBlocks />
+          </Suspense>
+        )
+      },
+      {
+        path: url.topAccount,
+        element: (
+          <Suspense>
+            <TopAccount />
+          </Suspense>
+        )
+      },
+      {
+        path: url.verifiedContracts,
+        element: (
+          <Suspense>
+            <VerifiedContracts />
+          </Suspense>
+        )
+      },
+      {
+        path: url.validatorsLeaderboard,
+        element: (
+          <Suspense>
+            <ValidatorsLeaderboard />
+          </Suspense>
+        )
+      },
+      {
+        path: url.setInfo,
+        element: (
+          <Suspense>
+            <SetInfo />
+          </Suspense>
+        )
+      },
+      {
+        path: url.topToken,
+        element: (
+          <Suspense>
+            <TopToken />
+          </Suspense>
+        )
+      },
+      {
+        path: url.settings,
+        element: (
+          <Suspense>
+            <Settings />
+          </Suspense>
+        )
+      }
+    ]
   }
 ]);

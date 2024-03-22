@@ -2,6 +2,7 @@
 
 .headerUser2Bot {
     border-bottom: 1px solid $border-color-5;
+    background: $background-1;
 
     .container {
         @include container2();

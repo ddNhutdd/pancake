@@ -24,11 +24,11 @@
     .popoverMain {
         position: absolute;
         opacity: 0;
-        transition: opacity .4s;
         white-space: nowrap;
         color: $background-1 !important;
         font-size: 12px;
         z-index: -1;
+        visibility: hidden;
 
         &.bottom {
             left: 50%;
