@@ -23,7 +23,8 @@ export const url = {
   settings: '/settings',
   tokenTransfer: '/token-transfer',
   nftTop: '/nft-top',
-  topMint: '/top-mind'
+  topMint: '/top-mind',
+  nftTrades: '/nft-trades'
 };
 
 export const localStorageVariable = {

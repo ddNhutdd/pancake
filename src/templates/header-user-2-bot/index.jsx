@@ -117,6 +117,13 @@ function HeaderUser2Bot() {
             onClick: redirectPage.bind(null, url.topMint),
             url: url.topMint
         },
+        {
+            id: 3,
+            content: 'NFTs trade',
+            borderBottom: false,
+            onClick: redirectPage.bind(null, url.nftTrades),
+            url: url.nftTrades
+        },
     ]
 
     const menus = useRef({

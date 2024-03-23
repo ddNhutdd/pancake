@@ -1,0 +1,105 @@
+@import "components/global-style/base.scss";
+
+.nftTrades {
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+    .container {
+        @include container2;
+
+        .nftTrades__card {
+            margin-top: 20px;
+
+            .nftTrades__header {
+                padding: 16px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                .nftTrades__left {
+                    .nftTrades__card__button {
+                        padding-top: 10px;
+                        padding-bottom: 10px;
+                    }
+                }
+
+                .nftTrades__right {
+                    position: relative;
+
+                    input {
+                        padding-top: 6px;
+                        padding-left: 30px;
+                        padding-bottom: 6px;
+                        padding-right: 10px;
+                    }
+
+                    .nftTrades__right__icon {
+                        position: absolute;
+                        top: 50%;
+                        left: 10px;
+                        transform: translateY(-50%);
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.nftTrades__market {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    img {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+.nftTrades__items {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+
+    .nftTrades__items__left {
+        padding: 10px;
+        border: 1px solid $border-color-5;
+        border-radius: 10px;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: $background-17;
+
+        img {
+            width: 30px;
+            height: 30px;
+        }
+    }
+
+    .nftTrades__items__right {
+        display: flex;
+        flex-direction: column;
+
+        .nftTrades__items__right__top {
+            margin-bottom: -5px;
+        }
+    }
+}
+
+.nftTrades__dropdownSearchItem {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+
+    img {
+        width: 20px;
+        height: 20px;
+        display: inline-block;
+    }
+}

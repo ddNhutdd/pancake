@@ -3,7 +3,6 @@ import { Suspense, lazy } from "react";
 import UserTemplate from "../templates/user/user.template";
 import UserTemplate2 from "src/templates/user2/user2.template";
 import { url } from "src/constants";
-import TopMind from "src/components/top-mind";
 
 const Home = lazy(() => import("../pages/home"));
 const Swap = lazy(() => import("../pages/swap"));
@@ -28,6 +27,7 @@ const Settings = lazy(() => import("../pages/settings"))
 const TokenTransfer = lazy(() => import("../pages/token-transfer"))
 const NftTop = lazy(() => import("../pages/nft-top"))
 const TopMints = lazy(() => import("../pages/top-mints"))
+const NftTrades = lazy(() => import("../pages/nft-trades"))
 
 export const router = createBrowserRouter([
   {
@@ -222,8 +222,15 @@ export const router = createBrowserRouter([
             <TopMints />
           </Suspense>
         )
+      },
+      {
+        path: url.nftTrades,
+        element: (
+          <Suspense>
+            <NftTrades />
+          </Suspense>
+        )
       }
-
     ]
   }
 ]);
