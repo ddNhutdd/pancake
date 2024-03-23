@@ -25,7 +25,7 @@ export const DropdownHeader3 = (props) => {
 
         return list.map(item => (
             <div onClick={item.onClick} key={item.id}  >
-                <div className={css.dropdownHeader3__item}>
+                <div data-header={item.url} className={css.dropdownHeader3__item}>
                     {item.content}
                 </div>
                 {renderDivide(item.borderBottom)}
@@ -52,12 +52,12 @@ export const DropdownHeader3 = (props) => {
     }
 
     return (
-        <div className={`${css.dropdownHeader3} ${renderClassMenuWidthFullHeader()}`}>
-            <div onClick={headerClickHandle} className={`${css.dropdownHeader3__header} ${cssHeader}`}>
+        <div data-header-parent={`parent-header`} className={`${css.dropdownHeader3} ${renderClassMenuWidthFullHeader()}`}>
+            <div data-header-parent-title={`title`} onClick={headerClickHandle} className={`${css.dropdownHeader3__header} ${cssHeader}`}>
                 {header}
                 <FaAngleDown />
             </div>
-            <div className={`${css.dropdownHeader3__menuContainer} ${renderNotShowMenu()} ${renderClassMenuWithFullContainer()} ${renderClassShowMenu()}`}>
+            <div data-menu={`menuContainer`} className={`${css.dropdownHeader3__menuContainer} ${renderNotShowMenu()} ${renderClassMenuWithFullContainer()} ${renderClassShowMenu()}`}>
                 <div className={`${css.dropdownHeader3__menu} `}>
                     {renderShow()}
                 </div>

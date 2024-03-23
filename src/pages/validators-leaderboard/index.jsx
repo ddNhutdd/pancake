@@ -4,7 +4,7 @@ import Card from 'src/components/card';
 import Table from 'src/components/table';
 import { FaSortUp } from "react-icons/fa";
 import { FaSortDown } from "react-icons/fa6";
-import Popover, { placementType } from 'src/components/popover';
+import Popover, { popoverPlacementType } from 'src/components/popover';
 import CopyButton from 'src/components/copy-button';
 
 function ValidatorsLeaderboard() {
@@ -119,7 +119,7 @@ function ValidatorsLeaderboard() {
                     className='flex items-center'
                 >
                     <Popover
-                        placement={placementType.top}
+                        placement={popoverPlacementType.top}
                         content={`0xfe6e72b223f6d6cf4edc6bff92f30e84b8258249`}
                         className={`--text-blue`}
                     >

@@ -2,7 +2,7 @@ import HeaderComponent2 from "src/components/header-component-2"
 import css from "./forked-blocks.module.scss"
 import Card from "src/components/card"
 import Table from "src/components/table"
-import Popover, { placementType } from "src/components/popover"
+import Popover, { popoverPlacementType } from "src/components/popover"
 import CopyButton from "src/components/copy-button"
 
 function ForkedBlocks() {
@@ -15,7 +15,7 @@ function ForkedBlocks() {
         {
             id: 2,
             header: <Popover
-                placement={placementType.top}
+                placement={popoverPlacementType.top}
                 content={`Click to show age format`}
                 className='--text-blue'
             >
@@ -64,7 +64,7 @@ function ForkedBlocks() {
                 ,
                 <Popover
                     key={`1-2`}
-                    placement={placementType.top}
+                    placement={popoverPlacementType.top}
                     content={`40 hours ago`}
                 >
                     2024-03-20 10:08:50
@@ -79,7 +79,7 @@ function ForkedBlocks() {
                     className="flex items-center gap-2"
                 >
                     <Popover
-                        placement={placementType.top}
+                        placement={popoverPlacementType.top}
                         content={`0x43h42432iy4io324uy324y32ui42u4i3y2ui43`}
                         className={'--text-blue --hover-yellow'}
                     >

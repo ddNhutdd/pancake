@@ -1,4 +1,4 @@
-import Popover, { placementType } from "src/components/popover";
+import Popover, { popoverPlacementType } from "src/components/popover";
 import css from "./header-user-2.module.scss";
 import { FaGasPump } from "react-icons/fa6";
 import InputSearch from "src/components/input-search";
@@ -17,7 +17,7 @@ function HeaderUser2() {
                         <Popover
                             className={css.headerUser2__popoverText}
                             content={`changes in the last 24 hours`}
-                            placement={placementType.right}>
+                            placement={popoverPlacementType.right}>
                             (-7.16%)
                         </Popover>
                     </span>

@@ -2,31 +2,39 @@ import PropTypes from 'prop-types';
 import css from './popover.module.scss';
 import { forwardRef, useEffect, useRef } from 'react';
 
-export const placementType = {
+export const popoverPlacementType = {
     top: 'top',
     left: 'left',
     right: 'right',
     bottom: 'bottom'
 }
-export const triggerType = {
+export const popoverTriggerType = {
     runtime: 'runtime',
     hover: 'hover'
 }
 
 const Popover = forwardRef((props, ref) => {
-    const { placement, content, children, className, classNamePopover, trigger, show } = props;
+    const {
+        placement,
+        content,
+        children,
+        className,
+        classNamePopover,
+        trigger,
+        show
+    } = props;
     const popoverElement = useRef(null);
     const popoverShowElement = useRef(null);
 
     const renderPlacement = () => {
         switch (placement) {
-            case placementType.top:
+            case popoverPlacementType.top:
                 return css.top;
-            case placementType.bottom:
+            case popoverPlacementType.bottom:
                 return css.bottom;
-            case placementType.right:
+            case popoverPlacementType.right:
                 return css.right;
-            case placementType.left:
+            case popoverPlacementType.left:
                 return css.left;
             default:
                 return css.top;
@@ -52,7 +60,7 @@ const Popover = forwardRef((props, ref) => {
         popoverShowElement.current = null;
     }
     const renderTrigger = () => {
-        if (trigger === triggerType.hover) {
+        if (trigger === popoverTriggerType.hover) {
             return {
                 onMouseEnter: mouseEnterHandle,
                 onMouseLeave: mouseLeaveHandle
@@ -61,9 +69,9 @@ const Popover = forwardRef((props, ref) => {
     }
 
     useEffect(() => {
-        if (trigger === triggerType.runtime && show) {
+        if (trigger === popoverTriggerType.runtime && show) {
             mouseEnterHandle();
-        } else if (trigger === triggerType.runtime && !show) {
+        } else if (trigger === popoverTriggerType.runtime && !show) {
             mouseLeaveHandle();
         }
     }, [show])
@@ -84,13 +92,13 @@ const Popover = forwardRef((props, ref) => {
 })
 
 Popover.defaultProps = {
-    placement: placementType.bottom,
-    trigger: triggerType.hover,
+    placement: popoverPlacementType.bottom,
+    trigger: popoverTriggerType.hover,
 };
 
 Popover.propTypes = {
     show: PropTypes.bool,
-    placement: PropTypes.oneOf(Object.values(placementType)),
+    placement: PropTypes.oneOf(Object.values(popoverPlacementType)),
     content: PropTypes.node,
     children: PropTypes.node,
     className: PropTypes.oneOfType([
@@ -101,7 +109,7 @@ Popover.propTypes = {
         PropTypes.string,
         PropTypes.object
     ]),
-    trigger: PropTypes.oneOf(Object.values(triggerType)),
+    trigger: PropTypes.oneOf(Object.values(popoverTriggerType)),
 };
 
 export default Popover

@@ -3,7 +3,7 @@ import css from './view-block.module.scss'
 import { HeaderComponent3 } from 'src/components/header-component-3'
 import Card from 'src/components/card'
 import Table from 'src/components/table'
-import Popover, { placementType } from 'src/components/popover'
+import Popover, { popoverPlacementType } from 'src/components/popover'
 import CopyButton from 'src/components/copy-button'
 import { useState } from 'react'
 import Process from './process'
@@ -48,7 +48,7 @@ function ViewBlocks() {
             id: 2,
             header: <Popover
                 className='--text-blue'
-                placement={placementType.top}
+                placement={popoverPlacementType.top}
                 content={`31434312`}
             >
                 Date Time (UTC)
@@ -95,7 +95,7 @@ function ViewBlocks() {
                 ,
                 <Popover
                     key={`1-2`}
-                    placement={placementType.top}
+                    placement={popoverPlacementType.top}
                     content={`6 secs ago`}
                 >
                     2024-03-21 8:52:25
@@ -114,7 +114,7 @@ function ViewBlocks() {
                 >
                     <Popover
                         key={`1-4`}
-                        placement={placementType.top}
+                        placement={popoverPlacementType.top}
                         content={`6 secs ago`}
                     >
                         <span

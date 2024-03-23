@@ -2,7 +2,7 @@ import HeaderComponent2 from 'src/components/header-component-2'
 import css from './top-token.module.scss'
 import Card from 'src/components/card'
 import Table from 'src/components/table'
-import Popover, { placementType } from 'src/components/popover'
+import Popover, { popoverPlacementType } from 'src/components/popover'
 import { BsSortDown } from "react-icons/bs";
 import { CiCircleQuestion } from "react-icons/ci";
 import Button2, { button2Type } from 'src/components/button-2'
@@ -26,7 +26,7 @@ function TopToken() {
         {
             id: 3,
             header: <Popover
-                placement={placementType.top}
+                placement={popoverPlacementType.top}
                 content={`Click for decending sort`}
                 className={`--text-blue`}
             >
@@ -36,7 +36,7 @@ function TopToken() {
         {
             id: 4,
             header: <Popover
-                placement={placementType.top}
+                placement={popoverPlacementType.top}
                 content={`Click for decending sort`}
                 className={`--text-blue`}
             >
@@ -46,7 +46,7 @@ function TopToken() {
         {
             id: 5,
             header: <Popover
-                placement={placementType.top}
+                placement={popoverPlacementType.top}
                 content={`Click for decending sort`}
                 className={`--text-blue`}
             >
@@ -59,14 +59,14 @@ function TopToken() {
                 <div className='flex items-center gap-2'>
                     <BsSortDown />
                     <Popover
-                        placement={placementType.top}
+                        placement={popoverPlacementType.top}
                         content={`Click for decending sort`}
                         className={`--text-blue`}
                     >
                         Volumn (24H)
                     </Popover>
                     <Popover
-                        placement={placementType.top}
+                        placement={popoverPlacementType.top}
                         content={
                             <div className='flex flex-col p-0 items-center'>
                                 <span>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</span>
@@ -85,7 +85,7 @@ function TopToken() {
             header: <div className='flex items-center gap-1'>
                 Onchain Market Cap
                 <Popover
-                    placement={placementType.top}
+                    placement={popoverPlacementType.top}
                     className='flex items-center'
                     content={
                         <div className='flex flex-col p-0 items-center'>
@@ -102,7 +102,7 @@ function TopToken() {
         {
             id: 8,
             header: <Popover
-                placement={placementType.top}
+                placement={popoverPlacementType.top}
                 content={`Click for decending sort`}
                 className={`--text-blue`}
             >
@@ -132,7 +132,7 @@ function TopToken() {
                     <span>Binance-Peg Ethereum Token</span>
                     <span>(WBNB)</span>
                     <Popover
-                        placement={placementType.right}
+                        placement={popoverPlacementType.right}
                         content={`Cross Chain`}
                         className={css.topToken__tokenCol__popover}
                     >
@@ -145,7 +145,7 @@ function TopToken() {
                     className={css.topToken__priceCol}
                 >
                     <Popover
-                        placement={placementType.top}
+                        placement={popoverPlacementType.top}
                         content={`$3,517.8939`}
                     >
                         $3,517.8939

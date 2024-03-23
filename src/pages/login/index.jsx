@@ -2,7 +2,7 @@ import Card from 'src/components/card';
 import css from './login.module.scss';
 import Input3, { input3Type } from 'src/components/input-3';
 import CheckBox from 'src/components/checkbox';
-import Popover, { placementType } from 'src/components/popover';
+import Popover, { popoverPlacementType } from 'src/components/popover';
 import { useForm } from 'src/hooks/useForm';
 import Button2, { button2HtmlType, button2Type } from 'src/components/button-2';
 import { commonString, url } from 'src/constants';
@@ -77,7 +77,7 @@ function Login() {
                                 require={[true, commonString.require]}
                                 {...register('eula')}
                                 text={<Popover
-                                    placement={placementType.bottom}
+                                    placement={popoverPlacementType.bottom}
                                     content={
                                         <div className='flex items-center justify-center flex-col p-0'>
                                             <span>Please do not check this box</span>

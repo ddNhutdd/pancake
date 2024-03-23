@@ -2,7 +2,7 @@ import HeaderComponent2 from 'src/components/header-component-2';
 import css from './contract-internal-transactions.module.scss';
 import Card from 'src/components/card';
 import Table from 'src/components/table';
-import Popover, { placementType } from 'src/components/popover';
+import Popover, { popoverPlacementType } from 'src/components/popover';
 import CopyButton from 'src/components/copy-button';
 import { useState } from 'react';
 import CirclePointRight from 'src/components/circle-point-right';
@@ -16,7 +16,7 @@ function ContractInternalTransactions() {
     {
         id: 2,
         header: <Popover
-            placement={placementType.top}
+            placement={popoverPlacementType.top}
             content={`Click to show Age Format`}
             className='--text-blue '
         >
@@ -58,7 +58,7 @@ function ContractInternalTransactions() {
             ,
             <Popover
                 key={`1-2`}
-                placement={placementType.top}
+                placement={popoverPlacementType.top}
                 content={`27 secs ago`}
             >
                 2024-03-21 8:18:42
@@ -76,7 +76,7 @@ function ContractInternalTransactions() {
                 <Popover
                     key={`1-4`}
                     className='--text-blue --hover-yellow'
-                    placement={placementType.top}
+                    placement={popoverPlacementType.top}
                     content={`123123`}>
                     BSC: Validator Set
 
@@ -90,7 +90,7 @@ function ContractInternalTransactions() {
                 <Popover
                     key={`1-4`}
                     className='--text-blue --hover-yellow'
-                    placement={placementType.top}
+                    placement={popoverPlacementType.top}
                     content={`123123`}>
                     null: fdasfdas
                 </Popover>

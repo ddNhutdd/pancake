@@ -5,55 +5,63 @@
     flex-wrap: wrap;
 }
 
-[class*="col"] {
-    padding: 15px;
-}
-
 .col-1 {
+    padding: $space *3;
     width: 8.33%;
 }
 
 .col-2 {
+    padding: $space *3;
     width: 16.66%;
 }
 
 .col-3 {
+    padding: $space *3;
     width: 25%;
 }
 
 .col-4 {
+    padding: $space *3;
     width: 33.33%;
 }
 
 .col-5 {
+    padding: $space *3;
     width: 41.66%;
 }
 
 .col-6 {
+    padding: $space *3;
     width: 50%;
 }
 
 .col-7 {
+    padding: $space *3;
     width: 58.33%;
 }
 
 .col-8 {
+    padding: $space *3;
     width: 66.66%;
 }
 
 .col-9 {
+    padding: $space *3;
     width: 75%;
 }
 
 .col-10 {
+    padding: $space *3;
     width: 83.33%;
 }
 
 .col-11 {
+    padding: $space *3;
     width: 91.66%;
 }
 
 .col-12 {
+    padding: $space *3;
     width: 100%;
 }
 
@@ -61,6 +69,7 @@
     @media only screen and (max-width: $width) {
         @for $i from 1 through 12 {
             .col-#{$breakpoint}-#{$i} {
+                padding: $space *3;
                 width: calc($i / 12);
             }
         }

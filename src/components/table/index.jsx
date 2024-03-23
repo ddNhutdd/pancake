@@ -15,7 +15,9 @@ function Table(props) {
         page,
         totalPage,
         pageChangeHandle,
-        showPagingTop
+        showPagingTop,
+        showHeader,
+        showFooter
     } = props;
 
     const listShowRow = [
@@ -83,6 +85,13 @@ function Table(props) {
     const renderClassShowTopPaging = () => {
         return showPagingTop ? '' : 'd-0'
     }
+    const renderClassShowHeader = () => {
+        return showHeader ? '' : 'd-0';
+    }
+    const renderClassShowFooter = () => {
+        return showFooter ? '' : 'd-0';
+    }
+    const renderPaddingWithShowFooter = () => showFooter ? 0 : 20
 
     useEffect(() => {
         setTotalCol(listCol?.length || 0);
@@ -90,7 +99,7 @@ function Table(props) {
 
     return (
         <div className={css.table}>
-            <div className={css.table__header}>
+            <div className={`${css.table__header} ${renderClassShowHeader()}`}>
                 <div className={css.table__header__left}>
                     {headerLeftContent}
                 </div>
@@ -101,7 +110,7 @@ function Table(props) {
                         onChange={pageChangeHandle} />
                 </div>
             </div>
-            <div className={css.table__container}>
+            <div style={{ paddingBottom: renderPaddingWithShowFooter() }} className={css.table__container}>
                 <table>
                     <thead>
                         <tr>
@@ -127,7 +136,7 @@ function Table(props) {
                     </tbody>
                 </table>
             </div>
-            <div className={css.table__footer}>
+            <div className={`${css.table__footer} ${renderClassShowFooter()}`}>
                 <div className={css.table__footer__left}>
                     <span>
                         Show rows:
@@ -159,7 +168,9 @@ Table.propTypes = {
     page: PropTypes.number,
     totalPage: PropTypes.number,
     pageChangeHandle: PropTypes.func,
-    showPagingTop: PropTypes.bool
+    showPagingTop: PropTypes.bool,
+    showHeader: PropTypes.bool,
+    showFooter: PropTypes.bool
 };
 
 Table.defaultProps = {
@@ -167,7 +178,9 @@ Table.defaultProps = {
     page: 1,
     totalPage: 1,
     pageChangeHandle: () => { },
-    showPagingTop: false
+    showPagingTop: true,
+    showHeader: true,
+    showFooter: true
 };
 
 export default Table

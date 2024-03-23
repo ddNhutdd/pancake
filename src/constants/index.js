@@ -20,7 +20,10 @@ export const url = {
   validatorsLeaderboard: "/validators-leaderboard",
   setInfo: '/set-info',
   topToken: '/top-token',
-  settings: '/settings'
+  settings: '/settings',
+  tokenTransfer: '/token-transfer',
+  nftTop: '/nft-top',
+  topMint: '/top-mind'
 };
 
 export const localStorageVariable = {

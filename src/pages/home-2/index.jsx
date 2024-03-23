@@ -7,7 +7,7 @@ import { useState } from 'react';
 import { BsBox } from "react-icons/bs";
 import { IoDocumentOutline } from "react-icons/io5";
 import { BiGasPump } from "react-icons/bi";
-import Popover, { placementType } from 'src/components/popover';
+import Popover, { popoverPlacementType } from 'src/components/popover';
 import Button2, { button2Type } from 'src/components/button-2';
 import BlockRecord from './block-record';
 
@@ -31,7 +31,7 @@ function Home2() {
                 <span>
                     <Popover
                         className={css['home2--blue']}
-                        placement={placementType.top}
+                        placement={popoverPlacementType.top}
                         content={`dfdsafdsafdsafdsafdsa`}>
                         Validator: Defibit
                     </Popover>
@@ -40,7 +40,7 @@ function Home2() {
             contentBot: <div>
                 <Popover
                     className={css['home2--blue']}
-                    placement={placementType.top}
+                    placement={popoverPlacementType.top}
                     content={`dafdsafd;sajfkdsjafdsfdhsalfdhsa`}
                 >
                     142 txns
@@ -65,7 +65,7 @@ function Home2() {
                 <span>
                     <Popover
                         className={css['home2--blue']}
-                        placement={placementType.top}
+                        placement={popoverPlacementType.top}
                         content={`dfdsafdsafdsafdsafdsa`}>
                         Validator: Defibit
                     </Popover>
@@ -74,7 +74,7 @@ function Home2() {
             contentBot: <div>
                 <Popover
                     className={css['home2--blue']}
-                    placement={placementType.top}
+                    placement={popoverPlacementType.top}
                     content={`dafdsafd;sajfkdsjafdsfdhsalfdhsa`}
                 >
                     142 txns
@@ -99,7 +99,7 @@ function Home2() {
                 <span>
                     <Popover
                         className={css['home2--blue']}
-                        placement={placementType.top}
+                        placement={popoverPlacementType.top}
                         content={`dfdsafdsafdsafdsafdsa`}>
                         Validator: Defibit
                     </Popover>
@@ -108,7 +108,7 @@ function Home2() {
             contentBot: <div>
                 <Popover
                     className={css['home2--blue']}
-                    placement={placementType.top}
+                    placement={popoverPlacementType.top}
                     content={`dafdsafd;sajfkdsjafdsfdhsalfdhsa`}
                 >
                     142 txns
@@ -133,7 +133,7 @@ function Home2() {
                 <span>
                     <Popover
                         className={css['home2--blue']}
-                        placement={placementType.top}
+                        placement={popoverPlacementType.top}
                         content={`dfdsafdsafdsafdsafdsa`}>
                         Validator: Defibit
                     </Popover>
@@ -142,7 +142,7 @@ function Home2() {
             contentBot: <div>
                 <Popover
                     className={css['home2--blue']}
-                    placement={placementType.top}
+                    placement={popoverPlacementType.top}
                     content={`dafdsafd;sajfkdsjafdsfdhsalfdhsa`}
                 >
                     142 txns
@@ -167,7 +167,7 @@ function Home2() {
                 <span>
                     <Popover
                         className={css['home2--blue']}
-                        placement={placementType.top}
+                        placement={popoverPlacementType.top}
                         content={`dfdsafdsafdsafdsafdsa`}>
                         Validator: Defibit
                     </Popover>
@@ -176,7 +176,7 @@ function Home2() {
             contentBot: <div>
                 <Popover
                     className={css['home2--blue']}
-                    placement={placementType.top}
+                    placement={popoverPlacementType.top}
                     content={`dafdsafd;sajfkdsjafdsfdhsalfdhsa`}
                 >
                     142 txns

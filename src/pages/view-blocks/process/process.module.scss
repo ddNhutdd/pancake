@@ -11,10 +11,8 @@
         align-items: center;
 
         span {
-            &:first-child {}
-
             &:last-child {
-                color: #6c757d;
+                color: $text-color-11;
                 font-size: 13px;
                 position: relative;
                 top: 1px;

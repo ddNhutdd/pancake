@@ -1,7 +1,7 @@
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { FaRegCopy } from "react-icons/fa";
 import { FaCheck } from "react-icons/fa6";
-import Popover, { placementType } from '../popover';
+import Popover, { popoverPlacementType } from '../popover';
 import PropTypes from 'prop-types';
 import { useRef } from 'react';
 import css from './copy-button.module.scss';
@@ -39,7 +39,7 @@ function CopyButton(props) {
                     ref={copyElement} >
                     <Popover
                         className={`${css.customPopover} flex items-center`}
-                        placement={placementType.top}
+                        placement={popoverPlacementType.top}
                         content={`Copy`}>
                         <FaRegCopy />
                     </Popover>
@@ -47,7 +47,7 @@ function CopyButton(props) {
                 <span ref={tickElement} className='d-0'>
                     <Popover
                         className={`${css.customPopover} flex items-center`}
-                        placement={placementType.top}
+                        placement={popoverPlacementType.top}
                         content={`Success`}>
                         <FaCheck />
                     </Popover>

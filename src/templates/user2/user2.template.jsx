@@ -10,7 +10,9 @@ function UserTemplate2() {
         <ConfigComponent2>
             <Header2 />
             <HeaderUser2Bot />
-            <Outlet />
+            <div style={{ minHeight: 'calc(100vh - 300px)' }}>
+                <Outlet />
+            </div>
             <FooterUser2 />
         </ConfigComponent2>
     );

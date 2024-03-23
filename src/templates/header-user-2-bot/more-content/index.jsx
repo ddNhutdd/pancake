@@ -16,40 +16,15 @@ export const MoreContent = () => {
                 <div className={`${css.moreContent__record} ${css.header}`}>
                     Tools
                 </div>
-                <div className={css.moreContent__record}>
+                <div data-header={`header`} className={css.moreContent__record}>
                     <AiOutlineSync />
                     Tools
                 </div>
-                <div className={css.moreContent__record}>
+                <div data-header={`header`} className={css.moreContent__record}>
                     <AiOutlineSync />
                     Tools
                 </div>
-                <div className={css.moreContent__record}>
-                    <AiOutlineSync />
-                    Tools
-                </div>
-            </div>
-            <div className={css.moreContent__item}>
-                <div className={`${css.moreContent__record} ${css.header}`}>
-                    Explore
-                </div>
-                <div className={css.moreContent__record}>
-                    <AiOutlineSync />
-                    Tools
-                </div>
-                <div className={css.moreContent__record}>
-                    <AiOutlineSync />
-                    Tools
-                </div>
-                <div className={css.moreContent__record}>
-                    <AiOutlineSync />
-                    Tools
-                </div>
-                <div className={css.moreContent__record}>
-                    <AiOutlineSync />
-                    Tools
-                </div>
-                <div className={css.moreContent__record}>
+                <div data-header={`header`} className={css.moreContent__record}>
                     <AiOutlineSync />
                     Tools
                 </div>
@@ -58,15 +33,40 @@ export const MoreContent = () => {
                 <div className={`${css.moreContent__record} ${css.header}`}>
                     Explore
                 </div>
-                <div className={css.moreContent__record}>
+                <div data-header={`header`} className={css.moreContent__record}>
                     <AiOutlineSync />
                     Tools
                 </div>
-                <div className={css.moreContent__record}>
+                <div data-header={`header`} className={css.moreContent__record}>
                     <AiOutlineSync />
                     Tools
                 </div>
-                <div className={css.moreContent__record}>
+                <div data-header={`header`} className={css.moreContent__record}>
+                    <AiOutlineSync />
+                    Tools
+                </div>
+                <div data-header={`header`} className={css.moreContent__record}>
+                    <AiOutlineSync />
+                    Tools
+                </div>
+                <div data-header={`header`} className={css.moreContent__record}>
+                    <AiOutlineSync />
+                    Tools
+                </div>
+            </div>
+            <div className={css.moreContent__item}>
+                <div className={`${css.moreContent__record} ${css.header}`}>
+                    Explore
+                </div>
+                <div data-header={`header`} className={css.moreContent__record}>
+                    <AiOutlineSync />
+                    Tools
+                </div>
+                <div data-header={`header`} className={css.moreContent__record}>
+                    <AiOutlineSync />
+                    Tools
+                </div>
+                <div data-header={`header`} className={css.moreContent__record}>
                     <AiOutlineSync />
                     Tools
                 </div>

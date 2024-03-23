@@ -5,12 +5,17 @@ import Button2, { button2Type } from 'src/components/button-2';
 import { FaBars } from "react-icons/fa6";
 import { DropdownHeader3 } from 'src/components/dropdown-header-3';
 import { MoreContent } from './more-content';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { url } from 'src/constants';
+import { useLocation } from 'react-router-dom';
 
 function HeaderUser2Bot() {
-    const redirectPage = (page) => {
+    const redirectPage = (page, ev) => {
+        // close menu
+        closeMenu(ev.currentTarget)
+
+        // redirec page
         navigate(page);
         return;
     }
@@ -20,43 +25,49 @@ function HeaderUser2Bot() {
             content: 'transactions',
             borderBottom: false,
             onClick: redirectPage.bind(null, url.transactions),
-            info: `Blockchain,transactions`
+            url: url.transactions
         },
         {
             id: 2,
-            content: 'transactions-pending',
+            content: 'Transactions Pending',
             borderBottom: false,
-            onClick: redirectPage.bind(null, url.transactionsPending)
+            onClick: redirectPage.bind(null, url.transactionsPending),
+            url: url.transactionsPending
         },
         {
             id: 3,
             content: 'Contract Internal Transactions',
             borderBottom: true,
-            onClick: redirectPage.bind(null, url.contractInternalTransactions)
+            onClick: redirectPage.bind(null, url.contractInternalTransactions),
+            url: url.contractInternalTransactions
         },
         {
             id: 4,
             content: 'View Blocks',
             borderBottom: false,
-            onClick: redirectPage.bind(null, url.viewBlock)
+            onClick: redirectPage.bind(null, url.viewBlock),
+            url: url.viewBlock
         },
         {
             id: 5,
             content: 'Forked Blocks',
             borderBottom: true,
-            onClick: redirectPage.bind(null, url.forkedBlocks)
+            onClick: redirectPage.bind(null, url.forkedBlocks),
+            url: url.forkedBlocks
         },
         {
             id: 6,
             content: 'Top Account',
             borderBottom: false,
-            onClick: redirectPage.bind(null, url.topAccount)
+            onClick: redirectPage.bind(null, url.topAccount),
+            url: url.topAccount
         },
         {
             id: 7,
             content: 'Verified Contracts',
             borderBottom: false,
-            onClick: redirectPage.bind(null, url.verifiedContracts)
+            onClick: redirectPage.bind(null, url.verifiedContracts),
+            url: url.verifiedContracts
         },
     ];
     const listValidators = [
@@ -64,13 +75,15 @@ function HeaderUser2Bot() {
             id: 1,
             content: 'Validators Leaderboard',
             borderBottom: false,
-            onClick: redirectPage.bind(null, url.validatorsLeaderboard)
+            onClick: redirectPage.bind(null, url.validatorsLeaderboard),
+            url: url.validatorsLeaderboard
         },
         {
             id: 2,
             content: 'View Validators Set Info',
             borderBottom: false,
-            onClick: redirectPage.bind(null, url.setInfo)
+            onClick: redirectPage.bind(null, url.setInfo),
+            url: url.setInfo
         },
     ]
     const listTokens = [
@@ -78,13 +91,31 @@ function HeaderUser2Bot() {
             id: 1,
             content: 'Top Token',
             borderBottom: false,
-            onClick: redirectPage.bind(null, url.topToken)
+            onClick: redirectPage.bind(null, url.topToken),
+            url: url.topToken
         },
         {
             id: 2,
-            content: 'View Validators Set Info',
+            content: 'Token Transfer',
             borderBottom: false,
-            onClick: redirectPage.bind(null, url.setInfo)
+            onClick: redirectPage.bind(null, url.tokenTransfer),
+            url: url.tokenTransfer
+        },
+    ]
+    const listNft = [
+        {
+            id: 1,
+            content: 'Top NFTs',
+            borderBottom: false,
+            onClick: redirectPage.bind(null, url.nftTop),
+            url: url.nftTop
+        },
+        {
+            id: 2,
+            content: 'Top Mints',
+            borderBottom: false,
+            onClick: redirectPage.bind(null, url.topMint),
+            url: url.topMint
         },
     ]
 
@@ -109,6 +140,7 @@ function HeaderUser2Bot() {
         [menus.current.more]: false
     });
     const navigate = useNavigate();
+    const location = useLocation();
 
     const barClickHandle = () => {
         setShowMenuList(s => !s);
@@ -132,6 +164,38 @@ function HeaderUser2Bot() {
             [menu]: !state[menu]
         }))
     }
+    const setActive = () => {
+        const blueClass = '--text-blue';
+        const allHeaders = document.querySelectorAll('[data-header]');
+        const allRootMenu = document.querySelectorAll('[data-header-parent="parent-header"]');
+        const allHeadersArray = Array.from(allHeaders);
+        const allRootMenuArray = Array.from(allRootMenu);
+
+        // clear active
+        allHeadersArray.forEach(item => item?.classList?.remove(blueClass));
+        allRootMenuArray.forEach(item => {
+            item?.querySelector('[data-header-parent-title="title"]')?.classList?.remove(blueClass)
+        });
+
+        // set active base current url
+        const currentHeader = allHeadersArray?.find(item => item.dataset.header === location.pathname)
+        currentHeader?.classList?.add(blueClass);
+        const currentHeaderParent = currentHeader?.closest('[data-header-parent="parent-header"]')?.querySelector('[data-header-parent-title="title"]');
+        currentHeaderParent?.classList?.add(blueClass);
+    }
+    const closeMenu = (subItem) => {
+        const currentContainer = subItem?.closest("[data-header-parent='parent-header']")?.querySelector("[data-menu='menuContainer']");
+        if (!currentContainer) return;
+        currentContainer.style.zIndex = '-1'
+        const idTimeout = setTimeout(() => {
+            currentContainer.style.zIndex = '1';
+            clearTimeout(idTimeout)
+        }, 100);
+    }
+
+    useEffect(() => {
+        setActive();
+    }, [location])
 
     return (
         <div className={css.headerUser2Bot}>
@@ -145,7 +209,7 @@ function HeaderUser2Bot() {
                     <li onClick={redirectPage.bind(null, url.home2)}>
                         <DropdownHeader3
                             notShowMenu={true}
-                            header={`Home`}
+                            header={<div data-header={url.home2}>Home</div>}
                             list={[]}
                             cssHeader={css.headerUser2Bot__menu__custom}
                         />
@@ -172,7 +236,7 @@ function HeaderUser2Bot() {
                         <DropdownHeader3
                             showMenu={showMenus[menus.current.nFTs]}
                             header={`NFTs`}
-                            list={listBlockchain} />
+                            list={listNft} />
                     </li>
                     <li onClick={menuCLickHandle.bind(null, menus.current.resources)}>
                         <DropdownHeader3

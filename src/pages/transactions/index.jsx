@@ -2,7 +2,7 @@ import Card from 'src/components/card';
 import css from './transactions.module.scss';
 import { TbBulb } from "react-icons/tb";
 import { HiMiniArrowUpRight } from "react-icons/hi2";
-import Popover, { placementType, triggerType } from 'src/components/popover';
+import Popover, { popoverPlacementType, popoverTriggerType } from 'src/components/popover';
 import Table from 'src/components/table';
 import { CiCircleQuestion } from "react-icons/ci";
 import { MdOutlineRemoveRedEye } from "react-icons/md";
@@ -63,7 +63,7 @@ function Transactions() {
         {
             id: 5,
             header: <Popover
-                placement={placementType.top}
+                placement={popoverPlacementType.top}
                 content={`Click to show datetime format`}
                 className={css['transactions--blue']} >
                 Age
@@ -92,7 +92,7 @@ function Transactions() {
         {
             id: 10,
             header: <Popover
-                placement={placementType.top}
+                placement={popoverPlacementType.top}
                 content={`(Gas price * Gas used by Txns) in Bnb`}
                 className={css['transactions--blue']}>
                 Txn Fee
@@ -105,8 +105,8 @@ function Transactions() {
             cols: [
                 <Popover
                     key={`a1`}
-                    trigger={triggerType.runtime}
-                    placement={placementType.right}
+                    trigger={popoverTriggerType.runtime}
+                    placement={popoverPlacementType.right}
                     content={<InfoTransaction />}
                     classNamePopover={css.customPopover}
                     id={`1`}
@@ -126,7 +126,7 @@ function Transactions() {
                 ,
                 <Popover
                     key={`a2`}
-                    placement={placementType.top}
+                    placement={popoverPlacementType.top}
                     content={`Deposite`}>
                     <Button2
                         type={button2Type.outlineSmall}
@@ -172,8 +172,8 @@ function Transactions() {
             cols: [
                 <Popover
                     key={`a1`}
-                    trigger={triggerType.runtime}
-                    placement={placementType.right}
+                    trigger={popoverTriggerType.runtime}
+                    placement={popoverPlacementType.right}
                     content={<InfoTransaction />}
                     classNamePopover={css.customPopover}
                     id={`1`}
@@ -193,7 +193,7 @@ function Transactions() {
                 ,
                 <Popover
                     key={`a2`}
-                    placement={placementType.top}
+                    placement={popoverPlacementType.top}
                     content={`Deposite`}>
                     <Button2
                         type={button2Type.outlineSmall}
@@ -238,8 +238,8 @@ function Transactions() {
             cols: [
                 <Popover
                     key={`a1`}
-                    trigger={triggerType.runtime}
-                    placement={placementType.right}
+                    trigger={popoverTriggerType.runtime}
+                    placement={popoverPlacementType.right}
                     content={<InfoTransaction />}
                     classNamePopover={css.customPopover}
                     id={`1`}
@@ -259,7 +259,7 @@ function Transactions() {
                 ,
                 <Popover
                     key={`a2`}
-                    placement={placementType.top}
+                    placement={popoverPlacementType.top}
                     content={`Deposite`}>
                     <Button2
                         type={button2Type.outlineSmall}
@@ -304,8 +304,8 @@ function Transactions() {
             cols: [
                 <Popover
                     key={`a1`}
-                    trigger={triggerType.runtime}
-                    placement={placementType.right}
+                    trigger={popoverTriggerType.runtime}
+                    placement={popoverPlacementType.right}
                     content={<InfoTransaction />}
                     classNamePopover={css.customPopover}
                     id={`1`}
@@ -325,7 +325,7 @@ function Transactions() {
                 ,
                 <Popover
                     key={`a2`}
-                    placement={placementType.top}
+                    placement={popoverPlacementType.top}
                     content={`Deposite`}>
                     <Button2
                         type={button2Type.outlineSmall}
@@ -425,7 +425,7 @@ function Transactions() {
                             <div className={css.transactions__item__row}>
                                 <Popover
                                     className={css['transactions__item--hoverBlue']}
-                                    placement={placementType.top}
+                                    placement={popoverPlacementType.top}
                                     content={`1.4564564645645 BNB`}>
                                     4,160,032
                                 </Popover>
@@ -448,7 +448,7 @@ function Transactions() {
                                 <Popover
                                     content={`0.13212456789 USD`}
                                     className={css['transactions__item--hoverBlue']}
-                                    placement={placementType.top}>
+                                    placement={popoverPlacementType.top}>
                                     4,160,032
                                 </Popover>
                                 {" "}

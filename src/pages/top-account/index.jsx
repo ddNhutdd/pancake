@@ -3,7 +3,7 @@ import css from './top-account.module.scss'
 import Card from 'src/components/card'
 import Table from 'src/components/table'
 import { BsSortDown } from "react-icons/bs";
-import Popover, { placementType } from 'src/components/popover';
+import Popover, { popoverPlacementType } from 'src/components/popover';
 import CopyButton from 'src/components/copy-button';
 import { IoDocumentOutline } from "react-icons/io5";
 
@@ -51,14 +51,14 @@ function TopAccount() {
                     className='flex items-center gap-2'
                 >
                     <Popover
-                        placement={placementType.top}
+                        placement={popoverPlacementType.top}
                         content={`contract`}
                         className={`flex items-center`}
                     >
                         <IoDocumentOutline />
                     </Popover>
                     <Popover
-                        placement={placementType.top}
+                        placement={popoverPlacementType.top}
                         content={`0x0000000000000000000001004`}
                         className='--text-blue'
                     >

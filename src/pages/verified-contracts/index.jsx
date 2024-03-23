@@ -5,7 +5,7 @@ import Table from 'src/components/table'
 import Button2, { button2Type } from 'src/components/button-2'
 import { IoIosSearch } from "react-icons/io";
 import { Dropdown2, dropdown2Align, dropdown2TriggerType } from 'src/components/dropdown-2'
-import Popover, { placementType } from 'src/components/popover';
+import Popover, { popoverPlacementType } from 'src/components/popover';
 import { CiCircleQuestion } from "react-icons/ci";
 import CopyButton from 'src/components/copy-button';
 import { IoDocumentOutline } from "react-icons/io5";
@@ -67,7 +67,7 @@ function VerifiedContracts() {
             header: <div className='flex items-center gap-2'>
                 Audit
                 <Popover
-                    placement={placementType.top}
+                    placement={popoverPlacementType.top}
                     content={`Smart contact audit and security`}
                     className={`flex items-center`}
                 >
@@ -80,7 +80,7 @@ function VerifiedContracts() {
             header: <div className='flex items-center gap-2'>
                 Audit
                 <Popover
-                    placement={placementType.top}
+                    placement={popoverPlacementType.top}
                     content={`Smart contact audit and security`}
                     className={`flex items-center --text-blue`}
                 >
@@ -103,7 +103,7 @@ function VerifiedContracts() {
                 >
                     <Popover
                         content={`0x18EFb381123213213213213213213dEbD4E5D`}
-                        placement={placementType.top}
+                        placement={popoverPlacementType.top}
                         className={`flex items-center --text-blue`}
                     >
                         <IoDocumentOutline />

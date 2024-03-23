@@ -11,4 +11,10 @@
     &.blue {
         background-color: $background-15;
     }
+
+    &.white {
+        background-color: $background-1;
+        color: $text-color-dark;
+        border: 1px solid $border-color-5;
+    }
 }

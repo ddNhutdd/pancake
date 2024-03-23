@@ -2,7 +2,8 @@ import css from './pill.module.scss';
 import PropTypes from 'prop-types';
 
 export const pillTypes = {
-    blue: 'blue'
+    blue: 'blue',
+    white: 'white'
 }
 
 function Pill(props) {
@@ -13,7 +14,8 @@ function Pill(props) {
         switch (type) {
             case pillTypes.blue:
                 return css.blue;
-
+            case pillTypes.white:
+                return css.white;
             default:
                 return css.blue;
         }

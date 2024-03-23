@@ -2,7 +2,7 @@ import HeaderComponent2 from 'src/components/header-component-2';
 import css from './set-info.module.scss';
 import Card from 'src/components/card';
 import Table from 'src/components/table';
-import Popover, { placementType } from 'src/components/popover';
+import Popover, { popoverPlacementType } from 'src/components/popover';
 import Button2, { button2Type } from 'src/components/button-2';
 import { FiUser } from "react-icons/fi";
 
@@ -12,7 +12,7 @@ function SetInfo() {
         {
             id: 1,
             header: <Popover
-                placement={placementType.top}
+                placement={popoverPlacementType.top}
                 content={`Click to show Age format`}
                 className='--text-blue'
             >
@@ -46,7 +46,7 @@ function SetInfo() {
             cols: [
                 <Popover
                     key={`1-1`}
-                    placement={placementType.top}
+                    placement={popoverPlacementType.top}
                     content="1 mins ago"
                 >
                     2024-03-22 7:13:00

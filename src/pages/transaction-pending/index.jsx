@@ -4,7 +4,7 @@ import Card from 'src/components/card';
 import Button2, { button2Type } from 'src/components/button-2';
 import Table from 'src/components/table';
 import { CiCircleQuestion } from "react-icons/ci";
-import Popover, { placementType } from 'src/components/popover';
+import Popover, { popoverPlacementType } from 'src/components/popover';
 import { IoIosSearch } from "react-icons/io";
 import { FaMountainSun } from "react-icons/fa6";
 import { useState } from 'react';
@@ -21,7 +21,7 @@ function TransactionPending() {
             Method
             <Popover
                 className={`flex items-center justify-center`}
-                placement={placementType.top}
+                placement={popoverPlacementType.top}
                 content={<>
                     <span>43434324324321431431243432434</span>
                     <span>12434312432143</span>
@@ -36,7 +36,7 @@ function TransactionPending() {
         id: 3,
         header: <Popover
             className={`--text-blue`}
-            placement={placementType.top}
+            placement={popoverPlacementType.top}
             content={`Unsort, click to sort`}>
             Nonce
         </Popover>
@@ -49,7 +49,7 @@ function TransactionPending() {
         id: 5,
         header: <Popover
             className={`--text-blue`}
-            placement={placementType.top}
+            placement={popoverPlacementType.top}
             content={`Unsort, click to sort`}>
             Gas Limit
         </Popover>
@@ -58,7 +58,7 @@ function TransactionPending() {
         id: 6,
         header: <Popover
             className={`--text-blue`}
-            placement={placementType.top}
+            placement={popoverPlacementType.top}
             content={`Unsort, click to sort`}>
             Gas Price
         </Popover>
@@ -88,7 +88,7 @@ function TransactionPending() {
                 <Popover
                     key={`1-2`}
                     content={`Sign In`}
-                    placement={placementType.top}>
+                    placement={popoverPlacementType.top}>
                     <Button2
                         type={button2Type.outlineSmall}
                         classname={css.customButton}>
@@ -101,7 +101,7 @@ function TransactionPending() {
                 <Popover
                     key={`1-2`}
                     content={`mar-20-2024 09:21:08 AM`}
-                    placement={placementType.top}>
+                    placement={popoverPlacementType.top}>
                     20 secs ago
                 </Popover>
                 ,
@@ -113,7 +113,7 @@ function TransactionPending() {
                     key={`1-2`}
                     className={`--text-blue --hover-yellow `}
                     content={`mar-20-2024 09:21:08 AM`}
-                    placement={placementType.top}>
+                    placement={popoverPlacementType.top}>
                     0xE53bFC41...De8FA6F6F
                 </Popover>
                 ,
@@ -121,7 +121,7 @@ function TransactionPending() {
                     key={`1-2`}
                     className={`--text-blue --hover-yellow `}
                     content={`mar-20-2024 09:21:08 AM`}
-                    placement={placementType.top}>
+                    placement={popoverPlacementType.top}>
                     0xE3bA0072...19D72BaF4
                 </Popover>
                 ,
@@ -140,7 +140,7 @@ function TransactionPending() {
                 <Popover
                     key={`1-2`}
                     content={`Sign In`}
-                    placement={placementType.top}>
+                    placement={popoverPlacementType.top}>
                     <Button2
                         type={button2Type.outlineSmall}
                         classname={css.customButton}>
@@ -153,7 +153,7 @@ function TransactionPending() {
                 <Popover
                     key={`1-2`}
                     content={`mar-20-2024 09:21:08 AM`}
-                    placement={placementType.top}>
+                    placement={popoverPlacementType.top}>
                     20 secs ago
                 </Popover>
                 ,
@@ -165,7 +165,7 @@ function TransactionPending() {
                     key={`1-2`}
                     className={`--text-blue --hover-yellow `}
                     content={`mar-20-2024 09:21:08 AM`}
-                    placement={placementType.top}>
+                    placement={popoverPlacementType.top}>
                     0xE53bFC41...De8FA6F6F
                 </Popover>
                 ,
@@ -173,7 +173,7 @@ function TransactionPending() {
                     key={`1-2`}
                     className={`--text-blue --hover-yellow `}
                     content={`mar-20-2024 09:21:08 AM`}
-                    placement={placementType.top}>
+                    placement={popoverPlacementType.top}>
                     0xE3bA0072...19D72BaF4
                 </Popover>
                 ,
@@ -192,7 +192,7 @@ function TransactionPending() {
                 <Popover
                     key={`1-2`}
                     content={`Sign In`}
-                    placement={placementType.top}>
+                    placement={popoverPlacementType.top}>
                     <Button2
                         type={button2Type.outlineSmall}
                         classname={css.customButton}>
@@ -205,7 +205,7 @@ function TransactionPending() {
                 <Popover
                     key={`1-2`}
                     content={`mar-20-2024 09:21:08 AM`}
-                    placement={placementType.top}>
+                    placement={popoverPlacementType.top}>
                     20 secs ago
                 </Popover>
                 ,
@@ -217,7 +217,7 @@ function TransactionPending() {
                     key={`1-2`}
                     className={`--text-blue --hover-yellow `}
                     content={`mar-20-2024 09:21:08 AM`}
-                    placement={placementType.top}>
+                    placement={popoverPlacementType.top}>
                     0xE53bFC41...De8FA6F6F
                 </Popover>
                 ,
@@ -225,7 +225,7 @@ function TransactionPending() {
                     key={`1-2`}
                     className={`--text-blue --hover-yellow `}
                     content={`mar-20-2024 09:21:08 AM`}
-                    placement={placementType.top}>
+                    placement={popoverPlacementType.top}>
                     0xE3bA0072...19D72BaF4
                 </Popover>
                 ,
@@ -251,7 +251,7 @@ function TransactionPending() {
                         <div className={css.transactionPending__cardHeader}>
                             <div>
                                 <Popover
-                                    placement={placementType.right}
+                                    placement={popoverPlacementType.right}
                                     content={`Click to see detail`}>
                                     <Button2 type={button2Type.outlineSmall} >
                                         <FaMountainSun />

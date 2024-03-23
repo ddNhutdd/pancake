@@ -1,0 +1,30 @@
+@import 'src/components/global-style/base.scss';
+
+.process {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    .process__left {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .process__right {
+        width: 100px;
+        background-color: $border-color-5;
+        border-radius: 900px;
+        border: 2px solid transparent;
+        position: relative;
+
+        .process__right__bar {
+            background-color: $background-15;
+            border-radius: 900px;
+            border: 2px solid transparent;
+            position: absolute;
+            top: -2px;
+            left: -1px;
+        }
+    }
+}
