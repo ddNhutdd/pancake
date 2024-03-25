@@ -1,7 +1,7 @@
 import React from "react";
 import css from "./footer-user.module.scss";
 import { NavLink } from "react-router-dom";
-import { url } from "../../constants";
+import { url } from "../../../constants";
 import logoTextLight from "src/assets/imgs/logo-text-light.svg";
 import twitter from "src/assets/imgs/twitter.svg";
 import telegram from "src/assets/imgs/telegram.svg";
@@ -14,8 +14,8 @@ import { MdLanguage } from "react-icons/md";
 import { FaArrowRight } from "react-icons/fa6";
 import Money from "../money/index";
 import Button from "src/components/button";
-import { buttonClassesType } from "../../components/button";
-import SwitchTheme from "../../components/switch/switch-theme";
+import { buttonClassesType } from "../../../components/button";
+import SwitchTheme from "../../../components/switch/switch-theme";
 import { useTheme } from "src/context/dark-theme";
 
 function Footer() {

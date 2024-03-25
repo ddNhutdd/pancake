@@ -1,0 +1,10 @@
+@import 'components/global-style/base.scss';
+
+.topStatics {
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+    .container {
+        @include container2;
+    }
+}

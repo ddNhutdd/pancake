@@ -69,8 +69,8 @@
     @media only screen and (max-width: $width) {
         @for $i from 1 through 12 {
             .col-#{$breakpoint}-#{$i} {
-                padding: $space *3;
-                width: calc($i / 12);
+                padding: $space * 3;
+                width: calc($i / 12) * 100%;
             }
         }
     }

@@ -8,6 +8,7 @@ import Pill from 'src/components/pill';
 import { CiShare1 } from "react-icons/ci";
 import { FaHeart } from "react-icons/fa";
 import { scrollToTop } from 'src/utils';
+import { NavLink } from 'react-router-dom';
 
 function FooterUser2() {
     return (
@@ -45,45 +46,50 @@ function FooterUser2() {
                     </div>
                     <div className={css.footer__mid__item}>
                         <div className={css.footer__mid__row}>Company</div>
-                        <div className={css.footer__mid__row}>
-                            Company
+                        <NavLink to={'#'} className={css.footer__mid__row}>
+                            Delegate to BscScan
                             <Pill>Stacking</Pill>
-                        </div>
-                        <div className={css.footer__mid__row}>Company</div>
-                        <div className={css.footer__mid__row}>Company</div>
-                        <div className={css.footer__mid__row}>Company</div>
-                        <div className={css.footer__mid__row}>
-                            Company
+                        </NavLink>
+                        <NavLink to={'#'} className={css.footer__mid__row}>Brand Assets</NavLink>
+                        <NavLink to={'#'} className={css.footer__mid__row}>Contact Us</NavLink>
+                        <NavLink to={'#'} className={css.footer__mid__row}>Terms & Privacy</NavLink>
+                        <NavLink to={'#'} className={css.footer__mid__row}>
+                            Bug Bounty
                             <CiShare1 />
-                        </div>
+                        </NavLink>
                     </div>
                     <div className={css.footer__mid__item}>
-                        <div className={css.footer__mid__row}>Company</div>
-                        <div className={css.footer__mid__row}>
-                            Company
-                            <Pill>Stacking</Pill>
-                        </div>
-                        <div className={css.footer__mid__row}>Company</div>
-                        <div className={css.footer__mid__row}>Company</div>
-                        <div className={css.footer__mid__row}>Company</div>
-                        <div className={css.footer__mid__row}>
-                            Company
+                        <div className={css.footer__mid__row}>Community</div>
+                        <NavLink to={'#'} className={css.footer__mid__row}>
+                            API Documentation
+                        </NavLink>
+                        <NavLink to={'#'} className={css.footer__mid__row}>Knowledge Base</NavLink>
+                        <NavLink to={'#'} className={css.footer__mid__row}>Network Status</NavLink>
+                        <NavLink to={'#'} className={css.footer__mid__row}>
+                            Learn BSC
                             <CiShare1 />
-                        </div>
+                        </NavLink>
                     </div>
                     <div className={css.footer__mid__item}>
-                        <div className={css.footer__mid__row}>Company</div>
-                        <div className={css.footer__mid__row}>
-                            Company
-                            <Pill>Stacking</Pill>
-                        </div>
-                        <div className={css.footer__mid__row}>Company</div>
-                        <div className={css.footer__mid__row}>Company</div>
-                        <div className={css.footer__mid__row}>Company</div>
-                        <div className={css.footer__mid__row}>
-                            Company
+                        <div className={css.footer__mid__row}>Products & Services</div>
+                        <NavLink to={'#'} className={css.footer__mid__row}>
+                            Advertise
                             <CiShare1 />
-                        </div>
+                        </NavLink>
+                        <NavLink to={'#'} className={css.footer__mid__row}>
+                            Explorer-as-a-Service (EaaS)
+                            <CiShare1 />
+                        </NavLink>
+                        <NavLink to={'#'} className={css.footer__mid__row}>
+                            API Plans
+                        </NavLink>
+                        <NavLink to={'#'} className={css.footer__mid__row}>
+                            Priority Support
+                        </NavLink>
+                        <NavLink to={'#'} className={css.footer__mid__row}>
+                            Blockscan
+                            <CiShare1 />
+                        </NavLink>
                     </div>
                 </div>
                 <div className={css.footer__bot}>

@@ -95,11 +95,23 @@
                     }
                 }
 
+                a.footer__mid__row {
+                    svg {
+                        color: $text-color-dark;
+                    }
+
+                    &:hover {
+                        color: $background-15
+                    }
+                }
+
                 .footer__mid__row {
                     font-weight: 300;
                     display: flex;
                     gap: 10px;
                     align-items: center;
+                    color: $text-color-dark;
+                    text-decoration: none;
 
                     .footer__header {
                         font-size: 19px;

@@ -1,0 +1,60 @@
+@import 'components/global-style/base.scss';
+
+.toolPage {
+    margin-bottom: 20px;
+
+    .container {
+        @include container2;
+
+        .toolPage__menu {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+
+            @media screen and (max-width: 576px) {
+                display: none;
+            }
+
+            &.toolPage__menuMoble {
+                @media screen and (max-width: 576px) {
+                    display: block !important;
+                }
+            }
+
+            .toolPage__menuItem {
+                padding: 8px 12px;
+                border-radius: 8px;
+                cursor: pointer;
+                transition: background-color .2s;
+
+                &:hover {
+                    background-color: $border-color-6;
+
+                    svg {
+                        opacity: 1;
+                    }
+                }
+
+                &.active {
+                    background-color: $border-color-6;
+                }
+
+                svg {
+                    opacity: 0;
+                    transition: opacity .2s;
+                }
+            }
+
+            .toolPage__line {
+                margin-top: 8px;
+                margin-bottom: 8px;
+                border-bottom: 1px solid $border-color-5;
+            }
+        }
+    }
+}
+
+.toolPage__menuButton {
+    background-color: $border-color-5 !important;
+}

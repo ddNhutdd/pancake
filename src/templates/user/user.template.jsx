@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
 import ConfigComponent from "src/components/config-component";
-import Header from "src/templates/header-user";
-import Footer from "src/templates/footer-user";
+import Footer from "./footer-user";
+import Header from "./header-user";
 
 function UserTemplate() {
   return (

@@ -1,12 +1,12 @@
 import { defaultConfig } from '@web3modal/ethers/react';
 
 export const url = {
-  home: "/",
+  home: "/home-cake",
   swap: "/swap",
   staking: '/staking',
   cakeStaking: '/cake-staking',
   profile: '/profile',
-  home2: "/home2",
+  home2: "/",
   transactions: "/transactions",
   transactionsPending: '/transactions-pending',
   login: '/login',
@@ -24,7 +24,10 @@ export const url = {
   tokenTransfer: '/token-transfer',
   nftTop: '/nft-top',
   topMint: '/top-mind',
-  nftTrades: '/nft-trades'
+  nftTrades: '/nft-trades',
+  charts: '/charts',
+  topStatics: '/top-statics',
+  unitConverter: '/unit-converter'
 };
 
 export const localStorageVariable = {

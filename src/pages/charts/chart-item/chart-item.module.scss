@@ -1,0 +1,23 @@
+@import 'components/global-style/base.scss';
+
+.chartItem {
+    cursor: pointer;
+
+    &:hover {
+        .chartItem__card {
+            .chartItem__header {
+                color: $background-15;
+
+            }
+        }
+    }
+
+    .chartItem__card {
+        padding: 16px;
+
+        .chartItem__header {
+            margin-bottom: 30px;
+            transition: color .2s;
+        }
+    }
+}

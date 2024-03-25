@@ -2,10 +2,18 @@
     text-align: right;
 }
 
+.text-left {
+    text-align: left;
+}
+
 @each $breakpoint, $width in $responsive {
     @media screen and (max-width: $width) {
         .text-#{$breakpoint}-right {
             text-align: right;
+        }
+
+        .text-#{$breakpoint}-left {
+            text-align: left;
         }
     }
 }

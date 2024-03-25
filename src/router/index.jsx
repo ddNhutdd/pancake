@@ -28,13 +28,15 @@ const TokenTransfer = lazy(() => import("../pages/token-transfer"))
 const NftTop = lazy(() => import("../pages/nft-top"))
 const TopMints = lazy(() => import("../pages/top-mints"))
 const NftTrades = lazy(() => import("../pages/nft-trades"))
+const Charts = lazy(() => import("../pages/charts"))
+const TopStatics = lazy(() => import("../pages/top-statics"))
+const UnitConverter = lazy(() => import("../pages/unit-converter"))
 
 export const router = createBrowserRouter([
   {
     element: <UserTemplate />,
     children: [
       {
-        index: true,
         path: url.home,
         element: (
           <Suspense>
@@ -80,6 +82,7 @@ export const router = createBrowserRouter([
     element: <UserTemplate2 />,
     children: [
       {
+        index: true,
         path: url.home2,
         element: (
           <Suspense>
@@ -228,6 +231,29 @@ export const router = createBrowserRouter([
         element: (
           <Suspense>
             <NftTrades />
+          </Suspense>
+        )
+      },
+      {
+        path: url.charts,
+        element: (
+          <Suspense>
+            <Charts />
+          </Suspense>
+        )
+      },
+      {
+        path: url.topStatics,
+        element: (
+          <Suspense>
+            <TopStatics />
+          </Suspense>
+        )
+      }, {
+        path: url.unitConverter,
+        element: (
+          <Suspense>
+            <UnitConverter />
           </Suspense>
         )
       }

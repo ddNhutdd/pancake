@@ -9,6 +9,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { url } from 'src/constants';
 import { useLocation } from 'react-router-dom';
+import Pill, { pillTypes } from 'src/components/pill';
 
 function HeaderUser2Bot() {
     const redirectPage = (page, ev) => {
@@ -124,6 +125,81 @@ function HeaderUser2Bot() {
             onClick: redirectPage.bind(null, url.nftTrades),
             url: url.nftTrades
         },
+    ]
+    const listResources = [
+        {
+            id: 1,
+            content: 'Chart & stats',
+            borderBottom: false,
+            onClick: redirectPage.bind(null, url.charts),
+            url: url.charts
+        },
+        {
+            id: 2,
+            content: 'Top Statics',
+            borderBottom: false,
+            onClick: redirectPage.bind(null, url.topStatics),
+            url: url.topStatics
+        },
+    ]
+    const listDeveloper = [
+        {
+            id: 1,
+            content: 'API plans',
+            borderBottom: false,
+            url: ``
+        },
+        {
+            id: 2,
+            content: 'API Document',
+            borderBottom: true,
+            url: ``
+        },
+        {
+            id: 3,
+            content: <div className='flex gap-1'>
+                Code Reader
+                <Pill type={pillTypes.white}>Beta</Pill>
+            </div>,
+            borderBottom: true,
+            url: ``
+        },
+        {
+            id: 4,
+            content: `Verify Contract`,
+            borderBottom: false,
+            url: ``
+        },
+        {
+            id: 5,
+            content: `Similar Contract Search`,
+            borderBottom: false,
+            url: ``
+        },
+        {
+            id: 6,
+            content: `Contract Diff Checker`,
+            borderBottom: true,
+            url: ``
+        },
+        {
+            id: 7,
+            content: `Vyper Online Compiler`,
+            borderBottom: false,
+            url: ``
+        },
+        {
+            id: 8,
+            content: `Bytecode to Opcode`,
+            borderBottom: false,
+            url: ``
+        },
+        {
+            id: 9,
+            content: `Broadcast Transaction`,
+            borderBottom: false,
+            url: ``
+        }
     ]
 
     const menus = useRef({
@@ -249,13 +325,13 @@ function HeaderUser2Bot() {
                         <DropdownHeader3
                             showMenu={showMenus[menus.current.resources]}
                             header={`Resources`}
-                            list={listBlockchain} />
+                            list={listResources} />
                     </li>
                     <li onClick={menuCLickHandle.bind(null, menus.current.developers)}>
                         <DropdownHeader3
                             showMenu={showMenus[menus.current.developers]}
                             header={`Developers`}
-                            list={listBlockchain} />
+                            list={listDeveloper} />
                     </li>
                     <li onClick={menuCLickHandle.bind(null, menus.current.more)}>
                         <DropdownHeader3

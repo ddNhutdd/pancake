@@ -2,9 +2,9 @@ import css from './card.module.scss';
 import PropTypes from 'prop-types';
 
 function Card(props) {
-    const { children, className } = props;
+    const { children, className, style } = props;
     return (
-        <div className={`${css.card} ${className}`}>{children}</div>
+        <div style={style} className={`${css.card} ${className}`}>{children}</div>
     )
 }
 
@@ -14,6 +14,7 @@ Card.propTypes = {
         PropTypes.string,
         PropTypes.number
     ]),
+    style: PropTypes.object
 }
 
 export default Card

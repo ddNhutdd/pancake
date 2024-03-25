@@ -7,21 +7,21 @@ import { MdLanguage } from 'react-icons/md';
 import { IoSettingsSharp } from 'react-icons/io5';
 import { IoIosNotifications } from 'react-icons/io';
 import Logo1 from '/src/assets/imgs/logo.svg';
-import DropdownHeader, { dropdownHeaderAlignEnum } from '../../components/dropdown-header';
+import DropdownHeader, { dropdownHeaderAlignEnum } from 'components/dropdown-header';
 import DropdownHeader2, {
 	dropdownItemAlignType,
-} from '../../components/dropdown-header-2';
-import Button, { buttonClassesType } from '../../components/button';
+} from 'components/dropdown-header-2';
+import Button, { buttonClassesType } from 'components/button';
 import { FaChevronDown } from 'react-icons/fa6';
-import Money from '../money';
+import Money from 'src/templates/user/money';
 import { useTheme } from 'src/context/dark-theme';
 import logoTextLight from 'src/assets/imgs/logo-text-light.svg';
 import { useDispatch } from 'react-redux';
 import {
 	setPaddingTopPage,
 	setPaddingValue,
-} from '../../redux/slices/paddingTopPage';
-import Modal from '../../components/modal';
+} from 'src/redux/slices/paddingTopPage';
+import Modal from 'components/modal';
 import { useWeb3Modal, useDisconnect } from '@web3modal/ethers/react';
 import { useWeb3ModalAccount } from '@web3modal/ethers/react'
 import { truncatedWalletAddress } from 'src/utils';
