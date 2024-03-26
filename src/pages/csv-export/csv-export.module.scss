@@ -1,0 +1,42 @@
+@import "components/global-style/base.scss";
+
+.csvExport {
+    .csvExport__cardBody {
+        display: flex;
+        gap: 10px;
+        flex-direction: column;
+        padding: 16px;
+
+        .csvExport__input {
+            width: 50%;
+
+            @media screen and (max-width: 992px) {
+                width: 100%;
+            }
+
+            .csvExport__label {
+                margin-bottom: 8px;
+            }
+        }
+    }
+
+    .csvExport__cardFooter {
+        padding: 16px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        background-color: $background-17;
+
+        button {
+            width: 100px;
+        }
+    }
+}
+
+.headerComponent4--bold {
+    font-weight: 400;
+}
+
+.csvExport__reset {
+    border: none;
+}

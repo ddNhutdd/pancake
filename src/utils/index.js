@@ -80,3 +80,52 @@ export const scrollToTop = () => {
     behavior: "smooth",
 });
 }
+
+export const countCharacterOccurrences = (str, char) => {
+  let count = 0;
+  for (let i = 0; i < str.length; i++) {
+      if (str.charAt(i) === char) {
+          count++;
+      }
+  }
+  return count;
+}
+
+export const generateString = (char, numChars) => {
+  let result = "";
+  for (let i = 0; i < numChars; i++) {
+      result += char;
+  }
+  return result;
+}
+
+export const formatDay = (format, value) => {
+  const day = value.getDate();
+  const month = value.getMonth() + 1;
+  const year = value.getFullYear();
+
+
+  const countNumberDay = countCharacterOccurrences(format, 'd');
+  const dayString = day.toString().padStart(countNumberDay, "0");
+
+  const countNumberMonth = countCharacterOccurrences(format, 'M');
+  const monthString = month.toString().padStart(countNumberMonth, "0");
+
+  const countNumberYear = countCharacterOccurrences(format, 'y');
+  const yearString = year.toString().padStart(countNumberYear, "0");
+
+  const result = format.replace(
+      generateString('d', countNumberDay), dayString
+  ).replace(
+      generateString('M', countNumberMonth), monthString
+  ).replace(
+      generateString('y', countNumberYear), yearString
+  )
+  return result;
+} 
+
+export const  hasKey = (obj, key) => {
+  if(!obj || !key) return false;
+  const keys = Object.keys(obj);
+  return keys.includes(key);
+}

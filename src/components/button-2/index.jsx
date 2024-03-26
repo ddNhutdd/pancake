@@ -7,7 +7,8 @@ export const button2Type = {
     outline: 'outline',
     primary: 'primary',
     outlineSmall: 'outlineSmall',
-    primarySmall: 'primarySmall'
+    primarySmall: 'primarySmall',
+    secondary: 'secondary'
 }
 
 export const button2HtmlType = {
@@ -37,7 +38,9 @@ function Button2(props) {
             case button2Type.outlineSmall:
                 return css.outlineSmall;
             case button2Type.primarySmall:
-                return css.primarySmall
+                return css.primarySmall;
+            case button2Type.secondary:
+                return css.secondary
             default:
                 return css.outline;
         }

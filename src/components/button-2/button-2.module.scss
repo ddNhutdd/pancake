@@ -68,4 +68,13 @@
             border-color: $background-16;
         }
     }
+
+    &.secondary {
+        border: none;
+        background-color: transparent;
+
+        &:hover {
+            background-color: $border-color-5;
+        }
+    }
 }

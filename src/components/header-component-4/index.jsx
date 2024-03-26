@@ -18,7 +18,7 @@ function HeaderComponent4(props) {
 
 HeaderComponent4.propTypes = {
     title: PropTypes.node,
-    content: PropTypes.node
+    content: PropTypes.node,
 };
 
 export default HeaderComponent4

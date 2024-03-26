@@ -20,7 +20,8 @@ export const Dropdown2 = (props) => {
         list,
         onChange,
         show,
-        align
+        align,
+        allowItemHover
     } = props
 
     const renderListItem = () => {
@@ -33,7 +34,7 @@ export const Dropdown2 = (props) => {
             <div
                 onClick={onClickItemHandle.bind(null, item)}
                 key={item.id}
-                className={css.dropdown2__item}>
+                className={`${css.dropdown2__item} ${renderClassAllowHover()}`}>
                 {item.content}
             </div>
         ))
@@ -70,6 +71,15 @@ export const Dropdown2 = (props) => {
     const renderClassShowDropdown = () => {
         return showDropdown ? css.show : '';
     }
+    const renderClassAllowHover = () => allowItemHover ? css.allowHover : ''
+    const renderStyleMenuContainer = () => {
+        if (trigger === dropdown2TriggerType.runtime) return {
+            marginTop: padding + 2, [align]: 0
+        }
+        else return {
+            paddingTop: padding + 2, [align]: 0
+        }
+    }
 
     const [showDropdown, setShowDropdown] = useState(show);
     const [padding, setPadding] = useState(0);
@@ -95,7 +105,7 @@ export const Dropdown2 = (props) => {
                 {header}
             </div>
             <div
-                style={{ paddingTop: padding, [align]: 0 }}
+                style={renderStyleMenuContainer()}
                 className={css.dropdown2__menuContainer}>
                 <div className={css.dropdown2__menu}>
                     {renderListItem()}
@@ -112,10 +122,12 @@ Dropdown2.propTypes = {
     onChange: PropTypes.func,
     show: PropTypes.bool,
     align: PropTypes.oneOf(Object.values(dropdown2Align)),
+    allowItemHover: PropTypes.bool
 }
 
 Dropdown2.defaultProps = {
     trigger: dropdown2TriggerType.hover,
     show: false,
     align: dropdown2Align.left,
+    allowItemHover: true
 };

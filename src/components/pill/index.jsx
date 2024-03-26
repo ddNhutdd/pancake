@@ -8,7 +8,7 @@ export const pillTypes = {
 
 function Pill(props) {
 
-    const { children, type } = props;
+    const { children, type, className } = props;
 
     const renderType = () => {
         switch (type) {
@@ -22,13 +22,17 @@ function Pill(props) {
     }
 
     return (
-        <div className={`${css.pill} ${renderType()}`}>{children}</div>
+        <div className={`${css.pill} ${renderType()} ${className}`}>{children}</div>
     )
 }
 
 Pill.propTypes = {
     children: PropTypes.node,
     type: PropTypes.oneOf(Object.values(pillTypes)),
+    className: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.number,
+    ])
 };
 
 Pill.defaultProps = {

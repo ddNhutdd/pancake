@@ -54,6 +54,8 @@ $border-color-4: #262130;
 $border-color-5: #e9ecef;
 $border-color-6: #dee2e6;
 
+$border-radius: 8px;
+
 $box-shadow: rgba(0, 0, 0, 0.15) 0px 8px 16px 0px;
 // ----------------------------------------------------------------
 
@@ -140,6 +142,10 @@ $box-shadow: rgba(0, 0, 0, 0.15) 0px 8px 16px 0px;
 
 .--text-success {
   color: $text-color-14;
+}
+
+.--text-danger {
+  color: $background-18;
 }
 
 .--hover-yellow {

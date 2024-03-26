@@ -1,0 +1,40 @@
+@import "components/global-style/base.scss";
+
+.radioButton {
+
+    input[type='radio']:checked+label {
+        .radioButton__circal {
+            background-color: $background-15;
+
+            .radioButton__dot {
+                display: block;
+                background-color: $background-1;
+            }
+        }
+    }
+
+    .radioButton__container {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 5px;
+
+        .radioButton__circal {
+            width: 15px;
+            height: 15px;
+            border: 1px solid $border-color-5;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            .radioButton__dot {
+                display: none;
+                width: 7px;
+                height: 7px;
+                border-radius: 10px;
+                background-color: $background-1;
+            }
+        }
+    }
+}

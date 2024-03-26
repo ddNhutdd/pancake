@@ -269,9 +269,9 @@ function HeaderUser2Bot() {
     const closeMenu = (subItem) => {
         const currentContainer = subItem?.closest("[data-header-parent='parent-header']")?.querySelector("[data-menu='menuContainer']");
         if (!currentContainer) return;
-        currentContainer.style.zIndex = '-1'
+        currentContainer.style.display = 'none';
         const idTimeout = setTimeout(() => {
-            currentContainer.style.zIndex = '1';
+            currentContainer.style.display = '';
             clearTimeout(idTimeout)
         }, 100);
     }
@@ -338,7 +338,7 @@ function HeaderUser2Bot() {
                             showMenu={showMenus[menus.current.more]}
                             header={`More`}
                             menuWidthFull={true}
-                            content={<MoreContent />} />
+                            content={<MoreContent redirectPage={redirectPage} />} />
                     </li>
                 </ul>
                 <div

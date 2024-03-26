@@ -1,22 +1,24 @@
 import CopyButton from 'src/components/copy-button';
-import css from './import.module.scss';
+import css from './input.module.scss';
 import { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 
 const Input = forwardRef((props, ref) => {
-    const { inputValue, setInputValue, rightContent } = props;
+    const { inputValue, setInputValue, rightContent, classRightContent } = props;
 
     const inputChangeHandle = (ev) => setInputValue(ev.target.value);
 
     return (
-        <div>
-            <CopyButton content={inputValue} />
+        <div className={css.input}>
+            <div className={css.input__copy}>
+                <CopyButton content={inputValue} />
+            </div>
             <input
                 onChange={inputChangeHandle}
                 value={inputValue}
                 ref={ref}
                 type="text" />
-            <div className={css.input__right}>
+            <div className={`${css.input__right} ${classRightContent}`}>
                 {rightContent}
             </div>
         </div>
@@ -26,7 +28,8 @@ const Input = forwardRef((props, ref) => {
 Input.propTypes = {
     rightContent: PropTypes.node,
     inputValue: PropTypes.string,
-    setInputValue: PropTypes.func
+    setInputValue: PropTypes.func,
+    classRightContent: PropTypes.object
 };
 
 export default Input

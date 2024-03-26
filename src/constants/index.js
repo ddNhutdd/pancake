@@ -27,7 +27,9 @@ export const url = {
   nftTrades: '/nft-trades',
   charts: '/charts',
   topStatics: '/top-statics',
-  unitConverter: '/unit-converter'
+  unitConverter: '/unit-converter',
+  csvExport: '/csv-export',
+  accountBalanceChecker: '/account-balance-checker'
 };
 
 export const localStorageVariable = {
@@ -88,3 +90,5 @@ export const commonString = {
 export const regular = {
   email: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/,
 } 
+
+export const dateFormat = `d-M-yyyy`;

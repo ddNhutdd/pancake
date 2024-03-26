@@ -3,6 +3,7 @@
 .dropdown2 {
     display: inline-block;
     position: relative;
+    width: 100%;
 
     &.show {
         .dropdown2__menuContainer {
@@ -37,7 +38,9 @@
                 justify-content: flex-start;
                 gap: 5px;
 
-                &:hover {
+
+
+                &.allowHover:hover {
                     background-color: $border-color-5;
                 }
             }

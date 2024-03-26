@@ -30,6 +30,11 @@
     border-left: 1px solid $border-color;
 }
 
+//
+.rounded {
+    border-radius: $border-radius;
+}
+
 @each $breakpoint, $width in $responsive {
     @media screen and (max-width: $width) {
         .border-#{$breakpoint}-0 {
@@ -62,6 +67,11 @@
 
         .border-l-#{$breakpoint}-1 {
             border-left: 1px solid $border-color;
+        }
+
+        //
+        .rounded-#{$breakpoint} {
+            border-radius: $border-radius;
         }
     }
 }

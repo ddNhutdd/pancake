@@ -17,8 +17,8 @@ function ToolPage(props) {
     const menuList = [
         {
             id: 1,
-            header: `CSV Export`
-
+            header: `CSV Export`,
+            url: url.csvExport
         },
         {
             id: 2,
@@ -27,7 +27,8 @@ function ToolPage(props) {
         },
         {
             id: 3,
-            header: `Account Balance Checker`
+            header: `Account Balance Checker`,
+            url: url.accountBalanceChecker
         },
         {
             id: 4,

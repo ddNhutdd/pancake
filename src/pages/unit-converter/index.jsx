@@ -16,7 +16,42 @@ function UnitConverter() {
             />
             <Card className={css.unitConverter}>
                 <div>Enter any value</div>
-                <Input />
+                <div className='row'>
+                    <div className='col-7 p-0 my-1'>
+                        <Input classRightContent={css.unitConverter__rightInput} rightContent={<span>Wei (10<sup>-18</sup>)</span>} />
+                    </div>
+                    <div className='col-7 p-0 my-1'>
+                        <Input classRightContent={css.unitConverter__rightInput} rightContent={<span>KWei (10<sup>-15</sup>)</span>} />
+                    </div>
+                    <div className='col-7 p-0 my-1'>
+                        <Input classRightContent={css.unitConverter__rightInput} rightContent={<span>MWei (10<sup>-12</sup>)</span>} />
+                    </div>
+                    <div className='col-7 p-0 my-1'>
+                        <Input classRightContent={css.unitConverter__rightInput} rightContent={<span>GWei (10<sup>-9</sup>)</span>} />
+                    </div>
+                    <div className='col-7  p-0 my-1'>
+                        <Input classRightContent={css.unitConverter__rightInput} rightContent={<span>Szabo (10<sup>-6</sup>)</span>} />
+                    </div>
+                    <div className='col-7 p-0 my-1'>
+                        <Input classRightContent={css.unitConverter__rightInput} rightContent={<span>Finney (10<sup>-3</sup>)</span>} />
+                    </div>
+                    <div className='col-7  p-0 my-1'>
+                        <Input classRightContent={css.unitConverter__rightInput} rightContent={<span>BNB (10<sup>1</sup>)</span>} />
+                    </div>
+                    <div className='col-7  p-0 my-1'>
+                        <Input classRightContent={css.unitConverter__rightInput} rightContent={<span>KBNB (10<sup>3</sup>)</span>} />
+                    </div>
+                    <div className='col-7  p-0 my-1'>
+                        <Input classRightContent={css.unitConverter__rightInput} rightContent={<span>MBNB (10<sup>6</sup>)</span>} />
+                    </div>
+                    <div className='col-7  p-0 my-1'>
+                        <Input classRightContent={css.unitConverter__rightInput} rightContent={<span>GBNB (10<sup>9</sup>)</span>} />
+                    </div>
+                    <div className='col-7  p-0 my-1'>
+                        <Input classRightContent={css.unitConverter__rightInput} rightContent={<span>TBNB (10<sup>12</sup>)</span>} />
+                    </div>
+                </div>
+
             </Card>
         </ToolPage>
     )

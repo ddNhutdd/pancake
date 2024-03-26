@@ -34,7 +34,7 @@ function CopyButton(props) {
         <CopyToClipboard
             text={content}
             onCopy={onCopyCLickHandle}>
-            <span className='inline-flex items-center ml-2'>
+            <span className='inline-flex items-center'>
                 <span
                     ref={copyElement} >
                     <Popover

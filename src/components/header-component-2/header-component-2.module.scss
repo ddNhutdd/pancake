@@ -9,6 +9,64 @@
         border-bottom: 1px solid $border-color-5;
         font-weight: 400;
         font-size: 18.75px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
 
+        @media screen and (max-width: 576px) {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .headerComponent2__listDropdown {
+            display: flex;
+            gap: 10px;
+
+            .headerComponent2__dropdownHeader {
+                display: flex;
+                align-items: center;
+                gap: 5px;
+            }
+
+            .headerComponent2__dropdownItem {
+                font-weight: 300;
+                font-size: 15px;
+                width: 350px;
+                white-space: wrap;
+
+                @media screen and (max-width: 576px) {
+                    width: 210px;
+                }
+
+                .headerComponent2__title {
+                    display: flex;
+                    align-items: center;
+                    gap: 5px;
+                    font-weight: 400;
+
+                    img {
+                        width: 25px;
+                        height: 25px;
+                    }
+                }
+
+                .headerComponent2__main {
+                    margin-top: 5px;
+                    margin-bottom: 5px;
+                    color: $background-15;
+
+                    .headerComponent2__main__pill {
+                        display: inline-block;
+                        margin-left: 5px;
+                    }
+                }
+
+                .headerComponent2__line {
+                    margin-top: 8px;
+                    margin-bottom: 8px;
+                    border-top: 1px solid $border-color-5;
+                }
+            }
+        }
     }
 }

@@ -10,8 +10,13 @@ import { GoShieldLock } from "react-icons/go";
 import Pill, { pillTypes } from "src/components/pill";
 import { LiaFileSignatureSolid } from "react-icons/lia";
 import { TbFilterCog } from "react-icons/tb";
+import { url } from "src/constants";
+import PropTypes from 'prop-types';
 
-export const MoreContent = () => {
+export const MoreContent = (props) => {
+    const { redirectPage } = props;
+
+
     return (
         <div className={css.moreContent}>
             <div className={css.moreContent__item}>
@@ -26,15 +31,15 @@ export const MoreContent = () => {
                 <div className={`${css.moreContent__record} ${css.header}`}>
                     Tools
                 </div>
-                <div data-header={`header`} className={css.moreContent__record}>
+                <div onClick={redirectPage.bind(null, url.unitConverter)} data-header={`header`} className={css.moreContent__record}>
                     <AiOutlineSync />
                     Unit Converter
                 </div>
-                <div data-header={`header`} className={css.moreContent__record}>
+                <div onClick={redirectPage.bind(null, url.csvExport)} data-header={`header`} className={css.moreContent__record}>
                     <BsDownload />
                     CSV Export
                 </div>
-                <div data-header={`header`} className={css.moreContent__record}>
+                <div onClick={redirectPage.bind(null, url.accountBalanceChecker)} data-header={`header`} className={css.moreContent__record}>
                     <BiMoneyWithdraw />
                     Account Balance Checker
                 </div>
@@ -90,3 +95,8 @@ export const MoreContent = () => {
         </div>
     )
 }
+
+
+MoreContent.propTypes = {
+    redirectPage: PropTypes.func
+};

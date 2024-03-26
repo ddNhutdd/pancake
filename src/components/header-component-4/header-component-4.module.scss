@@ -5,7 +5,11 @@
 
     .headerComponent4__title {
         font-size: 17px;
-        font-family: 400;
+        font-weight: 400;
         margin-bottom: 8px;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
     }
 }

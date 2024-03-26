@@ -31,6 +31,8 @@ const NftTrades = lazy(() => import("../pages/nft-trades"))
 const Charts = lazy(() => import("../pages/charts"))
 const TopStatics = lazy(() => import("../pages/top-statics"))
 const UnitConverter = lazy(() => import("../pages/unit-converter"))
+const CsvExport = lazy(() => import("../pages/csv-export"))
+const AccountBalanceChecker = lazy(() => import("../pages/account-balance-checker"))
 
 export const router = createBrowserRouter([
   {
@@ -249,11 +251,28 @@ export const router = createBrowserRouter([
             <TopStatics />
           </Suspense>
         )
-      }, {
+      },
+      {
         path: url.unitConverter,
         element: (
           <Suspense>
             <UnitConverter />
+          </Suspense>
+        )
+      },
+      {
+        path: url.csvExport,
+        element: (
+          <Suspense>
+            <CsvExport />
+          </Suspense>
+        )
+      },
+      {
+        path: url.accountBalanceChecker,
+        element: (
+          <Suspense>
+            <AccountBalanceChecker />
           </Suspense>
         )
       }

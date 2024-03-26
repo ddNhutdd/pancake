@@ -1,0 +1,39 @@
+@import "components/global-style/base.scss";
+
+.dateInput {
+    position: relative;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    .dateInput__left {
+        border: 1px solid $border-color-5;
+        padding: 5px 10px;
+        border-top-left-radius: $border-radius;
+        border-bottom-left-radius: $border-radius;
+        flex: 0 0 auto;
+    }
+
+    input {
+        border-top: 1px solid $border-color-5;
+        border-right: 1px solid $border-color-5;
+        border-bottom: 1px solid $border-color-5;
+        padding: 9px 10px;
+        border-top-right-radius: $border-radius;
+        border-bottom-right-radius: $border-radius;
+        outline: none;
+        border-left: none;
+        flex: 1 1 auto;
+        min-width: 0;
+    }
+
+    .dateInput__celendar {
+        position: absolute;
+        top: 35px;
+        left: 0px;
+        background-color: $background-1;
+        border: 1px solid $border-color-5;
+        z-index: 10;
+        border-radius: $border-radius;
+    }
+}

@@ -1,0 +1,30 @@
+@import 'components/global-style/base.scss';
+
+.inputNumber {
+    display: flex;
+    align-items: center;
+
+    .inputNumber__left {
+        padding: 5px 10px;
+        border: 1px solid $border-color-5;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-top-left-radius: $border-radius;
+        border-bottom-left-radius: $border-radius;
+        height: 35px;
+
+    }
+
+    input {
+        padding: 5px 10px;
+        outline: none;
+        border: 1px solid $border-color-5;
+        border-left: none;
+        border-top-right-radius: $border-radius;
+        border-bottom-right-radius: $border-radius;
+        height: 35px;
+        flex: 1 1 auto;
+        min-width: 0;
+    }
+}
