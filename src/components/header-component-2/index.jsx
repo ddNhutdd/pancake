@@ -209,7 +209,6 @@ function HeaderComponent2(props) {
     }, [])
 
     useEffect(() => {
-        console.log('1', result, typeof result);
         if (result === 'width_576') {
             setAlignDropdown(dropdown2Align.left)
 
