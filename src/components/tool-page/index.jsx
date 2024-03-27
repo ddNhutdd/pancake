@@ -32,7 +32,8 @@ function ToolPage(props) {
         },
         {
             id: 4,
-            header: `Token Supply Checker`
+            header: `Token Supply Checker`,
+            url: url.tokenSupplyChecker
         },
         {
             id: 5,
@@ -40,7 +41,8 @@ function ToolPage(props) {
         },
         {
             id: 6,
-            header: `Similar Contract Search`
+            header: `Similar Contract Search`,
+            url: url.similarContractsSearch
         },
         {
             id: 7,

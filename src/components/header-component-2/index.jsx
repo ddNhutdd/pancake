@@ -8,6 +8,8 @@ import metamark from 'imgs/metamask.svg'
 import { hasKey } from 'src/utils';
 import Pill, { pillTypes } from '../pill';
 import useMediaQuery from 'src/hooks/useMedia';
+import { useSelector } from 'react-redux';
+import { getShowMenu } from 'src/redux/slices/headerComponent2';
 
 function HeaderComponent2(props) {
     const { mainContent } = props;
@@ -197,23 +199,86 @@ function HeaderComponent2(props) {
 
     const [showDropdown, setShowDropdown] = useState({})
     const [alignDropdown, setAlignDropdown] = useState(dropdown2Align.right);
-    const result = useMediaQuery()
+    const [modifyAlignMidDropdown, setModifyAlignMidDropdown] = useState(false);
+    const result = useMediaQuery();
+    const showRightMenu = useSelector(getShowMenu);
 
-
-    const dropdownBuyChangeHandle = (item) => { }
+    const dropdownBuyChangeHandle = () => { }
     const closeAllDropdown = () => setShowDropdown({})
+    const modifyMidDropdown = () => modifyAlignMidDropdown ? { left: '-78px' } : {}
+    const renderRightMenu = () => {
+        if (showRightMenu) {
+            return <div
+                className={css.headerComponent2__listDropdown}>
+                <div onClick={showMenu.bind(null, listDropdown.buy)}>
+                    <Dropdown2
+                        allowItemHover={false}
+                        align={alignDropdown}
+                        trigger={dropdown2TriggerType.runtime}
+                        list={buyList}
+                        header={<Button2
+                            classname={css.headerComponent2__dropdownHeader}
+                            type={button2Type.primarySmall}>
+                            Buy
+                            <FaAngleDown />
+                        </Button2>}
+                        show={showDropdown[listDropdown.buy]}
+                        onChange={dropdownBuyChangeHandle}
+                    />
+                </div>
+
+                <div onClick={showMenu.bind(null, listDropdown.play)}>
+                    <Dropdown2
+                        allowItemHover={false}
+                        align={alignDropdown}
+                        trigger={dropdown2TriggerType.runtime}
+                        list={playList}
+                        header={<Button2
+                            classname={css.headerComponent2__dropdownHeader}
+                            type={button2Type.primarySmall}>
+                            Play
+                            <FaAngleDown />
+                        </Button2>}
+                        show={showDropdown[listDropdown.play]}
+                        onChange={dropdownBuyChangeHandle}
+                        styleMenuContainer={modifyMidDropdown()}
+                    />
+                </div>
+
+                <div onClick={showMenu.bind(null, listDropdown.gaming)}>
+                    <Dropdown2
+                        allowItemHover={false}
+                        align={dropdown2Align.right}
+                        trigger={dropdown2TriggerType.runtime}
+                        list={gamingList}
+                        header={<Button2
+                            classname={css.headerComponent2__dropdownHeader}
+                            type={button2Type.primarySmall}>
+                            Gaming
+                            <FaAngleDown />
+                        </Button2>}
+                        show={showDropdown[listDropdown.gaming]}
+                        onChange={dropdownBuyChangeHandle}
+                    />
+                </div>
+            </div>
+        } else {
+            return;
+        }
+    }
 
     useEffect(() => {
         document.addEventListener('click', closeAllDropdown);
         return () => document.removeEventListener('click', closeAllDropdown);
     }, [])
-
     useEffect(() => {
         if (result === 'width_576') {
-            setAlignDropdown(dropdown2Align.left)
+            setAlignDropdown(dropdown2Align.left);
+            setModifyAlignMidDropdown(true);
 
         } else {
-            setAlignDropdown(dropdown2Align.right)
+            setAlignDropdown(dropdown2Align.right);
+            setModifyAlignMidDropdown(false);
         }
     }, [result])
 
@@ -221,62 +286,7 @@ function HeaderComponent2(props) {
         <div className={css.headerComponent2}>
             <div className={css.headerComponent2__mainContent}>
                 {mainContent}
-                {
-                    <div
-
-                        className={css.headerComponent2__listDropdown}>
-                        <div onClick={showMenu.bind(null, listDropdown.buy)}>
-                            <Dropdown2
-                                allowItemHover={false}
-                                align={alignDropdown}
-                                trigger={dropdown2TriggerType.runtime}
-                                list={buyList}
-                                header={<Button2
-                                    classname={css.headerComponent2__dropdownHeader}
-                                    type={button2Type.primarySmall}>
-                                    Buy
-                                    <FaAngleDown />
-                                </Button2>}
-                                show={showDropdown[listDropdown.buy]}
-                                onChange={dropdownBuyChangeHandle}
-                            />
-                        </div>
-
-                        <div onClick={showMenu.bind(null, listDropdown.play)}>
-                            <Dropdown2
-                                allowItemHover={false}
-                                align={alignDropdown}
-                                trigger={dropdown2TriggerType.runtime}
-                                list={playList}
-                                header={<Button2
-                                    classname={css.headerComponent2__dropdownHeader}
-                                    type={button2Type.primarySmall}>
-                                    Play
-                                    <FaAngleDown />
-                                </Button2>}
-                                show={showDropdown[listDropdown.play]}
-                                onChange={dropdownBuyChangeHandle}
-                            />
-                        </div>
-
-                        <div onClick={showMenu.bind(null, listDropdown.gaming)}>
-                            <Dropdown2
-                                allowItemHover={false}
-                                align={dropdown2Align.right}
-                                trigger={dropdown2TriggerType.runtime}
-                                list={gamingList}
-                                header={<Button2
-                                    classname={css.headerComponent2__dropdownHeader}
-                                    type={button2Type.primarySmall}>
-                                    Gaming
-                                    <FaAngleDown />
-                                </Button2>}
-                                show={showDropdown[listDropdown.gaming]}
-                                onChange={dropdownBuyChangeHandle}
-                            />
-                        </div>
-                    </div>
-                }
+                {renderRightMenu()}
             </div>
         </div>
     )

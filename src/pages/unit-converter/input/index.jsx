@@ -29,7 +29,10 @@ Input.propTypes = {
     rightContent: PropTypes.node,
     inputValue: PropTypes.string,
     setInputValue: PropTypes.func,
-    classRightContent: PropTypes.object
+    classRightContent: PropTypes.oneOfType([
+        PropTypes.string,
+        PropTypes.number,
+    ]),
 };
 
 export default Input

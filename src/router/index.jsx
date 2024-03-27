@@ -33,6 +33,8 @@ const TopStatics = lazy(() => import("../pages/top-statics"))
 const UnitConverter = lazy(() => import("../pages/unit-converter"))
 const CsvExport = lazy(() => import("../pages/csv-export"))
 const AccountBalanceChecker = lazy(() => import("../pages/account-balance-checker"))
+const TokenSupplyChecker = lazy(() => import("../pages/token-supply-checker"))
+const SimilarContractsSearch = lazy(() => import("../pages/similar-contract-search"))
 
 export const router = createBrowserRouter([
   {
@@ -273,6 +275,22 @@ export const router = createBrowserRouter([
         element: (
           <Suspense>
             <AccountBalanceChecker />
+          </Suspense>
+        )
+      },
+      {
+        path: url.tokenSupplyChecker,
+        element: (
+          <Suspense>
+            <TokenSupplyChecker />
+          </Suspense>
+        )
+      },
+      {
+        path: url.similarContractsSearch,
+        element: (
+          <Suspense>
+            <SimilarContractsSearch />
           </Suspense>
         )
       }

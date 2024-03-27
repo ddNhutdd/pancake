@@ -44,6 +44,12 @@
                     background-color: $border-color-5;
                 }
             }
+
+            .dropdown2__item__line {
+                margin-top: 8px;
+                margin-bottom: 8px;
+                border-top: 1px solid $border-color-5;
+            }
         }
     }
 }

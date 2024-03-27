@@ -10,6 +10,8 @@ import { FaAngleDown } from "react-icons/fa6";
 import Input3 from 'src/components/input-3';
 import RadioButton from 'src/components/radio-button';
 import { DateInput2 } from 'src/components/date-input-2';
+import { useDispatch } from 'react-redux';
+import { setShowMenu } from 'src/redux/slices/headerComponent2';
 
 function AccountBalanceChecker() {
     const optionList = [
@@ -26,6 +28,7 @@ function AccountBalanceChecker() {
     const [showDropdown, setShowDropdown] = useState(false);
     const [dropdownOptionSelected, setDropdownOptionSelected] = useState(optionList[0]);
     const dropdownOptionChangeHandle = (selectedItem) => setDropdownOptionSelected(selectedItem);
+    const dispatch = useDispatch();
 
     const closeDropdownOption = () => setShowDropdown(false);
     const dropdownOptionToggle = (ev) => {
@@ -35,8 +38,12 @@ function AccountBalanceChecker() {
 
     useEffect(() => {
         document.addEventListener('click', closeDropdownOption);
+        dispatch(setShowMenu(true))
 
-        return () => document.removeEventListener('click', closeDropdownOption)
+        return () => {
+            document.removeEventListener('click', closeDropdownOption);
+            dispatch(setShowMenu(false))
+        }
     }, [])
 
     return (

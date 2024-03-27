@@ -21,7 +21,8 @@ export const Dropdown2 = (props) => {
         onChange,
         show,
         align,
-        allowItemHover
+        allowItemHover,
+        styleMenuContainer
     } = props
 
     const renderListItem = () => {
@@ -31,11 +32,14 @@ export const Dropdown2 = (props) => {
             onChange(item, ev)
         }
         return list.map(item => (
-            <div
-                onClick={onClickItemHandle.bind(null, item)}
-                key={item.id}
-                className={`${css.dropdown2__item} ${renderClassAllowHover()}`}>
-                {item.content}
+            <div key={item.id}>
+                <div
+                    onClick={onClickItemHandle.bind(null, item)}
+                    className={`${css.dropdown2__item} ${renderClassAllowHover()}`}>
+                    {item.content}
+                </div>
+                {renderLine(item.lineBot)}
+
             </div>
         ))
     };
@@ -74,12 +78,17 @@ export const Dropdown2 = (props) => {
     const renderClassAllowHover = () => allowItemHover ? css.allowHover : ''
     const renderStyleMenuContainer = () => {
         if (trigger === dropdown2TriggerType.runtime) return {
-            marginTop: padding + 2, [align]: 0
+            marginTop: padding + 2,
+            [align]: 0,
+            ...styleMenuContainer
         }
         else return {
-            paddingTop: padding + 2, [align]: 0
+            paddingTop: padding + 2,
+            [align]: 0,
+            ...styleMenuContainer
         }
     }
+    const renderLine = (lineBot) => lineBot === true ? <div className={css.dropdown2__item__line}></div> : <></>
 
     const [showDropdown, setShowDropdown] = useState(show);
     const [padding, setPadding] = useState(0);
@@ -122,7 +131,8 @@ Dropdown2.propTypes = {
     onChange: PropTypes.func,
     show: PropTypes.bool,
     align: PropTypes.oneOf(Object.values(dropdown2Align)),
-    allowItemHover: PropTypes.bool
+    allowItemHover: PropTypes.bool,
+    styleMenuContainer: PropTypes.object
 }
 
 Dropdown2.defaultProps = {

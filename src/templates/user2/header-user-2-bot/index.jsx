@@ -270,10 +270,13 @@ function HeaderUser2Bot() {
         const currentContainer = subItem?.closest("[data-header-parent='parent-header']")?.querySelector("[data-menu='menuContainer']");
         if (!currentContainer) return;
         currentContainer.style.display = 'none';
+
+        setShowMenuList(false)
+
         const idTimeout = setTimeout(() => {
             currentContainer.style.display = '';
             clearTimeout(idTimeout)
-        }, 100);
+        }, 0);
     }
 
     useEffect(() => {

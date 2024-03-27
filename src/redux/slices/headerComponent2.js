@@ -9,7 +9,7 @@ const headerComponentSlice = createSlice({
 	initialState,
 	reducers: {
 		setShowMenu(state, action) {
-			state.paddingTop = action.payload;
+			state.showMenu = action.payload;
 		}
 	},
 });

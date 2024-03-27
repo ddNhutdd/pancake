@@ -29,7 +29,9 @@ export const url = {
   topStatics: '/top-statics',
   unitConverter: '/unit-converter',
   csvExport: '/csv-export',
-  accountBalanceChecker: '/account-balance-checker'
+  accountBalanceChecker: '/account-balance-checker',
+  tokenSupplyChecker: '/token-supply-checker',
+  similarContractsSearch: '/similar-contracts-search'
 };
 
 export const localStorageVariable = {
