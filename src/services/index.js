@@ -1,8 +1,6 @@
 import axios from "axios";
-import { ACCESS_TOKEN } from "src/constants";
-import { getLocalStorage } from "src/utils";
 
-const BASE_URL = '';
+const BASE_URL = 'https://admin-chat.dk-technical.vn/';
 const timeout = 180_000;
 
 export const axiosWithoutAuth = axios.create({
@@ -16,7 +14,7 @@ export const axiosWithAuth = axios.create({
 })
 
 axiosWithAuth.interceptors.request.use((config) => {
-    config.headers["Authorization"] = `Bearer ${getLocalStorage(ACCESS_TOKEN)}`;
+    config.headers["Authorization"] = `Bearer ${`fda`}`;
     return config;
 }, (e) => {
     return Promise.reject(e);

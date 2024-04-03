@@ -46,3 +46,16 @@
     margin-top: 16px;
     margin-bottom: 16px;
 }
+
+.home2__link {
+    color: $blue;
+    text-decoration: none;
+}
+
+.home2--threeDot {
+    display: block;
+    max-width: 100px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

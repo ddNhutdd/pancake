@@ -7,34 +7,36 @@ import { url } from "src/constants";
 const Home = lazy(() => import("../pages/home"));
 const Swap = lazy(() => import("../pages/swap"));
 const Staking = lazy(() => import("../pages/staking"));
-const CakeStaking = lazy(() => import("../pages/cake-staking"))
-const Profile = lazy(() => import("../pages/profile"))
-const Home2 = lazy(() => import("../pages/home-2"))
-const Transactions = lazy(() => import("../pages/transactions"))
-const TransactionsPending = lazy(() => import("../pages/transaction-pending"))
-const Login = lazy(() => import("../pages/login"))
-const Register = lazy(() => import("../pages/register"))
-const ContractInternalTransactions = lazy(() => import("../pages/contract-internal-transactions"))
-const ViewBlocks = lazy(() => import("../pages/view-blocks"))
-const PasswordRecovery = lazy(() => import("../pages/password-recovery"))
-const ForkedBlocks = lazy(() => import("../pages/forked-blocks"))
-const TopAccount = lazy(() => import("../pages/top-account"))
-const VerifiedContracts = lazy(() => import("../pages/verified-contracts"))
-const ValidatorsLeaderboard = lazy(() => import("../pages/validators-leaderboard"))
-const SetInfo = lazy(() => import("../pages/set-info"))
-const TopToken = lazy(() => import("../pages/top-token"))
-const Settings = lazy(() => import("../pages/settings"))
-const TokenTransfer = lazy(() => import("../pages/token-transfer"))
-const NftTop = lazy(() => import("../pages/nft-top"))
-const TopMints = lazy(() => import("../pages/top-mints"))
-const NftTrades = lazy(() => import("../pages/nft-trades"))
-const Charts = lazy(() => import("../pages/charts"))
-const TopStatics = lazy(() => import("../pages/top-statics"))
-const UnitConverter = lazy(() => import("../pages/unit-converter"))
-const CsvExport = lazy(() => import("../pages/csv-export"))
-const AccountBalanceChecker = lazy(() => import("../pages/account-balance-checker"))
-const TokenSupplyChecker = lazy(() => import("../pages/token-supply-checker"))
-const SimilarContractsSearch = lazy(() => import("../pages/similar-contract-search"))
+const CakeStaking = lazy(() => import("../pages/cake-staking"));
+const Profile = lazy(() => import("../pages/profile"));
+const Home2 = lazy(() => import("../pages/home-2"));
+const Transactions = lazy(() => import("../pages/transactions"));
+const TransactionsPending = lazy(() => import("../pages/transaction-pending"));
+const Login = lazy(() => import("../pages/login"));
+const Register = lazy(() => import("../pages/register"));
+const ContractInternalTransactions = lazy(() => import("../pages/contract-internal-transactions"));
+const ViewBlocks = lazy(() => import("../pages/view-blocks"));
+const PasswordRecovery = lazy(() => import("../pages/password-recovery"));
+const ForkedBlocks = lazy(() => import("../pages/forked-blocks"));
+const TopAccount = lazy(() => import("../pages/top-account"));
+const VerifiedContracts = lazy(() => import("../pages/verified-contracts"));
+const ValidatorsLeaderboard = lazy(() => import("../pages/validators-leaderboard"));
+const SetInfo = lazy(() => import("../pages/set-info"));
+const TopToken = lazy(() => import("../pages/top-token"));
+const Settings = lazy(() => import("../pages/settings"));
+const TokenTransfer = lazy(() => import("../pages/token-transfer"));
+const NftTop = lazy(() => import("../pages/nft-top"));
+const TopMints = lazy(() => import("../pages/top-mints"));
+const NftTrades = lazy(() => import("../pages/nft-trades"));
+const Charts = lazy(() => import("../pages/charts"));
+const TopStatics = lazy(() => import("../pages/top-statics"));
+const UnitConverter = lazy(() => import("../pages/unit-converter"));
+const CsvExport = lazy(() => import("../pages/csv-export"));
+const AccountBalanceChecker = lazy(() => import("../pages/account-balance-checker"));
+const TokenSupplyChecker = lazy(() => import("../pages/token-supply-checker"));
+const SimilarContractsSearch = lazy(() => import("../pages/similar-contract-search"));
+const Block = lazy(() => import("../pages/block-detail"));
+const TransactionDetail = lazy(() => import("../pages/transaction-detail"))
 
 export const router = createBrowserRouter([
   {
@@ -291,6 +293,22 @@ export const router = createBrowserRouter([
         element: (
           <Suspense>
             <SimilarContractsSearch />
+          </Suspense>
+        )
+      },
+      {
+        path: url.blockDetail,
+        element: (
+          <Suspense>
+            <Block />
+          </Suspense>
+        )
+      },
+      {
+        path: url.transactionDetail,
+        element: (
+          <Suspense>
+            <TransactionDetail />
           </Suspense>
         )
       }

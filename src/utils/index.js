@@ -1,3 +1,5 @@
+import { location } from "src/constants";
+
 export const setLocalStorage = (key, data) => {
   try {
     localStorage.setItem(key, JSON.stringify(data));
@@ -129,3 +131,12 @@ export const  hasKey = (obj, key) => {
   const keys = Object.keys(obj);
   return keys.includes(key);
 }
+
+export const formatNumber = (value, locales = location.en, digits) =>
+{
+  if(digits) {
+    return new Intl.NumberFormat(locales, { maximumSignificantDigits: digits }).format(value)
+  } else {
+    return new Intl.NumberFormat(locales).format(value)
+  }
+} 
