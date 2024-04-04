@@ -1,0 +1,9 @@
+@import 'src/components/global-style/base.scss';
+
+.textArea {
+	border: 1px solid $border-color;
+	border-radius: 6px;
+	outline: none;
+	padding: 16px;
+	width: 100%;
+}

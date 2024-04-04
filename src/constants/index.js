@@ -38,7 +38,7 @@ export const url = {
 	tokenSupplyChecker: '/token-supply-checker',
 	similarContractsSearch: '/similar-contracts-search',
 	blockDetail: '/block-detail/' + urlParams.blockNumber,
-	transactionDetail: '/transaction-detail/' + urlParams.transactionnumber
+	transactionDetail: '/transaction-detail/' + urlParams.transactionNumber
 };
 
 export const localStorageVariable = {

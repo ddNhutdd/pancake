@@ -1,0 +1,23 @@
+@import 'src/components/global-style/base.scss';
+
+.pillSquare {
+	padding: 6px 8px;
+	border-radius: 6px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: 1px solid;
+	font-size: 11px;
+
+	&.normal {
+		background-color: $background-21;
+		border-color: $border-color-7;
+		color: $text-color-dark;
+	}
+
+	&.green {
+		background-color: $background-22;
+		border-color: $border-color-8;
+		color: $text-color-14;
+	}
+}

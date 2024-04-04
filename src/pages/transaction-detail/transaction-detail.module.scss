@@ -1,0 +1,49 @@
+@import 'src/components/global-style/base.scss';
+
+.buttonDropdown {
+	display: flex;
+	align-items: center;
+	padding-top: 8px;
+	padding-bottom: 8px;
+	background: $background-1!important;
+}
+
+.check {
+	color: $text-color-14;
+	display: flex;
+	align-items: center;
+}
+
+.pillSquare__custom {
+	svg {
+		font-size: 15px;
+		margin-right: 3px;
+	}
+}
+
+.imageContainer {
+	width: 20px;
+}
+
+.card__custom {
+	height: 100px;
+	overflow: auto;
+	padding: 16px;
+	width: 100%!important;
+
+}
+
+.pillSquareButton {
+	width: fit-content !important;
+	border: none !important;
+	background-color: $border-color-5 !important;
+	font-size: 15px !important;
+	display: flex;
+	align-items: center;
+	gap: 5px;
+	cursor: pointer;
+
+	&:hover {
+		background-color: $border-color-6!important;
+	}
+}

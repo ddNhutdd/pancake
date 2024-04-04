@@ -101,12 +101,12 @@ function Home2() {
      */
     const fetchBlock = async (ca) => {
         try {
+            setBlockList([]);
             if(!checkBeforeCallApi(ca)) return;
             const resp  = await getBlock();
-            const data = resp.data.data;
+            const data = JSON.parse(resp.data.data);
             const result = [];
-            for (const [index, item] of data.entries()) {
-                const itemData = JSON.parse(item)
+            for (const [index, itemData] of data.entries()) {
                 if(index < 6) {
                     result.push({
                         id: index,
@@ -137,7 +137,7 @@ function Home2() {
                             </Popover>
                             {' '}
                             <span className={css['blockRecord--gray']}>
-                                in {caclAbsTimestamp(itemData.timestamp, JSON.parse(data[index + 1]).timestamp)} secs
+                                in {caclAbsTimestamp(itemData.timestamp, (data[index + 1]).timestamp)} secs
                             </span>
                         </div>,
                         actions: <Button2 type={button2Type.outlineSmall}>0.5267 BNB</Button2>
@@ -153,18 +153,18 @@ function Home2() {
     }
     const fetchLatestTransactions = async (ca) => {
         try {
+            setTransactionList([]);
             if(!checkBeforeCallApi(ca)) return;
             const resp  = await getLatestTransactions();
             const data = JSON.parse(resp.data.data);
             const result = [];
             for (const [index, itemData] of data.entries()) {
-                console.log(itemData);
                 if(index < 6) {
                     result.push({
                         id: index,
                         image: listImage.imageDoc,
                         code:   <NavLink 
-                                    to={url.blockDetail.replace(urlParams.blockNumber, itemData.number)} 
+                                    to={url.transactionDetail.replace(urlParams.transactionNumber, itemData.blockNumber)} 
                                     className={css.home2__link}
                                 >
                                     {itemData.blockNumber}

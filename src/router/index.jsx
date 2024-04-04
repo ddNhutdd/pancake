@@ -35,9 +35,8 @@ const CsvExport = lazy(() => import("../pages/csv-export"));
 const AccountBalanceChecker = lazy(() => import("../pages/account-balance-checker"));
 const TokenSupplyChecker = lazy(() => import("../pages/token-supply-checker"));
 const SimilarContractsSearch = lazy(() => import("../pages/similar-contract-search"));
-const Block = lazy(() => import("../pages/block-detail"));
+const BlockDetail = lazy(() => import("../pages/block-detail"));
 const TransactionDetail = lazy(() => import("../pages/transaction-detail"))
-
 export const router = createBrowserRouter([
   {
     element: <UserTemplate />,
@@ -299,17 +298,17 @@ export const router = createBrowserRouter([
       {
         path: url.blockDetail,
         element: (
-          <Suspense>
-            <Block />
-          </Suspense>
+          	<Suspense>
+            	<BlockDetail />
+          	</Suspense>
         )
       },
       {
         path: url.transactionDetail,
         element: (
-          <Suspense>
-            <TransactionDetail />
-          </Suspense>
+          	<Suspense>
+            	<TransactionDetail />
+          	</Suspense>
         )
       }
     ]

@@ -49,6 +49,8 @@ $background-17: #f8f9fa;
 $background-18: #dc3545;
 $background-19: #131313;
 $background-20: #00a1861a;
+$background-21: #adb5bd1a;
+$background-22: #00a1861a;
 
 $border-color: #e7e3eb;
 $border-color-2: #fefdfe;
@@ -56,6 +58,8 @@ $border-color-3: #383241;
 $border-color-4: #262130;
 $border-color-5: #e9ecef;
 $border-color-6: #dee2e6;
+$border-color-7: #adb5bd40;
+$border-color-8: #00a18640;
 
 $border-radius: 8px;
 
@@ -162,6 +166,20 @@ $box-shadow: rgba(0, 0, 0, 0.15) 0px 8px 16px 0px;
     background-color: rgba(255, 193, 7, 0.15) !important;
     border-color: rgb(255, 193, 7) !important;
   }
+}
+
+.--link {
+  color: $blue;
+  text-decoration: none;
+
+  &:hover {
+    color: $blue-2;
+    text-decoration: underline;
+  }
+}
+
+.--bold {
+  font-weight: 500;
 }
 
 //----------------------------------------------------------------

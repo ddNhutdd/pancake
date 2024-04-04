@@ -1,6 +1,6 @@
 import HeaderComponent2 from 'src/components/header-component-2';
 import css from './top-statics.module.scss';
-import ListTabs from './list-tabs';
+import ListTabs from '../../components/list-tabs';
 import Card from 'src/components/card';
 import TopStaticsItem from './top-statics-item';
 import { useState } from 'react';

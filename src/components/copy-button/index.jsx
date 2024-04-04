@@ -7,7 +7,10 @@ import { useRef } from 'react';
 import css from './copy-button.module.scss';
 
 function CopyButton(props) {
-    const { content } = props;
+    const { 
+        content,
+        popupContent
+    } = props;
 
     const copyElement = useRef(null);
     const tickElement = useRef(null);
@@ -40,7 +43,7 @@ function CopyButton(props) {
                     <Popover
                         className={`${css.customPopover} flex items-center`}
                         placement={popoverPlacementType.top}
-                        content={`Copy`}>
+                        content={popupContent || `Copy`}>
                         <FaRegCopy />
                     </Popover>
                 </span>
@@ -58,7 +61,8 @@ function CopyButton(props) {
 }
 
 CopyButton.propTypes = {
-    content: PropTypes.string
+    content: PropTypes.string,
+    popupContent: PropTypes.string
 }
 
 export default CopyButton
