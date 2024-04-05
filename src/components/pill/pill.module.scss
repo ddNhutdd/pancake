@@ -7,6 +7,10 @@
     border-radius: 800px;
     cursor: pointer;
     width: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
 
     &.blue {
         background-color: $background-15;
@@ -16,5 +20,11 @@
         background-color: $background-1;
         color: $text-color-dark;
         border: 1px solid $border-color-5;
+    }
+
+    &.gray {
+        background-color: #adb5bd26;
+        border: 1px solid rgba(0, 0, 0, 0.15);
+        color: $text-color-dark
     }
 }

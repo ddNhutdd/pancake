@@ -2,7 +2,8 @@ import { defaultConfig } from '@web3modal/ethers/react';
 
 export const urlParams = {
 	blockNumber: ':blocknumber',
-	transactionNumber: ':transactionnumber'
+	transactionNumber: ':transactionnumber',
+	addressNumber: ':addressnumber'
 }
 
 export const url = {
@@ -38,7 +39,8 @@ export const url = {
 	tokenSupplyChecker: '/token-supply-checker',
 	similarContractsSearch: '/similar-contracts-search',
 	blockDetail: '/block-detail/' + urlParams.blockNumber,
-	transactionDetail: '/transaction-detail/' + urlParams.transactionNumber
+	transactionDetail: '/transaction-detail/' + urlParams.transactionNumber,
+	addressDetail: '/address-detail/' + urlParams.addressNumber
 };
 
 export const localStorageVariable = {

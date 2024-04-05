@@ -1,0 +1,10 @@
+@import 'src/components/global-style/base.scss';
+
+.qRButton {
+	font-size: 18px;
+	display: flex;
+	align-items: center;
+	&:hover {
+		color: $blue-2;
+	}
+}

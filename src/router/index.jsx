@@ -36,7 +36,9 @@ const AccountBalanceChecker = lazy(() => import("../pages/account-balance-checke
 const TokenSupplyChecker = lazy(() => import("../pages/token-supply-checker"));
 const SimilarContractsSearch = lazy(() => import("../pages/similar-contract-search"));
 const BlockDetail = lazy(() => import("../pages/block-detail"));
-const TransactionDetail = lazy(() => import("../pages/transaction-detail"))
+const TransactionDetail = lazy(() => import("../pages/transaction-detail"));
+const AddressDetail = lazy(() => import("../pages/address-detail"));
+
 export const router = createBrowserRouter([
   {
     element: <UserTemplate />,
@@ -308,6 +310,15 @@ export const router = createBrowserRouter([
         element: (
           	<Suspense>
             	<TransactionDetail />
+          	</Suspense>
+        )
+      }
+	  ,
+      {
+        path: url.addressDetail,
+        element: (
+          	<Suspense>
+            	<AddressDetail />
           	</Suspense>
         )
       }

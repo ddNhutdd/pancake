@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 
 export const pillTypes = {
     blue: 'blue',
-    white: 'white'
+    white: 'white',
+    gray: 'gray'
 }
 
 function Pill(props) {
-
     const { children, type, className } = props;
 
     const renderType = () => {
@@ -16,6 +16,8 @@ function Pill(props) {
                 return css.blue;
             case pillTypes.white:
                 return css.white;
+            case pillTypes.gray:
+                return css.gray;
             default:
                 return css.blue;
         }
