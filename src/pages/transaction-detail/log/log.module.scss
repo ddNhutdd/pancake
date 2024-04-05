@@ -1,0 +1,14 @@
+@import 'src/components/global-style/base.scss';
+
+.log {
+	padding: 16px;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+
+	.log__line {
+		border-bottom: 1px solid $border-color;
+		margin-bottom: 16px;
+		margin-top: 16px;
+	}
+}

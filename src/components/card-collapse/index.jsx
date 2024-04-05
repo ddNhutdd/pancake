@@ -22,7 +22,7 @@ const CardCollapse = function (props) {
 		containerElement.current.style.overflow = 'hidden';
 	}  
 	const expandContent = () =>  {
-		containerElement.current.style.maxHeight = '500px';
+		containerElement.current.style.maxHeight = '800px';
 		containerElement.current.style.transition = 'max-height 0.4s ease-in-out';
 		const idTimeout = setTimeout(() => {
 			containerElement.current.style.overflow = 'visible';

@@ -13,22 +13,17 @@ import { Dropdown2, dropdown2Align, dropdown2TriggerType } from 'src/components/
 import { FaListCheck } from "react-icons/fa6";
 import { IoChevronDownOutline } from "react-icons/io5";
 import Overview from './overview';
+import Log from './log';
+import State from './state';
+import Loader2 from 'src/components/loader-2';
+import { getTransactionReceiptEventLogs } from 'src/services/explorer.services';
+import {useParams} from 'react-router-dom'
+import { apiStatus } from 'src/constants';
 
 const TransactionDetail = function () {
-	const listTab = [
-		{
-			id:1,
-			content: 'Overview'
-		},
-		{
-			id: 2,
-			content: 'Logs (4)'
-		},
-		{
-			id: 3,
-			content: 'State'
-		}
-	]
+	const {
+		transactionnumber
+	} = useParams();
 	const listDropdown = [
 		{
 			id: 1,
@@ -42,19 +37,100 @@ const TransactionDetail = function () {
 	]
 
 	const dispatch = useDispatch();
-	const [selectedTab, setSelectedTab] = useState(listTab[0]);
 	const [showDropdown, setShowDropdown] = useState(false);
-	
-
+	const [listTab, setListTab] = useState([
+		{
+			id:1,
+			content: 'Overview'
+		},
+		{
+			id: 2,
+			content: <div>
+				<Loader2 />
+			</div>
+		},
+		{
+			id: 3,
+			content: 'State'
+		}
+	]);
+	const [selectedTab, setSelectedTab] = useState(listTab[0]);
+	const [fetchListLogsStatus, setFetchListLogsStatus] = useState(apiStatus.pending);
+	const [listLogs, setListLogs] = useState([]);
+	const [error, setError] = useState();
 	
 	const toggleDropdown = () =>  setShowDropdown(state => !state);
 	const dropdownChange = () => {
 		setShowDropdown(false)
 	}
-	
+	const renderContent = () => {
+		switch (selectedTab.content) {
+			case listTab[0].content:
+				return <Overview />
+			case listTab[1].content:
+				return <Log 
+					list={listLogs}
+					status={fetchListLogsStatus} 
+					error={error} 
+				 />
+			case listTab[2].content:
+				return <State />
+			default:
+				break;
+		}
+	}
+	const fetchLog = async () => {
+		try {
+			if(fetchListLogsStatus === apiStatus.fetching) return;
+			setFetchListLogsStatus(apiStatus.fetching);
+			const resp = await getTransactionReceiptEventLogs(transactionnumber);
+			const data = JSON.parse(resp?.data?.data);
+			setListLogs(data);
+			const length = data.length || 0;
+			setListTab([
+				{
+					id:1,
+					content: 'Overview'
+				},
+				{
+					id: 2,
+					content: <div>
+						Logs ({length})
+					</div>
+				},
+				{
+					id: 3,
+					content: 'State'
+				}
+			]);
+			setFetchListLogsStatus(apiStatus.fullfiled);
+		} catch (error) {
+			console.log(error);
+			const err = error?.response?.data?.message;
+			setError(err);
+			setListTab([
+				{
+					id:1,
+					content: 'Overview'
+				},
+				{
+					id: 2,
+					content: <div>
+						Logs (0)
+					</div>
+				},
+				{
+					id: 3,
+					content: 'State'
+				}
+			]);
+			setFetchListLogsStatus(apiStatus.rejected);
+		}
+	}
 
 	useEffect(() => {
 		dispatch(setShowMenu(true))
+		fetchLog()
 	}, [])
 
 	return(<div className={css.block}>
@@ -111,7 +187,7 @@ const TransactionDetail = function () {
 					/>
 				</div>
 			</div>
-			<Overview />
+			{renderContent()}
 			<div>
 				A transaction is a cryptographically signed instruction that changes the blockchain state. Block explorers track the details of all transactions in the network. Learn more about transactions in our Knowledge Base.
 			</div>

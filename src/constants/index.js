@@ -116,3 +116,9 @@ export const location = {
 	vi: 'vi-VN'
 }
 
+//transaction status 
+export const transactionStatus = {
+	success: "Success",
+	unKnow: 'Unknow'
+}
+

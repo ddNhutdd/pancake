@@ -14,11 +14,12 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Loader from 'src/components/loader';
 import { apiStatus } from 'src/constants';
-import { getBlockDetail } from 'src/services/explorer.services';
+import { getBlockDetail, getBlockReward } from 'src/services/explorer.services';
 import { formatNumber } from 'src/utils';
 import { FaAngleLeft } from "react-icons/fa6";
 import { FaAngleRight } from "react-icons/fa6";
 import CardCollapse from 'src/components/card-collapse';
+import Loader2 from 'src/components/loader-2';
 
 const Block = function () {
 	const { blocknumber } = useParams();
@@ -27,6 +28,8 @@ const Block = function () {
 	const [mainData, setMainData] = useState();
 	const [error, setError] = useState();
 	const [showInfo, setShowInfo] = useState(false);
+	const [rewardContent, setRewardContent] = useState();
+	const [fetchRewardStatus, setFetchRewardStatus] = useState(apiStatus.pending);
 
 	const renderClassShowFetching = () => fetchMainDataStatus === apiStatus.fetching ? '' : 'd-0';
 	const renderClassShowInfo_show = () => showInfo ? '' : 'd-0';
@@ -197,7 +200,7 @@ const Block = function () {
 					Block Reward:
 				</div>
 				<div className={css.block__right}>	
-					0.030305643679626673 BNB
+					{rewardContent}
 				</div>
 			</div>
 			<div className={css.block__cardRecord}>
@@ -566,10 +569,30 @@ const Block = function () {
 	  
 		// Trả về chuỗi kết quả
 		return `${formattedTime} (${formattedDate})`;
-	}	  
+	}	 
+	const fetchReward = async () => {
+		try {
+			if(fetchRewardStatus === apiStatus.fetching) return;
+			setFetchRewardStatus(apiStatus.fetching);
+			setRewardContent(<Loader2 />);
+			const resp = await getBlockReward(blocknumber);
+			console.log(resp);
+			const data = JSON.parse(resp?.data?.data)?.blockReward;
+			setRewardContent(data + ' BNB');
+			setFetchRewardStatus(apiStatus.fullfiled);
+		} catch (error) {
+			console.log(error);
+			setFetchRewardStatus(apiStatus.rejected)
+			setRewardContent('Load data fail!')
+		}
+	}
+	const fetchData = () => {
+		fetchInfo();
+		fetchReward();
+	}
 
 	useEffect(() => {
-		fetchInfo();
+		fetchData();
 	}, [])
 
 	return (<div className={css.block}>

@@ -1,0 +1,86 @@
+@import 'src/components/global-style/base.scss';
+
+.logRecord {
+	.logRecord--black {
+		color: $text-color-dark!important;
+	}
+	.logRecord--wordBreak {
+		word-break: break-all;
+	}
+
+	display: flex;
+	.logRecord__left {
+		width: fit-content;
+		flex-grow: 0;
+		flex-shrink: 0;
+
+		.logRecord__circle {
+			width: 45px;
+			height: 45px;
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background-color: $background-20;
+			color: $text-color-14;
+			font-size: 10px;
+			margin-right: 15px;
+		}
+	}
+	.logRecord__right {
+		flex-grow: 1;
+		display: flex;
+		flex-direction: column;
+		gap: 15px;
+
+		.logRecord__row {
+			display: grid;
+			grid-template-columns: 15% 85%;
+
+			@media screen and (max-width: 576px) {
+				grid-template-columns: 100%;
+			}
+		}
+
+		.logRecord__row__left {
+			padding-right: 15px;
+			text-align: right;
+			color: $text-color-11;
+			font-weight: 400;
+
+			@media screen and (max-width: 576px) {
+				text-align: left;
+				padding-left: 0;
+			}
+		}
+
+		.logRecord__row__right {
+			padding-left: 15px;
+			display: flex;
+			align-items: center;
+			gap: 5px;
+
+			@media screen and (max-width: 576px) {
+				padding-left: 0;
+			}
+		}
+	}
+}
+
+.logRecord__address_popover {
+	white-space: nowrap;
+}
+
+.logRecord__address__dropdownHeader {
+	display: flex;
+	align-items: center;
+	border: 1px solid $border-color;
+	width: fit-content;
+	border-radius: 8px;
+	padding: 5px 10px;
+}
+
+.topic__pillSquare__custom {
+	font-weight: 400;
+	white-space: nowrap;
+}

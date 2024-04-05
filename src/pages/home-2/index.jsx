@@ -164,7 +164,7 @@ function Home2() {
                         id: index,
                         image: listImage.imageDoc,
                         code:   <NavLink 
-                                    to={url.transactionDetail.replace(urlParams.transactionNumber, itemData.blockNumber)} 
+                                    to={url.transactionDetail.replace(urlParams.transactionNumber, itemData.hash)} 
                                     className={css.home2__link}
                                 >
                                     {itemData.blockNumber}
