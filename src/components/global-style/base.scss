@@ -20,6 +20,7 @@ $text-color-14: #00a186;
 $text-color-15: #adb5bd;
 
 $yellow-1: #ffb237;
+$yellow-2: #cc9a06;
 
 $blue: #0784c3;
 $blue-2: #066a9c;
@@ -51,6 +52,7 @@ $background-19: #131313;
 $background-20: #00a1861a;
 $background-21: #adb5bd1a;
 $background-23: #bdc4ca;
+$background-24: #ffc10726;
 
 $border-color: #e7e3eb;
 $border-color-2: #fefdfe;
@@ -61,6 +63,7 @@ $border-color-6: #dee2e6;
 $border-color-7: #adb5bd40;
 $border-color-8: #00a18640;
 $border-color-9: #b5bcc4;
+$border-color-10: #ffc10740;
 
 $border-radius: 8px;
 
@@ -176,6 +179,15 @@ $box-shadow: rgba(0, 0, 0, 0.15) 0px 8px 16px 0px;
   &:hover {
     color: $blue-2;
     text-decoration: underline;
+  }
+}
+
+.--link-no-underline {
+  color: $blue;
+  text-decoration: none !important;
+
+  &:hover {
+    color: $blue-2;
   }
 }
 

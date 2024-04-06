@@ -2,7 +2,11 @@ import css from './list-tabs.module.scss';
 import PropTypes from 'prop-types';
 
 function ListTabs(props) {
-    const { list, selectedItem, setSelectedItem } = props;
+    const { 
+            list,
+            selectedItem,
+            setSelectedItem 
+        } = props;
 
     const renderList = () => list.map(item => (
         <li

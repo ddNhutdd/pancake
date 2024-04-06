@@ -38,7 +38,9 @@
                 justify-content: flex-start;
                 gap: 5px;
 
-
+                &.itemNotAllowHover {
+                    background-color: transparent !important;
+                }
 
                 &.allowHover:hover {
                     background-color: $border-color-5;

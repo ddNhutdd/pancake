@@ -35,11 +35,15 @@ export const Dropdown2 = (props) => {
             <div key={item.id}>
                 <div
                     onClick={onClickItemHandle.bind(null, item)}
-                    className={`${css.dropdown2__item} ${renderClassAllowHover()}`}>
+                    className={`
+                        ${css.dropdown2__item} 
+                        ${renderClassAllowHover()}
+                        ${renderClassAllowItemHover(item.allowItemHover)}
+                    `}
+                >
                     {item.content}
                 </div>
                 {renderLine(item.lineBot)}
-
             </div>
         ))
     };
@@ -89,6 +93,7 @@ export const Dropdown2 = (props) => {
         }
     }
     const renderLine = (lineBot) => lineBot === true ? <div className={css.dropdown2__item__line}></div> : <></>
+    const renderClassAllowItemHover = (values) => values === false ? css.itemNotAllowHover : ''
 
     const [showDropdown, setShowDropdown] = useState(show);
     const [padding, setPadding] = useState(0);

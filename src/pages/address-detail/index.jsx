@@ -4,8 +4,8 @@ import NoUser from 'src/assets/icons/no-user.icon.jsx'
 import CopyButton from 'src/components/copy-button';
 import QRButton from 'src/components/qr-button';
 import ListCard from './list-card';
-import Table from './table';
-import { useEffect } from 'react';
+import TableAddress from './table-address';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { setShowMenu } from 'src/redux/slices/headerComponent2';
 import { NavLink } from 'react-router-dom';
@@ -21,9 +21,23 @@ import { IoTimerOutline } from "react-icons/io5";
 import { TbUserCog } from "react-icons/tb";
 import { LuUserMinus2 } from "react-icons/lu";
 import { CiFlag1 } from "react-icons/ci";
+import { FaListCheck } from "react-icons/fa6";
+import { IoChevronDownOutline } from "react-icons/io5";
+import { splitStringToDivs } from 'src/utils/utils';
+import Loader from 'src/components/loader';
+import {useParams} from 'react-router-dom';
+import { apiStatus } from 'src/constants';
+import { getAddressData, getExchangeRateBNBtoUSD } from 'src/services/explorer.services';
 
 const AddressDetail = function () {
+	//#region order hook
 	const dispatch = useDispatch();
+	const {
+		addressnumber
+	} = useParams();
+	//#endregion
+
+	//#region data
 	const listDropdown = [
 		{
 			id: 1,
@@ -70,35 +84,70 @@ const AddressDetail = function () {
 			</div>
 		}
 	]
+	//#endregion
 
+	//#region state
+	const [addressInfo, setAddressInfo] = useState();
+	const [bnbToUsd, setBnbToUsd] = useState();
+	const [fetchMainDataStatus, setFetchMainDataStatus] = useState(apiStatus.pending);
+	//#endregion
+
+	//#region function
+	const fetchMainData = async () => {
+		try {
+			if(fetchMainDataStatus === apiStatus.fetching) return;
+			setFetchMainDataStatus(apiStatus.fetching);
+
+			const resp = await Promise.all([getAddressData(addressnumber), getExchangeRateBNBtoUSD()]) ;
+			const dataInfo = JSON.parse(resp[0]?.data?.data);
+			setAddressInfo(dataInfo);
+			const dataExchange = resp[1]?.data?.data;
+			setBnbToUsd(dataExchange);
+
+			setFetchMainDataStatus(apiStatus.fullfiled);
+		} catch (error) {
+			console.log(error);
+			setFetchMainDataStatus(apiStatus.rejected);
+		}
+	}
+	const renderClassShowLoader = () => fetchMainDataStatus === apiStatus.fetching ? '' : 'd-0';
+	const renderClassShowContent = () => fetchMainDataStatus === apiStatus.fullfiled ? '' : 'd-0';
+	//#endregion
+
+	//#region useEffect
 	useEffect(()=>{
 		dispatch(setShowMenu(true));
-
+		fetchMainData();
 		return () => {
 			dispatch(setShowMenu(false));
 		}
 	}, [])
+	useEffect(()=>{
+		console.log(addressInfo);
+		console.log(bnbToUsd);
+	}, [addressInfo, bnbToUsd])
+	//#endregion
 
 	return(
 		<div className={css.addressDetail}>
-			<div className={css.container}>
+			<div className={`${css.container} ${renderClassShowContent()}`}>
 				<HeaderComponent2 
 					mainContent={
-						<div className='flex items-center gap-1'>
+						<div className='flex items-center gap-1 flex-sm-wrap'>
 							<div>
 								<NoUser />
 							</div>
 							<div>
 								Address
 							</div>
-							<div className={css.addressDetail__address}>
-								0xb218C5D6aF1F979aC42BC68d98A5A0D796C6aB01
+							<div className={`${css.addressDetail__address}`}>
+								{splitStringToDivs(addressnumber)}
 							</div>
 							<div className='flex items-center'>
 								<CopyButton />
 							</div>
 							<div className='flex items-center'>
-								<QRButton value={`0xb218C5D6aF1F979aC42BC68d98A5A0D796C6aB01`} />
+								<QRButton value={addressnumber} />
 							</div>
 						</div>
 					}
@@ -116,8 +165,8 @@ const AddressDetail = function () {
 					 	Claim Bonus 
 					</NavLink>
 				</div>
-				<div className={`flex items-center justify-between`}>
-					<div className='flex gap-1'>
+				<div className={`flex items-center justify-between mb-3 flex-sm-col gap-1`}>
+					<div className='flex gap-1 flex-sm-col w-sm-100'>
 						<Pill type={pillTypes.gray}>
 							<div className='flex items-center gap-1' style={{fontWeight: 400}}>
 								<FiTag />
@@ -132,13 +181,15 @@ const AddressDetail = function () {
 							</div>
 						</Pill>
 					</div>
-					<div className='flex gap-1'>
-						<Button2 
-							classname={`py-1`}
-							type={button2Type.outlineSmall}
-						>
-							<FaRegStar />
-						</Button2>
+					<div className='flex gap-1 flex-sm-col w-sm-100'>
+						<div>
+							<Button2 
+								classname={`py-1`}
+								type={button2Type.outlineSmall}
+							>
+								<FaRegStar />
+							</Button2>
+						</div>
 						<Dropdown2
 							trigger={dropdown2TriggerType.click}
 							header={
@@ -146,7 +197,8 @@ const AddressDetail = function () {
 									classname={`py-1`}
 									type={button2Type.outlineSmall}
 								>
-									fdas
+									<FaListCheck />
+									<IoChevronDownOutline />
 								</Button2>
 							}
 							list={listDropdown}
@@ -155,8 +207,11 @@ const AddressDetail = function () {
 						
 					</div>
 				</div>
-				<ListCard />
-				<Table />
+				<ListCard content={addressInfo} bnbToUsd={bnbToUsd} />
+				<TableAddress />
+			</div>
+			<div className={renderClassShowLoader()}>
+				<Loader />
 			</div>
 		</div>
 	)

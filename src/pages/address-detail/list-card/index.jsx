@@ -1,7 +1,15 @@
 import Card from "src/components/card";
 import css from "./list-card.module.scss";
+import { NavLink } from "react-router-dom";
+import Pill, { pillTypes } from "src/components/pill";
+import { GoPlus } from "react-icons/go";
+import Dropdown from "./dropdown";
+import Button2, { button2Type } from "src/components/button-2";
+import { FaWallet } from "react-icons/fa6";
+import { convertBnbToUsd } from "src/utils";
 
-const ListCard = function () {
+const ListCard = function (props) {
+	const {content, bnbToUsd} = props;
 	return (<div className={css.listCard}>
 		<Card className={css.listCard__card}>
 			<div className={css.listCard__header}>
@@ -13,7 +21,7 @@ const ListCard = function () {
 				</div>
 				<div className={css.listCard__record__content}>
 					<img src="https://bscscan.com/assets/bsc/images/svg/logos/token-light.svg?v=24.3.4.0" alt="bnb" />
-					1.133365125520722458 BNB
+					{content?.convertedBalance} BNB
 				</div>
 			</div>
 			<div className={css.listCard__record}>
@@ -21,11 +29,16 @@ const ListCard = function () {
 					BNB VALUE
 				</div>
 				<div className={css.listCard__record__content}>
-					$655.50 (@ $578.37/BNB)
+					${convertBnbToUsd(content?.convertedBalance, bnbToUsd)} (@ ${bnbToUsd}/BNB)
 				</div>
 			</div>
 			<div className={css.listCard__record}>
-				dropdown
+				<div className="flex items-center gap-1">
+					<Dropdown />
+					<Button2 type={button2Type.outline} classname={css.listCard__button}>
+						<FaWallet />
+					</Button2>
+				</div>
 			</div>
 		</Card>
 		<Card className={css.listCard__card}>
@@ -37,7 +50,13 @@ const ListCard = function () {
 				PRIVATE NAME TAGS
 				</div>
 				<div className={css.listCard__record__content}>
-					Add
+					<Pill
+						type={pillTypes.white}
+						className={css.listCard__Pillcustom}
+					>
+						<GoPlus />
+						Add
+					</Pill>
 				</div>
 			</div>
 			<div className={css.listCard__record}>
@@ -45,7 +64,11 @@ const ListCard = function () {
 					LAST TXN SENT
 				</div>
 				<div className={css.listCard__record__content}>
-					0x2c1c339f4eb329b3cf417b388ddd813cfea16e9e5f4dd7cf1916fa4481d92ecf
+					<NavLink className={`--link-no-underline`}>
+						<div className={`${css['listCard--threeDot']}`}>
+							{content?.firstTransaction?.blockHash}
+						</div>
+					</NavLink>
 					from 57 secs ago
 				</div>
 			</div>
@@ -54,15 +77,19 @@ const ListCard = function () {
 					FIRST TXN SENT
 				</div>
 				<div className={css.listCard__record__content}>
-					0x738404f1600536254789295a501da470a48fd906e2b558d61f0e48a67a505350
+					<NavLink className={`--link-no-underline`}>
+						<div className={`${css['listCard--threeDot']}`}>
+							{content?.lastTransaction?.blockHash}
+						</div>
+					</NavLink>
 					from 1236 days ago
 				</div>
 			</div>
 		</Card>
 		<Card className={css.listCard__card}>
-			<div className={css.listCard__header}></div>
-			<div className={css.listCard__record}></div>
-			<div className={css.listCard__record}></div>
+			<div className={css.listCard__header}>
+				Sponsored
+			</div>
 			<div className={css.listCard__record}></div>
 		</Card>
 	</div>)

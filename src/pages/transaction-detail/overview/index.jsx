@@ -22,10 +22,11 @@ import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Dropdown2, dropdown2Align, dropdown2TriggerType } from 'src/components/dropdown-2';
 import Loader from 'src/components/loader';
-import { apiStatus, transactionStatus } from 'src/constants';
+import { apiStatus, transactionStatus, url, urlParams } from 'src/constants';
 import Empty from 'src/components/empty';
 import { useParams } from 'react-router-dom';
 import { getExchangeRateBNBtoUSD, getTransactionDetail, getTransactionReceiptEventLogs } from 'src/services/explorer.services';
+import { convertBnbToUsd } from 'src/utils';
 
 const Overview = function () {
 	const listInputDropdown = [
@@ -58,18 +59,6 @@ const Overview = function () {
 	const renderClassFetching = () => fetchMainDataStatus === apiStatus.fetching ? '' : 'd-0';
 	const renderClassContent = () => fetchMainDataStatus !== apiStatus.fetching && mainData && exchangeBNBtoUSD ? '' : 'd-0';
 	const renderClassEmpty = () => fetchMainDataStatus !== apiStatus.fetching && (!mainData || !exchangeBNBtoUSD) ? '' : 'd-0';
-	const convertBnbToUsd = (bnbAmount, exchangeRate) => {
-		if (typeof bnbAmount !== 'number' || typeof exchangeRate !== 'number') {
-		  	console.log('Số lượng BNB và tỷ giá hối đoái phải là số')
-		}
-	  
-		if (bnbAmount < 0 || exchangeRate <= 0) {
-			console.log('Số lượng BNB và tỷ giá hối đoái phải là số')
-		}
-	  
-		const usdAmount = bnbAmount * exchangeRate;
-		return usdAmount.toFixed(2);
-	}
 	const renderStatus = (status) => {
 		switch (status) {
 			case transactionStatus.success:
@@ -384,7 +373,9 @@ const Overview = function () {
 					</div>
 					<div className={css.block__right}>
 						<div className={`--text-blue --hover-yellow ${css2['--breakWord']}`}>
-							{mainData?.from}
+							<NavLink className={`--text-blue`} to={url.addressDetail.replace(urlParams.addressNumber, mainData?.from)}>
+								{mainData?.from}
+							</NavLink>
 						</div>
 						<div>
 							(Validator: Defibit)

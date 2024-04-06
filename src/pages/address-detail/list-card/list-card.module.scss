@@ -1,1 +1,68 @@
 @import 'src/components/global-style/base.scss';
+
+.listCard {
+	.listCard--threeDot {
+		width: 100px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+
+	display: flex;
+	gap: 20px;
+
+	@media screen and (max-width:992px) {
+		flex-wrap: wrap;
+	}
+
+	.listCard__card {
+		padding: 16px;
+		display: flex;
+		flex-direction: column;
+		gap: 16px;
+
+		@media screen and (max-width: 992px) {
+			width: calc(50% - 10px);
+
+			&:last-child {
+				width:  100%;
+			}
+		}
+
+		@media screen and (max-width: 768px) {
+			width: 100%;
+		}
+
+		.listCard__header {
+			font-weight: 500;
+			margin-bottom: 8px;
+		}
+
+		.listCard__record {
+			.listCard__record__title {
+				color: $text-color-11;
+				text-transform: uppercase;
+			}
+
+			.listCard__record__content {
+				img {
+					width: 20px;
+					height: 20px;
+				}
+				display: flex;
+				align-items: center;
+				gap: 5px;
+			}
+		}
+	}
+}
+
+.listCard__Pillcustom {
+	padding: 5px 10px;
+	border-style: dashed !important;
+}
+
+.listCard__button {
+	width: 41px;
+	height: 41px;
+	background-color: $border-color-5 !important;
+}

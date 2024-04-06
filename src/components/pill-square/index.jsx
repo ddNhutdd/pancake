@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 
 export const pillSquareType = {
 	normal: 'normal',
-	green: 'green'
+	green: 'green',
+	yellow: 'yellow'
 }
 
 const PillSquare = function (props) {
@@ -20,6 +21,8 @@ const PillSquare = function (props) {
 				return css.normal;
 			case pillSquareType.green:
 				return css.green;
+			case pillSquareType.yellow:
+				return css.yellow
 			default:
 				break;
 		}

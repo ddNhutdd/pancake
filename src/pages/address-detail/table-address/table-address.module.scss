@@ -1,0 +1,105 @@
+@import 'src/components/global-style/base.scss';
+
+.table {
+	.table__listTab {
+		display:  flex;
+		align-items: center;
+		justify-content: space-between;
+		margin-top: 10px;
+		margin-bottom: 10px;
+
+		@media screen and (max-width: 768px) {
+			flex-direction: column;
+			gap: 10px;
+			align-items: flex-start;
+		}
+	}
+
+	.table__card {
+		.table__header {
+			margin-bottom: -32px;
+			padding: 16px;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+
+			@media screen and (max-width: 768px) {
+				flex-direction: column;
+				gap: 10px;
+				align-items: flex-start;
+			}
+
+			.table__header__left {
+				display: flex;
+				align-items: center;
+				gap: 5px;
+				
+				@media screen and (max-width: 576px) {
+					flex-wrap: wrap;
+				}
+			}
+
+			.table__header__right {
+				display: flex;
+				gap: 5px;
+				@media screen and (max-width: 576px) {
+					flex-wrap: wrap;
+				}
+			}
+		}
+		.table__footer {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: 5px;
+			text-transform: uppercase;
+			padding: 16px;
+			background-color: $background-17;
+		}
+	}
+}
+
+.table__dash {
+	border-style: dashed !important;
+}
+
+.table__buttonEys {
+	width: 30px;
+	height: 30px;
+}
+
+.table__popoverCustomContainer {
+	background-color: $text-color-white-1 !important;
+	border: 1px solid $border-color !important;
+	color: $text-color-dark !important;
+	padding: 16px!important;
+	font-weight: 300;
+	font-size: 13px;
+	width: 200px;
+
+	&::after {
+		background-color: $text-color-white-1 !important;
+		border-color: $border-color !important;
+		border-width: 0 1px 1px 0 !important;
+	}
+
+	.table__popoverCustom__header {
+		font-weight: 400 !important;
+		margin-bottom: 16px !important;
+		font-size: 15px !important;
+
+	}
+
+	.table__popoverCustom__record {
+		.table__popoverCustom__title {
+			font-size: 13px!important;
+			font-weight: 400;
+		}
+	}
+
+	.table__popoverCustom__line {
+		margin-bottom: 16px !important;
+		margin-top: 16px !important;
+		border-bottom: 1px solid $border-color !important;
+	}
+}

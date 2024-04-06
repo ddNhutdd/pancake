@@ -1,0 +1,65 @@
+@import 'src/components/global-style/base.scss';
+
+.dropdown {
+	padding: 8px 12px;
+	display: flex;
+	border: 1px solid $border-color-5;
+	border-radius: 8px;
+	align-items: center;
+	gap: 5px;
+	cursor: pointer;
+
+	&:hover {
+		background-color: $border-color-5;
+	}
+}
+
+.dropdown__mainContent {
+	height: 300px;
+  	overflow-y: scroll;
+  	overflow-x: hidden;
+	display: flex;
+	flex-direction: column;
+	padding-right: 10px;
+	margin-right: -16px;
+
+	.dropdown__sort {
+		display: flex;
+		padding: 6px 8px;
+		justify-content: space-between;
+		background-color: $background-17;
+		border-radius: $border-radius;
+		margin-top: 8px;
+		font-weight: 400;
+		margin-bottom: -16px;	
+	}
+}
+
+.dropdown__footer {
+	background-color: $background-17;
+	padding: 16px;
+	margin-bottom: -12px;
+    margin-left: -18px;
+	margin-right: -18px;
+
+	border-bottom-left-radius: 6px;
+	border-bottom-right-radius: 6px;
+
+	text-transform: uppercase; 
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 5px;
+	color: $text-color-11;
+}
+
+.dropdown__itemLeft {
+	display: flex;
+
+	img {
+		width: 20px;
+		height: 20px;
+	}
+}
+

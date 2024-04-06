@@ -55,3 +55,11 @@ export const getBlockReward = (data) => {
 		console.log(error);
 	}
 }
+
+export const getAddressData = (data) => {
+	try {
+		return axiosWithoutAuth('api/explorer/getAddressData?address=' + data)
+	} catch (error) {
+		console.log(error);
+	}
+}

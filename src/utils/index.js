@@ -150,3 +150,16 @@ export const removeClass = (element, className) => {
 	if(!element) return;
 	element.classList.remove(className);
 }
+
+export const convertBnbToUsd = (bnbAmount, exchangeRate) => {
+  if (typeof bnbAmount !== 'number' || typeof exchangeRate !== 'number') {
+      console.log('Số lượng BNB và tỷ giá hối đoái phải là số')
+  }
+  
+  if (bnbAmount < 0 || exchangeRate <= 0) {
+    console.log('Số lượng BNB và tỷ giá hối đoái phải là số')
+  }
+  
+  const usdAmount = bnbAmount * exchangeRate;
+  return usdAmount.toFixed(2);
+}
