@@ -1,57 +1,56 @@
 @import 'components/global-style/base.scss';
 
 .dropdown2 {
-    display: inline-block;
-    position: relative;
-    width: 100%;
+	display: inline-block;
+	position: relative;
+	width: 100%;
 
-    &.show {
-        .dropdown2__menuContainer {
-            display: block;
-        }
-    }
+	&.show {
+		.dropdown2__menuContainer {
+			display: block;
+		}
+	}
 
-    .dropdown2__menuContainer {
-        display: none;
-        position: absolute;
-        top: 0;
-        z-index: 20;
-        min-width: 100%;
+	.dropdown2__menuContainer {
+		display: none;
+		position: absolute;
+		top: 0;
+		z-index: 20;
+		min-width: 100%;
 
+		.dropdown2__menu {
+			padding: 6px;
+			border: 1px solid $border-color-5;
+			border-radius: 6px;
+			width: fit-content;
+			min-width: 100%;
+			background-color: $background-1;
 
-        .dropdown2__menu {
-            padding: 6px;
-            border: 1px solid $border-color-5;
-            border-radius: 6px;
-            width: fit-content;
-            min-width: 100%;
-            background-color: $background-1;
+			.dropdown2__item {
+				padding: 6px 12px;
+				cursor: pointer;
+				border-radius: 6px;
+				transition: background-color 0.2s;
+				white-space: nowrap;
+				display: flex;
+				align-items: center;
+				justify-content: flex-start;
+				gap: 5px;
 
-            .dropdown2__item {
-                padding: 6px 12px;
-                cursor: pointer;
-                border-radius: 6px;
-                transition: background-color .2s;
-                white-space: nowrap;
-                display: flex;
-                align-items: center;
-                justify-content: flex-start;
-                gap: 5px;
+				&.itemNotAllowHover {
+					background-color: transparent !important;
+				}
 
-                &.itemNotAllowHover {
-                    background-color: transparent !important;
-                }
+				&.allowHover:hover {
+					background-color: $border-color-5;
+				}
+			}
 
-                &.allowHover:hover {
-                    background-color: $border-color-5;
-                }
-            }
-
-            .dropdown2__item__line {
-                margin-top: 8px;
-                margin-bottom: 8px;
-                border-top: 1px solid $border-color-5;
-            }
-        }
-    }
+			.dropdown2__item__line {
+				margin-top: 8px;
+				margin-bottom: 8px;
+				border-top: 1px solid $border-color-5;
+			}
+		}
+	}
 }

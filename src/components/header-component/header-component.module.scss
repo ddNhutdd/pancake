@@ -1,132 +1,131 @@
-@import "src/components/global-style/base.scss";
+@import 'src/components/global-style/base.scss';
 
 .headerComponent {
-    background-color: $border-color-2;
-    box-shadow: rgba(133, 133, 133, 0.1) 0px -2px 0px -8px inset;
-    position: relative;
+	background-color: $border-color-2;
+	box-shadow: rgba(133, 133, 133, 0.1) 0px -2px 0px -8px inset;
+	position: relative;
 
-    &.dark {
-        background: $background-9;
+	&.dark {
+		background: $background-9;
 
-        .headerComponent__content {
-            .headerComponent__buttonScroll {
-                &.prev {
-                    background: linear-gradient(to right, #1d1d2200, #1D1D22);
-                    color: $text-color-white-2;
-                }
+		.headerComponent__content {
+			.headerComponent__buttonScroll {
+				&.prev {
+					background: linear-gradient(to right, #1d1d2200, #1d1d22);
+					color: $text-color-white-2;
+				}
 
-                &.next {
-                    background: linear-gradient(to left, #1D1D22, #1d1d2200);
-                    color: $text-color-white-2;
-                }
-            }
+				&.next {
+					background: linear-gradient(to left, #1d1d22, #1d1d2200);
+					color: $text-color-white-2;
+				}
+			}
 
-            .headerComponent__inner {
-                .headerComponent__item {
-                    &:hover {
-                        background: $background-5;
-                    }
+			.headerComponent__inner {
+				.headerComponent__item {
+					&:hover {
+						background: $background-5;
+					}
 
-                    &.active {
-                        color: $primary-1;
-                    }
-                }
-            }
-        }
-    }
+					&.active {
+						color: $primary-1;
+					}
+				}
+			}
+		}
+	}
 
-    .headerComponent__content {
-        overflow-x: auto;
-        scrollbar-width: none;
-        padding: 0 30px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+	.headerComponent__content {
+		overflow-x: auto;
+		scrollbar-width: none;
+		padding: 0 30px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 
-        .headerComponent__buttonScroll {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 8;
-            border: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 30px;
-            height: 100%;
+		.headerComponent__buttonScroll {
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			z-index: 8;
+			border: none;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 30px;
+			height: 100%;
 
-            &:hover {
-                cursor: pointer;
-            }
+			&:hover {
+				cursor: pointer;
+			}
 
-            &.prev {
-                left: 0;
-                padding-left: 8px;
-                background: linear-gradient(to right, #ffffff, #ffffff00);
-            }
+			&.prev {
+				left: 0;
+				padding-left: 8px;
+				background: linear-gradient(to right, #ffffff, #ffffff00);
+			}
 
-            &.next {
-                right: 0;
-                padding-right: 8px;
-                background: linear-gradient(to left, #ffffff, #ffffff00);
-            }
-        }
+			&.next {
+				right: 0;
+				padding-right: 8px;
+				background: linear-gradient(to left, #ffffff, #ffffff00);
+			}
+		}
 
-        .headerComponent__inner {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 16px;
+		.headerComponent__inner {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			gap: 16px;
 
-            .headerComponent__item {
-                margin-right: 20px;
-                padding-left: 4px;
-                padding-right: 4px;
-                display: inline-flex;
-                align-items: center;
-                justify-content: center;
-                text-decoration: none;
-                transition: .2s;
-                height: 42px;
-                gap: 4px;
-                color: $text-color-1;
-                position: relative;
-                white-space: nowrap;
+			.headerComponent__item {
+				margin-right: 20px;
+				padding-left: 4px;
+				padding-right: 4px;
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				text-decoration: none;
+				transition: 0.2s;
+				height: 42px;
+				gap: 4px;
+				color: $text-color-1;
+				position: relative;
+				white-space: nowrap;
 
-                &:last-child {
-                    margin-right: 0;
-                }
+				&:last-child {
+					margin-right: 0;
+				}
 
-                svg {
-                    stroke-width: 2;
-                }
+				svg {
+					stroke-width: 2;
+				}
 
-                &:hover {
-                    background: $background-8;
-                }
+				&:hover {
+					background: $background-8;
+				}
 
-                &:active {
-                    color: $text-color-1;
-                }
+				&:active {
+					color: $text-color-1;
+				}
 
-                &.active {
-                    color: $text-color-4;
-                    font-weight: 600;
+				&.active {
+					color: $text-color-4;
+					font-weight: 600;
 
-                    &::after {
-                        content: '';
-                        position: absolute;
-                        display: block;
-                        bottom: 0;
-                        left: 0;
-                        height: 4px;
-                        width: 100%;
-                        background-color: $primary-2;
-                        border-radius: 2px 2px 0px 0px;
-                    }
-                }
-            }
-        }
-
-    }
+					&::after {
+						content: '';
+						position: absolute;
+						display: block;
+						bottom: 0;
+						left: 0;
+						height: 4px;
+						width: 100%;
+						background-color: $primary-2;
+						border-radius: 2px 2px 0px 0px;
+					}
+				}
+			}
+		}
+	}
 }

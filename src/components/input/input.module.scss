@@ -1,54 +1,52 @@
-@import "src/components/global-style/base.scss";
+@import 'src/components/global-style/base.scss';
 
 .input {
-    &.dark {
-        .inputContainer {
-            background: $background-11;
+	&.dark {
+		.inputContainer {
+			background: $background-11;
 
-            input {
-                color: $text-color-white-2;
+			input {
+				color: $text-color-white-2;
+			}
 
-            }
+			.inputInfo {
+				color: $text-color-6;
+			}
+		}
 
-            .inputInfo {
-                color: $text-color-6;
-            }
-        }
+		inputError {
+			color: $text-color-6;
+		}
+	}
 
-        inputError {
-            color: $text-color-6;
-        }
-    }
+	.inputContainer {
+		background: $background-10;
+		padding: 20px;
+		border-radius: 24px;
 
-    .inputContainer {
-        background: $background-10;
-        padding: 20px;
-        border-radius: 24px;
+		input {
+			width: 100%;
+			text-align: right;
+			border: none;
+			background: transparent;
+			font-size: 16px;
+			font-weight: 600;
+			outline: none;
+			color: $text-color-3;
+		}
 
-        input {
-            width: 100%;
-            text-align: right;
-            border: none;
-            background: transparent;
-            font-size: 16px;
-            font-weight: 600;
-            outline: none;
-            color: $text-color-3;
+		.inputInfo {
+			text-align: right;
+			opacity: 0;
+			font-size: 12px;
+		}
+	}
 
-        }
+	.inputError {
+		padding: 0 20px;
 
-        .inputInfo {
-            text-align: right;
-            opacity: 0;
-            font-size: 12px;
-        }
-    }
-
-    .inputError {
-        padding: 0 20px;
-
-        text-align: right;
-        opacity: 0;
-        font-size: 12px;
-    }
+		text-align: right;
+		opacity: 0;
+		font-size: 12px;
+	}
 }

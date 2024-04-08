@@ -1,33 +1,33 @@
-@import "components/global-style/base.scss";
+@import 'components/global-style/base.scss';
 
 .input2 {
-    padding: 12px;
-    background: $background-13;
-    border-radius: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
+	padding: 12px;
+	background: $background-13;
+	border-radius: 16px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 12px;
 
-    input {
-        flex: 1;
-        background-color: transparent;
-        border: none;
-        outline: none;
-        font-weight: 600;
-        font-size: 16px;
-        color: $text-color-3;
-    }
+	input {
+		flex: 1;
+		background-color: transparent;
+		border: none;
+		outline: none;
+		font-weight: 600;
+		font-size: 16px;
+		color: $text-color-3;
+	}
 
-    div {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: $primary-2;
-        cursor: pointer;
+	div {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: $primary-2;
+		cursor: pointer;
 
-        svg {
-            font-size: 18px;
-        }
-    }
+		svg {
+			font-size: 18px;
+		}
+	}
 }

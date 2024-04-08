@@ -1,7 +1,7 @@
 import {createSlice} from '@reduxjs/toolkit';
 
 const initialState = {
-	showMenu: false
+	showMenu: false,
 };
 
 const headerComponentSlice = createSlice({
@@ -10,7 +10,7 @@ const headerComponentSlice = createSlice({
 	reducers: {
 		setShowMenu(state, action) {
 			state.showMenu = action.payload;
-		}
+		},
 	},
 });
 

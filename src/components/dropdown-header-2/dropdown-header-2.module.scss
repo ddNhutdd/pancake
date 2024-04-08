@@ -1,78 +1,77 @@
-@import "src/components/global-style/base.scss";
+@import 'src/components/global-style/base.scss';
 
 .dropdownHeader2 {
-    position: relative;
+	position: relative;
 
-    &.dark {
-        .dropdownHeader2__menuContainer {
-            .dropdownHeader2__menu {
-                background-color: $background-2;
-                border-color: $border-color-3;
+	&.dark {
+		.dropdownHeader2__menuContainer {
+			.dropdownHeader2__menu {
+				background-color: $background-2;
+				border-color: $border-color-3;
 
-                .dropdownHeader2__item {
-                    &.border {
-                        border-color: $border-color-3;
-                    }
-                }
-            }
-        }
-    }
+				.dropdownHeader2__item {
+					&.border {
+						border-color: $border-color-3;
+					}
+				}
+			}
+		}
+	}
 
-    .dropdownHeader2__header {
-        font-size: 30px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: .2s;
+	.dropdownHeader2__header {
+		font-size: 30px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		transition: 0.2s;
 
-        &:hover {
-            opacity: 50%;
-            cursor: pointer;
+		&:hover {
+			opacity: 50%;
+			cursor: pointer;
 
-            &+.dropdownHeader2__menuContainer {
-                display: block;
-            }
-        }
-    }
+			& + .dropdownHeader2__menuContainer {
+				display: block;
+			}
+		}
+	}
 
-    .dropdownHeader2__menuContainer {
-        position: absolute;
-        display: none;
+	.dropdownHeader2__menuContainer {
+		position: absolute;
+		display: none;
 
-        &:hover {
-            display: block;
-        }
+		&:hover {
+			display: block;
+		}
 
-        .dropdownHeader2__menu {
-            background-color: $background-1;
-            width: 250px;
-            border-radius: 15px;
-            max-height: 350px;
-            overflow-y: auto;
+		.dropdownHeader2__menu {
+			background-color: $background-1;
+			width: 250px;
+			border-radius: 15px;
+			max-height: 350px;
+			overflow-y: auto;
 
-            .dropdownHeader2__item {
-                padding: 10px;
-                text-align: center;
-                transition: .4s;
+			.dropdownHeader2__item {
+				padding: 10px;
+				text-align: center;
+				transition: 0.4s;
 
-                &.border {
-                    border-bottom: 1px solid $border-color;
-                }
+				&.border {
+					border-bottom: 1px solid $border-color;
+				}
 
-                &.hover-p {
-                    &:hover {
-                        opacity: 50%;
-                    }
-                }
+				&.hover-p {
+					&:hover {
+						opacity: 50%;
+					}
+				}
 
-                img {
-                    width: 20px;
-                    height: 20px;
-                    object-fit: cover;
-                    display: block;
-                }
-            }
-        }
-    }
-
+				img {
+					width: 20px;
+					height: 20px;
+					object-fit: cover;
+					display: block;
+				}
+			}
+		}
+	}
 }

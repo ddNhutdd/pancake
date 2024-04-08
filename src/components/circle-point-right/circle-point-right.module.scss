@@ -1,13 +1,13 @@
-@import "components/global-style/base.scss";
+@import 'components/global-style/base.scss';
 
 .circlePointRight {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: $background-20;
-    border: 1px solid $border-color-6;
-    color: $text-color-14;
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: $background-20;
+	border: 1px solid $border-color-6;
+	color: $text-color-14;
 }

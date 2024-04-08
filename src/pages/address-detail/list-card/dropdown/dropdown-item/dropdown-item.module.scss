@@ -6,7 +6,7 @@
 	align-items: center;
 	padding: 5px 8px;
 	border-radius: $border-radius;
-	transition: background-color .2s;
+	transition: background-color 0.2s;
 
 	&:hover {
 		background-color: $border-color-5;

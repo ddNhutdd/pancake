@@ -1,32 +1,32 @@
-@import "components/global-style/base.scss";
+@import 'components/global-style/base.scss';
 
 .SectionTotal {
-    &.dark {
-        div {
-            &:first-child {
-                color: $text-color-white-2;
-            }
+	&.dark {
+		div {
+			&:first-child {
+				color: $text-color-white-2;
+			}
 
-            &:last-child {
-                color: $text-color-6;
-            }
-        }
-    }
+			&:last-child {
+				color: $text-color-6;
+			}
+		}
+	}
 
-    div {
-        &:first-child {
-            color: $text-color-3;
-            font-weight: 600;
-            line-height: 1.5;
-            font-size: 16px;
-            margin-bottom: -4px;
-        }
+	div {
+		&:first-child {
+			color: $text-color-3;
+			font-weight: 600;
+			line-height: 1.5;
+			font-size: 16px;
+			margin-bottom: -4px;
+		}
 
-        &:last-child {
-            color: $text-color-1;
-            font-weight: 400;
-            line-height: 1.5;
-            font-size: 12px;
-        }
-    }
+		&:last-child {
+			color: $text-color-1;
+			font-weight: 400;
+			line-height: 1.5;
+			font-size: 12px;
+		}
+	}
 }

@@ -1,71 +1,71 @@
-@import "components/global-style/base.scss";
+@import 'components/global-style/base.scss';
 
 .headerComponent3 {
-    font-size: 15px;
-    color: $text-color-dark;
-    font-weight: 300;
-    display: flex;
-    gap: 16px;
-    margin-top: 16px;
-    margin-bottom: 16px;
-    flex-wrap: wrap;
+	font-size: 15px;
+	color: $text-color-dark;
+	font-weight: 300;
+	display: flex;
+	gap: 16px;
+	margin-top: 16px;
+	margin-bottom: 16px;
+	flex-wrap: wrap;
 
-    .headerComponent3__card {
-        width: calc((100% - 48px) /4);
-        padding: 16px;
-        position: relative;
-        cursor: pointer;
+	.headerComponent3__card {
+		width: calc((100% - 48px) / 4);
+		padding: 16px;
+		position: relative;
+		cursor: pointer;
 
-        @media screen and (max-width: 992px) {
-            width: calc((100% - 16px) / 2);
-        }
+		@media screen and (max-width: 992px) {
+			width: calc((100% - 16px) / 2);
+		}
 
-        @media screen and (max-width: 576px) {
-            width: 100%;
-        }
+		@media screen and (max-width: 576px) {
+			width: 100%;
+		}
 
-        &:hover {
-            .headerComponent3__second {
-                color: $background-15;
-            }
+		&:hover {
+			.headerComponent3__second {
+				color: $background-15;
+			}
 
-            .headerComponent3__arrow {
-                opacity: 1;
-            }
-        }
+			.headerComponent3__arrow {
+				opacity: 1;
+			}
+		}
 
-        .headerComponent3__main {
-            color: $text-color-11;
-        }
+		.headerComponent3__main {
+			color: $text-color-11;
+		}
 
-        .headerComponent3__second {
-            transition: color .2s;
-            display: flex;
-            gap: 5px;
-            align-items: flex-end;
-            justify-content: flex-start;
+		.headerComponent3__second {
+			transition: color 0.2s;
+			display: flex;
+			gap: 5px;
+			align-items: flex-end;
+			justify-content: flex-start;
 
-            &>span {
-                &:nth-of-type(1) {
-                    font-size: 18px;
-                    font-weight: 400;
-                }
+			& > span {
+				&:nth-of-type(1) {
+					font-size: 18px;
+					font-weight: 400;
+				}
 
-                &:nth-of-type(2) {
-                    font-size: 12px;
-                    position: relative;
-                    top: -3px
-                }
-            }
-        }
+				&:nth-of-type(2) {
+					font-size: 12px;
+					position: relative;
+					top: -3px;
+				}
+			}
+		}
 
-        .headerComponent3__arrow {
-            opacity: 0;
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            z-index: 1;
-            transition: opacity .2s;
-        }
-    }
+		.headerComponent3__arrow {
+			opacity: 0;
+			position: absolute;
+			top: 10px;
+			right: 10px;
+			z-index: 1;
+			transition: opacity 0.2s;
+		}
+	}
 }

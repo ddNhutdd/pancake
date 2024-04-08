@@ -1,117 +1,114 @@
-@import "src/components/global-style/base.scss";
+@import 'src/components/global-style/base.scss';
 
 .card {
-    border-radius: 24px;
-    border: 1px solid $border-color;
-    background-color: $background-1;
-    overflow: hidden;
-    box-shadow: 0px 2px 0px 0px rgba(231, 227, 235, 0.76);
+	border-radius: 24px;
+	border: 1px solid $border-color;
+	background-color: $background-1;
+	overflow: hidden;
+	box-shadow: 0px 2px 0px 0px rgba(231, 227, 235, 0.76);
 
-    &.dark {
-        background-color: $background-2;
-        border-color: $border-color-3;
-        box-shadow: 0px 2px 0px 0px rgba(56, 50, 65, 0.76);
+	&.dark {
+		background-color: $background-2;
+		border-color: $border-color-3;
+		box-shadow: 0px 2px 0px 0px rgba(56, 50, 65, 0.76);
 
-        .card__header {
-            .card__header__right {
-                .card__header__right__token {
-                    color: $text-color-white-2;
-                }
-            }
-        }
+		.card__header {
+			.card__header__right {
+				.card__header__right__token {
+					color: $text-color-white-2;
+				}
+			}
+		}
 
-        .card__body {
-            .card__body__row {
-                .card__body__row__left {
-                    color: $text-color-white-2;
-                }
-            }
-        }
-    }
+		.card__body {
+			.card__body__row {
+				.card__body__row__left {
+					color: $text-color-white-2;
+				}
+			}
+		}
+	}
 
-    .card__header {
-        padding-top: 24px;
-        padding-left: 24px;
-        padding-right: 24px;
-        display: flex;
-        align-items: flex-start;
-        justify-content: space-between;
+	.card__header {
+		padding-top: 24px;
+		padding-left: 24px;
+		padding-right: 24px;
+		display: flex;
+		align-items: flex-start;
+		justify-content: space-between;
 
-        @media screen and (max-width:576px) {
-            padding-top: 12px;
-            padding-left: 12px;
-            padding-right: 12px;
-        }
+		@media screen and (max-width: 576px) {
+			padding-top: 12px;
+			padding-left: 12px;
+			padding-right: 12px;
+		}
 
-        .card__header__left {
-            width: 56px;
-            height: 56px;
+		.card__header__left {
+			width: 56px;
+			height: 56px;
 
-            img {
-                width: 100%;
-                height: 100%;
-            }
-        }
+			img {
+				width: 100%;
+				height: 100%;
+			}
+		}
 
-        .card__header__right {
-            text-align: right;
+		.card__header__right {
+			text-align: right;
 
-            .card__header__right__token {
-                font-size: 2.4rem;
-                line-height: 1.1;
-                font-weight: 600;
-                color: $text-color-3;
-            }
+			.card__header__right__token {
+				font-size: 2.4rem;
+				line-height: 1.1;
+				font-weight: 600;
+				color: $text-color-3;
+			}
 
-            .card__header__right__content {
-                align-items: center;
-                border-radius: 16px;
-                display: inline-flex;
-                font-weight: 400;
-                white-space: nowrap;
-                height: 28px;
-                padding: 0px 8px;
-                font-size: 14px;
-                color: $text-color-7;
-                background: none;
-                border: 2px solid $text-color-7;
-                gap: 4px;
+			.card__header__right__content {
+				align-items: center;
+				border-radius: 16px;
+				display: inline-flex;
+				font-weight: 400;
+				white-space: nowrap;
+				height: 28px;
+				padding: 0px 8px;
+				font-size: 14px;
+				color: $text-color-7;
+				background: none;
+				border: 2px solid $text-color-7;
+				gap: 4px;
 
-                span {
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
+				span {
+					display: flex;
+					align-items: center;
+					justify-content: center;
 
-                    &:first-child {
-                        svg {
-                            width: 18px;
-                            height: 18px;
-                        }
+					&:first-child {
+						svg {
+							width: 18px;
+							height: 18px;
+						}
+					}
+				}
+			}
+		}
+	}
 
-                    }
-                }
-            }
-        }
-    }
+	.card__body {
+		padding: 24px;
 
-    .card__body {
-        padding: 24px;
+		@media screen and (max-width: 576px) {
+			padding: 12px;
+		}
 
-        @media screen and (max-width:576px) {
-            padding: 12px
-        }
+		.card__body__row {
+			display: flex;
+			align-items: flex-start;
+			justify-content: space-between;
+			margin-bottom: 8px;
 
-        .card__body__row {
-            display: flex;
-            align-items: flex-start;
-            justify-content: space-between;
-            margin-bottom: 8px;
-
-            .card__body__row__left {
-                color: $text-color-3;
-            }
-
-
-        }
-    }
+			.card__body__row__left {
+				color: $text-color-3;
+			}
+		}
+	}
 }

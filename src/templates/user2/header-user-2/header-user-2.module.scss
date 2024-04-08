@@ -1,81 +1,81 @@
-@import "src/components/global-style/base.scss";
+@import 'src/components/global-style/base.scss';
 
 .headerUser2 {
-    height: 54px;
-    border-bottom: 1px solid $border-color-5;
-    padding: 8px 0;
-    width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 30;
-    background-color: $background-1;
+	height: 54px;
+	border-bottom: 1px solid $border-color-5;
+	padding: 8px 0;
+	width: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 30;
+	background-color: $background-1;
 
-    .container {
-        @include container2;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
+	.container {
+		@include container2;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
 
-        .headerUser2__left {
-            flex: 1;
-            display: flex;
-            gap: 4px;
-            align-items: center;
+		.headerUser2__left {
+			flex: 1;
+			display: flex;
+			gap: 4px;
+			align-items: center;
 
-            &>span {
-                font-size: 12.5625px;
-                color: rgb(108, 117, 125);
-                font-weight: normal;
+			& > span {
+				font-size: 12.5625px;
+				color: rgb(108, 117, 125);
+				font-weight: normal;
 
-                &:nth-of-type(2) {
-                    color: rgb(7, 132, 195);
-                    cursor: pointer;
-                }
+				&:nth-of-type(2) {
+					color: rgb(7, 132, 195);
+					cursor: pointer;
+				}
 
-                &:nth-of-type(4) {
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                }
+				&:nth-of-type(4) {
+					display: flex;
+					align-items: center;
+					justify-content: center;
+				}
 
-                &:nth-of-type(6) {
-                    color: rgb(7, 132, 195);
-                    cursor: pointer;
-                }
-            }
+				&:nth-of-type(6) {
+					color: rgb(7, 132, 195);
+					cursor: pointer;
+				}
+			}
 
-            .headerUser2__popoverText {
-                color: rgb(220, 53, 69);
-                margin-right: 15px;
-                cursor: default;
-            }
-        }
+			.headerUser2__popoverText {
+				color: rgb(220, 53, 69);
+				margin-right: 15px;
+				cursor: default;
+			}
+		}
 
-        .headerUser2__right {
-            flex: 1;
-            display: flex;
-            height: 100%;
-            gap: 8px;
+		.headerUser2__right {
+			flex: 1;
+			display: flex;
+			height: 100%;
+			gap: 8px;
 
-            .input {
-                flex: 1;
-            }
+			.input {
+				flex: 1;
+			}
 
-            .headerUser2__dropdownHeader {
-                width: 37px;
-                height: 37px;
+			.headerUser2__dropdownHeader {
+				width: 37px;
+				height: 37px;
 
-                svg {
-                    width: 20px;
-                    height: 20px;
-                }
+				svg {
+					width: 20px;
+					height: 20px;
+				}
 
-                img {
-                    width: 20px;
-                    height: 20px;
-                }
-            }
-        }
-    }
+				img {
+					width: 20px;
+					height: 20px;
+				}
+			}
+		}
+	}
 }

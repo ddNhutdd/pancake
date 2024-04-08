@@ -1,196 +1,195 @@
 // margin --------------------
 .m-0 {
-    margin: 0;
+	margin: 0;
 }
 
 .m-1 {
-    margin: $space;
+	margin: $space;
 }
 
 .m-2 {
-    margin: $space * 2;
+	margin: $space * 2;
 }
 
 // margin top ----------------------------------------------------------------
 
 .mt-1 {
-    margin-top: $space * 1;
+	margin-top: $space * 1;
 }
 
 .mt-2 {
-    margin-top: $space * 2;
+	margin-top: $space * 2;
 }
 
 .mt-3 {
-    margin-top: $space * 3;
+	margin-top: $space * 3;
 }
 
 // margin bottom  ----------------------------------------------------------------
 
 .mb-0 {
-    margin-bottom: 0;
+	margin-bottom: 0;
 }
 
 .mb-1 {
-    margin-bottom: $space * 1;
+	margin-bottom: $space * 1;
 }
 
 .mb-2 {
-    margin-bottom: $space * 2;
+	margin-bottom: $space * 2;
 }
 
 .mb-3 {
-    margin-bottom: $space * 3;
+	margin-bottom: $space * 3;
 }
 
 .mb-4 {
-    margin-bottom: $space * 4;
+	margin-bottom: $space * 4;
 }
 
 // margin left----------------------------------------------------------------
 
 .ml-a {
-    margin-left: auto;
+	margin-left: auto;
 }
 
 .ml-0 {
-    margin-left: 0;
+	margin-left: 0;
 }
 
 .ml-2 {
-    margin-left: $space * 2;
+	margin-left: $space * 2;
 }
 
 .ml-3 {
-    margin-left: $space * 3;
+	margin-left: $space * 3;
 }
 
 .ml-5 {
-    margin-left: $space * 5;
+	margin-left: $space * 5;
 }
 
 // margin y ----------------------------------------------------------------
 
 .my-1 {
-    margin-top: $space ;
-    margin-bottom: $space;
+	margin-top: $space;
+	margin-bottom: $space;
 }
 
 .my-2 {
-    margin-top: $space * 2;
-    margin-bottom: $space * 2;
+	margin-top: $space * 2;
+	margin-bottom: $space * 2;
 }
 
 .my-3 {
-    margin-top: $space * 3;
-    margin-bottom: $space * 3;
+	margin-top: $space * 3;
+	margin-bottom: $space * 3;
 }
 
 .my-4 {
-    margin-top: $space * 4;
-    margin-bottom: $space * 4;
+	margin-top: $space * 4;
+	margin-bottom: $space * 4;
 }
 
 .my-5 {
-    margin-top: $space * 5;
-    margin-bottom: $space * 5;
+	margin-top: $space * 5;
+	margin-bottom: $space * 5;
 }
 
 @each $breakpoint, $width in $responsive {
-    @media screen and (max-width: $width) {
+	@media screen and (max-width: $width) {
+		// margin ----------------------------------------------------------------
+		.m-#{$breakpoint}-0 {
+			margin: 0;
+		}
 
-        // margin ----------------------------------------------------------------
-        .m-#{$breakpoint}-0 {
-            margin: 0;
-        }
+		.m-#{$breakpoint}-1 {
+			margin: $space;
+		}
 
-        .m-#{$breakpoint}-1 {
-            margin: $space;
-        }
+		// margin top ----------------------------------------------------------------
 
-        // margin top ----------------------------------------------------------------
+		.mt-#{$breakpoint}-1 {
+			margin-top: $space * 1;
+		}
 
-        .mt-#{$breakpoint}-1 {
-            margin-top: $space * 1;
-        }
+		.mt-#{$breakpoint}-2 {
+			margin-top: $space * 2;
+		}
 
-        .mt-#{$breakpoint}-2 {
-            margin-top: $space * 2;
-        }
+		.mt-#{$breakpoint}-3 {
+			margin-top: $space * 3;
+		}
 
-        .mt-#{$breakpoint}-3 {
-            margin-top: $space * 3;
-        }
+		// margin bottom ----------------------------------------------------------------
 
-        // margin bottom ----------------------------------------------------------------
+		.mb-#{$breakpoint}-0 {
+			margin-bottom: 0;
+		}
 
-        .mb-#{$breakpoint}-0 {
-            margin-bottom: 0;
-        }
+		.mb-#{$breakpoint}-1 {
+			margin-bottom: $space * 1;
+		}
 
-        .mb-#{$breakpoint}-1 {
-            margin-bottom: $space * 1;
-        }
+		.mb-#{$breakpoint}-2 {
+			margin-bottom: $space * 2;
+		}
 
-        .mb-#{$breakpoint}-2 {
-            margin-bottom: $space * 2;
-        }
+		.mb-#{$breakpoint}-3 {
+			margin-bottom: $space * 3;
+		}
 
-        .mb-#{$breakpoint}-3 {
-            margin-bottom: $space * 3;
-        }
+		.mb-#{$breakpoint}-4 {
+			margin-bottom: $space * 3;
+		}
 
-        .mb-#{$breakpoint}-4 {
-            margin-bottom: $space * 3;
-        }
+		// margin left ----------------------------------------------------------------
 
-        // margin left ----------------------------------------------------------------
+		.ml-#{$breakpoint}-a {
+			margin-left: auto;
+		}
 
-        .ml-#{$breakpoint}-a {
-            margin-left: auto;
-        }
+		.ml-#{$breakpoint}-0 {
+			margin-left: 0;
+		}
 
-        .ml-#{$breakpoint}-0 {
-            margin-left: 0;
-        }
+		.ml-#{$breakpoint}-2 {
+			margin-left: $space * 2;
+		}
 
-        .ml-#{$breakpoint}-2 {
-            margin-left: $space * 2;
-        }
+		.ml-#{$breakpoint}-3 {
+			margin-left: $space * 3;
+		}
 
-        .ml-#{$breakpoint}-3 {
-            margin-left: $space * 3;
-        }
+		.ml-#{$breakpoint}-5 {
+			margin-left: $space * 5;
+		}
 
-        .ml-#{$breakpoint}-5 {
-            margin-left: $space * 5;
-        }
+		// margin y ----------------------------------------------------------------
 
-        // margin y ----------------------------------------------------------------
+		.my-#{$breakpoint}-1 {
+			margin-top: $space;
+			margin-bottom: $space;
+		}
 
-        .my-#{$breakpoint}-1 {
-            margin-top: $space ;
-            margin-bottom: $space;
-        }
+		.my-#{$breakpoint}-2 {
+			margin-top: $space * 2;
+			margin-bottom: $space * 2;
+		}
 
-        .my-#{$breakpoint}-2 {
-            margin-top: $space * 2;
-            margin-bottom: $space * 2;
-        }
+		.my-#{$breakpoint}-3 {
+			margin-top: $space * 3;
+			margin-bottom: $space * 3;
+		}
 
-        .my-#{$breakpoint}-3 {
-            margin-top: $space * 3;
-            margin-bottom: $space * 3;
-        }
+		.my-#{$breakpoint}-4 {
+			margin-top: $space * 4;
+			margin-bottom: $space * 4;
+		}
 
-        .my-#{$breakpoint}-4 {
-            margin-top: $space * 4;
-            margin-bottom: $space * 4;
-        }
-
-        .my-#{$breakpoint}-5 {
-            margin-top: $space * 5;
-            margin-bottom: $space * 5;
-        }
-    }
+		.my-#{$breakpoint}-5 {
+			margin-top: $space * 5;
+			margin-bottom: $space * 5;
+		}
+	}
 }

@@ -1,98 +1,100 @@
-@import "src/components/global-style/base.scss";
+@import 'src/components/global-style/base.scss';
 
 .footerComponent {
-    width: 100%;
-    height: auto;
-    padding-top: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-left: 32px;
-    padding-right: 32px;
-    background-color: transparent;
+	width: 100%;
+	height: auto;
+	padding-top: 16px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding-left: 32px;
+	padding-right: 32px;
+	background-color: transparent;
 
-    &.dark {
-        .footerComponent__left {
-            a {
-                color: $primary-2;
-            }
-        }
+	&.dark {
+		.footerComponent__left {
+			a {
+				color: $primary-2;
+			}
+		}
 
-        .footerComponent__right {
-            .footerComponent__dailog {
-                background-color: $text-color-6;
-                color: $background-2;
-            }
+		.footerComponent__right {
+			.footerComponent__dailog {
+				background-color: $text-color-6;
+				color: $background-2;
+			}
 
-            svg {
-                path {
-                    fill: $text-color-6;
-                }
-            }
-        }
-    }
+			svg {
+				path {
+					fill: $text-color-6;
+				}
+			}
+		}
+	}
 
-    @media screen and (max-width:850px) {
-        flex-direction: column;
-    }
+	@media screen and (max-width: 850px) {
+		flex-direction: column;
+	}
 
-    .footerComponent__left {
-        width: fit-content;
+	.footerComponent__left {
+		width: fit-content;
 
-        a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 600;
-            text-decoration: none;
-            gap: 5px;
-            margin-left: 40px;
-            color: $primary-2;
+		a {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			font-weight: 600;
+			text-decoration: none;
+			gap: 5px;
+			margin-left: 40px;
+			color: $primary-2;
 
-            &:hover {
-                text-decoration: underline;
-            }
+			&:hover {
+				text-decoration: underline;
+			}
 
-            svg {
-                stroke-width: 2;
-                width: 20px;
-                height: 20px;
-            }
-        }
-    }
+			svg {
+				stroke-width: 2;
+				width: 20px;
+				height: 20px;
+			}
+		}
+	}
 
-    .footerComponent__right {
-        flex: 1;
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
+	.footerComponent__right {
+		flex: 1;
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
 
-        .footerComponent__dailog {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border: 0px;
-            border-radius: 16px;
-            box-shadow: rgba(14, 14, 44, 0.4) 0px -1px 0px 0px inset;
-            font-size: 16px;
-            font-weight: 600;
-            letter-spacing: 0.03em;
-            line-height: 1;
-            opacity: 1;
-            outline: 0px;
-            transition: background-color 0.2s ease 0s, opacity 0.2s ease 0s;
-            height: 48px;
-            padding: 0px 24px;
-            background-color: $text-color-1;
-            color: $text-color-white-1;
-        }
+		.footerComponent__dailog {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			border: 0px;
+			border-radius: 16px;
+			box-shadow: rgba(14, 14, 44, 0.4) 0px -1px 0px 0px inset;
+			font-size: 16px;
+			font-weight: 600;
+			letter-spacing: 0.03em;
+			line-height: 1;
+			opacity: 1;
+			outline: 0px;
+			transition:
+				background-color 0.2s ease 0s,
+				opacity 0.2s ease 0s;
+			height: 48px;
+			padding: 0px 24px;
+			background-color: $text-color-1;
+			color: $text-color-white-1;
+		}
 
-        img {
-            width: 160px;
+		img {
+			width: 160px;
 
-            @media screen and (max-width:380px) {
-                width: 50%;
-            }
-        }
-    }
+			@media screen and (max-width: 380px) {
+				width: 50%;
+			}
+		}
+	}
 }

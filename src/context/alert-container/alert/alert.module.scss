@@ -1,73 +1,73 @@
 .alert {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 16px;
-    margin-bottom: 8px;
-    border-radius: 8px;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	padding: 16px;
+	margin-bottom: 8px;
+	border-radius: 8px;
 
-    &.alertSuccess {
-        background-color: #F0FDF4;
-        color: #166540;
-        border: 1px solid #166540;
+	&.alertSuccess {
+		background-color: #f0fdf4;
+		color: #166540;
+		border: 1px solid #166540;
 
-        .alert__button {
-            color: #166540;
-        }
-    }
+		.alert__button {
+			color: #166540;
+		}
+	}
 
-    &.alertInfo {
-        background-color: #EFF6FF;
-        color: #3F5DBC;
-        border: 1px solid #3F5DBC;
+	&.alertInfo {
+		background-color: #eff6ff;
+		color: #3f5dbc;
+		border: 1px solid #3f5dbc;
 
-        .alert__button {
-            color: #3F5DBC;
-        }
-    }
+		.alert__button {
+			color: #3f5dbc;
+		}
+	}
 
-    &.alertWarning {
-        background-color: #FEFCE8;
-        color: #854D0E;
-        border: 1px solid #854D0E;
+	&.alertWarning {
+		background-color: #fefce8;
+		color: #854d0e;
+		border: 1px solid #854d0e;
 
-        .alert__button {
-            color: #854D0E;
-        }
-    }
+		.alert__button {
+			color: #854d0e;
+		}
+	}
 
-    &.alertError {
-        background-color: #FEF2F2;
-        color: #991B1B;
-        border: 1px solid #991B1B;
+	&.alertError {
+		background-color: #fef2f2;
+		color: #991b1b;
+		border: 1px solid #991b1b;
 
-        .alert__button {
-            color: #991B1B;
-        }
-    }
+		.alert__button {
+			color: #991b1b;
+		}
+	}
 
-    &.alertDark {
-        background-color: whitesmoke;
-    }
+	&.alertDark {
+		background-color: whitesmoke;
+	}
 
-    .alert__button {
-        border: none;
-        outline: none;
-        padding: 4px;
-        border-radius: 4px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-left: auto;
+	.alert__button {
+		border: none;
+		outline: none;
+		padding: 4px;
+		border-radius: 4px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin-left: auto;
 
-        &:hover {
-            cursor: pointer;
-        }
-    }
+		&:hover {
+			cursor: pointer;
+		}
+	}
 
-    span {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
+	span {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
 }

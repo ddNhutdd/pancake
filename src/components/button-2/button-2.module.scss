@@ -1,80 +1,80 @@
 @import 'src/components/global-style/base.scss';
 
 .button {
-    padding: 12px 6px;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    cursor: pointer;
-    transition: 0.15s;
-    font-size: 16px;
-    border: 1px solid;
-    font-size: 15px;
+	padding: 12px 6px;
+	border-radius: 8px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	cursor: pointer;
+	transition: 0.15s;
+	font-size: 16px;
+	border: 1px solid;
+	font-size: 15px;
 
-    &.outline {
-        border-color: $border-color-5;
-        background-color: transparent;
+	&.outline {
+		border-color: $border-color-5;
+		background-color: transparent;
 
-        &:hover {
-            background-color: $border-color-5;
-        }
-    }
+		&:hover {
+			background-color: $border-color-5;
+		}
+	}
 
-    &.primary {
-        border-color: $background-15;
-        background-color: $background-15;
-        color: $background-1;
+	&.primary {
+		border-color: $background-15;
+		background-color: $background-15;
+		color: $background-1;
 
-        &:hover {
-            background-color: $background-16;
-            border-color: $background-16;
-        }
-    }
+		&:hover {
+			background-color: $background-16;
+			border-color: $background-16;
+		}
+	}
 
-    &.outlineSmall {
-        padding: 2px 8px;
-        border-radius: 6px;
-        background-color: transparent;
-        border-color: $border-color-5;
+	&.outlineSmall {
+		padding: 2px 8px;
+		border-radius: 6px;
+		background-color: transparent;
+		border-color: $border-color-5;
 
-        &:hover {
-            background-color: $border-color-5;
-        }
+		&:hover {
+			background-color: $border-color-5;
+		}
 
-        &:disabled {
-            color: $text-color-10;
-            border-color: $border-color-5;
-            background-color: $background-4;
+		&:disabled {
+			color: $text-color-10;
+			border-color: $border-color-5;
+			background-color: $background-4;
 
-            &:hover {
-                cursor: default;
-                color: $text-color-10;
-                border-color: $border-color-5;
-                background-color: $background-4;
-            }
-        }
-    }
+			&:hover {
+				cursor: default;
+				color: $text-color-10;
+				border-color: $border-color-5;
+				background-color: $background-4;
+			}
+		}
+	}
 
-    &.primarySmall {
-        border-color: $background-15;
-        background-color: $background-15;
-        color: $background-1;
-        padding: 2px 8px;
+	&.primarySmall {
+		border-color: $background-15;
+		background-color: $background-15;
+		color: $background-1;
+		padding: 2px 8px;
 
-        &:hover {
-            background-color: $background-16;
-            border-color: $background-16;
-        }
-    }
+		&:hover {
+			background-color: $background-16;
+			border-color: $background-16;
+		}
+	}
 
-    &.secondary {
-        border: none;
-        background-color: transparent;
+	&.secondary {
+		border: none;
+		background-color: transparent;
 
-        &:hover {
-            background-color: $border-color-5;
-        }
-    }
+		&:hover {
+			background-color: $border-color-5;
+		}
+	}
 }

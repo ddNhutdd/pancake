@@ -1,7 +1,5 @@
 const State = function () {
-	return <>
-		State
-	</>
-}
+	return <>State</>;
+};
 
 export default State;

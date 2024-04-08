@@ -1,8 +1,11 @@
 @import 'src/components/global-style/base.scss';
 
 .container {
-    font-size: 15px;
-    color: $text-color-dark;
-    font-weight: 300;
-    background: linear-gradient(rgb(250, 251, 253) 0px, rgba(246, 247, 248, 0) 85rem);
+	font-size: 15px;
+	color: $text-color-dark;
+	font-weight: 300;
+	background: linear-gradient(
+		rgb(250, 251, 253) 0px,
+		rgba(246, 247, 248, 0) 85rem
+	);
 }

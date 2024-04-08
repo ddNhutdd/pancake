@@ -1,29 +1,29 @@
 @import 'components/global-style/base.scss';
 
 .topStaticsItem {
-    .topStaticsItem__header {
-        padding: 16px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        border-bottom: 1px solid $border-color-5;
-        background-color: $background-17;
-        border-top-left-radius: 12px;
-        border-top-right-radius: 12px;
-    }
+	.topStaticsItem__header {
+		padding: 16px;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		border-bottom: 1px solid $border-color-5;
+		background-color: $background-17;
+		border-top-left-radius: 12px;
+		border-top-right-radius: 12px;
+	}
 
-    .topStaticsItem__body {
-        padding: 16px;
+	.topStaticsItem__body {
+		padding: 16px;
 
-        img {
-            width: 20px;
-            height: 20px;
-        }
-    }
+		img {
+			width: 20px;
+			height: 20px;
+		}
+	}
 
-    .topStaticsItem__line {
-        margin-top: 16px;
-        margin-bottom: 16px;
-        border-top: 1px solid $border-color-5;
-    }
+	.topStaticsItem__line {
+		margin-top: 16px;
+		margin-bottom: 16px;
+		border-top: 1px solid $border-color-5;
+	}
 }

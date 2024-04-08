@@ -1,21 +1,24 @@
-import axios from "axios";
+import axios from 'axios';
 
 const BASE_URL = 'https://admin-chat.dk-technical.vn/';
 const timeout = 180_000;
 
 export const axiosWithoutAuth = axios.create({
-    baseURL: BASE_URL,
-    timeout: timeout
-})
+	baseURL: BASE_URL,
+	timeout: timeout,
+});
 
 export const axiosWithAuth = axios.create({
-    baseURL: BASE_URL,
-    timeout: timeout,
-})
-
-axiosWithAuth.interceptors.request.use((config) => {
-    config.headers["Authorization"] = `Bearer ${`fda`}`;
-    return config;
-}, (e) => {
-    return Promise.reject(e);
+	baseURL: BASE_URL,
+	timeout: timeout,
 });
+
+axiosWithAuth.interceptors.request.use(
+	(config) => {
+		config.headers['Authorization'] = `Bearer ${`fda`}`;
+		return config;
+	},
+	(e) => {
+		return Promise.reject(e);
+	},
+);

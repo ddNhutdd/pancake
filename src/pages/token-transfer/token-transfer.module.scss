@@ -1,57 +1,57 @@
 @import 'components/global-style/base.scss';
 
 .tokenTransfer {
-    padding-top: 20px;
-    padding-bottom: 20px;
+	padding-top: 20px;
+	padding-bottom: 20px;
 
-    .container {
-        @include container2;
+	.container {
+		@include container2;
 
-        .tokenTransfer__card {
-            margin-top: 20px;
-        }
-    }
+		.tokenTransfer__card {
+			margin-top: 20px;
+		}
+	}
 }
 
 .tokenTransfer__method {
-    width: 100%;
-    border: 1px solid $border-color-5;
-    background: $background-17;
+	width: 100%;
+	border: 1px solid $border-color-5;
+	background: $background-17;
 
-    &:hover {
-        border-style: dashed !important;
-    }
+	&:hover {
+		border-style: dashed !important;
+	}
 }
 
 .tokenTransfer__token {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    padding-top: 3px;
-    padding-bottom: 3px;
-    cursor: pointer;
+	display: flex;
+	align-items: center;
+	gap: 5px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	cursor: pointer;
 
-    img {
-        width: 20px;
-        height: 20px;
-    }
+	img {
+		width: 20px;
+		height: 20px;
+	}
 
-    span {
-        &:last-child {
-            color: $text-color-11;
-        }
-    }
+	span {
+		&:last-child {
+			color: $text-color-11;
+		}
+	}
 }
 
 .tokenTransfer__info {
-    color: $text-color-dark-1 !important;
-    background-color: $background-1 !important;
-    border: 1px solid $border-color-5;
-    box-shadow: $box-shadow;
+	color: $text-color-dark-1 !important;
+	background-color: $background-1 !important;
+	border: 1px solid $border-color-5;
+	box-shadow: $box-shadow;
 
-    &::after {
-        background-color: $background-1 !important;
-        border-right: 1px solid $border-color-5 !important;
-        border-bottom: 1px solid $border-color-5 !important;
-    }
+	&::after {
+		background-color: $background-1 !important;
+		border-right: 1px solid $border-color-5 !important;
+		border-bottom: 1px solid $border-color-5 !important;
+	}
 }

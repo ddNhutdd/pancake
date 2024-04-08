@@ -1,138 +1,135 @@
-@import "components/global-style/base.scss";
+@import 'components/global-style/base.scss';
 
 .topCardContent {
-    padding-top: 20px;
-    padding-bottom: 20px;
-    display: flex;
-    color: $text-color-11;
-    font-weight: 300;
-    font-size: 15px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	display: flex;
+	color: $text-color-11;
+	font-weight: 300;
+	font-size: 15px;
 
-    @media screen and (max-width:992px) {
-        flex-wrap: wrap;
-    }
+	@media screen and (max-width: 992px) {
+		flex-wrap: wrap;
+	}
 
-    .topCardContent__section {
-        padding-left: 16px;
-        padding-right: 16px;
-        width: 33.3333%;
-        border-right: 1px solid $border-color-5;
+	.topCardContent__section {
+		padding-left: 16px;
+		padding-right: 16px;
+		width: 33.3333%;
+		border-right: 1px solid $border-color-5;
 
-        @media screen and (max-width:992px) {
-            width: 50%
-        }
+		@media screen and (max-width: 992px) {
+			width: 50%;
+		}
 
-        @media screen and (max-width:768px) {
-            width: 100%
-        }
+		@media screen and (max-width: 768px) {
+			width: 100%;
+		}
 
-        &:nth-of-type(2) {
-            @media screen and (max-width:768px) {
-                padding-top: 20px;
-            }
+		&:nth-of-type(2) {
+			@media screen and (max-width: 768px) {
+				padding-top: 20px;
+			}
 
-            .topCardContent__row {
-                @media screen and (max-width:576px) {
-                    flex-direction: column;
-                }
-            }
-        }
+			.topCardContent__row {
+				@media screen and (max-width: 576px) {
+					flex-direction: column;
+				}
+			}
+		}
 
+		&:last-child {
+			border: none;
 
-        &:last-child {
-            border: none;
+			@media screen and (max-width: 992px) {
+				width: 100%;
+				margin-top: 20px;
+				padding-left: 16px;
+				padding-right: 16px;
+			}
+		}
 
-            @media screen and (max-width:992px) {
-                width: 100%;
-                margin-top: 20px;
-                padding-left: 16px;
-                padding-right: 16px;
+		.topCardContent__row {
+			display: flex;
+			align-items: flex-start;
 
-            }
-        }
+			&:nth-of-type(2) {
+				@media screen and (max-width: 768px) {
+					padding-bottom: 20px;
+					border-bottom: 1px solid $border-color-5;
+				}
+			}
 
-        .topCardContent__row {
-            display: flex;
-            align-items: flex-start;
+			&:first-child {
+				border-bottom: 1px solid $border-color-5;
+				padding-bottom: 20px;
+			}
 
-            &:nth-of-type(2) {
-                @media screen and (max-width:768px) {
-                    padding-bottom: 20px;
-                    border-bottom: 1px solid $border-color-5;
-                }
-            }
+			&:last-child {
+				padding-top: 20px;
+			}
 
-            &:first-child {
-                border-bottom: 1px solid $border-color-5;
-                padding-bottom: 20px;
-            }
+			img {
+				width: 30px;
+				margin-right: 20px;
+			}
 
-            &:last-child {
-                padding-top: 20px;
-            }
+			svg {
+				font-size: 32px;
+				margin-right: 20px;
+			}
 
-            img {
-                width: 30px;
-                margin-right: 20px;
-            }
+			.topCardContent__row--hoverBlue {
+				color: $text-color-12;
+				transition: color 0.2s;
+				cursor: pointer;
 
-            svg {
-                font-size: 32px;
-                margin-right: 20px;
-            }
+				&:hover {
+					color: $text-color-13;
+				}
+			}
 
-            .topCardContent__row--hoverBlue {
-                color: $text-color-12;
-                transition: color .2s;
-                cursor: pointer;
+			.topCardContent__row--normal {
+				color: $text-color-11;
 
-                &:hover {
-                    color: $text-color-13
-                }
-            }
+				&:hover {
+					color: $text-color-11;
+				}
+			}
 
-            .topCardContent__row--normal {
-                color: $text-color-11;
+			.topCardContent__row--red {
+				color: $background-18;
 
-                &:hover {
-                    color: $text-color-11;
-                }
-            }
+				&:hover {
+					color: $background-18;
+				}
+			}
 
-            .topCardContent__row--red {
-                color: $background-18;
+			.topCardContent__row__left {
+				display: flex;
+				align-items: flex-start;
+			}
 
-                &:hover {
-                    color: $background-18;
-                }
-            }
+			.topCardContent__row__right {
+				margin-left: auto;
 
-            .topCardContent__row__left {
-                display: flex;
-                align-items: flex-start;
-            }
+				@media screen and (max-width: 576px) {
+					margin-left: 0;
+				}
+			}
+		}
 
-            .topCardContent__row__right {
-                margin-left: auto;
+		.topCardContent__chart {
+			@media screen and (max-width: 992px) {
+				height: 100%;
+				border-top: 1px solid $border-color-5;
+				padding-top: 20px;
+			}
 
-                @media screen and (max-width:576px) {
-                    margin-left: 0;
-                }
-            }
-        }
-
-        .topCardContent__chart {
-
-            @media screen and (max-width:992px) {
-                height: 100%;
-                border-top: 1px solid $border-color-5;
-                padding-top: 20px;
-            }
-
-            @media screen and (max-width:768px) {
-                border-top: none;
-                padding-top: 0;
-            }
-        }
-    }
+			@media screen and (max-width: 768px) {
+				border-top: none;
+				padding-top: 0;
+			}
+		}
+	}
 }

@@ -1,152 +1,151 @@
 // flex-direction --------------------
 .flex-col {
-    flex-direction: column;
+	flex-direction: column;
 }
 
 // flex-wrap --------------------
 .flex-wrap {
-    flex-wrap: wrap;
+	flex-wrap: wrap;
 }
 
 // align-items --------------------
 .items-center {
-    align-items: center;
+	align-items: center;
 }
 
 .items-start {
-    align-items: flex-start;
+	align-items: flex-start;
 }
 
 // align-seft --------------------
 .self-end {
-    align-self: flex-end;
+	align-self: flex-end;
 }
 
 // justify-content --------------------
 .justify-center {
-    justify-content: center;
+	justify-content: center;
 }
 
 .justify-between {
-    justify-content: space-between;
+	justify-content: space-between;
 }
 
 .justify-start {
-    justify-content: flex-start;
+	justify-content: flex-start;
 }
 
 .justify-end {
-    justify-content: flex-end;
+	justify-content: flex-end;
 }
 
 // order --------------------
 .order--1 {
-    order: -1;
+	order: -1;
 }
 
 // gap --------------------
 .gap-1 {
-    gap: $space * 1;
+	gap: $space * 1;
 }
 
 .gap-2 {
-    gap: $space * 2;
+	gap: $space * 2;
 }
 
 .gap-3 {
-    gap: $space * 3;
+	gap: $space * 3;
 }
 
 .gap-4 {
-    gap: $space * 4;
+	gap: $space * 4;
 }
 
 // grow --------------------
 .grow-0 {
-    flex-grow: 0;
+	flex-grow: 0;
 }
 
 .grow-1 {
-    flex-grow: 1;
+	flex-grow: 1;
 }
 
-
 @each $breakpoint, $width in $responsive {
-    @media screen and (max-width: $width) {
-        .flex-#{$breakpoint} {
-            display: flex;
-        }
+	@media screen and (max-width: $width) {
+		.flex-#{$breakpoint} {
+			display: flex;
+		}
 
-        // flex-direction --------------------
-        .flex-#{$breakpoint}-col {
-            flex-direction: column;
-        }
+		// flex-direction --------------------
+		.flex-#{$breakpoint}-col {
+			flex-direction: column;
+		}
 
-        // flex-wrap --------------------
-        .flex-#{$breakpoint}-wrap {
-            flex-wrap: wrap;
-        }
+		// flex-wrap --------------------
+		.flex-#{$breakpoint}-wrap {
+			flex-wrap: wrap;
+		}
 
-        // align-items --------------------
-        .items-#{$breakpoint}-center {
-            align-items: center;
-        }
+		// align-items --------------------
+		.items-#{$breakpoint}-center {
+			align-items: center;
+		}
 
-        .items-#{$breakpoint}-start {
-            align-items: center;
-        }
+		.items-#{$breakpoint}-start {
+			align-items: center;
+		}
 
-        // align-seft --------------------
-        .self-#{$breakpoint}-end {
-            align-self: flex-end;
-        }
+		// align-seft --------------------
+		.self-#{$breakpoint}-end {
+			align-self: flex-end;
+		}
 
-        // justify-content --------------------
-        .justify-#{$breakpoint}-center {
-            justify-content: center;
-        }
+		// justify-content --------------------
+		.justify-#{$breakpoint}-center {
+			justify-content: center;
+		}
 
-        .justify-#{$breakpoint}-between {
-            justify-content: space-between;
-        }
+		.justify-#{$breakpoint}-between {
+			justify-content: space-between;
+		}
 
-        .justify-#{$breakpoint}-start {
-            justify-content: flex-start;
-        }
+		.justify-#{$breakpoint}-start {
+			justify-content: flex-start;
+		}
 
-        .justify-#{$breakpoint}-end {
-            justify-content: flex-end;
-        }
+		.justify-#{$breakpoint}-end {
+			justify-content: flex-end;
+		}
 
-        // order --------------------
-        .order-#{$breakpoint}--1 {
-            order: -1;
-        }
+		// order --------------------
+		.order-#{$breakpoint}--1 {
+			order: -1;
+		}
 
-        // gap --------------------
-        .gap-#{$breakpoint}-1 {
-            gap: $space * 1;
-        }
+		// gap --------------------
+		.gap-#{$breakpoint}-1 {
+			gap: $space * 1;
+		}
 
-        .gap-#{$breakpoint}-2 {
-            gap: $space * 2;
-        }
+		.gap-#{$breakpoint}-2 {
+			gap: $space * 2;
+		}
 
-        .gap-#{$breakpoint}-3 {
-            gap: $space * 3;
-        }
+		.gap-#{$breakpoint}-3 {
+			gap: $space * 3;
+		}
 
-        .gap-#{$breakpoint}-4 {
-            gap: $space * 4;
-        }
+		.gap-#{$breakpoint}-4 {
+			gap: $space * 4;
+		}
 
-        // grow --------------------
-        .grow-#{$breakpoint}-0 {
-            flex-grow: 0;
-        }
+		// grow --------------------
+		.grow-#{$breakpoint}-0 {
+			flex-grow: 0;
+		}
 
-        .grow-#{$breakpoint}-1 {
-            flex-grow: 1;
-        }
-    }
+		.grow-#{$breakpoint}-1 {
+			flex-grow: 1;
+		}
+	}
 }

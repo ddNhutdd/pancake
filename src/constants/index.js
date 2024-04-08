@@ -1,19 +1,19 @@
-import { defaultConfig } from '@web3modal/ethers/react';
+import {defaultConfig} from '@web3modal/ethers/react';
 
 export const urlParams = {
 	blockNumber: ':blocknumber',
 	transactionNumber: ':transactionnumber',
-	addressNumber: ':addressnumber'
-}
+	addressNumber: ':addressnumber',
+};
 
 export const url = {
-	home: "/home-cake",
-	swap: "/swap",
+	home: '/home-cake',
+	swap: '/swap',
 	staking: '/staking',
 	cakeStaking: '/cake-staking',
 	profile: '/profile',
-	home2: "/",
-	transactions: "/transactions",
+	home2: '/',
+	transactions: '/transactions',
 	transactionsPending: '/transactions-pending',
 	login: '/login',
 	register: '/register',
@@ -22,8 +22,8 @@ export const url = {
 	passwordRecovery: '/password-recovery',
 	forkedBlocks: '/forked-blocks',
 	topAccount: '/top-account',
-	verifiedContracts: "/verified-contracts",
-	validatorsLeaderboard: "/validators-leaderboard",
+	verifiedContracts: '/verified-contracts',
+	validatorsLeaderboard: '/validators-leaderboard',
 	setInfo: '/set-info',
 	topToken: '/top-token',
 	settings: '/settings',
@@ -45,7 +45,7 @@ export const url = {
 };
 
 export const localStorageVariable = {
-	darkTheme: "darkTheme",
+	darkTheme: 'darkTheme',
 	search: '',
 };
 
@@ -53,14 +53,14 @@ export const chainList = [
 	{
 		blockChain: 'Ethereum Mainnet',
 		ChainID: '1',
-		Currency: 'ETH'
+		Currency: 'ETH',
 	},
 	{
 		blockChain: 'BNB Smart Chain Mainnet',
 		ChainID: '56',
-		Currency: 'BNB'
+		Currency: 'BNB',
 	},
-]
+];
 
 // config web3
 export const projectId = '5cfce0ac0d25591fa3ce98011db61342';
@@ -69,14 +69,14 @@ export const mainnet = {
 	name: 'Ethereum',
 	currency: 'ETH',
 	explorerUrl: 'https://etherscan.io',
-	rpcUrl: 'https://cloudflare-eth.com'
-}
+	rpcUrl: 'https://cloudflare-eth.com',
+};
 const metadata = {
 	name: 'My Website',
 	description: 'My Website description',
 	url: 'https://mywebsite.com',
-	icons: ['https://avatars.mywebsite.com/']
-}
+	icons: ['https://avatars.mywebsite.com/'],
+};
 export const ethersConfig = defaultConfig({
 	/*Required*/
 	metadata,
@@ -87,9 +87,9 @@ export const ethersConfig = defaultConfig({
 	enableCoinbase: true,
 	rpcUrl: '...',
 	defaultChainId: 1,
-})
+});
 
-// string 
+// string
 export const commonString = {
 	success: 'Success',
 	tooLong: 'Too long',
@@ -97,12 +97,12 @@ export const commonString = {
 	require: 'Require',
 	formatInvalid: 'Format invalid',
 	emailNotMatch: 'Email not match',
-	passwordNotMatch: 'Password not match'
-}
+	passwordNotMatch: 'Password not match',
+};
 
 export const regular = {
 	email: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/,
-}
+};
 
 export const dateFormat = `d-M-yyyy`;
 
@@ -111,28 +111,28 @@ export const apiStatus = {
 	pending: 'pending',
 	fetching: 'fetching',
 	fullfiled: 'fullfiled',
-	rejected: 'rejected'
-}
+	rejected: 'rejected',
+};
 
 //locates
 export const location = {
 	en: 'en-US',
-	vi: 'vi-VN'
-}
+	vi: 'vi-VN',
+};
 
-//transaction status 
+//transaction status
 export const transactionStatus = {
-	success: "Success",
-	unKnow: 'Unknow'
-}
+	success: 'Success',
+	unKnow: 'Unknow',
+};
 
 export const searchType = {
 	transaction: 'transaction',
-	addressEoa: "address-eoa",
-	addressContract: "address-contract",
-	block: 'block'
-}
+	addressEoa: 'address-eoa',
+	addressContract: 'address-contract',
+	block: 'block',
+};
 
 export const apiResponse = {
-	notFound: 'Not found'
-}
+	notFound: 'Not found',
+};

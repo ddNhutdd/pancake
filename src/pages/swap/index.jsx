@@ -1,31 +1,30 @@
 import HeaderComponent from '../../components/header-component';
 import FooterComponent from '../../components/footer-component';
 import css from './swap.module.scss';
-import { GiCash } from 'react-icons/gi';
-import { FaChartBar } from 'react-icons/fa';
-import { FaFire } from 'react-icons/fa6';
-import { IoSettingsSharp } from 'react-icons/io5';
-import { VscHistory } from 'react-icons/vsc';
-import { GrRotateRight } from 'react-icons/gr';
+import {GiCash} from 'react-icons/gi';
+import {FaChartBar} from 'react-icons/fa';
+import {FaFire} from 'react-icons/fa6';
+import {IoSettingsSharp} from 'react-icons/io5';
+import {VscHistory} from 'react-icons/vsc';
+import {GrRotateRight} from 'react-icons/gr';
 import SwapSelect from './swap-select';
 import Input from 'src/components/input';
-import { FaRegCopy } from 'react-icons/fa';
-import { IoPencil } from 'react-icons/io5';
+import {FaRegCopy} from 'react-icons/fa';
+import {IoPencil} from 'react-icons/io5';
 import Button from 'src/components/button';
-import { VscArrowSwap } from 'react-icons/vsc';
-import { FaArrowsRotate } from 'react-icons/fa6';
-import { FaArrowDown } from 'react-icons/fa';
-import { HiOutlineArrowsUpDown } from 'react-icons/hi2';
-import { useTheme } from 'src/context/dark-theme';
-import { HeaderComponentList1 } from "src/constants/header-component-list-1.jsx";
+import {VscArrowSwap} from 'react-icons/vsc';
+import {FaArrowsRotate} from 'react-icons/fa6';
+import {FaArrowDown} from 'react-icons/fa';
+import {HiOutlineArrowsUpDown} from 'react-icons/hi2';
+import {useTheme} from 'src/context/dark-theme';
+import {HeaderComponentList1} from 'src/constants/header-component-list-1.jsx';
 
 function Swap() {
-
-	const { isDarkMode } = useTheme();
+	const {isDarkMode} = useTheme();
 
 	const renderDarkTheme = () => {
 		return isDarkMode ? css.dark : '';
-	}
+	};
 
 	return (
 		<>
@@ -82,9 +81,7 @@ function Swap() {
 										</span>
 									</button>
 								</div>
-								<div
-									className={`${css.swap__select}`}
-								>
+								<div className={`${css.swap__select}`}>
 									<SwapSelect
 										image={
 											<img src='src/assets/imgs/bnbicon.png' />
@@ -126,7 +123,10 @@ function Swap() {
 									</div>
 								</div>
 								<div className={css.swap__action}>
-									<Button isDark={isDarkMode} style={{ width: '100%' }}>
+									<Button
+										isDark={isDarkMode}
+										style={{width: '100%'}}
+									>
 										Connect Wallet
 									</Button>
 								</div>

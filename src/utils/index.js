@@ -1,10 +1,10 @@
-import { location } from "src/constants";
+import {location} from 'src/constants';
 
 export const setLocalStorage = (key, data) => {
 	try {
 		localStorage.setItem(key, JSON.stringify(data));
 	} catch (error) {
-		(error);
+		error;
 	}
 };
 
@@ -12,7 +12,7 @@ export const getLocalStorage = (key) => {
 	try {
 		return JSON.parse(localStorage.getItem(key));
 	} catch (error) {
-		(error);
+		error;
 	}
 };
 
@@ -20,7 +20,7 @@ export const removeLocalStorage = (key) => {
 	try {
 		localStorage.removeItem(key);
 	} catch (error) {
-		(error);
+		error;
 	}
 };
 
@@ -32,13 +32,10 @@ export const debounce = function (func, ms) {
 	};
 };
 
-export const createIntersectionObserve = (
-	htmlElement,
-	animationClass
-) => {
+export const createIntersectionObserve = (htmlElement, animationClass) => {
 	const options = {
 		root: null,
-		rootMargin: "0px",
+		rootMargin: '0px',
 		threshold: 0.2,
 	};
 	const callback = function (entries) {
@@ -59,7 +56,10 @@ export const createIntersectionObserve = (
 export const addAnimation = (listId, listAnimation) => {
 	const listObserse = [];
 	for (let i = 0; i < listId.length; i++) {
-		const temp = createIntersectionObserve(listId.at(i), listAnimation.at(i));
+		const temp = createIntersectionObserve(
+			listId.at(i),
+			listAnimation.at(i),
+		);
 		listObserse.push(temp);
 	}
 	return listObserse;
@@ -70,18 +70,18 @@ export const truncatedWalletAddress = (address) => {
 		const last4Chars = address.slice(-4);
 		return `0x...${last4Chars}`;
 	} catch (error) {
-		(error);
-		return `0x...`
+		error;
+		return `0x...`;
 	}
-}
+};
 
 export const scrollToTop = () => {
 	document.documentElement.scrollTo({
 		top: 0,
 		left: 0,
-		behavior: "smooth",
+		behavior: 'smooth',
 	});
-}
+};
 
 export const countCharacterOccurrences = (str, char) => {
 	let count = 0;
@@ -91,77 +91,75 @@ export const countCharacterOccurrences = (str, char) => {
 		}
 	}
 	return count;
-}
+};
 
 export const generateString = (char, numChars) => {
-	let result = "";
+	let result = '';
 	for (let i = 0; i < numChars; i++) {
 		result += char;
 	}
 	return result;
-}
+};
 
 export const formatDay = (format, value) => {
 	const day = value.getDate();
 	const month = value.getMonth() + 1;
 	const year = value.getFullYear();
 
-
 	const countNumberDay = countCharacterOccurrences(format, 'd');
-	const dayString = day.toString().padStart(countNumberDay, "0");
+	const dayString = day.toString().padStart(countNumberDay, '0');
 
 	const countNumberMonth = countCharacterOccurrences(format, 'M');
-	const monthString = month.toString().padStart(countNumberMonth, "0");
+	const monthString = month.toString().padStart(countNumberMonth, '0');
 
 	const countNumberYear = countCharacterOccurrences(format, 'y');
-	const yearString = year.toString().padStart(countNumberYear, "0");
+	const yearString = year.toString().padStart(countNumberYear, '0');
 
-	const result = format.replace(
-		generateString('d', countNumberDay), dayString
-	).replace(
-		generateString('M', countNumberMonth), monthString
-	).replace(
-		generateString('y', countNumberYear), yearString
-	)
+	const result = format
+		.replace(generateString('d', countNumberDay), dayString)
+		.replace(generateString('M', countNumberMonth), monthString)
+		.replace(generateString('y', countNumberYear), yearString);
 	return result;
-}
+};
 
 export const hasKey = (obj, key) => {
 	if (!obj || !key) return false;
 	const keys = Object.keys(obj);
 	return keys.includes(key);
-}
+};
 
 export const formatNumber = (value, locales = location.en, digits) => {
 	if (digits) {
-		return new Intl.NumberFormat(locales, { maximumSignificantDigits: digits }).format(value)
+		return new Intl.NumberFormat(locales, {
+			maximumSignificantDigits: digits,
+		}).format(value);
 	} else {
-		return new Intl.NumberFormat(locales).format(value)
+		return new Intl.NumberFormat(locales).format(value);
 	}
-}
+};
 
 export const addClass = (element, className) => {
 	if (!element) return;
 	!element.classList.contains(className) && element.classList.add(className);
-}
+};
 
 export const removeClass = (element, className) => {
 	if (!element) return;
 	element.classList.remove(className);
-}
+};
 
 export const convertBnbToUsd = (bnbAmount, exchangeRate) => {
 	if (typeof bnbAmount !== 'number' || typeof exchangeRate !== 'number') {
-		('Số lượng BNB và tỷ giá hối đoái phải là số')
+		('Số lượng BNB và tỷ giá hối đoái phải là số');
 	}
 
 	if (bnbAmount < 0 || exchangeRate <= 0) {
-		('Số lượng BNB và tỷ giá hối đoái phải là số')
+		('Số lượng BNB và tỷ giá hối đoái phải là số');
 	}
 
 	const usdAmount = bnbAmount * exchangeRate;
 	return usdAmount.toFixed(2);
-}
+};
 
 export const getTimeAgo = (timestamp) => {
 	const currentTime = Math.floor(Date.now() / 1000);
@@ -179,7 +177,7 @@ export const getTimeAgo = (timestamp) => {
 		const days = Math.floor(seconds / 86400);
 		return `from ${days} days ago`;
 	}
-}
+};
 
 export const shortenHash = (hash) => {
 	if (!hash) return;
@@ -190,4 +188,4 @@ export const shortenHash = (hash) => {
 	const prefix = hash.substring(0, 6);
 	const suffix = hash.substring(length - 6);
 	return `${prefix}...${suffix}`;
-}
+};

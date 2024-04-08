@@ -1,35 +1,35 @@
 .d-0 {
-    display: none !important;
+	display: none !important;
 }
 
 .d-b {
-    display: block !important;
+	display: block !important;
 }
 
 .flex {
-    display: flex;
+	display: flex;
 }
 
 .inline-flex {
-    display: inline-flex;
+	display: inline-flex;
 }
 
 @each $breakpoint, $width in $responsive {
-    @media screen and (max-width: $width) {
-        .d-#{$breakpoint}-0 {
-            display: none !important;
-        }
+	@media screen and (max-width: $width) {
+		.d-#{$breakpoint}-0 {
+			display: none !important;
+		}
 
-        .d-#{$breakpoint}-b {
-            display: block !important;
-        }
+		.d-#{$breakpoint}-b {
+			display: block !important;
+		}
 
-        .flex-#{$breakpoint} {
-            display: flex;
-        }
+		.flex-#{$breakpoint} {
+			display: flex;
+		}
 
-        .inline-flex-#{$breakpoint} {
-            display: inline-flex;
-        }
-    }
+		.inline-flex-#{$breakpoint} {
+			display: inline-flex;
+		}
+	}
 }

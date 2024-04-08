@@ -1,94 +1,94 @@
-@import "src/components/global-style/base.scss";
+@import 'src/components/global-style/base.scss';
 
 .dropdownHeader {
-    position: relative;
-    height: 100%;
+	position: relative;
+	height: 100%;
 
-    &.dark {
-        .headerContainer {
-            &.canHover {
-                &:hover {
-                    background-color: $background-5;
-                }
-            }
-        }
+	&.dark {
+		.headerContainer {
+			&.canHover {
+				&:hover {
+					background-color: $background-5;
+				}
+			}
+		}
 
-        .headerMenuContainer {
-            .headerMenu {
-                background-color: $background-2;
-                border-color: $border-color-3;
+		.headerMenuContainer {
+			.headerMenu {
+				background-color: $background-2;
+				border-color: $border-color-3;
 
-                .headerMenu__item {
-                    &:hover {
-                        background-color: $background-5;
-                    }
+				.headerMenu__item {
+					&:hover {
+						background-color: $background-5;
+					}
 
-                    &.border {
-                        border-color: $border-color-3;
-                    }
-                }
-            }
-        }
-    }
+					&.border {
+						border-color: $border-color-3;
+					}
+				}
+			}
+		}
+	}
 
-    .headerContainer {
-        position: relative;
-        height: 100%;
-        transition: .4s;
-        border-radius: 15px;
+	.headerContainer {
+		position: relative;
+		height: 100%;
+		transition: 0.4s;
+		border-radius: 15px;
 
-        &.canHover {
-            &:hover {
-                &.disableHoverEffect {
-                    background-color: transparent;
-                }
+		&.canHover {
+			&:hover {
+				&.disableHoverEffect {
+					background-color: transparent;
+				}
 
-                background-color: $hover-1;
+				background-color: $hover-1;
 
-                &+.headerMenuContainer {
-                    display: block;
-                }
-            }
-        }
+				& + .headerMenuContainer {
+					display: block;
+				}
+			}
+		}
 
-        svg {
-            font-size: 25px;
-        }
-    }
+		svg {
+			font-size: 25px;
+		}
+	}
 
-    .headerMenuContainer {
-        position: absolute;
-        top: 51px;
-        width: 250px;
-        padding-top: 7px;
-        display: none;
+	.headerMenuContainer {
+		position: absolute;
+		top: 51px;
+		width: 250px;
+		padding-top: 7px;
+		display: none;
 
-        &.canHover {
-            &:hover {
-                display: block;
-            }
-        }
+		&.canHover {
+			&:hover {
+				display: block;
+			}
+		}
 
-        .headerMenu {
-            width: 100%;
-            border-radius: 15px;
-            background-color: $background-1;
-            overflow: hidden;
+		.headerMenu {
+			width: 100%;
+			border-radius: 15px;
+			background-color: $background-1;
+			overflow: hidden;
 
-            .headerMenu__item {
-                padding: 10px;
-                transition: .2s;
-                display: flex;
-                align-items: center;
+			.headerMenu__item {
+				padding: 10px;
+				transition: 0.2s;
+				display: flex;
+				align-items: center;
 
-                &:hover {
-                    background-color: $hover-1;
-                }
+				&:hover {
+					background-color: $hover-1;
+				}
 
-                &.border {
-                    border-bottom: 1px solid $border-color;
-                }
-            }
-        }
-    }
+				&.border {
+					border-bottom: 1px solid $border-color;
+				}
+			}
+		}
+	}
 }

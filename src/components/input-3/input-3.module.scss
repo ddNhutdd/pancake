@@ -1,50 +1,49 @@
-@import "components/global-style/base.scss";
+@import 'components/global-style/base.scss';
 
 .inputContainer {
-    color: $text-color-dark;
-    font-weight: 300;
-    width: 100%;
+	color: $text-color-dark;
+	font-weight: 300;
+	width: 100%;
 
-    .input {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
-        position: relative;
+	.input {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 10px;
+		position: relative;
 
-        input {
-            padding: 5px 10px;
-            font-size: 15px;
-            border-radius: 8px;
-            outline: none;
-            border: 1px solid $border-color-5;
-            width: 100%;
-            padding-right: 58px;
-            height: 35px;
+		input {
+			padding: 5px 10px;
+			font-size: 15px;
+			border-radius: 8px;
+			outline: none;
+			border: 1px solid $border-color-5;
+			width: 100%;
+			padding-right: 58px;
+			height: 35px;
 
+			&.err {
+				border-color: $background-18;
+			}
+		}
 
-            &.err {
-                border-color: $background-18;
-            }
-        }
+		.input__eye {
+			position: absolute;
+			top: 50%;
+			right: 10px;
+			transform: translateY(-50%);
+			height: 80%;
+			z-index: 2;
 
-        .input__eye {
-            position: absolute;
-            top: 50%;
-            right: 10px;
-            transform: translateY(-50%);
-            height: 80%;
-            z-index: 2;
+			button {
+				height: 100%;
+				border: none;
+			}
+		}
+	}
 
-            button {
-                height: 100%;
-                border: none;
-            }
-        }
-    }
-
-    .input__error {
-        text-align: left;
-        color: $background-18;
-    }
+	.input__error {
+		text-align: left;
+		color: $background-18;
+	}
 }

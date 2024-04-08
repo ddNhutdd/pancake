@@ -1,36 +1,36 @@
-@import "components/global-style/base.scss";
+@import 'components/global-style/base.scss';
 
 .mainContent {
-    color: $text-color-dark;
-    font-weight: 300;
+	color: $text-color-dark;
+	font-weight: 300;
 
-    .mainContent__header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 16px;
-        font-weight: 400;
-        border-bottom: 1px solid $border-color-5;
+	.mainContent__header {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 16px;
+		font-weight: 400;
+		border-bottom: 1px solid $border-color-5;
 
-        .mainContent__header__button {
-            padding-top: 8px;
-            padding-bottom: 8px;
-        }
-    }
+		.mainContent__header__button {
+			padding-top: 8px;
+			padding-bottom: 8px;
+		}
+	}
 
-    .mainContent__content {
-        padding: 16px;
-        border-bottom: 1px solid $border-color-5;
-    }
+	.mainContent__content {
+		padding: 16px;
+		border-bottom: 1px solid $border-color-5;
+	}
 
-    .mainContent__footer {
-        padding: 16px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
-        background-color: $background-17;
-        border-bottom-left-radius: 12px;
-        border-bottom-right-radius: 12px;
-    }
+	.mainContent__footer {
+		padding: 16px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 10px;
+		background-color: $background-17;
+		border-bottom-left-radius: 12px;
+		border-bottom-right-radius: 12px;
+	}
 }

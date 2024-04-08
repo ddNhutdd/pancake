@@ -1,23 +1,22 @@
 @import 'components/global-style/base.scss';
 
 .chartItem {
-    cursor: pointer;
+	cursor: pointer;
 
-    &:hover {
-        .chartItem__card {
-            .chartItem__header {
-                color: $background-15;
+	&:hover {
+		.chartItem__card {
+			.chartItem__header {
+				color: $background-15;
+			}
+		}
+	}
 
-            }
-        }
-    }
+	.chartItem__card {
+		padding: 16px;
 
-    .chartItem__card {
-        padding: 16px;
-
-        .chartItem__header {
-            margin-bottom: 30px;
-            transition: color .2s;
-        }
-    }
+		.chartItem__header {
+			margin-bottom: 30px;
+			transition: color 0.2s;
+		}
+	}
 }

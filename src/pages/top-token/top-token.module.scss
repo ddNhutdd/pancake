@@ -1,116 +1,116 @@
-@import "components/global-style/base.scss";
+@import 'components/global-style/base.scss';
 
 .topToken {
-    padding-top: 20px;
-    padding-bottom: 20px;
+	padding-top: 20px;
+	padding-bottom: 20px;
 
-    .topToken--bold {
-        font-weight: 400
-    }
+	.topToken--bold {
+		font-weight: 400;
+	}
 
-    .container {
-        @include container2;
+	.container {
+		@include container2;
 
-        .topToken__card {
-            margin-top: 20px;
+		.topToken__card {
+			margin-top: 20px;
 
-            .topToken__cardHeader {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                padding: 16px;
-                margin-bottom: -36px;
-            }
-        }
+			.topToken__cardHeader {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				padding: 16px;
+				margin-bottom: -36px;
+			}
+		}
 
-        .topToken__bot {
-            display: flex;
-            align-items: center;
+		.topToken__bot {
+			display: flex;
+			align-items: center;
 
-            span {
-                margin-left: 5px;
-                margin-right: 5px;
-                color: $background-15;
-                cursor: pointer;
-            }
-        }
-    }
+			span {
+				margin-left: 5px;
+				margin-right: 5px;
+				color: $background-15;
+				cursor: pointer;
+			}
+		}
+	}
 }
 
 .topToken__searchButton {
-    width: 30px !important;
-    height: 30px !important;
-    font-size: 20px;
-    padding: 0 !important;
-    background-color: $border-color-5 !important;
-    cursor: pointer;
+	width: 30px !important;
+	height: 30px !important;
+	font-size: 20px;
+	padding: 0 !important;
+	background-color: $border-color-5 !important;
+	cursor: pointer;
 }
 
 .topToken__tokenCol {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 5px;
-    cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	gap: 5px;
+	cursor: pointer;
 
-    img {
-        width: 20px;
-        height: 20px;
-    }
+	img {
+		width: 20px;
+		height: 20px;
+	}
 
-    span {
-        &:nth-of-type(1) {
-            transition: color .2s;
-            font-weight: 400;
-            color: $text-color-dark;
+	span {
+		&:nth-of-type(1) {
+			transition: color 0.2s;
+			font-weight: 400;
+			color: $text-color-dark;
 
-            &:hover {
-                color: $background-15;
-            }
-        }
+			&:hover {
+				color: $background-15;
+			}
+		}
 
-        &:nth-of-type(2) {
-            color: $text-color-11;
-        }
-    }
+		&:nth-of-type(2) {
+			color: $text-color-11;
+		}
+	}
 
-    .topToken__tokenCol__popover {
-        display: flex;
-        align-items: center;
-        color: $text-color-11;
-    }
+	.topToken__tokenCol__popover {
+		display: flex;
+		align-items: center;
+		color: $text-color-11;
+	}
 }
 
 .topToken__priceCol {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
 
-    span {
-        &:last-child {
-            font-size: 12px;
-            color: $text-color-11;
-        }
-    }
+	span {
+		&:last-child {
+			font-size: 12px;
+			color: $text-color-11;
+		}
+	}
 }
 
 .topToken__changeCol {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 5px;
-    color: $background-18;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	gap: 5px;
+	color: $background-18;
 }
 
 .topToken__holderCol {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
 
-    span {
-        &:nth-of-type(2) {
-            font-size: 12px;
-            color: $text-color-14;
-        }
-    }
+	span {
+		&:nth-of-type(2) {
+			font-size: 12px;
+			color: $text-color-14;
+		}
+	}
 }

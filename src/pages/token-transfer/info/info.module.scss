@@ -1,38 +1,37 @@
-@import "components/global-style/base.scss";
+@import 'components/global-style/base.scss';
 
 .info {
-    font-size: 15px;
-    font-weight: 300;
+	font-size: 15px;
+	font-weight: 300;
 
-    .header {
-        font-size: 18px;
-        font-weight: 400;
-        margin-bottom: 15px;
-    }
+	.header {
+		font-size: 18px;
+		font-weight: 400;
+		margin-bottom: 15px;
+	}
 
-    .info__record {
-        .info__title {
-            font-weight: 400;
-        }
+	.info__record {
+		.info__title {
+			font-weight: 400;
+		}
 
-        img {
-            width: 20px;
-            height: 20px;
-            position: relative;
-            top: 4px;
-        }
-    }
+		img {
+			width: 20px;
+			height: 20px;
+			position: relative;
+			top: 4px;
+		}
+	}
 
-    .info__line {
-        margin-top: 16px;
-        margin-bottom: 16px;
-        border-bottom: 1px solid $border-color-5;
-    }
+	.info__line {
+		margin-top: 16px;
+		margin-bottom: 16px;
+		border-bottom: 1px solid $border-color-5;
+	}
 
-    .info__last {
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-
-    }
+	.info__last {
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+	}
 }

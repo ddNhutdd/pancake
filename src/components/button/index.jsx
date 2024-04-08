@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
-import css from './button.module.scss'
-import { forwardRef } from 'react';
+import css from './button.module.scss';
+import {forwardRef} from 'react';
 
 export const buttonClassesType = {
 	primary: 'primary',
@@ -10,7 +10,7 @@ export const buttonClassesType = {
 };
 
 const Button = forwardRef((props, ref) => {
-	const { type, children, style, className, isDark, onClick } = props;
+	const {type, children, style, className, isDark, onClick} = props;
 
 	const getButtonClasses = (type) => {
 		switch (type) {
@@ -39,7 +39,7 @@ const Button = forwardRef((props, ref) => {
 			className={`${getButtonClasses(type)} ${renderDark()} ${className}`}
 		>
 			{children}
-		</button >
+		</button>
 	);
 });
 
@@ -47,7 +47,7 @@ Button.propDefault = {
 	type: buttonClassesType.primary,
 	className: '',
 	isDark: false,
-	onclick: () => { }
+	onclick: () => {},
 };
 
 Button.propTypes = {
@@ -56,7 +56,7 @@ Button.propTypes = {
 	children: PropTypes.node,
 	className: PropTypes.string,
 	isDark: PropTypes.bool,
-	onClick: PropTypes.func
+	onClick: PropTypes.func,
 };
 
 export default Button;

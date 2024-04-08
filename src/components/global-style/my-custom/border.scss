@@ -1,77 +1,77 @@
 .border-0 {
-    border: none;
+	border: none;
 }
 
 .border-1 {
-    border: 1px solid $border-color;
+	border: 1px solid $border-color;
 }
 
 .border-t-1 {
-    border-top: 1px solid $border-color;
+	border-top: 1px solid $border-color;
 }
 
 .border-b-1 {
-    border-bottom: 1px solid $border-color;
+	border-bottom: 1px solid $border-color;
 }
 
 .border-r-0 {
-    border-right: none;
+	border-right: none;
 }
 
 .border-r-1 {
-    border-right: 1px solid $border-color;
+	border-right: 1px solid $border-color;
 }
 
 .border-l-0 {
-    border-left: none;
+	border-left: none;
 }
 
 .border-l-1 {
-    border-left: 1px solid $border-color;
+	border-left: 1px solid $border-color;
 }
 
 //
 .rounded {
-    border-radius: $border-radius;
+	border-radius: $border-radius;
 }
 
 @each $breakpoint, $width in $responsive {
-    @media screen and (max-width: $width) {
-        .border-#{$breakpoint}-0 {
-            border: none;
-        }
+	@media screen and (max-width: $width) {
+		.border-#{$breakpoint}-0 {
+			border: none;
+		}
 
-        .border-#{$breakpoint}-1 {
-            border: 1px solid $border-color;
-        }
+		.border-#{$breakpoint}-1 {
+			border: 1px solid $border-color;
+		}
 
-        .border-t-#{$breakpoint}-1 {
-            border-top: 1px solid $border-color;
-        }
+		.border-t-#{$breakpoint}-1 {
+			border-top: 1px solid $border-color;
+		}
 
-        .border-b-#{$breakpoint}-1 {
-            border-bottom: 1px solid $border-color;
-        }
+		.border-b-#{$breakpoint}-1 {
+			border-bottom: 1px solid $border-color;
+		}
 
-        .border-r-#{$breakpoint}-0 {
-            border-right: none;
-        }
+		.border-r-#{$breakpoint}-0 {
+			border-right: none;
+		}
 
-        .border-r-#{$breakpoint}-1 {
-            border-right: 1px solid $border-color;
-        }
+		.border-r-#{$breakpoint}-1 {
+			border-right: 1px solid $border-color;
+		}
 
-        .border-l-#{$breakpoint}-0 {
-            border-left: none;
-        }
+		.border-l-#{$breakpoint}-0 {
+			border-left: none;
+		}
 
-        .border-l-#{$breakpoint}-1 {
-            border-left: 1px solid $border-color;
-        }
+		.border-l-#{$breakpoint}-1 {
+			border-left: 1px solid $border-color;
+		}
 
-        //
-        .rounded-#{$breakpoint} {
-            border-radius: $border-radius;
-        }
-    }
+		//
+		.rounded-#{$breakpoint} {
+			border-radius: $border-radius;
+		}
+	}
 }

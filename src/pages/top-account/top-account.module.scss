@@ -1,19 +1,19 @@
 @import 'components/global-style/base.scss';
 
 .topAccount {
-    padding-top: 20px;
-    padding-bottom: 20px;
+	padding-top: 20px;
+	padding-bottom: 20px;
 
-    .container {
-        @include container2;
+	.container {
+		@include container2;
 
-        .topAccount__card {
-            margin-top: 20px;
-        }
-    }
+		.topAccount__card {
+			margin-top: 20px;
+		}
+	}
 }
 
 .topAccount__table__top {
-    color: $text-color-dark;
-    font-size: 15px;
+	color: $text-color-dark;
+	font-size: 15px;
 }

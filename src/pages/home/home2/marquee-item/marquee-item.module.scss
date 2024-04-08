@@ -1,21 +1,20 @@
 .marquee__item {
-    padding: 8px 24px;
-    border-radius: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
+	padding: 8px 24px;
+	border-radius: 24px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 12px;
 
-    .marquee__item__icon {
+	.marquee__item__icon {
+		img {
+			width: 30px;
+			height: 30px;
+		}
+	}
 
-        img {
-            width: 30px;
-            height: 30px;
-        }
-    }
-
-    .marquee__item__text {
-        font-weight: bold;
-        font-size: 2rem;
-    }
+	.marquee__item__text {
+		font-weight: bold;
+		font-size: 2rem;
+	}
 }

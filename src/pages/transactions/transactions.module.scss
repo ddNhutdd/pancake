@@ -1,133 +1,133 @@
-@import "components/global-style/base.scss";
+@import 'components/global-style/base.scss';
 
 .transactions {
-    font-size: 15px;
-    font-weight: 300;
-    color: $text-color-dark;
+	font-size: 15px;
+	font-weight: 300;
+	color: $text-color-dark;
 
-    .transactions--blue {
-        color: $background-15;
-        cursor: pointer;
-    }
+	.transactions--blue {
+		color: $background-15;
+		cursor: pointer;
+	}
 
-    .container {
-        @include container2;
+	.container {
+		@include container2;
 
-        .transactions__content {
-            padding-top: 20px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 16px;
+		.transactions__content {
+			padding-top: 20px;
+			display: flex;
+			flex-wrap: wrap;
+			gap: 16px;
 
-            .transactions__item {
-                width: calc((100% - 48px) / 4);
-                cursor: pointer;
-                transition: color .2s;
+			.transactions__item {
+				width: calc((100% - 48px) / 4);
+				cursor: pointer;
+				transition: color 0.2s;
 
-                @media screen and (max-width:992px) {
-                    width: calc((100% - 16px) / 2);
-                }
+				@media screen and (max-width: 992px) {
+					width: calc((100% - 16px) / 2);
+				}
 
-                @media screen and (max-width:576px) {
-                    width: 100%;
-                }
+				@media screen and (max-width: 576px) {
+					width: 100%;
+				}
 
-                .transactions__item--green {
-                    color: $text-color-14;
-                }
+				.transactions__item--green {
+					color: $text-color-14;
+				}
 
-                .transactions__item--red {
-                    color: $background-18;
-                }
+				.transactions__item--red {
+					color: $background-18;
+				}
 
-                &:hover {
-                    position: relative;
+				&:hover {
+					position: relative;
 
-                    .transactions__item__arrow {
-                        opacity: 1;
-                    }
+					.transactions__item__arrow {
+						opacity: 1;
+					}
 
-                    .transactions__item--hoverBlue {
-                        color: $background-15;
-                    }
-                }
+					.transactions__item--hoverBlue {
+						color: $background-15;
+					}
+				}
 
-                .transactions__item__row {
-                    &:first-child {
-                        padding: 16px 16px 0 16px;
-                        color: $text-color-11;
-                    }
+				.transactions__item__row {
+					&:first-child {
+						padding: 16px 16px 0 16px;
+						color: $text-color-11;
+					}
 
-                    &:last-child {
-                        padding: 0 16px 16px 16px;
+					&:last-child {
+						padding: 0 16px 16px 16px;
 
-                        &>span {
-                            &:first-child {
-                                font-size: 20px;
-                            }
-                        }
-                    }
-                }
+						& > span {
+							&:first-child {
+								font-size: 20px;
+							}
+						}
+					}
+				}
 
-                .transactions__item__arrow {
-                    color: $text-color-11;
-                    opacity: 0;
-                    top: 10px;
-                    right: 10px;
-                    position: absolute;
-                    transition: opacity .2s;
-                }
-            }
+				.transactions__item__arrow {
+					color: $text-color-11;
+					opacity: 0;
+					top: 10px;
+					right: 10px;
+					position: absolute;
+					transition: opacity 0.2s;
+				}
+			}
 
-            .transactions__item__table {
-                width: 100%;
-            }
+			.transactions__item__table {
+				width: 100%;
+			}
 
-            .transactions__last {
-                color: $text-color-11;
-            }
-        }
-    }
+			.transactions__last {
+				color: $text-color-11;
+			}
+		}
+	}
 }
 
 .customButton {
-    padding-top: 6px !important;
-    padding-bottom: 6px !important;
+	padding-top: 6px !important;
+	padding-bottom: 6px !important;
 }
 
 .customButton2 {
-    padding-top: 6px !important;
-    padding-bottom: 6px !important;
+	padding-top: 6px !important;
+	padding-bottom: 6px !important;
 
-    &:hover {
-        background-color: rgba(255, 193, 7, 0.15) !important;
-        border: 1px dashed rgb(255, 193, 7);
-    }
+	&:hover {
+		background-color: rgba(255, 193, 7, 0.15) !important;
+		border: 1px dashed rgb(255, 193, 7);
+	}
 }
 
 .customButton3 {
-    display: inline-block;
-    border-color: transparent !important;
-    background-color: transparent !important;
-    color: $background-15 !important;
+	display: inline-block;
+	border-color: transparent !important;
+	background-color: transparent !important;
+	color: $background-15 !important;
 
-    &:hover {
-        background-color: rgba(255, 193, 7, 0.15) !important;
-        border: 1px dashed rgb(255, 193, 7) !important;
-    }
+	&:hover {
+		background-color: rgba(255, 193, 7, 0.15) !important;
+		border: 1px dashed rgb(255, 193, 7) !important;
+	}
 }
 
 .customPopover {
-    background-color: $background-1 !important;
-    border: 1px solid $border-color-6 !important;
-    padding: 16px !important;
-    box-shadow: rgba(0, 0, 0, 0.15) 0px 8px 16px 0px;
-    width: 200px;
+	background-color: $background-1 !important;
+	border: 1px solid $border-color-6 !important;
+	padding: 16px !important;
+	box-shadow: rgba(0, 0, 0, 0.15) 0px 8px 16px 0px;
+	width: 200px;
 
-    &::after {
-        background-color: $background-1 !important;
-        border-right: 1px solid $border-color-6 !important;
-        border-bottom: 1px solid $border-color-6 !important;
-        z-index: 101;
-    }
+	&::after {
+		background-color: $background-1 !important;
+		border-right: 1px solid $border-color-6 !important;
+		border-bottom: 1px solid $border-color-6 !important;
+		z-index: 101;
+	}
 }

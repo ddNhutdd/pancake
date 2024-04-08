@@ -1,20 +1,20 @@
-@import "components/global-style/base.scss";
+@import 'components/global-style/base.scss';
 
 .loader2 {
-    width: 20px;
-    height: 20px;
-    border: 2px solid transparent;
-    border-top: 2px solid $background-1;
-    animation: spin 1s linear infinite;
-    border-radius: 50%;
+	width: 20px;
+	height: 20px;
+	border: 2px solid transparent;
+	border-top: 2px solid $background-1;
+	animation: spin 1s linear infinite;
+	border-radius: 50%;
 }
 
 @keyframes spin {
-    0% {
-        transform: rotate(0deg);
-    }
+	0% {
+		transform: rotate(0deg);
+	}
 
-    100% {
-        transform: rotate(360deg);
-    }
+	100% {
+		transform: rotate(360deg);
+	}
 }

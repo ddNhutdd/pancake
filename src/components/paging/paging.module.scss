@@ -1,31 +1,29 @@
 .paging {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    user-select: none;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	user-select: none;
 
+	span {
+		display: flex;
+		align-items: center;
+		justify-content: center;
 
-    span {
-        display: flex;
-        align-items: center;
-        justify-content: center;
+		&:last-child {
+			cursor: pointer;
+		}
 
-        &:last-child {
-            cursor: pointer;
-        }
+		&:first-child {
+			cursor: pointer;
+		}
 
-        &:first-child {
-            cursor: pointer;
-        }
+		&.disable {
+			color: #cacaca;
 
-
-        &.disable {
-            color: #cacaca;
-
-            &:hover {
-                cursor: not-allowed;
-            }
-        }
-    }
+			&:hover {
+				cursor: not-allowed;
+			}
+		}
+	}
 }

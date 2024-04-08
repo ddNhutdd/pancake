@@ -1,38 +1,38 @@
-@import "components/global-style/base.scss";
+@import 'components/global-style/base.scss';
 
 .search {
-    background-color: $background-1;
-    border: 1px solid $border-color-5;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 6px;
+	background-color: $background-1;
+	border: 1px solid $border-color-5;
+	border-radius: 8px;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	padding: 6px;
 
-    .search__dropdown {
-        @media screen and (max-width: 576px) {
-            display: none;
-        }
-    }
+	.search__dropdown {
+		@media screen and (max-width: 576px) {
+			display: none;
+		}
+	}
 
-    input {
-        outline: none;
-        border: none;
-        flex: 1;
-        font-size: 15px;
+	input {
+		outline: none;
+		border: none;
+		flex: 1;
+		font-size: 15px;
 
-        @media screen and (max-width: 576px) {
-            width: fit-content;
-        }
-    }
+		@media screen and (max-width: 576px) {
+			width: fit-content;
+		}
+	}
 
-    button {
-        width: fit-content;
-        height: 35px;
-        padding: 0;
+	button {
+		width: fit-content;
+		height: 35px;
+		padding: 0;
 
-        svg {
-            font-size: 20px;
-        }
-    }
+		svg {
+			font-size: 20px;
+		}
+	}
 }

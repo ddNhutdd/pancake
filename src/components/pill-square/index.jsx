@@ -4,16 +4,11 @@ import PropTypes from 'prop-types';
 export const pillSquareType = {
 	normal: 'normal',
 	green: 'green',
-	yellow: 'yellow'
-}
+	yellow: 'yellow',
+};
 
 const PillSquare = function (props) {
-	const {
-		children,
-		className,
-		type,
-		onClick
-	} = props;
+	const {children, className, type, onClick} = props;
 
 	const renderType = () => {
 		switch (type) {
@@ -22,11 +17,11 @@ const PillSquare = function (props) {
 			case pillSquareType.green:
 				return css.green;
 			case pillSquareType.yellow:
-				return css.yellow
+				return css.yellow;
 			default:
 				break;
 		}
-	}
+	};
 
 	return (
 		<div
@@ -35,15 +30,12 @@ const PillSquare = function (props) {
 		>
 			{children}
 		</div>
-	)
-}
+	);
+};
 
 PillSquare.propTypes = {
 	children: PropTypes.node,
-	className: PropTypes.oneOfType([
-		PropTypes.string,
-		PropTypes.object
-	]),
+	className: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
 };
 
 export default PillSquare;

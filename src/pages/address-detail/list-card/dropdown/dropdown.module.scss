@@ -16,8 +16,8 @@
 
 .dropdown__mainContent {
 	height: 300px;
-  	overflow-y: scroll;
-  	overflow-x: hidden;
+	overflow-y: scroll;
+	overflow-x: hidden;
 	display: flex;
 	flex-direction: column;
 	padding-right: 10px;
@@ -31,7 +31,7 @@
 		border-radius: $border-radius;
 		margin-top: 8px;
 		font-weight: 400;
-		margin-bottom: -16px;	
+		margin-bottom: -16px;
 	}
 }
 
@@ -39,13 +39,13 @@
 	background-color: $background-17;
 	padding: 16px;
 	margin-bottom: -12px;
-    margin-left: -18px;
+	margin-left: -18px;
 	margin-right: -18px;
 
 	border-bottom-left-radius: 6px;
 	border-bottom-right-radius: 6px;
 
-	text-transform: uppercase; 
+	text-transform: uppercase;
 
 	display: flex;
 	align-items: center;
@@ -62,4 +62,3 @@
 		height: 20px;
 	}
 }
-

@@ -1,37 +1,37 @@
 @import 'components/global-style/base.scss';
 
 .verifiedContracts {
-    padding-top: 20px;
-    padding-bottom: 20px;
+	padding-top: 20px;
+	padding-bottom: 20px;
 
-    .container {
-        @include container2;
+	.container {
+		@include container2;
 
-        .verifiedContracts__card {
-            margin-top: 20px;
+		.verifiedContracts__card {
+			margin-top: 20px;
 
-            .verifiedContracts__cardHeader {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                border-bottom: 1px solid $border-color-5;
-                padding: 16px;
+			.verifiedContracts__cardHeader {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				border-bottom: 1px solid $border-color-5;
+				padding: 16px;
 
-                .verifiedContracts__cardRight {
-                    button {
-                        width: 30px;
-                        height: 30px;
-                        font-size: 20px;
-                        padding: 0;
-                        background-color: $border-color-5;
-                    }
-                }
-            }
-        }
-    }
+				.verifiedContracts__cardRight {
+					button {
+						width: 30px;
+						height: 30px;
+						font-size: 20px;
+						padding: 0;
+						background-color: $border-color-5;
+					}
+				}
+			}
+		}
+	}
 }
 
 .verifiedContracts__search {
-    background-color: $border-color-5 !important;
-    width: fit-content;
+	background-color: $border-color-5 !important;
+	width: fit-content;
 }

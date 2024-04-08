@@ -1,154 +1,155 @@
-@import "src/components/global-style/base.scss";
+@import 'src/components/global-style/base.scss';
 
 .header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    transition: .2s;
-    z-index: 15;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	transition: 0.2s;
+	z-index: 15;
 
-    .header1 {
-        background: linear-gradient(rgb(128, 81, 214) 0%, rgb(73, 34, 134) 100%);
-        height: 70px;
+	.header1 {
+		background: linear-gradient(
+			rgb(128, 81, 214) 0%,
+			rgb(73, 34, 134) 100%
+		);
+		height: 70px;
 
-        @media screen and (max-width:768px) {
-            height: auto;
-            padding-top: 5px;
-            padding-bottom: 5px;
-        }
+		@media screen and (max-width: 768px) {
+			height: auto;
+			padding-top: 5px;
+			padding-bottom: 5px;
+		}
 
-        .header1__container {
-            overflow: hidden;
-            height: 100%;
+		.header1__container {
+			overflow: hidden;
+			height: 100%;
 
-            .header1__content {
-                overflow: hidden;
-                width: 70%;
-                height: 100%;
+			.header1__content {
+				overflow: hidden;
+				width: 70%;
+				height: 100%;
 
-                .header1__imageContainer {
-                    overflow: hidden;
-                    width: 120px;
-                    flex-grow: 0;
-                    flex-shrink: 0;
+				.header1__imageContainer {
+					overflow: hidden;
+					width: 120px;
+					flex-grow: 0;
+					flex-shrink: 0;
 
-                    img {
-                        transform: scale(0.6);
-                    }
-                }
+					img {
+						transform: scale(0.6);
+					}
+				}
 
-                .header1__box {
-                    flex-grow: 1;
-                    display: flex;
-                    align-items: center;
-                    justify-content: flex-start;
-                    gap: 5px;
-                    background: rgba(39, 38, 44, 0.4);
-                    border-radius: 16px;
-                    padding: 8px;
-                    height: 80%;
-                    flex-wrap: wrap;
-                    font-size: 14px;
+				.header1__box {
+					flex-grow: 1;
+					display: flex;
+					align-items: center;
+					justify-content: flex-start;
+					gap: 5px;
+					background: rgba(39, 38, 44, 0.4);
+					border-radius: 16px;
+					padding: 8px;
+					height: 80%;
+					flex-wrap: wrap;
+					font-size: 14px;
 
-                    @media screen and (max-width:768px) {
-                        background-color: transparent;
-                        padding: 0;
+					@media screen and (max-width: 768px) {
+						background-color: transparent;
+						padding: 0;
+					}
 
-                    }
+					span {
+						&:nth-of-type(1) {
+							color: $yellow-1;
+						}
 
-                    span {
-                        &:nth-of-type(1) {
-                            color: $yellow-1;
-                        }
+						&:nth-of-type(2) {
+							color: rgb(189, 194, 196);
+						}
 
-                        &:nth-of-type(2) {
-                            color: rgb(189, 194, 196);
-                        }
+						&:nth-of-type(3) {
+							color: $text-color-white-1;
+						}
 
-                        &:nth-of-type(3) {
-                            color: $text-color-white-1;
-                        }
+						&:nth-of-type(4) {
+							color: rgb(189, 194, 196);
+						}
+					}
+				}
+			}
+		}
 
-                        &:nth-of-type(4) {
-                            color: rgb(189, 194, 196);
-                        }
-                    }
-                }
-            }
+		.header1__close {
+			width: 48px;
+			font-size: 40px;
+			color: $text-color-white-1;
+		}
+	}
 
-        }
+	.header2 {
+		background-color: $background-1;
+		height: 58px;
 
-        .header1__close {
-            width: 48px;
-            font-size: 40px;
-            color: $text-color-white-1;
-        }
-    }
+		&.dark {
+			background-color: $background-2;
+			border-bottom: 1px solid $border-color-3;
+		}
 
-    .header2 {
-        background-color: $background-1;
-        height: 58px;
+		.header2__left {
+			.header2__icon__image1 {
+				display: block;
+				width: 160px;
 
-        &.dark {
-            background-color: $background-2;
-            border-bottom: 1px solid $border-color-3;
-        }
+				@media screen and (max-width: 987px) {
+					display: none;
+				}
+			}
 
-        .header2__left {
-            .header2__icon__image1 {
-                display: block;
-                width: 160px;
+			.header2__icon__image2 {
+				display: none;
 
-                @media screen and (max-width: 987px) {
-                    display: none;
-                }
-            }
+				@media screen and (max-width: 987px) {
+					display: block;
+				}
+			}
 
-            .header2__icon__image2 {
-                display: none;
+			.header2__menu {
+				@media screen and (max-width: 850px) {
+					display: none;
+				}
+			}
+		}
 
-                @media screen and (max-width: 987px) {
-                    display: block;
-                }
-            }
+		.header2__right {
+			.header2__money {
+				@media screen and (max-width: 987px) {
+					display: none;
+				}
+			}
 
-            .header2__menu {
-                @media screen and (max-width:850px) {
-                    display: none;
-                }
-            }
-        }
+			.header2__chain {
+				.header2__chainImage {
+					position: absolute;
+					top: 50%;
+					transform: translateY(-50%);
+					left: -5px;
+					z-index: 10;
 
-        .header2__right {
-            .header2__money {
-                @media screen and (max-width: 987px) {
-                    display: none;
-                }
-            }
+					img {
+						width: 35px;
+						height: 35px;
+						display: block;
+						object-fit: cover;
+					}
+				}
+			}
 
-            .header2__chain {
-                .header2__chainImage {
-                    position: absolute;
-                    top: 50%;
-                    transform: translateY(-50%);
-                    left: -5px;
-                    z-index: 10;
-
-                    img {
-                        width: 35px;
-                        height: 35px;
-                        display: block;
-                        object-fit: cover;
-                    }
-                }
-            }
-
-            .header2__buttonText {
-                @media screen and (max-width:450px) {
-                    display: none;
-                }
-            }
-        }
-    }
+			.header2__buttonText {
+				@media screen and (max-width: 450px) {
+					display: none;
+				}
+			}
+		}
+	}
 }

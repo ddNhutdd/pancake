@@ -1,37 +1,37 @@
-@import "components/global-style/base.scss";
+@import 'components/global-style/base.scss';
 
 .process {
-    font-weight: 300;
-    font-size: 15px;
-    color: $text-color-dark;
+	font-weight: 300;
+	font-size: 15px;
+	color: $text-color-dark;
 
-    .process__top {
-        display: flex;
-        gap: 5px;
-        align-items: center;
+	.process__top {
+		display: flex;
+		gap: 5px;
+		align-items: center;
 
-        span {
-            &:last-child {
-                color: $text-color-11;
-                font-size: 13px;
-                position: relative;
-                top: 1px;
-            }
-        }
-    }
+		span {
+			&:last-child {
+				color: $text-color-11;
+				font-size: 13px;
+				position: relative;
+				top: 1px;
+			}
+		}
+	}
 
-    .process__bot {
-        background-color: rgb(233, 236, 239);
-        border-bottom: 2px solid transparent;
-        margin-top: 5px;
-        position: relative;
+	.process__bot {
+		background-color: rgb(233, 236, 239);
+		border-bottom: 2px solid transparent;
+		margin-top: 5px;
+		position: relative;
 
-        .process__bar {
-            position: absolute;
-            top: 0;
-            left: 0;
-            background-color: $background-15;
-            border-bottom: 2px solid transparent;
-        }
-    }
+		.process__bar {
+			position: absolute;
+			top: 0;
+			left: 0;
+			background-color: $background-15;
+			border-bottom: 2px solid transparent;
+		}
+	}
 }

@@ -1,9 +1,9 @@
-import { BsQrCode } from "react-icons/bs";
-import css from "./qr-button.module.scss";
-import Popover, { popoverPlacementType } from "../popover";
-import Modal2 from "../modal-2";
+import {BsQrCode} from 'react-icons/bs';
+import css from './qr-button.module.scss';
+import Popover, {popoverPlacementType} from '../popover';
+import Modal2 from '../modal-2';
 import {useState} from 'react';
-import QRCode from "react-qr-code";
+import QRCode from 'react-qr-code';
 
 const QRButton = function (props) {
 	const {value} = props;
@@ -11,7 +11,7 @@ const QRButton = function (props) {
 
 	const qrClickHandle = () => {
 		setShowModal(true);
-	}
+	};
 
 	return (
 		<>
@@ -19,34 +19,47 @@ const QRButton = function (props) {
 				<Popover
 					placement={popoverPlacementType.top}
 					content={`Click to view QR code`}
-					
 				>
-					<div 
-						className="flex items-center"  
+					<div
+						className='flex items-center'
 						onClick={qrClickHandle}
 					>
 						<BsQrCode />
 					</div>
 				</Popover>
 			</div>
-			<Modal2 
+			<Modal2
 				showFooter={false}
 				show={showModal}
 				setShow={setShowModal}
-				title="Address QR Code"
+				title='Address QR Code'
 				content={
-					<div 
-						style={{ height: "auto", margin: "0 auto", maxWidth: 280, width: "100%", padding: 16, display: 'flex', flexDirection:'column', gap: 10, alignItems:'center'}}
+					<div
+						style={{
+							height: 'auto',
+							margin: '0 auto',
+							maxWidth: 280,
+							width: '100%',
+							padding: 16,
+							display: 'flex',
+							flexDirection: 'column',
+							gap: 10,
+							alignItems: 'center',
+						}}
 					>
 						<QRCode
-						size={256}
-						style={{ height: "auto", maxWidth: "100%", width: "100%" }}
-						value={value}
-						viewBox={`0 0 256 256`}
+							size={256}
+							style={{
+								height: 'auto',
+								maxWidth: '100%',
+								width: '100%',
+							}}
+							value={value}
+							viewBox={`0 0 256 256`}
 						/>
 						<span
-							style={{wordBreak: 'break-all', fontSize:13}}
-							className="text-center"
+							style={{wordBreak: 'break-all', fontSize: 13}}
+							className='text-center'
 						>
 							{value}
 						</span>
@@ -54,7 +67,7 @@ const QRButton = function (props) {
 				}
 			/>
 		</>
-	)
-}
+	);
+};
 
 export default QRButton;

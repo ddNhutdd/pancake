@@ -1,119 +1,117 @@
-@import "src/components/global-style/base.scss";
+@import 'src/components/global-style/base.scss';
 
 .dropdownHeader3 {
+	position: relative;
 
-    position: relative;
+	&.menuFullWith {
+		position: static;
 
-    &.menuFullWith {
-        position: static;
+		.dropdownHeader3__menuContainer {
+			width: fit-content !important;
+		}
+	}
 
-        .dropdownHeader3__menuContainer {
-            width: fit-content !important;
-        }
-    }
+	@media screen and (max-width: 1100px) {
+		width: 100%;
+	}
 
-    @media screen and (max-width: 1100px) {
-        width: 100%;
-    }
+	.dropdownHeader3__header {
+		cursor: pointer;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: $text-color-dark;
+		position: relative;
+		z-index: 21;
+		padding: 16px 12px;
+		transition: color 0.2s;
+		gap: 2px;
+		font-weight: 300;
 
-    .dropdownHeader3__header {
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: $text-color-dark;
-        position: relative;
-        z-index: 21;
-        padding: 16px 12px;
-        transition: color .2s;
-        gap: 2px;
-        font-weight: 300;
+		@media screen and (max-width: 1100px) {
+			justify-content: space-between;
+		}
 
-        @media screen and (max-width: 1100px) {
-            justify-content: space-between;
+		&:hover {
+			color: $background-15;
 
-        }
+			& + .dropdownHeader3__menuContainer {
+				display: block;
 
-        &:hover {
-            color: $background-15;
+				@media screen and (max-width: 1100px) {
+					display: none;
+				}
+			}
+		}
+	}
 
-            &+.dropdownHeader3__menuContainer {
-                display: block;
+	.dropdownHeader3__menuContainer {
+		@include container2;
+		display: none;
+		position: absolute;
+		top: 54;
+		left: 0;
+		z-index: 25;
+		width: 300px;
 
-                @media screen and (max-width:1100px) {
-                    display: none;
-                }
-            }
-        }
-    }
+		&.show {
+			@media screen and (max-width: 1100px) {
+				display: block !important;
+			}
+		}
 
-    .dropdownHeader3__menuContainer {
-        @include container2;
-        display: none;
-        position: absolute;
-        top: 54;
-        left: 0;
-        z-index: 25;
-        width: 300px;
+		@media screen and (max-width: 1100px) {
+			position: relative;
+			padding-top: 0;
+			width: 100%;
+		}
 
-        &.show {
-            @media screen and (max-width:1100px) {
-                display: block !important;
-            }
-        }
+		&:hover {
+			display: block;
+		}
 
-        @media screen and (max-width: 1100px) {
-            position: relative;
-            padding-top: 0;
-            width: 100%;
-        }
+		.dropdownHeader3__menu {
+			min-width: 14rem;
+			padding: 8px;
+			border-top: 3px solid $background-15;
+			border-bottom-left-radius: 8px;
+			border-bottom-right-radius: 8px;
+			box-shadow: rgba(0, 0, 0, 0.15) 0px 8px 16px 0px;
+			display: flex;
+			flex-direction: column;
+			background-color: $background-1;
+			animation: fadeInUp 0.2s ease;
+			padding-left: 12px;
+			padding-right: 12px;
 
-        &:hover {
-            display: block;
-        }
+			@media screen and (max-width: 1100px) {
+				justify-content: space-between;
+				box-shadow: none;
+				border: 1px solid $border-color-5;
+				border-radius: 8px;
+				animation: none;
+			}
 
-        .dropdownHeader3__menu {
-            min-width: 14rem;
-            padding: 8px;
-            border-top: 3px solid $background-15;
-            border-bottom-left-radius: 8px;
-            border-bottom-right-radius: 8px;
-            box-shadow: rgba(0, 0, 0, 0.15) 0px 8px 16px 0px;
-            display: flex;
-            flex-direction: column;
-            background-color: $background-1;
-            animation: fadeInUp .2s ease;
-            padding-left: 12px;
-            padding-right: 12px;
+			.dropdownHeader3__item {
+				padding: 6px 12px;
+				cursor: pointer;
+				border-radius: 6px;
+				color: $text-color-dark;
+				font-weight: 300;
 
-            @media screen and (max-width: 1100px) {
-                justify-content: space-between;
-                box-shadow: none;
-                border: 1px solid $border-color-5;
-                border-radius: 8px;
-                animation: none;
-            }
+				&:hover {
+					background-color: $border-color-5;
+				}
+			}
 
-            .dropdownHeader3__item {
-                padding: 6px 12px;
-                cursor: pointer;
-                border-radius: 6px;
-                color: $text-color-dark;
-                font-weight: 300;
+			.dropdownHeader3__divide {
+				margin: 8px 0;
+				border-top: 1px solid $border-color-5;
 
-                &:hover {
-                    background-color: $border-color-5;
-                }
-            }
-
-            .dropdownHeader3__divide {
-                margin: 8px 0;
-                border-top: 1px solid $border-color-5;
-
-                @media screen and (max-width: 1100px) {
-                    display: none;
-                }
-            }
-        }
-    }
+				@media screen and (max-width: 1100px) {
+					display: none;
+				}
+			}
+		}
+	}
 }

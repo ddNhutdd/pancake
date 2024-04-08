@@ -17,10 +17,7 @@
 					display: flex;
 					gap: 5px;
 					font-weight: 400;
-					
 				}
-
-				
 			}
 			a {
 				text-decoration: none;
@@ -33,11 +30,10 @@
 .addressDetail__address {
 	font-size: 15px;
 	font-weight: 300;
-  	max-width: 100%;
+	max-width: 100%;
 	display: flex;
 	flex-wrap: wrap;
 }
-
 
 .addressDetail__pill {
 	position: relative;

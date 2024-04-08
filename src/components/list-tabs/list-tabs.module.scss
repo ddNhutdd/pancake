@@ -1,32 +1,32 @@
 @import 'components/global-style/base.scss';
 
 .listTabs {
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
-    font-size: 13px;
+	list-style: none;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 5px;
+	font-size: 13px;
 
-    .listTabs__item {
-        padding: 5px 10px;
-        background-color: $border-color-5;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: background-color .2s;
-        font-weight: 400;
+	.listTabs__item {
+		padding: 5px 10px;
+		background-color: $border-color-5;
+		border-radius: 8px;
+		cursor: pointer;
+		transition: background-color 0.2s;
+		font-weight: 400;
 
-        &.active {
-            color: $background-1;
-            background-color: $background-15;
+		&.active {
+			color: $background-1;
+			background-color: $background-15;
 
-            &:hover {
-                color: $background-1;
-                background-color: $background-15;
-            }
-        }
+			&:hover {
+				color: $background-1;
+				background-color: $background-15;
+			}
+		}
 
-        &:hover {
-            background-color: $border-color-6;
-        }
-    }
+		&:hover {
+			background-color: $border-color-6;
+		}
+	}
 }

@@ -1,44 +1,42 @@
-@import "components/global-style/base.scss";
+@import 'components/global-style/base.scss';
 
 .infoTransaciton {
-    color: $text-color-dark;
-    font-size: 15px;
-    font-weight: 300;
+	color: $text-color-dark;
+	font-size: 15px;
+	font-weight: 300;
 
+	.infoTransaciton--green {
+		color: $text-color-14;
+	}
 
-    .infoTransaciton--green {
-        color: $text-color-14;
-    }
+	.infoTransaciton--gray {
+		color: $text-color-11;
+	}
 
-    .infoTransaciton--gray {
-        color: $text-color-11;
-    }
+	.infoTransaciton__header {
+		font-weight: 500;
+	}
 
-    .infoTransaciton__header {
-        font-weight: 500;
+	.infoTransaciton__record {
+		font-size: 13px;
+		margin-bottom: 4px;
+		white-space: normal;
 
-    }
+		.infoTransaciton__title {
+			font-weight: 400;
+		}
+	}
 
-    .infoTransaciton__record {
-        font-size: 13px;
-        margin-bottom: 4px;
-        white-space: normal;
+	.infoTransaciton__line {
+		margin-top: 16px;
+		margin-bottom: 16px;
+		border-bottom: 1px solid $border-color-5;
+	}
 
-        .infoTransaciton__title {
-            font-weight: 400;
-        }
-    }
-
-    .infoTransaciton__line {
-        margin-top: 16px;
-        margin-bottom: 16px;
-        border-bottom: 1px solid $border-color-5;
-    }
-
-    .infoTransaciton__last {
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        color: $background-15;
-    }
+	.infoTransaciton__last {
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		color: $background-15;
+	}
 }
