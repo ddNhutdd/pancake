@@ -2,12 +2,12 @@ import Button2, { button2HtmlType, button2Type } from 'src/components/button-2';
 import css from './search.module.scss';
 import { IoSearchSharp } from "react-icons/io5";
 import { Dropdown } from 'src/components/dropdown';
-import { useState } from 'react';
-import { apiResponse, apiStatus, localStorageVariable, searchType, url, urlParams } from 'src/constants';
-import { search } from 'src/services/explorer.services';
+import { useEffect, useState } from 'react';
+import { apiResponse, apiStatus, localStorageVariable, url } from 'src/constants';
 import { useNavigate } from 'react-router-dom';
 import useAlert from 'hooks/alert';
 import { setLocalStorage } from 'src/utils';
+import { useSearch } from 'src/hooks/use-search';
 
 function Search() {
     const list = [
@@ -35,9 +35,9 @@ function Search() {
 
     const navigate = useNavigate();
     const alert = useAlert();
+    const [fetchApiStatus, fetchSearch, error] = useSearch();
     const [searchTypeSelectd, setSearchTypeSelectd] = useState(list.at(0));
     const [searchInput, setSearchInput] = useState('');
-    const [fetchApiStatus, setFetchApiStatus] = useState(apiStatus.pending);
 
     const searchTypeChangeHandle = (item, ev) => {
         ev.stopPropagation();
@@ -45,41 +45,19 @@ function Search() {
     }
     const searchInputChangeHandle = (ev) => setSearchInput(state => ev.target.value);
 
-    const submitHandle = async (ev) => {
+    const submitHandle = (ev) => {
         ev.preventDefault();
-        try {
-            if (fetchApiStatus === apiStatus.fetching) return;
-            setFetchApiStatus(state => apiStatus.fetching);
-            const resp = await search(searchInput);
-            const data = JSON.parse(resp?.data?.data);
-            setFetchApiStatus(apiStatus.fullfiled);
-            redirectPage(data)
-        } catch (error) {
-            const errorMess = error?.response?.data?.message;
-            setFetchApiStatus(apiStatus.rejected);
-            if (errorMess === apiResponse.notFound) {
-                navigate(url.searchNotFound);
-                setLocalStorage(localStorageVariable.search, searchInput);
-            } else {
-                alert.error(errorMess || error)
-            }
-        }
+        fetchSearch(searchInput);
     }
-    const redirectPage = (searchData) => {
-        switch (searchData.type) {
-            case searchType.block:
-                navigate(url.blockDetail.replace(urlParams.blockNumber, searchData.blockNumber));
-                return;
-            case searchType.transaction:
-                navigate(url.transactionDetail.replace(urlParams.transactionNumber, searchData.transactionHash));
-                return;
-            case searchType.addressEoa:
-                navigate(url.addressDetail.replace(urlParams.addressNumber, searchData.address));
-                return;
-            default:
-                break;
+
+    useEffect(() => {
+        if (fetchApiStatus === apiStatus.rejected && error === apiResponse.notFound) {
+            navigate(url.searchNotFound);
+            setLocalStorage(localStorageVariable.search, searchInput);
+        } else if(fetchApiStatus === apiStatus.rejected && error !== apiResponse.notFound) {
+            alert.error(error)
         }
-    }
+    }, [fetchApiStatus])
 
     return (
         <form onSubmit={submitHandle} className={css.search}>
@@ -97,7 +75,11 @@ function Search() {
                 onChange={searchInputChangeHandle}
                 value={searchInput}
             />
-            <Button2 htmlType={button2HtmlType.submit} type={button2Type.primarySmall}>
+            <Button2
+                loading={fetchApiStatus === apiStatus.fetching}
+                htmlType={button2HtmlType.submit}
+                type={button2Type.primarySmall}
+            >
                 <IoSearchSharp />
             </Button2>
         </form>

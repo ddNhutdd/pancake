@@ -71,6 +71,5 @@ export const search = (keyword) => {
 			keyword
 		})
 	} catch (error) {
-		console.log(error);
 	}
 }

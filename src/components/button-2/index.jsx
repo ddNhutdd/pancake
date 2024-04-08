@@ -52,6 +52,8 @@ function Button2(props) {
     useEffect(() => {
         if (loading && button) {
             button.current.disabled = true;
+        } else {
+            button.current.disabled = false;
         }
     }, [loading])
 
