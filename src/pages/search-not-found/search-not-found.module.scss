@@ -1,0 +1,28 @@
+@import 'src/components/global-style/base.scss';
+
+.searchNotFound {
+	background: url('https://bscscan.com/images/error-404.svg');
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 650px;
+
+	.container {
+		@include container2;
+		position: relative;
+
+		.searchNotFound__content {
+			position: absolute;
+			top: 50%;
+			left: 10px;
+			transform: translate(0, -50%);
+
+			h1 {
+				color: rgb(7, 132, 195);
+				font-size: 38px;
+				font-weight: 300;
+				margin-bottom: 8px;
+			}
+		}
+	}
+}

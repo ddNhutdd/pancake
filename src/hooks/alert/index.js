@@ -3,11 +3,11 @@ import { AlertContext } from "src/context/alert-container";
 
 
 const useAlert = () => {
-  const conext = useContext(AlertContext);
+  const context = useContext(AlertContext);
 
-  if (!conext) throw new Error("useAlert must be used within AlertProvider");
+  if (!context) throw new Error("useAlert must be used within AlertProvider");
 
-  return conext;
+  return context;
 };
 
 export default useAlert;

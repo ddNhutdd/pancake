@@ -40,11 +40,13 @@ export const url = {
 	similarContractsSearch: '/similar-contracts-search',
 	blockDetail: '/block-detail/' + urlParams.blockNumber,
 	transactionDetail: '/transaction-detail/' + urlParams.transactionNumber,
-	addressDetail: '/address-detail/' + urlParams.addressNumber
+	addressDetail: '/address-detail/' + urlParams.addressNumber,
+	searchNotFound: '/search-not-found',
 };
 
 export const localStorageVariable = {
 	darkTheme: "darkTheme",
+	search: '',
 };
 
 export const chainList = [

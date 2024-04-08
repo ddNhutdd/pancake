@@ -38,6 +38,7 @@ const SimilarContractsSearch = lazy(() => import("../pages/similar-contract-sear
 const BlockDetail = lazy(() => import("../pages/block-detail"));
 const TransactionDetail = lazy(() => import("../pages/transaction-detail"));
 const AddressDetail = lazy(() => import("../pages/address-detail"));
+const SearchNotFound = lazy(() => import("../pages/search-not-found"));
 
 export const router = createBrowserRouter([
   {
@@ -300,26 +301,33 @@ export const router = createBrowserRouter([
       {
         path: url.blockDetail,
         element: (
-          	<Suspense>
-            	<BlockDetail />
-          	</Suspense>
+          <Suspense>
+            <BlockDetail />
+          </Suspense>
         )
       },
       {
         path: url.transactionDetail,
         element: (
-          	<Suspense>
-            	<TransactionDetail />
-          	</Suspense>
+          <Suspense>
+            <TransactionDetail />
+          </Suspense>
         )
-      }
-	  ,
+      },
       {
         path: url.addressDetail,
         element: (
-          	<Suspense>
-            	<AddressDetail />
-          	</Suspense>
+          <Suspense>
+            <AddressDetail />
+          </Suspense>
+        )
+      },
+      {
+        path: url.searchNotFound,
+        element: (
+          <Suspense>
+            <SearchNotFound />
+          </Suspense>
         )
       }
     ]

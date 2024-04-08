@@ -3,9 +3,11 @@ import css from './search.module.scss';
 import { IoSearchSharp } from "react-icons/io5";
 import { Dropdown } from 'src/components/dropdown';
 import { useState } from 'react';
-import { apiResponse, apiStatus, searchType, url, urlParams } from 'src/constants';
+import { apiResponse, apiStatus, localStorageVariable, searchType, url, urlParams } from 'src/constants';
 import { search } from 'src/services/explorer.services';
 import { useNavigate } from 'react-router-dom';
+import useAlert from 'hooks/alert';
+import { setLocalStorage } from 'src/utils';
 
 function Search() {
     const list = [
@@ -32,6 +34,7 @@ function Search() {
     ]
 
     const navigate = useNavigate();
+    const alert = useAlert();
     const [searchTypeSelectd, setSearchTypeSelectd] = useState(list.at(0));
     const [searchInput, setSearchInput] = useState('');
     const [fetchApiStatus, setFetchApiStatus] = useState(apiStatus.pending);
@@ -53,14 +56,13 @@ function Search() {
             redirectPage(data)
         } catch (error) {
             const errorMess = error?.response?.data?.message;
-            if (errorMess === apiResponse.notFound) {
-                navigate()
-            } else {
-
-            }
-
             setFetchApiStatus(apiStatus.rejected);
-            console.log(error);
+            if (errorMess === apiResponse.notFound) {
+                navigate(url.searchNotFound);
+                setLocalStorage(localStorageVariable.search, searchInput);
+            } else {
+                alert.error(errorMess || error)
+            }
         }
     }
     const redirectPage = (searchData) => {
