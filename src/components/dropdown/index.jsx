@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import css from './dropdown.module.scss';
 import {FaAngleDown} from 'react-icons/fa';
-import Popover, {popoverPlacementType} from '../popover';
 
 export const Dropdown = (props) => {
 	const {id, list, selectedItem, onChange} = props;

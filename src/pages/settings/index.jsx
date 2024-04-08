@@ -1,14 +1,14 @@
 import Card from 'src/components/card';
 import css from './settings.module.scss';
 import Switch2 from 'src/components/switch-2';
-import {useState} from 'react';
+import { useState } from 'react';
 import {
 	Dropdown2,
 	dropdown2Align,
 	dropdown2TriggerType,
 } from 'src/components/dropdown-2';
-import Button2, {button2Type} from 'src/components/button-2';
-import {IoChevronDownOutline} from 'react-icons/io5';
+import Button2, { button2Type } from 'src/components/button-2';
+import { IoChevronDownOutline } from 'react-icons/io5';
 
 function Settings() {
 	const languageList = [
@@ -43,7 +43,7 @@ function Settings() {
 		dateTimeFormatList.at(0),
 	);
 
-	const dateTimeFormatChangeHandle = (item, ev) => {
+	const dateTimeFormatChangeHandle = (item) => {
 		setDateTimeFormatSelected(item);
 	};
 
