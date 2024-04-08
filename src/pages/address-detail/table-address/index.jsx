@@ -1,46 +1,46 @@
 import ListTabs from 'src/components/list-tabs';
 import css from './table-address.module.scss';
-import {CiFilter} from 'react-icons/ci';
-import Button2, {button2Type} from 'src/components/button-2';
-import {useEffect, useRef, useState} from 'react';
+import { CiFilter } from 'react-icons/ci';
+import Button2, { button2Type } from 'src/components/button-2';
+import { useEffect, useRef, useState } from 'react';
 import Card from 'src/components/card';
 import Table from 'src/components/table';
-import {CiCircleQuestion} from 'react-icons/ci';
+import { CiCircleQuestion } from 'react-icons/ci';
 import Popover, {
 	popoverPlacementType,
 	popoverTriggerType,
 } from 'src/components/popover';
-import {MdArrowRightAlt} from 'react-icons/md';
-import {FaSortAmountDown} from 'react-icons/fa';
-import {FaDownload} from 'react-icons/fa6';
+import { MdArrowRightAlt } from 'react-icons/md';
+import { FaSortAmountDown } from 'react-icons/fa';
+import { FaDownload } from 'react-icons/fa6';
 import {
 	Dropdown2,
 	dropdown2Align,
 	dropdown2TriggerType,
 } from 'src/components/dropdown-2';
-import {IoChevronDownOutline} from 'react-icons/io5';
-import PillSquare, {pillSquareType} from 'src/components/pill-square';
+import { IoChevronDownOutline } from 'react-icons/io5';
+import PillSquare, { pillSquareType } from 'src/components/pill-square';
 import CopyButton from 'src/components/copy-button';
-import {IoDocumentTextOutline} from 'react-icons/io5';
-import {IoEyeOutline} from 'react-icons/io5';
-import {FaCircle} from 'react-icons/fa';
-import {FaRegCircle} from 'react-icons/fa';
-import {CiCircleAlert} from 'react-icons/ci';
-import {FaLongArrowAltRight} from 'react-icons/fa';
-import {FaLongArrowAltLeft} from 'react-icons/fa';
-import {GrArticle} from 'react-icons/gr';
-import {MdArrowOutward} from 'react-icons/md';
-import {FaCheckCircle} from 'react-icons/fa';
-import {NavLink} from 'react-router-dom';
-import {splitStringToDivs} from 'src/utils/utils';
-import {apiStatus} from 'src/constants';
-import {getLatestTransactionsByAddress} from 'src/services/explorer.services';
-import {useParams} from 'react-router-dom';
-import {formatNumber, shortenHash} from 'src/utils';
+import { IoDocumentTextOutline } from 'react-icons/io5';
+import { IoEyeOutline } from 'react-icons/io5';
+import { FaCircle } from 'react-icons/fa';
+import { FaRegCircle } from 'react-icons/fa';
+import { CiCircleAlert } from 'react-icons/ci';
+import { FaLongArrowAltRight } from 'react-icons/fa';
+import { FaLongArrowAltLeft } from 'react-icons/fa';
+import { GrArticle } from 'react-icons/gr';
+import { MdArrowOutward } from 'react-icons/md';
+import { FaCheckCircle } from 'react-icons/fa';
+import { NavLink } from 'react-router-dom';
+import { splitStringToDivs } from 'src/utils/utils';
+import { apiStatus } from 'src/constants';
+import { getLatestTransactionsByAddress } from 'src/services/explorer.services';
+import { useParams } from 'react-router-dom';
+import { exportExcel, formatNumber, shortenHash } from 'src/utils';
 
 const TableAddress = function () {
 	//#region order hook
-	const {addressnumber} = useParams();
+	const { addressnumber } = useParams();
 	//#endregion
 
 	//#region state
@@ -400,6 +400,7 @@ const TableAddress = function () {
 		});
 		setListRecordTransaction((state) => result);
 	};
+
 	const fetchTransactions = async () => {
 		try {
 			if (callApiStatus === apiStatus.fetching) return;
@@ -413,6 +414,13 @@ const TableAddress = function () {
 			setCallApiStatus((state) => apiStatus.rejected);
 		}
 	};
+
+	const downLoadPageClickHandle = () => {
+		console.log('clicked');
+		exportExcel(transactionsRef.current, "List Transaction", "List Transaction");
+	}
+
+	const disableButtonDownload = () => transactionsRef.current ? false : true;
 	//#endregion
 
 	//#region useEffect
@@ -454,9 +462,13 @@ const TableAddress = function () {
 							transactions
 						</div>
 						<div className={css.table__header__right}>
-							<Button2 type={button2Type.outlineSmall}>
+							<Button2
+								disabled={disableButtonDownload()}
+								onClick={downLoadPageClickHandle}
+								type={button2Type.outlineSmall}
+							>
 								<FaDownload />
-								<span style={{whiteSpace: 'nowrap'}}>
+								<span style={{ whiteSpace: 'nowrap' }}>
 									Download Page Data
 								</span>
 							</Button2>

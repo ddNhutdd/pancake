@@ -12,6 +12,7 @@
 
 	.container {
 		@include container2;
+		
 		position: relative;
 		top: -50px;
 		display: flex;

@@ -77,7 +77,7 @@ function Register() {
 								type={input3Type.password}
 								{...register('password')}
 								max={[20, commonString.tooLong]}
-								min={[3, commonString.tooShort]}
+								min={[6, commonString.tooShort]}
 								require={[true, commonString.require]}
 								placeholder={`Password`}
 								errorText={errors['password']}

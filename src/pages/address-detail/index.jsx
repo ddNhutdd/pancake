@@ -34,7 +34,6 @@ import {apiStatus} from 'src/constants';
 import {
 	getAddressData,
 	getExchangeRateBNBtoUSD,
-	getLatestTransactionsByAddress,
 } from 'src/services/explorer.services';
 
 const AddressDetail = function () {

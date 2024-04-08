@@ -1,4 +1,5 @@
-import {location} from 'src/constants';
+import { location } from 'src/constants';
+import * as XLSX from "xlsx/xlsx.mjs";
 
 export const setLocalStorage = (key, data) => {
 	try {
@@ -188,4 +189,14 @@ export const shortenHash = (hash) => {
 	const prefix = hash.substring(0, 6);
 	const suffix = hash.substring(length - 6);
 	return `${prefix}...${suffix}`;
+};
+
+export const exportExcel = function (data, nameSheet, nameFile) {
+	return new Promise((resolve) => {
+		let wb = XLSX.utils.book_new();
+		let ws = XLSX.utils.json_to_sheet(data);
+		XLSX.utils.book_append_sheet(wb, ws, nameSheet);
+		XLSX.writeFile(wb, `${nameFile}.xlsx`);
+		resolve(true);
+	});
 };

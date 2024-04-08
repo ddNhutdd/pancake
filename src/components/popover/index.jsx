@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import css from './popover.module.scss';
-import {forwardRef, useEffect, useRef} from 'react';
+import { forwardRef, useEffect, useRef } from 'react';
 
 export const popoverPlacementType = {
 	top: 'top',
@@ -67,6 +67,12 @@ const Popover = forwardRef((props, ref) => {
 			};
 		}
 	};
+
+	useEffect(() => {
+		return () => {
+			mouseLeaveHandle();
+		}
+	})
 
 	useEffect(() => {
 		if (trigger === popoverTriggerType.runtime && show) {

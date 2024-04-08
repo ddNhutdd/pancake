@@ -6,38 +6,36 @@ import Popover, {
 	popoverPlacementType,
 	popoverTriggerType,
 } from 'src/components/popover';
-import {CiCircleQuestion} from 'react-icons/ci';
+import { CiCircleQuestion } from 'react-icons/ci';
 import CopyButton from 'src/components/copy-button';
-import PillSquare, {pillSquareType} from 'src/components/pill-square';
-import {IoIosCheckmarkCircle} from 'react-icons/io';
-import {CiClock2} from 'react-icons/ci';
-import {FcFlashOn} from 'react-icons/fc';
-import {FaCaretRight} from 'react-icons/fa6';
-import {IoDocumentTextOutline} from 'react-icons/io5';
-import {HiPencil} from 'react-icons/hi2';
-import {FaPlus} from 'react-icons/fa6';
-import {FiMinus} from 'react-icons/fi';
-import {FaAngleDown} from 'react-icons/fa6';
-import {FaCubes} from 'react-icons/fa';
-import {GrFilter} from 'react-icons/gr';
+import PillSquare, { pillSquareType } from 'src/components/pill-square';
+import { IoIosCheckmarkCircle } from 'react-icons/io';
+import { CiClock2 } from 'react-icons/ci';
+import { FcFlashOn } from 'react-icons/fc';
+import { FaCaretRight } from 'react-icons/fa6';
+import { IoDocumentTextOutline } from 'react-icons/io5';
+import { HiPencil } from 'react-icons/hi2';
+import { FaPlus } from 'react-icons/fa6';
+import { FiMinus } from 'react-icons/fi';
+import { FaAngleDown } from 'react-icons/fa6';
+import { FaCubes } from 'react-icons/fa';
+import { GrFilter } from 'react-icons/gr';
 import TextArea from 'src/components/text-area';
-import {useEffect, useState} from 'react';
-import {NavLink} from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import {
 	Dropdown2,
-	dropdown2Align,
 	dropdown2TriggerType,
 } from 'src/components/dropdown-2';
 import Loader from 'src/components/loader';
-import {apiStatus, transactionStatus, url, urlParams} from 'src/constants';
+import { apiStatus, transactionStatus, url, urlParams } from 'src/constants';
 import Empty from 'src/components/empty';
-import {useParams} from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import {
 	getExchangeRateBNBtoUSD,
 	getTransactionDetail,
-	getTransactionReceiptEventLogs,
 } from 'src/services/explorer.services';
-import {convertBnbToUsd} from 'src/utils';
+import { convertBnbToUsd } from 'src/utils';
 
 const Overview = function () {
 	const listInputDropdown = [
@@ -55,7 +53,7 @@ const Overview = function () {
 		},
 	];
 
-	const {transactionnumber} = useParams();
+	const { transactionnumber } = useParams();
 	const [cardCollapseShow, setCardCollapseShow] = useState(false);
 	const [inputDropdownShow, setInputDropdownShow] = useState(false);
 	const [fetchMainDataStatus, setFetchMainDataStatus] = useState(
@@ -71,13 +69,13 @@ const Overview = function () {
 		fetchMainDataStatus === apiStatus.fetching ? '' : 'd-0';
 	const renderClassContent = () =>
 		fetchMainDataStatus !== apiStatus.fetching &&
-		mainData &&
-		exchangeBNBtoUSD
+			mainData &&
+			exchangeBNBtoUSD
 			? ''
 			: 'd-0';
 	const renderClassEmpty = () =>
 		fetchMainDataStatus !== apiStatus.fetching &&
-		(!mainData || !exchangeBNBtoUSD)
+			(!mainData || !exchangeBNBtoUSD)
 			? ''
 			: 'd-0';
 	const renderStatus = (status) => {
@@ -245,7 +243,7 @@ const Overview = function () {
 						</div>
 						<div className={css.block__right}>
 							<NavLink
-								style={{textDecoration: 'none'}}
+								style={{ textDecoration: 'none' }}
 								className={`--text-blue`}
 							>
 								{mainData?.blockNumber}
@@ -408,7 +406,7 @@ const Overview = function () {
 								className={`--text-blue --hover-yellow ${css2['--breakWord']}`}
 							>
 								<NavLink
-									className={`--text-blue`}
+									className={`--link-no-underline`}
 									to={url.addressDetail.replace(
 										urlParams.addressNumber,
 										mainData?.from,
@@ -442,7 +440,7 @@ const Overview = function () {
 							To:
 						</div>
 						<div
-							style={{flexWrap: 'wrap'}}
+							style={{ flexWrap: 'wrap' }}
 							className={css.block__right}
 						>
 							<div>
@@ -624,7 +622,7 @@ const Overview = function () {
 					}
 				>
 					<div
-						style={{paddingBottom: '0'}}
+						style={{ paddingBottom: '0' }}
 						className={css.block__card}
 					>
 						<div className={css.block__cardRecord}>
@@ -766,7 +764,7 @@ const Overview = function () {
 								Input Data:
 							</div>
 							<div
-								style={{flexDirection: 'column'}}
+								style={{ flexDirection: 'column' }}
 								className={css.block__right}
 							>
 								<Popover
@@ -858,7 +856,7 @@ const Overview = function () {
 											transaction. Only
 										</span>
 										<span>
-											viewable to BscScan's user who
+											viewable to BscScan&apos;s user who
 											assign them.
 										</span>
 									</div>
@@ -870,7 +868,7 @@ const Overview = function () {
 							Private Note:
 						</div>
 						<div
-							style={{flexDirection: 'column'}}
+							style={{ flexDirection: 'column' }}
 							className={css.block__right}
 						>
 							<TextArea />

@@ -3,20 +3,20 @@ import css from './home-2.module.scss';
 import Top from './top';
 import TopCardContent from './top-card-content';
 import CardContent from './card-content';
-import {useState} from 'react';
-import {BsBox} from 'react-icons/bs';
-import {IoDocumentOutline} from 'react-icons/io5';
-import {BiGasPump} from 'react-icons/bi';
-import Popover, {popoverPlacementType} from 'src/components/popover';
-import Button2, {button2Type} from 'src/components/button-2';
+import { useState } from 'react';
+import { BsBox } from 'react-icons/bs';
+import { IoDocumentOutline } from 'react-icons/io5';
+import { BiGasPump } from 'react-icons/bi';
+import Popover, { popoverPlacementType, popoverTriggerType } from 'src/components/popover';
+import Button2, { button2Type } from 'src/components/button-2';
 import BlockRecord from './block-record';
 import {
 	getBlock,
 	getLatestTransactions,
 } from 'src/services/explorer.services.js';
-import {useEffect} from 'react';
-import {apiStatus, url, urlParams} from 'src/constants/index.js';
-import {NavLink} from 'react-router-dom';
+import { useEffect } from 'react';
+import { apiStatus, url, urlParams } from 'src/constants/index.js';
+import { NavLink } from 'react-router-dom';
 
 function Home2() {
 	const listImage = {
@@ -144,11 +144,18 @@ function Home2() {
 						contentTop: (
 							<div className='flex items-center gap-1'>
 								<span>Validated By</span>{' '}
-								<span
-									className={`${css['home2--blue']} ${css['home2--threeDot']}`}
+								<Popover
+									trigger={popoverTriggerType.hover}
+									placement={popoverPlacementType.top}
+									content={itemData.miner}
 								>
-									{itemData.miner}
-								</span>
+									<NavLink
+										to={url.addressDetail.replace(urlParams.addressNumber, itemData.miner)}
+										className={`--link-no-underline ${css['home2--threeDot']}`}
+									>
+										{itemData.miner}
+									</NavLink>
+								</Popover>
 							</div>
 						),
 						contentBot: (
@@ -156,9 +163,9 @@ function Home2() {
 								<Popover
 									className={css['home2--blue']}
 									placement={popoverPlacementType.top}
-									content={`dafdsafd;sajfkdsjafdsfdhsalfdhsa`}
+									content={`Transaction in this Block`}
 								>
-									142 txns
+									{itemData.totalTransactions} txns
 								</Popover>{' '}
 								<span className={css['blockRecord--gray']}>
 									in{' '}
@@ -172,7 +179,7 @@ function Home2() {
 						),
 						actions: (
 							<Button2 type={button2Type.outlineSmall}>
-								0.5267 BNB
+								-- BNB
 							</Button2>
 						),
 					});
@@ -204,24 +211,47 @@ function Home2() {
 								)}
 								className={css.home2__link}
 							>
-								{itemData.blockNumber}
+								<div className={css['home2--threeDot']}>
+									{itemData.hash}
+								</div>
 							</NavLink>
 						),
 						codeTime: calcTimeCreate(itemData.timestamp) + `s ago`,
 						contentTop: (
-							<div className={css['home2--threeDot']}>
+							<div>
 								From{' '}
-								<NavLink className={css.home2__link}>
-									{itemData.from}
-								</NavLink>
+								<Popover
+									trigger={popoverTriggerType.hover}
+									placement={popoverPlacementType.top}
+									content={itemData.from}
+									className={`inline-flex items-center`}
+								>
+									<NavLink
+										className={`${css.home2__link} ${css['home2--threeDot']}`}
+										to={url.addressDetail.replace(urlParams.addressNumber, itemData.from)}
+									>
+										{itemData.from}
+									</NavLink>
+								</Popover>
+
 							</div>
 						),
 						contentBot: (
-							<div className={css['home2--threeDot']}>
+							<div>
 								To{' '}
-								<NavLink className={css.home2__link}>
-									{itemData.to}
-								</NavLink>
+								<Popover
+									trigger={popoverTriggerType.hover}
+									placement={popoverPlacementType.top}
+									content={itemData.to}
+									className={`inline-flex items-center`}
+								>
+									<NavLink
+										className={`${css.home2__link} ${css['home2--threeDot']}`}
+										to={url.addressDetail.replace(urlParams.addressNumber, itemData.to)}
+									>
+										{itemData.to}
+									</NavLink>
+								</Popover>
 							</div>
 						),
 						actions: (

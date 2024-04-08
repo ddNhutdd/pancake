@@ -1,4 +1,4 @@
-import {useState, useRef} from 'react';
+import { useState, useRef } from 'react';
 
 export const useForm = (submitCallback, initialValues) => {
 	const [values, setValues] = useState(initialValues || {});
@@ -52,7 +52,7 @@ export const useForm = (submitCallback, initialValues) => {
 		runtimeErrors.current = newState;
 	};
 	const removeError = (id) => {
-		const newError = {...runtimeErrors.current};
+		const newError = { ...runtimeErrors.current };
 		delete newError[id];
 		setErrors(newError);
 		runtimeErrors.current = newError;

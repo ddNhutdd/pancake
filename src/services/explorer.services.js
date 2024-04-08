@@ -1,9 +1,9 @@
-import {axiosWithoutAuth} from 'src/services/index.js';
+import { axiosWithoutAuth } from 'src/services/index.js';
 
 export const getBlock = () => {
 	try {
 		return axiosWithoutAuth('api/explorer/getLatestBlocks');
-	} catch (error) {}
+	} catch (error) { }
 };
 
 export const getBlockDetail = (data) => {
@@ -11,13 +11,13 @@ export const getBlockDetail = (data) => {
 		return axiosWithoutAuth(
 			'api/explorer/getDetailBlock?blockIdentifier=' + data,
 		);
-	} catch (error) {}
+	} catch (error) { }
 };
 
 export const getLatestTransactions = () => {
 	try {
 		return axiosWithoutAuth('api/explorer/getLatestTransactions');
-	} catch (error) {}
+	} catch (error) { }
 };
 
 export const getTransactionDetail = (data) => {
@@ -25,22 +25,22 @@ export const getTransactionDetail = (data) => {
 		return axiosWithoutAuth(
 			'api/explorer/getTransaction?transactionHash=' + data,
 		);
-	} catch (error) {}
+	} catch (error) { }
 };
 
 export const getExchangeRateBNBtoUSD = () => {
 	try {
 		return axiosWithoutAuth('api/explorer/getExchangeRateBNBtoUSD');
-	} catch (error) {}
+	} catch (error) { }
 };
 
 export const getTransactionReceiptEventLogs = (data) => {
 	try {
 		return axiosWithoutAuth(
 			'api/explorer/getTransactionReceiptEventLogs?transactionHash=' +
-				data,
+			data,
 		);
-	} catch (error) {}
+	} catch (error) { }
 };
 
 export const getBlockReward = (data) => {
@@ -48,13 +48,13 @@ export const getBlockReward = (data) => {
 		return axiosWithoutAuth(
 			'api/explorer/getBlockReward?blockIdentifier=' + data,
 		);
-	} catch (error) {}
+	} catch (error) { }
 };
 
 export const getAddressData = (data) => {
 	try {
 		return axiosWithoutAuth('api/explorer/getAddressData?address=' + data);
-	} catch (error) {}
+	} catch (error) { }
 };
 
 export const getLatestTransactionsByAddress = (data) => {
@@ -62,7 +62,7 @@ export const getLatestTransactionsByAddress = (data) => {
 		return axiosWithoutAuth(
 			'api/explorer/getLatestTransactionsByAddress?address=' + data,
 		);
-	} catch (error) {}
+	} catch (error) { }
 };
 
 export const search = (keyword) => {
@@ -70,5 +70,5 @@ export const search = (keyword) => {
 		return axiosWithoutAuth.post('api/explorer/search', {
 			keyword,
 		});
-	} catch (error) {}
+	} catch (error) { }
 };

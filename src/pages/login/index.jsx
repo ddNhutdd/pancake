@@ -51,7 +51,7 @@ function Login() {
 						</div>
 						<div className={css.login__input}>
 							<div className='flex items-center justify-between'>
-								<label htmlFor='loginUsername'>Username</label>
+								<label htmlFor='loginUsername'>Password</label>
 								<div
 									onClick={redirectPage.bind(
 										null,
@@ -67,7 +67,7 @@ function Login() {
 								type={input3Type.password}
 								{...register('password')}
 								max={[20, commonString.tooLong]}
-								min={[3, commonString.tooShort]}
+								min={[6, commonString.tooShort]}
 								require={[true, commonString.require]}
 								errorText={errors.password}
 							/>
