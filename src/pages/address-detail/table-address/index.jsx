@@ -2,7 +2,7 @@ import ListTabs from 'src/components/list-tabs';
 import css from './table-address.module.scss';
 import { CiFilter } from "react-icons/ci";
 import Button2, { button2Type } from 'src/components/button-2';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Card from 'src/components/card';
 import Table from 'src/components/table';
 import { CiCircleQuestion } from "react-icons/ci";
@@ -26,14 +26,38 @@ import { MdArrowOutward } from "react-icons/md";
 import { FaCheckCircle } from "react-icons/fa";
 import { NavLink } from 'react-router-dom';
 import { splitStringToDivs } from 'src/utils/utils';
+import { apiStatus } from 'src/constants';
+import { getLatestTransactionsByAddress } from 'src/services/explorer.services';
+import { useParams } from 'react-router-dom';
+import { formatNumber, shortenHash } from 'src/utils';
 
 const TableAddress = function () {
-	//#region function
-	const popoverInfoToggle = () => setPopoverToggleShow(state => !state);
+
+	//#region order hook
+	const {
+		addressnumber
+	} = useParams();
 	//#endregion
 
 	//#region state
-	const [popoverToggleShow, setPopoverToggleShow] = useState(false); 
+	const [dropdownFilterShow, setDropdownFilterShow] = useState(false);
+	const [listRecordTransaction, setListRecordTransaction] = useState([]);
+	//#endregion
+
+	//#region ref
+	const transactionsRef = useRef([]);
+	const popoverToggleShow = useRef(false);
+	//#endregion
+
+	//#region function
+	const popoverInfoToggle = () => {
+		popoverToggleShow.current = !popoverToggleShow.current;
+		renderTransaction(transactionsRef.current);
+	};
+	//#endregion
+
+	//#region state
+	const [callApiStatus, setCallApiStatus] = useState(apiStatus.pending);
 	//#endregion 
 
 	//#region data
@@ -47,13 +71,13 @@ const TableAddress = function () {
 			content: `Internal Transactions`
 		}
 	]
-	
-	const listCol = [
+
+	const listColTransaction = [
 		{
 			id: 1,
 			header: <div className='flex items-center'>
 				<CiCircleQuestion />
-			</div> 
+			</div>
 		},
 		{
 			id: 2,
@@ -63,7 +87,7 @@ const TableAddress = function () {
 			id: 3,
 			header: <div className='flex items-center gap-1'>
 				<CiCircleQuestion />
-				Method 
+				Method
 			</div>
 		},
 		{
@@ -102,156 +126,9 @@ const TableAddress = function () {
 				placement={popoverPlacementType.top}
 				className={`--text-blue`}
 				content={`(Gas Price * Gas Used by Txns) in BNB`}
-			>				
+			>
 				Txn Fee
 			</Popover>
-		}
-	]
-
-	const listRecord = [
-		{
-			id: 1,
-			cols: [
-				<Popover
-					trigger={popoverTriggerType.runtime}
-					placement={popoverPlacementType.right}
-					classNamePopover={css.table__popoverCustomContainer}
-					show={popoverToggleShow}
-					content={
-						<div className={css.table__popoverCustom}>
-							<div className={css.table__popoverCustom__header}>
-								Additional Info
-							</div>
-							<div className={css.table__popoverCustom__record}>
-								<div className={css.table__popoverCustom__title}>
-									Status: 
-								</div>
-								<div className='flex items-start flex-col  gap-1 --text-success'>
-									<div className='flex items-center gap-1'>
-										<FaCheckCircle />
-										Success
-									</div>
-									<div className='--text-gray'>
-										(3488 Block Confirmations)
-									</div>
-								</div>
-							</div>
-							<div className={css.table__popoverCustom__line}></div>
-							<div className={css.table__popoverCustom__record}>
-								<div className={css.table__popoverCustom__title}>
-									Transaction Fee:
-								</div>
-								<div>
-									0 BNB <span className='--text-gray'> ($0.00)</span>
-								</div>
-							</div>
-							<div className={css.table__popoverCustom__line}></div>
-							<div className={css.table__popoverCustom__record}>
-								<div className={css.table__popoverCustom__title}>
-									Gas Info: 
-								</div>
-								<div>
-									51,008 gas used from <div className='flex flex-wrap'>{splitStringToDivs(`9,223,372,036,854,775,807`)}</div> limit
-								</div>
-								<div className='--text-gray'>
-									@ 0 BNB (0 BNB)
-								</div>
-							</div>
-							<div className={css.table__popoverCustom__line}></div>
-							<div className={css.table__popoverCustom__record}>
-								<div className={css.table__popoverCustom__title}>
-									Nonce:
-								</div>
-								<div>
-									808068 <span className='--text-gray'>(in the position 123)</span>
-								</div>
-							</div>
-							<div className={css.table__popoverCustom__line}></div>
-							<div className={css.table__popoverCustom__record}>
-								<NavLink className='flex items-center gap-1 --link-no-underline'>
-									See more details 
-									<span className='flex items-center --text-gray'>
-										<MdArrowOutward />
-									</span>
-								</NavLink>
-							</div>
-						</div>
-					}
-				>
-					<Button2 
-						classname={css.table__buttonEys}
-						onClick={popoverInfoToggle}
-					>
-						<IoEyeOutline />
-					</Button2>
-				</Popover>
-				,
-				<div>
-					0xbc78ae369c431e5d9db30b7341e82a74a4b033f4fd9f3cc3edce9752a0ad5d1d
-				</div>
-				,
-				<Popover
-					placement={popoverPlacementType.top}
-					content={'Deposit'}
-				>
-					<PillSquare
-						type={pillSquareType.normal}
-						className={`--hover-yellow ${css.table__dash}`}
-					>
-						Deposite
-					</PillSquare>
-				</Popover>
-				,
-				`37611665`
-				,
-				<Popover
-					placement={popoverPlacementType.top}
-					content={`13 secs ago`}
-				>
-					2024-04-06 3:18:33
-				</Popover>
-				,
-				<div>
-					<Popover
-						placement={popoverPlacementType.top}
-						content={`0xCc8E6d00C17eB431350C6c50d8b8F05176b90b11`}
-						className={`--hover-yellow`}
-					>
-						<div>	
-							0xCc8E6d00...176b90b11
-						</div>
-					</Popover>
-					<CopyButton 
-						content='0xCc8E6d00C17eB431350C6c50d8b8F05176b90b11'
-					/>
-				</div>
-				,
-				<PillSquare
-					type={pillSquareType.yellow}
-				>
-					OUT
-				</PillSquare>
-				,
-				<Popover
-					placement={popoverPlacementType.top}
-					className={`--hover-yellow`}
-					content={<div className='flex items-center justify-center'>
-						<span>
-							BSC: Validator Set
-						</span>
-						<span>
-							0xCc8E6d00C17eB431350C6c50d8b8F05176b90b11
-						</span>
-					</div>}
-				>
-					<IoDocumentTextOutline />
-					BSC: Validator Set
-				</Popover>
-				,
-				`0.02181819 BNB`
-				,
-				`0`
-			]
 		}
 	]
 
@@ -312,13 +189,196 @@ const TableAddress = function () {
 
 	//#region state
 	const [tabSelected, setTabSelected] = useState(listTab[0]);
-	const [dropdownFilterShow, setDropdownFilterShow] = useState(false);
 	//#endregion
 
 	//#region function
 	const dropdownFilterToggle = () => setDropdownFilterShow(state => !state);
+
+	const renderTransaction = (data) => {
+		const result = [];
+		data.forEach(item => {
+			const obj = {
+				id: 1,
+				cols: [
+					<Popover
+						trigger={popoverTriggerType.runtime}
+						placement={popoverPlacementType.right}
+						classNamePopover={css.table__popoverCustomContainer}
+						show={popoverToggleShow.current}
+						content={
+							<div className={css.table__popoverCustom}>
+								<div className={css.table__popoverCustom__header}>
+									Additional Info
+								</div>
+								<div className={css.table__popoverCustom__record}>
+									<div className={css.table__popoverCustom__title}>
+										Status:
+									</div>
+									<div className='flex items-start flex-col  gap-1 --text-success'>
+										<div className='flex items-center gap-1'>
+											<FaCheckCircle />
+											Success
+										</div>
+										<div className='--text-gray'>
+											(3488 Block Confirmations)
+										</div>
+									</div>
+								</div>
+								<div className={css.table__popoverCustom__line}></div>
+								<div className={css.table__popoverCustom__record}>
+									<div className={css.table__popoverCustom__title}>
+										Transaction Fee:
+									</div>
+									<div>
+										0 BNB <span className='--text-gray'> ($0.00)</span>
+									</div>
+								</div>
+								<div className={css.table__popoverCustom__line}></div>
+								<div className={css.table__popoverCustom__record}>
+									<div className={css.table__popoverCustom__title}>
+										Gas Info:
+									</div>
+									<div>
+										51,008 gas used from <div className='flex flex-wrap'>{splitStringToDivs(formatNumber(item?.gas))}</div> limit
+									</div>
+									<div className='--text-gray'>
+										@ 0 BNB (0 BNB)
+									</div>
+								</div>
+								<div className={css.table__popoverCustom__line}></div>
+								<div className={css.table__popoverCustom__record}>
+									<div className={css.table__popoverCustom__title}>
+										Nonce:
+									</div>
+									<div>
+										{item?.nonce} <span className='--text-gray'>(in the position 123)</span>
+									</div>
+								</div>
+								<div className={css.table__popoverCustom__line}></div>
+								<div className={css.table__popoverCustom__record}>
+									<NavLink className='flex items-center gap-1 --link-no-underline'>
+										See more details
+										<span className='flex items-center --text-gray'>
+											<MdArrowOutward />
+										</span>
+									</NavLink>
+								</div>
+							</div>
+						}
+					>
+						<Button2
+							classname={css.table__buttonEys}
+							onClick={popoverInfoToggle}
+						>
+							<IoEyeOutline />
+						</Button2>
+					</Popover>
+					,
+					<div>
+						{item?.hash}
+					</div>
+					,
+					<Popover
+						placement={popoverPlacementType.top}
+						content={'Deposit'}
+					>
+						<PillSquare
+							type={pillSquareType.normal}
+							className={`--hover-yellow ${css.table__dash}`}
+						>
+							Deposite
+						</PillSquare>
+					</Popover>
+					,
+					<div>
+						{item?.blockNumber}
+					</div>
+					,
+					<Popover
+						placement={popoverPlacementType.top}
+						content={`13 secs ago`}
+					>
+						2024-04-06 3:18:33
+					</Popover>
+					,
+					<div className='flex items-center'>
+						<Popover
+							placement={popoverPlacementType.top}
+							content={item?.from}
+							className={`--hover-yellow flex items-center`}
+						>
+							<div>
+								{shortenHash(item?.from)}
+							</div>
+						</Popover>
+						<CopyButton
+							content={shortenHash(item?.from)}
+						/>
+					</div>
+					,
+					<PillSquare
+						type={pillSquareType.yellow}
+					>
+						OUT
+					</PillSquare>
+					,
+					<div className='flex items-center gap-1'>
+						<Popover
+							placement={popoverPlacementType.top}
+							className={`--hover-yellow flex items-center`}
+							content={<div className='flex items-center justify-center'>
+								<span>
+									BSC: Validator Set
+								</span>
+								<span>
+									{item?.to}
+								</span>
+							</div>}
+						>
+							<div className='flex items-center'>
+								<IoDocumentTextOutline />
+							</div>
+							BSC: Validator Set
+						</Popover>
+						<CopyButton
+							content={item?.to}
+						/>
+					</div>
+					,
+					<div>
+						{formatNumber(item?.value)}
+						{" "}
+						BNB
+					</div>
+					,
+					`0`
+				]
+			}
+			result.push(obj);
+		})
+		setListRecordTransaction(state => result);
+	}
+	const fetchTransactions = async () => {
+		try {
+			if (callApiStatus === apiStatus.fetching) return;
+			setCallApiStatus(state => apiStatus.fetching);
+			const resp = await getLatestTransactionsByAddress(addressnumber);
+			const data = JSON.parse(resp?.data?.data);
+			renderTransaction(data?.transactionsArray);
+			transactionsRef.current = data?.transactionsArray;
+			setCallApiStatus(state => apiStatus.fullfiled);
+		} catch (error) {
+			setCallApiStatus(state => apiStatus.rejected);
+		}
+	}
 	//#endregion
 
+	//#region useEffect
+	useEffect(() => {
+		fetchTransactions();
+	}, [])
+	//#endregion 
+	
 	return (
 		<>
 			<div className={css.table}>
@@ -341,14 +401,14 @@ const TableAddress = function () {
 					<div className={css.table__header}>
 						<div className={css.table__header__left}>
 							<FaSortAmountDown />
-							Latest 25 from a total of 
+							Latest 25 from a total of
 							{" "}
 							<Popover
 								placement={popoverPlacementType.top}
 								content={`Click to view full list`}
 								className={`--text-blue`}
 							>
-								808,100 
+								808,100
 							</Popover>
 							{" "}
 							transactions
@@ -358,7 +418,7 @@ const TableAddress = function () {
 								type={button2Type.outlineSmall}
 							>
 								<FaDownload />
-								<span style={{whiteSpace: 'nowrap'}}>
+								<span style={{ whiteSpace: 'nowrap' }}>
 									Download Page Data
 								</span>
 							</Button2>
@@ -378,25 +438,27 @@ const TableAddress = function () {
 								show={dropdownFilterShow}
 								align={dropdown2Align.right}
 							/>
-								
+
 						</div>
 					</div>
 					<div>
 						<Table
-							listCol={listCol}
+							listCol={listColTransaction}
 							showFooter={false}
 							headerLeftContent={false}
 							showPagingTop={false}
-							listRecord={listRecord}
+							listRecord={listRecordTransaction}
+							fetching={callApiStatus === apiStatus.fetching}
 						/>
 					</div>
 					<div className={css.table__footer}>
-						View all transactions 
+						View all transactions
 						<MdArrowRightAlt />
 					</div>
 				</Card>
 			</div>
 		</>
-)}
+	)
+}
 
 export default TableAddress;

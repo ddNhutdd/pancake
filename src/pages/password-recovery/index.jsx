@@ -9,7 +9,7 @@ import { useForm } from 'src/hooks/useForm';
 function PasswordRecovery() {
 
     const submitCallback = (values) => {
-        console.log(values)
+        (values)
     }
     const [, errors, submitHandle, register] = useForm(submitCallback);
 

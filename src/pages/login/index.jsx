@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router-dom';
 
 function Login() {
     const submitHandleCallBack = (values) => {
-        console.log(values);
+        (values);
     }
     const [, errors, submitHandle, register] = useForm(submitHandleCallBack);
     const navigate = useNavigate();

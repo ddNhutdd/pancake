@@ -25,7 +25,7 @@ function Modal2(props) {
         return show ? css.show : ''
     }
     const closeModal = () => {
-        console.log(modalElement, overlayElement);
+        (modalElement, overlayElement);
         if (!modalElement || !overlayElement) {
             return;
         }

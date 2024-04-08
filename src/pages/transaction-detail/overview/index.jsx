@@ -95,7 +95,7 @@ const Overview = function () {
 			setFetchMainDataStatus(apiStatus.fullfiled);
 		} catch (error) {
 			const err = error?.response?.data?.message;
-			console.log(error);
+			(error);
 			setError(err);
 			setFetchMainDataStatus(apiStatus.rejected)
 		}

@@ -524,7 +524,7 @@ const Block = function () {
 			setMainData(data);
 			setFetchMainDataStatus(apiStatus.fullfiled);
 		} catch (error) {
-			console.log(error);
+			(error);
 			setError(error?.response?.data?.message);
 			setFetchMainDataStatus(apiStatus.rejected);
 		}
@@ -576,12 +576,12 @@ const Block = function () {
 			setFetchRewardStatus(apiStatus.fetching);
 			setRewardContent(<Loader2 />);
 			const resp = await getBlockReward(blocknumber);
-			console.log(resp);
+			(resp);
 			const data = JSON.parse(resp?.data?.data)?.blockReward;
 			setRewardContent(data + ' BNB');
 			setFetchRewardStatus(apiStatus.fullfiled);
 		} catch (error) {
-			console.log(error);
+			(error);
 			setFetchRewardStatus(apiStatus.rejected)
 			setRewardContent('Load data fail!')
 		}

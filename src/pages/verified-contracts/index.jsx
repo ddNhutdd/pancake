@@ -27,7 +27,7 @@ function VerifiedContracts() {
         },
     ]
     const dropdownCh = (selectedItem, ev) => {
-        console.log(selectedItem, ev);
+        (selectedItem, ev);
     }
     const listCol = [
         {

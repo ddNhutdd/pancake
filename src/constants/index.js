@@ -48,12 +48,12 @@ export const localStorageVariable = {
 };
 
 export const chainList = [
-	{ 
+	{
 		blockChain: 'Ethereum Mainnet',
 		ChainID: '1',
 		Currency: 'ETH'
 	},
-	{ 
+	{
 		blockChain: 'BNB Smart Chain Mainnet',
 		ChainID: '56',
 		Currency: 'BNB'
@@ -61,8 +61,8 @@ export const chainList = [
 ]
 
 // config web3
-export const  projectId = '5cfce0ac0d25591fa3ce98011db61342';
-export const  mainnet = {
+export const projectId = '5cfce0ac0d25591fa3ce98011db61342';
+export const mainnet = {
 	chainId: 1,
 	name: 'Ethereum',
 	currency: 'ETH',
@@ -100,7 +100,7 @@ export const commonString = {
 
 export const regular = {
 	email: /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/,
-} 
+}
 
 export const dateFormat = `d-M-yyyy`;
 
@@ -110,7 +110,7 @@ export const apiStatus = {
 	fetching: 'fetching',
 	fullfiled: 'fullfiled',
 	rejected: 'rejected'
-} 
+}
 
 //locates
 export const location = {
@@ -124,3 +124,13 @@ export const transactionStatus = {
 	unKnow: 'Unknow'
 }
 
+export const searchType = {
+	transaction: 'transaction',
+	addressEoa: "address-eoa",
+	addressContract: "address-contract",
+	block: 'block'
+}
+
+export const apiResponse = {
+	notFound: 'Not found'
+}

@@ -148,7 +148,7 @@ function ViewBlocks() {
     const [totalPage] = useState(1);
 
     const pageChangeHandle = (page) => {
-        console.log(page);
+        (page);
         setPage(page)
     }
 

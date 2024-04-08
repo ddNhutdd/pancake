@@ -148,7 +148,7 @@ function Home2() {
             setBlockList(result);
         } catch (error) {
             setCallStatusRejected(ca)
-            console.log(error);
+            (error);
         }  
     }
     const fetchLatestTransactions = async (ca) => {
@@ -190,7 +190,7 @@ function Home2() {
             setTransactionList(result);
         } catch (error) {
             setCallStatusRejected(ca)
-            console.log(error);
+            (error);
         }  
     }
     const checkBeforeCallApi = (ca) => {

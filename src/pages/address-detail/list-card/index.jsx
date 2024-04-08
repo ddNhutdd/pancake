@@ -6,10 +6,10 @@ import { GoPlus } from "react-icons/go";
 import Dropdown from "./dropdown";
 import Button2, { button2Type } from "src/components/button-2";
 import { FaWallet } from "react-icons/fa6";
-import { convertBnbToUsd } from "src/utils";
+import { convertBnbToUsd, getTimeAgo } from "src/utils";
 
 const ListCard = function (props) {
-	const {content, bnbToUsd} = props;
+	const { content, bnbToUsd } = props;
 	return (<div className={css.listCard}>
 		<Card className={css.listCard__card}>
 			<div className={css.listCard__header}>
@@ -47,7 +47,7 @@ const ListCard = function (props) {
 			</div>
 			<div className={css.listCard__record}>
 				<div className={css.listCard__record__title}>
-				PRIVATE NAME TAGS
+					PRIVATE NAME TAGS
 				</div>
 				<div className={css.listCard__record__content}>
 					<Pill
@@ -66,10 +66,10 @@ const ListCard = function (props) {
 				<div className={css.listCard__record__content}>
 					<NavLink className={`--link-no-underline`}>
 						<div className={`${css['listCard--threeDot']}`}>
-							{content?.firstTransaction?.blockHash}
+							{content?.lastTransaction?.blockHash}
 						</div>
 					</NavLink>
-					from 57 secs ago
+					{getTimeAgo(content?.lastTransaction?.timeStamp)}
 				</div>
 			</div>
 			<div className={css.listCard__record}>
@@ -79,10 +79,10 @@ const ListCard = function (props) {
 				<div className={css.listCard__record__content}>
 					<NavLink className={`--link-no-underline`}>
 						<div className={`${css['listCard--threeDot']}`}>
-							{content?.lastTransaction?.blockHash}
+							{content?.firstTransaction?.blockHash}
 						</div>
 					</NavLink>
-					from 1236 days ago
+					{getTimeAgo(content?.firstTransaction?.timeStamp)}
 				</div>
 			</div>
 		</Card>

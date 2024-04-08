@@ -25,9 +25,9 @@ import { FaListCheck } from "react-icons/fa6";
 import { IoChevronDownOutline } from "react-icons/io5";
 import { splitStringToDivs } from 'src/utils/utils';
 import Loader from 'src/components/loader';
-import {useParams} from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { apiStatus } from 'src/constants';
-import { getAddressData, getExchangeRateBNBtoUSD } from 'src/services/explorer.services';
+import { getAddressData, getExchangeRateBNBtoUSD, getLatestTransactionsByAddress } from 'src/services/explorer.services';
 
 const AddressDetail = function () {
 	//#region order hook
@@ -42,8 +42,8 @@ const AddressDetail = function () {
 		{
 			id: 1,
 			content: <div className='flex items-center gap-1'>
-				<IoDocumentText/>
-				Token Approvals 
+				<IoDocumentText />
+				Token Approvals
 				<div className={css.addressDetail__pill}>
 					<Pill
 						type={pillTypes.gray}
@@ -56,7 +56,7 @@ const AddressDetail = function () {
 		{
 			id: 2,
 			content: <div className='flex items-center gap-1'>
-				<IoTimerOutline/>
+				<IoTimerOutline />
 				Check Previous Balance
 			</div>,
 			lineBot: true
@@ -95,10 +95,10 @@ const AddressDetail = function () {
 	//#region function
 	const fetchMainData = async () => {
 		try {
-			if(fetchMainDataStatus === apiStatus.fetching) return;
+			if (fetchMainDataStatus === apiStatus.fetching) return;
 			setFetchMainDataStatus(apiStatus.fetching);
 
-			const resp = await Promise.all([getAddressData(addressnumber), getExchangeRateBNBtoUSD()]) ;
+			const resp = await Promise.all([getAddressData(addressnumber), getExchangeRateBNBtoUSD()]);
 			const dataInfo = JSON.parse(resp[0]?.data?.data);
 			setAddressInfo(dataInfo);
 			const dataExchange = resp[1]?.data?.data;
@@ -106,7 +106,7 @@ const AddressDetail = function () {
 
 			setFetchMainDataStatus(apiStatus.fullfiled);
 		} catch (error) {
-			console.log(error);
+			(error);
 			setFetchMainDataStatus(apiStatus.rejected);
 		}
 	}
@@ -115,23 +115,19 @@ const AddressDetail = function () {
 	//#endregion
 
 	//#region useEffect
-	useEffect(()=>{
+	useEffect(() => {
 		dispatch(setShowMenu(true));
 		fetchMainData();
 		return () => {
 			dispatch(setShowMenu(false));
 		}
 	}, [])
-	useEffect(()=>{
-		console.log(addressInfo);
-		console.log(bnbToUsd);
-	}, [addressInfo, bnbToUsd])
 	//#endregion
 
-	return(
+	return (
 		<div className={css.addressDetail}>
 			<div className={`${css.container} ${renderClassShowContent()}`}>
-				<HeaderComponent2 
+				<HeaderComponent2
 					mainContent={
 						<div className='flex items-center gap-1 flex-sm-wrap'>
 							<div>
@@ -154,28 +150,28 @@ const AddressDetail = function () {
 				/>
 				<div className={css.addressDetail__sponsored}>
 					<div>
-						Sponsored: 
-							<img src="https://bscscan.com/images/gen/stake-4_20.png" alt="bscc" />
+						Sponsored:
+						<img src="https://bscscan.com/images/gen/stake-4_20.png" alt="bscc" />
 						Stake:
 					</div>
 					<div>
 						200% Bonus, 75k Raffle, Best VIP Program, Instant Withdrawals - Provably Fair.
 					</div>
 					<NavLink className={css['--link']}>
-					 	Claim Bonus 
+						Claim Bonus
 					</NavLink>
 				</div>
 				<div className={`flex items-center justify-between mb-3 flex-sm-col gap-1`}>
 					<div className='flex gap-1 flex-sm-col w-sm-100'>
 						<Pill type={pillTypes.gray}>
-							<div className='flex items-center gap-1' style={{fontWeight: 400}}>
+							<div className='flex items-center gap-1' style={{ fontWeight: 400 }}>
 								<FiTag />
 								Validator: Alan Turing
 								<FiExternalLink />
 							</div>
 						</Pill>
 						<Pill type={pillTypes.white}>
-							<div className='flex items-center gap-1' style={{fontWeight: 400}}>
+							<div className='flex items-center gap-1' style={{ fontWeight: 400 }}>
 								<FiHash />
 								Validators
 							</div>
@@ -183,7 +179,7 @@ const AddressDetail = function () {
 					</div>
 					<div className='flex gap-1 flex-sm-col w-sm-100'>
 						<div>
-							<Button2 
+							<Button2
 								classname={`py-1`}
 								type={button2Type.outlineSmall}
 							>
@@ -204,7 +200,7 @@ const AddressDetail = function () {
 							list={listDropdown}
 							align={dropdown2Align.right}
 						/>
-						
+
 					</div>
 				</div>
 				<ListCard content={addressInfo} bnbToUsd={bnbToUsd} />

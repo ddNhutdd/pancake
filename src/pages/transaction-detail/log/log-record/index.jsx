@@ -14,7 +14,7 @@ const LogRecord = function (props) {
 	const {
 		content
 	} = props;
-	console.log(content);
+	(content);
 	const addressDropdownList = [
 		{
 			id: 1,

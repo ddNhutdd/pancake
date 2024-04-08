@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import css from './dropdown-2.module.scss';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 
 export const dropdown2TriggerType = {
     hover: 'hover',
@@ -105,9 +105,27 @@ export const Dropdown2 = (props) => {
         }
     }, [show])
     useEffect(() => {
-        if (headerElement) {
-            setPadding(headerElement.current.offsetHeight)
+        //if (headerElement) {
+        //    setPadding(headerElement.current.offsetHeight)
+        //}
+
+        const updatePadding = () => {
+            if (headerElement.current) {
+                setPadding(headerElement.current.offsetHeight);
+            }
+        };
+
+        updatePadding();
+
+        const resizeObserver = new ResizeObserver(updatePadding);
+        if (headerElement.current) {
+            resizeObserver.observe(headerElement.current);
         }
+
+        // Xóa observer khi component unmount
+        return () => {
+            resizeObserver.disconnect();
+        };
     }, [])
 
     return (

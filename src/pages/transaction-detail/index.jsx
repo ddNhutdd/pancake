@@ -105,7 +105,7 @@ const TransactionDetail = function () {
 			]);
 			setFetchListLogsStatus(apiStatus.fullfiled);
 		} catch (error) {
-			console.log(error);
+			(error);
 			const err = error?.response?.data?.message;
 			setError(err);
 			setListTab([
