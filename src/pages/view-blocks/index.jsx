@@ -1,14 +1,26 @@
 import HeaderComponent2 from 'src/components/header-component-2';
 import css from './view-block.module.scss';
-import {HeaderComponent3} from 'src/components/header-component-3';
+import { HeaderComponent3 } from 'src/components/header-component-3';
 import Card from 'src/components/card';
-import Table from 'src/components/table';
-import Popover, {popoverPlacementType} from 'src/components/popover';
+import Table, { tableRow } from 'src/components/table';
+import Popover, { popoverPlacementType } from 'src/components/popover';
 import CopyButton from 'src/components/copy-button';
-import {useState} from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Process from './process';
+import { apiStatus } from 'src/constants';
+import { getListPaginatedBlocks } from 'src/services/explorer.services';
+import {
+	formatNumber,
+	formatTimestamp,
+	getTimeAgo,
+	shortenHash,
+} from 'src/utils';
 
 function ViewBlocks() {
+	const timeType = {
+		'age': 'age',
+		'dateTime': 'dateTime'
+	}
 	const listCard = [
 		{
 			id: 1,
@@ -35,6 +47,32 @@ function ViewBlocks() {
 			second_2: '(33.22%)',
 		},
 	];
+
+	// change time column 
+	const timeRef = useRef(timeType.dateTime);
+	const strDatetime = 'Date Time (UTC)';
+	const strDateTimePopup = `Click to show Age format`;
+	const strAge = 'Age';
+	const strAgePopup = 'Click to show DateTime format';
+	const [columnHeader, setColumnHeader] = useState(strDatetime);
+	const [columnPopup, setColumnPopup] = useState(strDateTimePopup);
+	const changeColClickHandle = () => {
+		switch (columnHeader) {
+			case strDatetime:
+				setColumnHeader(strDatetime);
+				setColumnPopup(strDateTimePopup);
+				timeRef.current = timeType.dateTime;
+				break;
+			case strAge:
+				setColumnHeader(strAge);
+				setColumnPopup(strAgePopup);
+				timeRef.current = timeType.age;
+				break;
+			default:
+				break;
+		}
+	}
+
 	const listCol = [
 		{
 			id: 1,
@@ -46,9 +84,11 @@ function ViewBlocks() {
 				<Popover
 					className='--text-blue'
 					placement={popoverPlacementType.top}
-					content={`31434312`}
+					content={columnPopup}
 				>
-					Date Time (UTC)
+					<div onClick={changeColClickHandle}>
+						{columnHeader}
+					</div>
 				</Popover>
 			),
 		},
@@ -76,65 +116,119 @@ function ViewBlocks() {
 			id: 8,
 			header: `Burnt Fees (BNB)`,
 		},
-	];
-	const listRecord = [
-		{
-			id: 1,
-			cols: [
-				<span
-					key={`1-1`}
-					className='--text-blue'
-				>
-					37158414
-				</span>,
-				<Popover
+	]
+
+
+	//table row
+	const [limit, setLimit] = useState(tableRow);
+
+	// fetch api get list block
+	const [page, setPage] = useState(1);
+	const [totalPage, setTotalPage] = useState(100);
+	const [fetchApiStatus, setFetchApiStatus] = useState(apiStatus.pending);
+	const [listRecord, setListRecord] = useState([]); // list obj chứa jsx
+	const fetchMainData = async (page, limit) => {
+		try {
+			if (fetchApiStatus === apiStatus.fetching) return;
+			setFetchApiStatus(apiStatus.fetching);
+			const resp = await getListPaginatedBlocks(page, limit);
+			const data = JSON.parse(resp?.data?.data);
+			const list = data?.result;
+			genObjRecord(list);
+			setTotalPage(data?.totalPage);
+			setPage(page);
+			setFetchApiStatus(apiStatus.fullfiled);
+		} catch (error) {
+			setFetchApiStatus(apiStatus.rejected);
+		}
+	};
+	const renderTime = (item) => {
+		switch (timeRef.current) {
+			case timeType.dateTime:
+				return <Popover
 					key={`1-2`}
 					placement={popoverPlacementType.top}
-					content={`6 secs ago`}
+					content={getTimeAgo(item.timestamp).replace(
+						'from ',
+						'',
+					)}
 				>
-					2024-03-21 8:52:25
-				</Popover>,
-				<span
-					key={`1-3`}
-					className='--text-blue'
-				>
-					185
-				</span>,
-				<div
-					key={`1-4`}
-					className='flex items-center '
-				>
-					<Popover
-						key={`1-4`}
-						placement={popoverPlacementType.top}
-						content={`6 secs ago`}
+					{formatTimestamp(item.timestamp)}
+				</Popover>
+			case timeType.age:
+				return ``;
+			default:
+				break;
+		}
+	}
+	const genObjRecord = (list) => {
+		let result = [];
+		result = list.map((item, index) => {
+			return {
+				id: index,
+				cols: [
+					<span
+						key={`1-1`}
+						className='--text-blue'
 					>
-						<span className='--text-blue --hover-yellow'>
-							Validator: Ciscox
-						</span>
-					</Popover>
-					<CopyButton content={`43214312`} />
-				</div>,
-				<span key={`1-5`}>
-					<Process
-						number={123321321}
-						percent={40}
-					/>
-				</span>,
-				`321321`,
-				`321321321`,
-				`123321`,
-			],
-		},
-	];
-
-	const [page, setPage] = useState(1);
-	const [totalPage] = useState(1);
-
-	const pageChangeHandle = (page) => {
-		page;
-		setPage(page);
+						{item.number}
+					</span>,
+					renderTime(item),
+					<span
+						key={`1-3`}
+						className='--text-blue'
+					>
+						{item.totalTransactions}
+					</span>,
+					<div
+						key={`1-4`}
+						className='flex items-center '
+					>
+						<Popover
+							key={`1-4`}
+							placement={popoverPlacementType.top}
+							content={item.miner}
+						>
+							<span className='--text-blue --hover-yellow'>
+								{shortenHash(item.miner)}
+							</span>
+						</Popover>
+						<CopyButton content={item.miner} />
+					</div>,
+					<span key={`1-5`}>
+						<Process
+							number={formatNumber(item.gasUsed)}
+							percent={formatNumber(
+								(item.gasUsed / item.gasLimit) * 100,
+								undefined,
+								4,
+							)}
+						/>
+					</span>,
+					formatNumber(item.gasLimit),
+					`--`,
+					`--`,
+				],
+			};
+		});
+		setListRecord(result);
 	};
+
+	//paging
+	const pageChangeHandle = (page) => {
+		setPage(page);
+		fetchMainData(page, limit);
+	};
+
+	// amount row change
+	const showRowChangeHandle = (rows) => {
+		setLimit(rows);
+		fetchMainData(1, rows);
+	}
+
+	useEffect(() => {
+		fetchMainData(1, limit);
+	}, []);
 
 	return (
 		<div className={css.viewBlocks}>
@@ -148,6 +242,8 @@ function ViewBlocks() {
 						page={page}
 						totalPage={totalPage}
 						pageChangeHandle={pageChangeHandle}
+						fetching={fetchApiStatus === apiStatus.fetching}
+						showRowChangeHandle={showRowChangeHandle}
 					/>
 				</Card>
 			</div>

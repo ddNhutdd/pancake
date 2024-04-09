@@ -67,7 +67,10 @@ function Modal2(props) {
 							className={`${css.modal__header} ${renderClassShowHeader()}`}
 						>
 							{title}
-							<div className={css.modal__header__close}>
+							<div
+								onClick={closeModal}
+								className={css.modal__header__close}
+							>
 								<IoClose />
 							</div>
 						</div>

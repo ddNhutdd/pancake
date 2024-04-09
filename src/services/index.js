@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = 'https://admin-chat.dk-technical.vn/';
+const BASE_URL = 'http://explorer.dk-technical.vn/';
 const timeout = 180_000;
 
 export const axiosWithoutAuth = axios.create({

@@ -22,6 +22,8 @@ import {apiStatus, commonString, url, urlParams} from 'src/constants/index.js';
 import {NavLink} from 'react-router-dom';
 import {caclAbsTimestamp, calcTimeCreate, formatNumber} from 'src/utils';
 import useAlert from 'src/hooks/alert';
+import Modal2 from 'src/components/modal-2';
+import ModalContent from './modal-content';
 
 function Home2() {
 	const listImage = {
@@ -46,7 +48,9 @@ function Home2() {
 	// thông tin header và footer của card
 	const [cardLeftTitle] = useState('Latest Blocks');
 	const [cardRightTitle] = useState('Latest Transactions');
-	const [cardLeftFooter] = useState('Latest Blocks');
+	const [cardLeftFooter] = useState(
+		<NavLink to={url.viewBlock}>View all block</NavLink>,
+	);
 	const [cardRightFooter] = useState('Latest Transactions');
 
 	//dữ liệu từ api chuyển thành đối tượng có chứa jsx
@@ -61,6 +65,16 @@ function Home2() {
 	// set loading cho card
 	const [fetchLeftCard, setFetchLeftCard] = useState(apiStatus.pending);
 	const [fetchRightCard, setFetchRightCard] = useState(apiStatus.pending);
+
+	// modal left
+	const [showModalLeft, setShowModalLeft] = useState(false);
+	const modalLeftToggle = () => setShowModalLeft((state) => !state);
+	const closeModalLeft = () => setShowModalLeft(false);
+
+	// modal right
+	const [showModalRight, setShowModalRight] = useState(false);
+	const modalRightToggle = () => setShowModalRight((state) => !state);
+	const closeModalRight = () => setShowModalRight(false);
 
 	/**
 	 * tham số truyền vào để xác định card nào được load dữ liệu nào
@@ -284,7 +298,6 @@ function Home2() {
 			setCallStatusFullfiled(ca);
 			setTransactionList(result);
 		} catch (error) {
-			console.log(error);
 			setCallStatusRejected(ca);
 			alert.error(commonString.getLastedTransactionFail);
 		}
@@ -348,6 +361,7 @@ function Home2() {
 				<div className={css.home2__left}>
 					<Card>
 						<CardContent
+							modalToggle={modalLeftToggle}
 							title={cardLeftTitle}
 							footerContent={cardLeftFooter}
 							content={renderCardContent(card.left)}
@@ -358,6 +372,7 @@ function Home2() {
 				<div className={css.home2__right}>
 					<Card>
 						<CardContent
+							modalToggle={modalRightToggle}
 							title={cardRightTitle}
 							footerContent={cardRightFooter}
 							content={renderCardContent(card.right)}
@@ -366,6 +381,23 @@ function Home2() {
 					</Card>
 				</div>
 			</div>
+
+			<Modal2
+				show={showModalLeft}
+				setShow={setShowModalLeft}
+				showHeader={true}
+				title={`Custom card`}
+				showFooter={false}
+				content={<ModalContent closeModal={closeModalLeft} />}
+			/>
+			<Modal2
+				show={showModalRight}
+				setShow={setShowModalRight}
+				showHeader={true}
+				title={`Custom card`}
+				showFooter={false}
+				content={<ModalContent closeModal={closeModalRight} />}
+			/>
 		</div>
 	);
 }

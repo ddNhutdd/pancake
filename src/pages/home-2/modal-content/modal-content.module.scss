@@ -1,0 +1,45 @@
+@import 'src/components/global-style/base.scss';
+
+.modalContent {
+	padding: 16px;
+
+	.modalContent__text {
+		margin-bottom: 16px;
+	}
+
+	.modalContent__input {
+		.modalContent__input__lable {
+			text-transform: uppercase;
+			color: $text-color-11;
+			font-weight: 400;
+		}
+
+		.modalContent__radioContainer {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			gap: 10px;
+			margin-top: 8px;
+
+			.modalContent__radio {
+				label {
+					font-weight: 300;
+					white-space: nowrap;
+					margin-bottom: 0;
+				}
+			}
+		}
+	}
+
+	.modalContent__footer {
+		padding: 16px;
+		margin-left: -16px;
+		margin-right: -16px;
+		margin-bottom: -16px;
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+		border-top: 1px solid $border-color;
+		margin-top: 20px;
+		gap: 16px;
+	}
+}

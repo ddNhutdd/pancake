@@ -14,5 +14,15 @@
 			background-color: $background-15;
 			color: $text-color-white-1;
 		}
+
+		&.disabled {
+			background-color: $border-color;
+			cursor: default;
+
+			&:hover {
+				background-color: $border-color;
+				color: $background-15;
+			}
+		}
 	}
 }

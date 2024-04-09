@@ -416,7 +416,6 @@ const TableAddress = function () {
 	};
 
 	const downLoadPageClickHandle = () => {
-		console.log('clicked');
 		exportExcel(
 			transactionsRef.current,
 			'List Transaction',

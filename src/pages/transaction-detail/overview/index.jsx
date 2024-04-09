@@ -112,7 +112,6 @@ const Overview = function () {
 			setFetchBlockInfoStatus(apiStatus.fullfiled);
 		} catch (error) {
 			setFetchBlockInfoStatus(apiStatus.rejected);
-			console.log(error);
 		}
 	};
 

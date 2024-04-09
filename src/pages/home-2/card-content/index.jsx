@@ -5,16 +5,16 @@ import {CiGrid41} from 'react-icons/ci';
 import {GrLinkNext} from 'react-icons/gr';
 import Loader from 'src/components/loader';
 import Empty from 'src/components/empty';
-import Modal2 from 'src/components/modal-2';
-import {useState} from 'react';
-import ModalContent from '../modal-content';
 
 function CardContent(props) {
-	const {title, footerContent, content, classNameContent, fetching} = props;
-
-	// modal
-	const [showModalLeft, setShowModalLeft] = useState(false);
-	const modalToggle = () => setShowModalLeft((state) => !state);
+	const {
+		title,
+		footerContent,
+		content,
+		classNameContent,
+		fetching,
+		modalToggle,
+	} = props;
 
 	const renderFetching = () => (fetching ? '' : 'd-0');
 	const renderEmpty = () =>
@@ -50,15 +50,6 @@ function CardContent(props) {
 					<GrLinkNext />
 				</div>
 			</div>
-
-			<Modal2
-				show={showModalLeft}
-				setShow={setShowModalLeft}
-				showHeader={true}
-				title={`Custom card`}
-				showFooter={false}
-				content={<ModalContent />}
-			/>
 		</>
 	);
 }
@@ -69,6 +60,7 @@ CardContent.propTypes = {
 	content: PropTypes.node,
 	classNameContent: PropTypes.object,
 	fetching: PropTypes.bool,
+	modalToggle: PropTypes.func,
 };
 
 CardContent.defaultProps = {

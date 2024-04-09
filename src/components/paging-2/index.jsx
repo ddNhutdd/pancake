@@ -1,14 +1,14 @@
-import Button2, {button2Type} from '../button-2';
+import Button2, { button2Type } from '../button-2';
 import css from './paging-2.module.scss';
-import {HiOutlineChevronLeft} from 'react-icons/hi2';
-import {HiOutlineChevronRight} from 'react-icons/hi2';
+import { HiOutlineChevronLeft } from 'react-icons/hi2';
+import { HiOutlineChevronRight } from 'react-icons/hi2';
 import PropTypes from 'prop-types';
-import {useEffect, useState} from 'react';
+import { useEffect, useState } from 'react';
 
 function Paging2(props) {
-	const {page, onChange, totalPage} = props;
+	const { page, onChange, totalPage } = props;
 
-	const [disablePrev, setDisablePrev] = useState(true);
+	const [disablePrev, setDisablePrev] = useState(false);
 	const [disableNext, setDisableNext] = useState(false);
 
 	const firstClickHandle = () => {
@@ -31,32 +31,24 @@ function Paging2(props) {
 		if (newPage > totalPage) return;
 
 		setDisableButton(newPage);
-
 		onChange(newPage);
 	};
 	const setDisableButton = (newPage) => {
-		if (newPage === 1) {
-			setDisablePrev(true);
-		} else {
-			setDisablePrev(false);
-		}
-
-		if (newPage === totalPage) {
-			setDisableNext(true);
-		} else {
-			setDisableNext(false);
-		}
+		setDisablePrev(newPage === 1);
+		setDisableNext(newPage === totalPage);
 	};
+	const prevClassDisableRender = () => (disablePrev ? css.disabled : '');
+	const nextClassDisableRender = () => (disableNext ? css.disabled : '');
 
 	useEffect(() => {
 		setDisableButton(page);
-	}, [page]);
+	}, [page, totalPage]);
 
 	return (
 		<div className={css.paging2}>
 			<Button2
 				disabled={disablePrev}
-				classname={css.paging2__button}
+				classname={`${css.paging2__button} ${prevClassDisableRender()}`}
 				onClick={firstClickHandle}
 				type={button2Type.outlineSmall}
 			>
@@ -64,7 +56,7 @@ function Paging2(props) {
 			</Button2>
 			<Button2
 				disabled={disablePrev}
-				classname={css.paging2__button}
+				classname={`${css.paging2__button} ${prevClassDisableRender()}`}
 				onClick={prevClickHandle}
 				type={button2Type.outlineSmall}
 			>
@@ -72,14 +64,14 @@ function Paging2(props) {
 			</Button2>
 			<Button2
 				disabled={true}
-				classname={css.paging2__button}
+				classname={`${css.paging2__button} ${css.disabled}`}
 				type={button2Type.outlineSmall}
 			>
 				Page {page} of {totalPage}
 			</Button2>
 			<Button2
 				disabled={disableNext}
-				classname={css.paging2__button}
+				classname={`${css.paging2__button} ${nextClassDisableRender()}`}
 				onClick={nextClickHandle}
 				type={button2Type.outlineSmall}
 			>
@@ -87,7 +79,7 @@ function Paging2(props) {
 			</Button2>
 			<Button2
 				disabled={disableNext}
-				classname={css.paging2__button}
+				classname={`${css.paging2__button} ${nextClassDisableRender()}`}
 				onClick={lastClickHandle}
 				type={button2Type.outlineSmall}
 			>

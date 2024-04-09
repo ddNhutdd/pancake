@@ -32,5 +32,17 @@
 		background-color: $background-17;
 		border-bottom-left-radius: 12px;
 		border-bottom-right-radius: 12px;
+		text-transform: uppercase;
+		transition: color 0.2s;
+
+		a {
+			color: $text-color-11;
+			cursor: pointer;
+			text-decoration: none;
+
+			&:hover {
+				color: $blue-2;
+			}
+		}
 	}
 }

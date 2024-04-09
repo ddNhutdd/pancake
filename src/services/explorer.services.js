@@ -76,7 +76,14 @@ export const search = (keyword) => {
 export const getCurrentBlockNumber = () => {
 	try {
 		return axiosWithoutAuth('api/explorer/getCurrentBlockNumber');
+	} catch (error) {}
+};
+
+export const getListPaginatedBlocks = (page, limit) => {
+	try {
+		return axiosWithoutAuth(
+			`api/explorer/getListPaginatedBlocks?limit=${limit}&page=${page}`,
+		);
 	} catch (error) {
-		console.log(error);
 	}
 };
