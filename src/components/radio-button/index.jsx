@@ -3,7 +3,10 @@ import PropTypes from 'prop-types';
 import {forwardRef} from 'react';
 
 const RadioButton = forwardRef((props, ref) => {
-	const {name, children, id} = props;
+	const {name, children, id, checked, onChange} = props;
+
+	const inputOnChangeHandle = (ev) => onChange(ev);
+
 	return (
 		<div className={css.radioButton}>
 			<input
@@ -12,7 +15,9 @@ const RadioButton = forwardRef((props, ref) => {
 				className='d-0'
 				id={id}
 				name={name}
-			></input>
+				checked={checked}
+				onChange={inputOnChangeHandle}
+			/>
 			<label
 				className={css.radioButton__container}
 				htmlFor={id}
@@ -30,6 +35,8 @@ RadioButton.propTypes = {
 	name: PropTypes.string,
 	children: PropTypes.node,
 	id: PropTypes.string,
+	checked: PropTypes.bool,
+	onChange: PropTypes.func,
 };
 
 export default RadioButton;

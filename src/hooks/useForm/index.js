@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { useRef} from 'react';
+import {useState} from 'react';
+import {useRef} from 'react';
 
 export const useForm = (submitCallback, initialValues) => {
 	const [values, setValues] = useState(initialValues || {});

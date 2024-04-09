@@ -98,6 +98,7 @@ export const commonString = {
 	formatInvalid: 'Format invalid',
 	emailNotMatch: 'Email not match',
 	passwordNotMatch: 'Password not match',
+	getLastedTransactionFail: 'Get Lasted Transaction Fail',
 };
 
 export const regular = {

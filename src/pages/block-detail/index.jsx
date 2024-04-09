@@ -18,7 +18,7 @@ import {useParams} from 'react-router-dom';
 import Loader from 'src/components/loader';
 import {apiStatus} from 'src/constants';
 import {getBlockDetail, getBlockReward} from 'src/services/explorer.services';
-import {formatNumber} from 'src/utils';
+import {calcTimestamp, formatNumber} from 'src/utils';
 import {FaAngleLeft} from 'react-icons/fa6';
 import {FaAngleRight} from 'react-icons/fa6';
 import CardCollapse from 'src/components/card-collapse';
@@ -554,47 +554,7 @@ const Block = function () {
 			setFetchMainDataStatus(apiStatus.rejected);
 		}
 	};
-	const calcTimestamp = (timestamp) => {
-		// Chuyển đổi timestamp sang Date
-		const date = new Date(timestamp * 1000);
 
-		// Lấy thông tin thời gian
-		const hours = date.getHours();
-		const minutes = date.getMinutes();
-		const seconds = date.getSeconds();
-		const ampm = hours >= 12 ? 'PM' : 'AM';
-		const day = date.getDate();
-		const month = date.getMonth() + 1; // Tháng trong JavaScript bắt đầu từ 0
-		const year = date.getFullYear();
-
-		// Tính toán thời gian trôi qua
-		const currentTime = Date.now();
-		const timeDiff = currentTime - timestamp * 1000;
-		const secondsAgo = Math.floor(timeDiff / 1000);
-		const minutesAgo = Math.floor(secondsAgo / 60);
-		const hoursAgo = Math.floor(minutesAgo / 60);
-
-		// Xác định đơn vị thời gian
-		let timeUnit = 'seconds';
-		let timeAmount = secondsAgo;
-
-		if (minutesAgo >= 1) {
-			timeUnit = 'minutes';
-			timeAmount = minutesAgo;
-		}
-
-		if (hoursAgo >= 1) {
-			timeUnit = 'hours';
-			timeAmount = hoursAgo;
-		}
-
-		// Định dạng chuỗi thời gian
-		const formattedTime = `${timeAmount} ${timeUnit} ago`;
-		const formattedDate = `${day}/${month}/${year} ${hours}:${minutes}:${seconds} ${ampm} +UTC`;
-
-		// Trả về chuỗi kết quả
-		return `${formattedTime} (${formattedDate})`;
-	};
 	const fetchReward = async () => {
 		try {
 			if (fetchRewardStatus === apiStatus.fetching) return;

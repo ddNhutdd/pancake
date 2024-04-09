@@ -200,3 +200,58 @@ export const exportExcel = function (data, nameSheet, nameFile) {
 		resolve(true);
 	});
 };
+
+export const caclAbsTimestamp = (t1, t2) => Math.abs(t1 - t2);
+
+export const calcTimeCreate = (t1) => {
+	const now = new Date().getTime();
+	const result = caclAbsTimestamp(t1 * 1000, now);
+	return Math.floor(result / 1000);
+};
+
+/**
+ * Lấy time ago với utc +7
+ * @param {*} timestamp
+ * @returns
+ */
+export const calcTimestamp = (timestamp) => {
+	// Chuyển đổi timestamp sang Date
+	const date = new Date(timestamp * 1000);
+
+	// Lấy thông tin thời gian
+	const hours = date.getHours();
+	const minutes = date.getMinutes();
+	const seconds = date.getSeconds();
+	const ampm = hours >= 12 ? 'PM' : 'AM';
+	const day = date.getDate();
+	const month = date.getMonth() + 1; // Tháng trong JavaScript bắt đầu từ 0
+	const year = date.getFullYear();
+
+	// Tính toán thời gian trôi qua
+	const currentTime = Date.now();
+	const timeDiff = currentTime - timestamp * 1000;
+	const secondsAgo = Math.floor(timeDiff / 1000);
+	const minutesAgo = Math.floor(secondsAgo / 60);
+	const hoursAgo = Math.floor(minutesAgo / 60);
+
+	// Xác định đơn vị thời gian
+	let timeUnit = 'seconds';
+	let timeAmount = secondsAgo;
+
+	if (minutesAgo >= 1) {
+		timeUnit = 'minutes';
+		timeAmount = minutesAgo;
+	}
+
+	if (hoursAgo >= 1) {
+		timeUnit = 'hours';
+		timeAmount = hoursAgo;
+	}
+
+	// Định dạng chuỗi thời gian
+	const formattedTime = `${timeAmount} ${timeUnit} ago`;
+	const formattedDate = `${day}/${month}/${year} ${hours}:${minutes}:${seconds} ${ampm} UTC + 7`;
+
+	// Trả về chuỗi kết quả
+	return `${formattedTime} (${formattedDate})`;
+};

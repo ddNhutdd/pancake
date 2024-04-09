@@ -25,7 +25,7 @@ const AlertContainer = (props) => {
 		const timer = setTimeout(() => {
 			setAlerts((prev) => prev.filter((alert) => alert.id !== id));
 			clearTimeout(timer);
-		}, 3000);
+		}, 5000);
 	};
 	const renderAlert = (alert, index, dismis) => {
 		let alertClass = '';

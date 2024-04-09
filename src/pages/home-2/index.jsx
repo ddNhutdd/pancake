@@ -3,24 +3,25 @@ import css from './home-2.module.scss';
 import Top from './top';
 import TopCardContent from './top-card-content';
 import CardContent from './card-content';
-import { useState } from 'react';
-import { BsBox } from 'react-icons/bs';
-import { IoDocumentOutline } from 'react-icons/io5';
-import { BiGasPump } from 'react-icons/bi';
+import {useRef, useState} from 'react';
+import {BsBox} from 'react-icons/bs';
+import {IoDocumentOutline} from 'react-icons/io5';
+import {BiGasPump} from 'react-icons/bi';
 import Popover, {
 	popoverPlacementType,
 	popoverTriggerType,
 } from 'src/components/popover';
-import Button2, { button2Type } from 'src/components/button-2';
+import Button2, {button2Type} from 'src/components/button-2';
 import BlockRecord from './block-record';
 import {
 	getBlock,
 	getLatestTransactions,
 } from 'src/services/explorer.services.js';
-import { useEffect } from 'react';
-import { apiStatus, url, urlParams } from 'src/constants/index.js';
-import { NavLink } from 'react-router-dom';
-import { formatNumber } from 'src/utils';
+import {useEffect} from 'react';
+import {apiStatus, commonString, url, urlParams} from 'src/constants/index.js';
+import {NavLink} from 'react-router-dom';
+import {caclAbsTimestamp, calcTimeCreate, formatNumber} from 'src/utils';
+import useAlert from 'src/hooks/alert';
 
 function Home2() {
 	const listImage = {
@@ -39,14 +40,18 @@ function Home2() {
 		right: 'right',
 	};
 
+	//alert
+	const alert = useAlert();
+
 	// thông tin header và footer của card
 	const [cardLeftTitle] = useState('Latest Blocks');
 	const [cardRightTitle] = useState('Latest Transactions');
 	const [cardLeftFooter] = useState('Latest Blocks');
 	const [cardRightFooter] = useState('Latest Transactions');
 
-	//dữ liệu từ api
+	//dữ liệu từ api chuyển thành đối tượng có chứa jsx
 	const [blockList, setBlockList] = useState([]);
+	const blockListRuntime = useRef([]);
 	const [transactionList, setTransactionList] = useState([]);
 
 	// render loại dữ liệu
@@ -110,12 +115,7 @@ function Home2() {
 				break;
 		}
 	};
-	const caclAbsTimestamp = (t1, t2) => Math.abs(t1 - t2);
-	const calcTimeCreate = (t1) => {
-		const now = new Date().getTime();
-		const result = caclAbsTimestamp(t1 * 1000, now);
-		return Math.floor(result / 1000);
-	};
+
 	/**
 	 * các hàm call api phải xác định card để có thể set state loading cho card đó
 	 * @param {card} ca
@@ -193,7 +193,9 @@ function Home2() {
 				}
 			}
 			setCallStatusFullfiled(ca);
+			blockListRuntime.current = result;
 			setBlockList(result);
+			return data;
 		} catch (error) {
 			setCallStatusRejected(ca)(error);
 		}
@@ -202,8 +204,13 @@ function Home2() {
 		try {
 			setTransactionList([]);
 			if (!checkBeforeCallApi(ca)) return;
-			const resp = await getLatestTransactions();
-			const data = JSON.parse(resp.data.data);
+
+			const resp = await Promise.all([
+				getLatestTransactions(),
+				fetchBlock(undefined),
+			]);
+			const data = JSON.parse(resp.at(0).data.data);
+
 			const result = [];
 			for (const [index, itemData] of data.entries()) {
 				if (index < 6) {
@@ -223,7 +230,7 @@ function Home2() {
 								</div>
 							</NavLink>
 						),
-						codeTime: calcTimeCreate(itemData.timestamp) + `s ago`,
+						codeTime: blockListRuntime?.current?.at(0)?.codeTime,
 						contentTop: (
 							<div>
 								From{' '}
@@ -277,7 +284,9 @@ function Home2() {
 			setCallStatusFullfiled(ca);
 			setTransactionList(result);
 		} catch (error) {
+			console.log(error);
 			setCallStatusRejected(ca);
+			alert.error(commonString.getLastedTransactionFail);
 		}
 	};
 	const checkBeforeCallApi = (ca) => {
@@ -288,14 +297,14 @@ function Home2() {
 				setFetchLeftCard(apiStatus.fetching);
 				return true;
 			}
-		} else {
+		} else if (ca === card.right) {
 			if (fetchRightCard === apiStatus.fetching) {
 				return false;
 			} else {
 				setFetchRightCard(apiStatus.fetching);
 				return true;
 			}
-		}
+		} else return true;
 	};
 	const setCallStatusFullfiled = (ca) => {
 		switch (ca) {

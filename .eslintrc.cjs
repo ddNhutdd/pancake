@@ -16,6 +16,6 @@ module.exports = {
 		'react-refresh/only-export-components': 'off',
 		'react-hooks/exhaustive-deps': 'off',
 		'react/display-name': 'off',
-		'no-empty': ["error", { "allowEmptyCatch": true }]
+		'no-empty': ['error', {allowEmptyCatch: true}],
 	},
 };

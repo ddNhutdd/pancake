@@ -72,3 +72,11 @@ export const search = (keyword) => {
 		});
 	} catch (error) {}
 };
+
+export const getCurrentBlockNumber = () => {
+	try {
+		return axiosWithoutAuth('api/explorer/getCurrentBlockNumber');
+	} catch (error) {
+		console.log(error);
+	}
+};

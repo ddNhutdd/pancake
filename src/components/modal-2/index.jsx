@@ -42,6 +42,7 @@ function Modal2(props) {
 			clearTimeout(idTimeout);
 		}, 399);
 	};
+	const modalContainerClickHandle = (ev) => ev.stopPropagation();
 	const renderClassShowHeader = () => {
 		return showHeader ? '' : 'd-0';
 	};
@@ -59,6 +60,7 @@ function Modal2(props) {
 				<div
 					ref={modalElement}
 					className={css.modal__container}
+					onClick={modalContainerClickHandle}
 				>
 					<Card>
 						<div

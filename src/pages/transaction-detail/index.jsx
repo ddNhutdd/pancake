@@ -25,7 +25,13 @@ import {useParams} from 'react-router-dom';
 import {apiStatus} from 'src/constants';
 
 const TransactionDetail = function () {
+	// lấy tham số từ thanh địa chỉ
 	const {transactionnumber} = useParams();
+
+	// dispatch
+	const dispatch = useDispatch();
+
+	// dữ liệu tĩnh chưa làm
 	const listDropdown = [
 		{
 			id: 1,
@@ -36,9 +42,13 @@ const TransactionDetail = function () {
 			content: 'Geth Debug Trace_2',
 		},
 	];
-
-	const dispatch = useDispatch();
 	const [showDropdown, setShowDropdown] = useState(false);
+	const toggleDropdown = () => setShowDropdown((state) => !state);
+	const dropdownChange = () => {
+		setShowDropdown(false);
+	};
+
+	// list tab
 	const [listTab, setListTab] = useState([
 		{
 			id: 1,
@@ -58,16 +68,6 @@ const TransactionDetail = function () {
 		},
 	]);
 	const [selectedTab, setSelectedTab] = useState(listTab[0]);
-	const [fetchListLogsStatus, setFetchListLogsStatus] = useState(
-		apiStatus.pending,
-	);
-	const [listLogs, setListLogs] = useState([]);
-	const [error, setError] = useState();
-
-	const toggleDropdown = () => setShowDropdown((state) => !state);
-	const dropdownChange = () => {
-		setShowDropdown(false);
-	};
 	const renderContent = () => {
 		switch (selectedTab.content) {
 			case listTab[0].content:
@@ -86,6 +86,13 @@ const TransactionDetail = function () {
 				break;
 		}
 	};
+
+	//call api lấy dữ liệu log
+	const [fetchListLogsStatus, setFetchListLogsStatus] = useState(
+		apiStatus.pending,
+	);
+	const [listLogs, setListLogs] = useState([]);
+	const [error, setError] = useState();
 	const fetchLog = async () => {
 		try {
 			if (fetchListLogsStatus === apiStatus.fetching) return;

@@ -29,12 +29,16 @@ import {apiStatus, transactionStatus, url, urlParams} from 'src/constants';
 import Empty from 'src/components/empty';
 import {useParams} from 'react-router-dom';
 import {
+	getBlockDetail,
+	getCurrentBlockNumber,
 	getExchangeRateBNBtoUSD,
 	getTransactionDetail,
 } from 'src/services/explorer.services';
-import {convertBnbToUsd} from 'src/utils';
+import {calcTimestamp, convertBnbToUsd} from 'src/utils';
+import Loader2 from 'src/components/loader-2';
 
 const Overview = function () {
+	// dropdown tĩnh chưa làm
 	const listInputDropdown = [
 		{
 			id: 1,
@@ -49,17 +53,70 @@ const Overview = function () {
 			content: 'Original',
 		},
 	];
-
-	const {transactionnumber} = useParams();
-	const [cardCollapseShow, setCardCollapseShow] = useState(false);
 	const [inputDropdownShow, setInputDropdownShow] = useState(false);
+	const inputDropdownChange = () => {
+		setInputDropdownShow(false);
+	};
+	const toggleInputDropdown = () => {
+		setInputDropdownShow((state) => !state);
+	};
+
+	// lấy param từ địa chỉ
+	const {transactionnumber} = useParams();
+
+	// card collape
+	const [cardCollapseShow, setCardCollapseShow] = useState(false);
+
+	// call api get thông tin về transactions
 	const [fetchMainDataStatus, setFetchMainDataStatus] = useState(
 		apiStatus.pending,
 	);
-	const [mainData, setMainData] = useState();
+	const [blockInfo, setBlogInfo] = useState();
+	const [fetchBlockInfoStatus, setFetchBlockInfoStatus] = useState(
+		apiStatus.pending,
+	);
 	const [exchangeBNBtoUSD, setExchangeBNBtoUSD] = useState();
+	const [currentBlock, setCurrentBlock] = useState();
+	const [mainData, setMainData] = useState();
 	const [error, setError] = useState();
+	const fetchMainData = async () => {
+		try {
+			if (fetchMainDataStatus === apiStatus.fetching) return;
+			setFetchMainDataStatus(apiStatus.fetching);
+			const resp = await Promise.all([
+				getTransactionDetail(transactionnumber),
+				getExchangeRateBNBtoUSD(),
+				getCurrentBlockNumber(),
+			]);
+			setMainData(JSON.parse(resp[0]?.data?.data));
+			setExchangeBNBtoUSD(+resp[1]?.data?.data);
+			setCurrentBlock(+resp[2]?.data?.data);
+			setFetchMainDataStatus(apiStatus.fullfiled);
 
+			// call api get blockInfo
+			fetchBlockInfo(JSON.parse(resp[0]?.data?.data).blockNumber);
+		} catch (error) {
+			const err = error?.response?.data?.message;
+			error;
+			setError(err);
+			setFetchMainDataStatus(apiStatus.rejected);
+		}
+	};
+	const fetchBlockInfo = async (blockId) => {
+		try {
+			if (fetchBlockInfoStatus === apiStatus.fetching) return;
+			setFetchBlockInfoStatus === apiStatus.fetching;
+			const resp = await getBlockDetail(blockId);
+			const data = JSON.parse(resp?.data?.data);
+			setBlogInfo(data.timestamp);
+			setFetchBlockInfoStatus(apiStatus.fullfiled);
+		} catch (error) {
+			setFetchBlockInfoStatus(apiStatus.rejected);
+			console.log(error);
+		}
+	};
+
+	// render cho giao dien
 	const renderClassShowInfo_show = () => (cardCollapseShow ? '' : 'd-0');
 	const renderClassShowInfo_off = () => (!cardCollapseShow ? '' : 'd-0');
 	const renderClassFetching = () =>
@@ -99,36 +156,10 @@ const Overview = function () {
 				);
 		}
 	};
-	const inputDropdownChange = () => {
-		setInputDropdownShow(false);
-	};
-	const toggleInputDropdown = () => {
-		setInputDropdownShow((state) => !state);
-	};
-	const fetchMainData = async () => {
-		try {
-			if (fetchMainDataStatus === apiStatus.fetching) return;
-			setFetchMainDataStatus(apiStatus.fetching);
-			const resp = await Promise.all([
-				fetchDetailTransaction(),
-				fetchExchangeBNBtoUSD(),
-			]);
-			setMainData(JSON.parse(resp[0]?.data?.data));
-			setExchangeBNBtoUSD(+resp[1]?.data?.data);
-			setFetchMainDataStatus(apiStatus.fullfiled);
-		} catch (error) {
-			const err = error?.response?.data?.message;
-			error;
-			setError(err);
-			setFetchMainDataStatus(apiStatus.rejected);
-		}
-	};
-	const fetchDetailTransaction = () => {
-		return getTransactionDetail(transactionnumber);
-	};
-	const fetchExchangeBNBtoUSD = () => {
-		return getExchangeRateBNBtoUSD();
-	};
+	const renderClassTimeStampFetching = () =>
+		fetchBlockInfoStatus === apiStatus.fetching ? '' : 'd-0';
+	const renderClassTimeStamp = () =>
+		fetchBlockInfoStatus !== apiStatus.fetching ? '' : 'd-0';
 
 	useEffect(() => {
 		fetchMainData();
@@ -250,7 +281,8 @@ const Overview = function () {
 								content={`Number of blocks validated since`}
 							>
 								<PillSquare type={pillSquareType.normal}>
-									3 Block Confirmations
+									{currentBlock - mainData?.blockNumber} Block
+									Confirmations
 								</PillSquare>
 							</Popover>
 						</div>
@@ -276,8 +308,15 @@ const Overview = function () {
 							Timestamp:
 						</div>
 						<div className={css.block__right}>
-							<CiClock2 />9 secs ago (Apr-04-2024 02:00:07 AM
-							+UTC)
+							<div
+								className={`flex items-center gap-1 ${renderClassTimeStamp()}`}
+							>
+								<CiClock2 />
+								{calcTimestamp(blockInfo)}
+							</div>
+							<div className={renderClassTimeStampFetching()}>
+								<Loader2 style={{borderTopColor: 'black'}} />
+							</div>
 						</div>
 					</div>
 					<div className={css.block__line}></div>
