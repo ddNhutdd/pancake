@@ -1,11 +1,11 @@
-import { useEffect, useState } from 'react';
-import { Dropdown } from '../dropdown';
+import {useEffect, useState} from 'react';
+import {Dropdown} from '../dropdown';
 import Paging2 from '../paging-2';
 import css from './table.module.scss';
 import Loader from '../loader';
 import Empty from '../empty';
 import PropTypes from 'prop-types';
-import { listShowRow } from './list-show-row.js';
+import {listShowRow} from './list-show-row.js';
 
 export const tableRow = listShowRow?.at(0).content;
 
@@ -76,7 +76,8 @@ function Table(props) {
 		return showFooter ? '' : 'd-0';
 	};
 	const renderPaddingWithShowFooter = () => (showFooter ? 0 : 20);
-	const renderClassHideItemWhenFetching = () => fetching ? css['table--hide'] : '';
+	const renderClassHideItemWhenFetching = () =>
+		fetching ? css['table--hide'] : '';
 
 	useEffect(() => {
 		setTotalCol(listCol?.length || 0);
@@ -101,7 +102,7 @@ function Table(props) {
 				</div>
 			</div>
 			<div
-				style={{ paddingBottom: renderPaddingWithShowFooter() }}
+				style={{paddingBottom: renderPaddingWithShowFooter()}}
 				className={css.table__container}
 			>
 				<table>
@@ -127,7 +128,9 @@ function Table(props) {
 					</tbody>
 				</table>
 			</div>
-			<div className={`${css.table__footer} ${renderClassShowFooter()} ${renderClassHideItemWhenFetching()}`}>
+			<div
+				className={`${css.table__footer} ${renderClassShowFooter()} ${renderClassHideItemWhenFetching()}`}
+			>
 				<div className={css.table__footer__left}>
 					<span>Show rows:</span>
 					<span>
@@ -169,7 +172,7 @@ Table.defaultProps = {
 	fetching: false,
 	page: 1,
 	totalPage: 1,
-	pageChangeHandle: () => { },
+	pageChangeHandle: () => {},
 	showPagingTop: true,
 	showHeader: true,
 	showFooter: true,

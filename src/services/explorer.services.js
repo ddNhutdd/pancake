@@ -84,6 +84,5 @@ export const getListPaginatedBlocks = (page, limit) => {
 		return axiosWithoutAuth(
 			`api/explorer/getListPaginatedBlocks?limit=${limit}&page=${page}`,
 		);
-	} catch (error) {
-	}
+	} catch (error) {}
 };

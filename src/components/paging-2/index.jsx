@@ -1,12 +1,12 @@
-import Button2, { button2Type } from '../button-2';
+import Button2, {button2Type} from '../button-2';
 import css from './paging-2.module.scss';
-import { HiOutlineChevronLeft } from 'react-icons/hi2';
-import { HiOutlineChevronRight } from 'react-icons/hi2';
+import {HiOutlineChevronLeft} from 'react-icons/hi2';
+import {HiOutlineChevronRight} from 'react-icons/hi2';
 import PropTypes from 'prop-types';
-import { useEffect, useState } from 'react';
+import {useEffect, useState} from 'react';
 
 function Paging2(props) {
-	const { page, onChange, totalPage } = props;
+	const {page, onChange, totalPage} = props;
 
 	const [disablePrev, setDisablePrev] = useState(false);
 	const [disableNext, setDisableNext] = useState(false);

@@ -7,7 +7,7 @@ import Popover, { popoverPlacementType } from 'src/components/popover';
 import CopyButton from 'src/components/copy-button';
 import { useEffect, useRef, useState } from 'react';
 import Process from './process';
-import { apiStatus } from 'src/constants';
+import { apiStatus, url, urlParams } from 'src/constants';
 import { getListPaginatedBlocks } from 'src/services/explorer.services';
 import {
 	formatNumber,
@@ -15,12 +15,13 @@ import {
 	getTimeAgo,
 	shortenHash,
 } from 'src/utils';
+import { NavLink } from 'react-router-dom';
 
 function ViewBlocks() {
 	const timeType = {
-		'age': 'age',
-		'dateTime': 'dateTime'
-	}
+		age: 'age',
+		dateTime: 'dateTime',
+	};
 	const listCard = [
 		{
 			id: 1,
@@ -48,7 +49,7 @@ function ViewBlocks() {
 		},
 	];
 
-	// change time column 
+	// change time column
 	const timeRef = useRef(timeType.dateTime);
 	const strDatetime = 'Date Time (UTC)';
 	const strDateTimePopup = `Click to show Age format`;
@@ -59,20 +60,20 @@ function ViewBlocks() {
 	const changeColClickHandle = () => {
 		switch (columnHeader) {
 			case strDatetime:
-				setColumnHeader(strDatetime);
-				setColumnPopup(strDateTimePopup);
-				timeRef.current = timeType.dateTime;
-				break;
-			case strAge:
 				setColumnHeader(strAge);
 				setColumnPopup(strAgePopup);
 				timeRef.current = timeType.age;
 				break;
+			case strAge:
+				setColumnHeader(strDatetime);
+				setColumnPopup(strDateTimePopup);
+				timeRef.current = timeType.dateTime;
+				break;
 			default:
 				break;
 		}
-	}
-
+		genObjRecord(listItem.current);
+	};
 	const listCol = [
 		{
 			id: 1,
@@ -86,9 +87,7 @@ function ViewBlocks() {
 					placement={popoverPlacementType.top}
 					content={columnPopup}
 				>
-					<div onClick={changeColClickHandle}>
-						{columnHeader}
-					</div>
+					<div onClick={changeColClickHandle}>{columnHeader}</div>
 				</Popover>
 			),
 		},
@@ -116,8 +115,7 @@ function ViewBlocks() {
 			id: 8,
 			header: `Burnt Fees (BNB)`,
 		},
-	]
-
+	];
 
 	//table row
 	const [limit, setLimit] = useState(tableRow);
@@ -127,6 +125,7 @@ function ViewBlocks() {
 	const [totalPage, setTotalPage] = useState(100);
 	const [fetchApiStatus, setFetchApiStatus] = useState(apiStatus.pending);
 	const [listRecord, setListRecord] = useState([]); // list obj chứa jsx
+	const listItem = useRef([]); // list trả về từ api
 	const fetchMainData = async (page, limit) => {
 		try {
 			if (fetchApiStatus === apiStatus.fetching) return;
@@ -134,6 +133,7 @@ function ViewBlocks() {
 			const resp = await getListPaginatedBlocks(page, limit);
 			const data = JSON.parse(resp?.data?.data);
 			const list = data?.result;
+			listItem.current = list;
 			genObjRecord(list);
 			setTotalPage(data?.totalPage);
 			setPage(page);
@@ -145,22 +145,32 @@ function ViewBlocks() {
 	const renderTime = (item) => {
 		switch (timeRef.current) {
 			case timeType.dateTime:
-				return <Popover
-					key={`1-2`}
-					placement={popoverPlacementType.top}
-					content={getTimeAgo(item.timestamp).replace(
-						'from ',
-						'',
-					)}
-				>
-					{formatTimestamp(item.timestamp)}
-				</Popover>
+				return (
+					<Popover
+						key={`1-2`}
+						placement={popoverPlacementType.top}
+						content={getTimeAgo(item.timestamp).replace(
+							'from ',
+							'',
+						)}
+					>
+						{formatTimestamp(item.timestamp)}
+					</Popover>
+				);
 			case timeType.age:
-				return ``;
+				return (
+					<Popover
+						key={`1-2`}
+						placement={popoverPlacementType.top}
+						content={formatTimestamp(item.timestamp)}
+					>
+						{getTimeAgo(item.timestamp).replace('from ', '')}
+					</Popover>
+				);
 			default:
 				break;
 		}
-	}
+	};
 	const genObjRecord = (list) => {
 		let result = [];
 		result = list.map((item, index) => {
@@ -171,7 +181,12 @@ function ViewBlocks() {
 						key={`1-1`}
 						className='--text-blue'
 					>
-						{item.number}
+						<NavLink
+							className={`--link-no-underline`}
+							to={url.blockDetail.replace(urlParams.blockNumber, item.number)}
+						>
+							{item.number}
+						</NavLink>
 					</span>,
 					renderTime(item),
 					<span
@@ -189,9 +204,12 @@ function ViewBlocks() {
 							placement={popoverPlacementType.top}
 							content={item.miner}
 						>
-							<span className='--text-blue --hover-yellow'>
+							<NavLink
+								to={url.addressDetail.replace(urlParams.addressNumber, item.miner)}
+								className='--text-blue --hover-yellow --link-no-underline'
+							>
 								{shortenHash(item.miner)}
-							</span>
+							</NavLink>
 						</Popover>
 						<CopyButton content={item.miner} />
 					</div>,
@@ -224,7 +242,7 @@ function ViewBlocks() {
 	const showRowChangeHandle = (rows) => {
 		setLimit(rows);
 		fetchMainData(1, rows);
-	}
+	};
 
 	useEffect(() => {
 		fetchMainData(1, limit);
