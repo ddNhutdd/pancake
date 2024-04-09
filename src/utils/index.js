@@ -1,5 +1,5 @@
-import { location } from 'src/constants';
-import * as XLSX from "xlsx/xlsx.mjs";
+import {location} from 'src/constants';
+import * as XLSX from 'xlsx/xlsx.mjs';
 
 export const setLocalStorage = (key, data) => {
 	try {

@@ -7,7 +7,10 @@ import { useState } from 'react';
 import { BsBox } from 'react-icons/bs';
 import { IoDocumentOutline } from 'react-icons/io5';
 import { BiGasPump } from 'react-icons/bi';
-import Popover, { popoverPlacementType, popoverTriggerType } from 'src/components/popover';
+import Popover, {
+	popoverPlacementType,
+	popoverTriggerType,
+} from 'src/components/popover';
 import Button2, { button2Type } from 'src/components/button-2';
 import BlockRecord from './block-record';
 import {
@@ -17,6 +20,7 @@ import {
 import { useEffect } from 'react';
 import { apiStatus, url, urlParams } from 'src/constants/index.js';
 import { NavLink } from 'react-router-dom';
+import { formatNumber } from 'src/utils';
 
 function Home2() {
 	const listImage = {
@@ -150,7 +154,10 @@ function Home2() {
 									content={itemData.miner}
 								>
 									<NavLink
-										to={url.addressDetail.replace(urlParams.addressNumber, itemData.miner)}
+										to={url.addressDetail.replace(
+											urlParams.addressNumber,
+											itemData.miner,
+										)}
 										className={`--link-no-underline ${css['home2--threeDot']}`}
 									>
 										{itemData.miner}
@@ -228,12 +235,14 @@ function Home2() {
 								>
 									<NavLink
 										className={`${css.home2__link} ${css['home2--threeDot']}`}
-										to={url.addressDetail.replace(urlParams.addressNumber, itemData.from)}
+										to={url.addressDetail.replace(
+											urlParams.addressNumber,
+											itemData.from,
+										)}
 									>
 										{itemData.from}
 									</NavLink>
 								</Popover>
-
 							</div>
 						),
 						contentBot: (
@@ -247,7 +256,10 @@ function Home2() {
 								>
 									<NavLink
 										className={`${css.home2__link} ${css['home2--threeDot']}`}
-										to={url.addressDetail.replace(urlParams.addressNumber, itemData.to)}
+										to={url.addressDetail.replace(
+											urlParams.addressNumber,
+											itemData.to,
+										)}
 									>
 										{itemData.to}
 									</NavLink>
@@ -256,7 +268,7 @@ function Home2() {
 						),
 						actions: (
 							<Button2 type={button2Type.outlineSmall}>
-								0.5267 BNB
+								{formatNumber(itemData.value, undefined, 4)} BNB
 							</Button2>
 						),
 					});
@@ -265,7 +277,7 @@ function Home2() {
 			setCallStatusFullfiled(ca);
 			setTransactionList(result);
 		} catch (error) {
-			setCallStatusRejected(ca)(error);
+			setCallStatusRejected(ca);
 		}
 	};
 	const checkBeforeCallApi = (ca) => {

@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import {useEffect, useRef} from 'react';
 import css from './button-2.module.scss';
 import PropTypes from 'prop-types';
 import Loader2 from '../loader-2';
@@ -17,15 +17,8 @@ export const button2HtmlType = {
 };
 
 function Button2(props) {
-	const {
-		children,
-		classname,
-		type,
-		onClick,
-		disabled,
-		htmlType,
-		loading
-	} = props;
+	const {children, classname, type, onClick, disabled, htmlType, loading} =
+		props;
 
 	const button = useRef(null);
 
@@ -85,7 +78,7 @@ Button2.propTypes = {
 
 Button2.defaultProps = {
 	type: button2Type.outline,
-	onClick: () => { },
+	onClick: () => {},
 	disabled: false,
 	htmlType: button2HtmlType.button,
 	loading: false,

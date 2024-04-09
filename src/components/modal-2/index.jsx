@@ -1,8 +1,8 @@
 import Card from '../card';
 import PropTypes from 'prop-types';
 import css from './modal-2.module.scss';
-import { useRef } from 'react';
-import { IoClose } from 'react-icons/io5';
+import {useRef} from 'react';
+import {IoClose} from 'react-icons/io5';
 
 function Modal2(props) {
 	const {

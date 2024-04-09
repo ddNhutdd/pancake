@@ -1,15 +1,15 @@
 import ToolPage from 'src/components/tool-page';
 import css from './similar-contract-search.module.scss';
-import { url } from 'src/constants';
+import {url} from 'src/constants';
 import HeaderComponent4 from 'src/components/header-component-4';
 import Card from 'src/components/card';
-import Button2, { button2Type } from 'src/components/button-2';
+import Button2, {button2Type} from 'src/components/button-2';
 import Input3 from 'src/components/input-3';
-import { Dropdown2, dropdown2TriggerType } from 'src/components/dropdown-2';
-import { useState } from 'react';
-import { FaAngleDown } from 'react-icons/fa6';
+import {Dropdown2, dropdown2TriggerType} from 'src/components/dropdown-2';
+import {useState} from 'react';
+import {FaAngleDown} from 'react-icons/fa6';
 import CheckBox from 'src/components/checkbox';
-import { hasKey } from 'src/utils';
+import {hasKey} from 'src/utils';
 
 function SimilarContractSearch() {
 	const similarList = [
@@ -24,7 +24,7 @@ function SimilarContractSearch() {
 	];
 	const chainItemChangeHandle = (ev) => {
 		const id = ev.target.id;
-		const newState = { ...chainsDropdownSelected };
+		const newState = {...chainsDropdownSelected};
 		const isHasKey = hasKey(newState, id);
 		if (isHasKey) {
 			delete newState[id];
@@ -143,7 +143,7 @@ function SimilarContractSearch() {
 									}
 									list={chainsList}
 									show={chainsDropdownShow}
-									onChange={() => { }}
+									onChange={() => {}}
 								></Dropdown2>
 							</div>
 						</div>
