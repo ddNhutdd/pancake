@@ -1,4 +1,4 @@
-import {defaultConfig} from '@web3modal/ethers/react';
+import { defaultConfig } from '@web3modal/ethers/react';
 
 export const urlParams = {
 	blockNumber: ':blocknumber',
@@ -61,6 +61,17 @@ export const chainList = [
 		Currency: 'BNB',
 	},
 ];
+
+export const headerTime = {
+	age: 'Age',
+	dateTime: 'Date Time (UTC + 7)'
+}
+export const headerTimePopup = {
+	age: 'Click to show datetime format',
+	dateTime: 'Click to show age format'
+}
+export const headerTimeDefault = headerTime.dateTime;
+export const headerTimePopupDefault = headerTimePopup.dateTime;
 
 // config web3
 export const projectId = '5cfce0ac0d25591fa3ce98011db61342';

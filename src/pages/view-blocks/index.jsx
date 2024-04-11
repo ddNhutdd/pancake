@@ -7,21 +7,17 @@ import Popover, { popoverPlacementType } from 'src/components/popover';
 import CopyButton from 'src/components/copy-button';
 import { useEffect, useRef, useState } from 'react';
 import Process from './process';
-import { apiStatus, url, urlParams } from 'src/constants';
+import { apiStatus, headerTime, headerTimeDefault, headerTimePopup, headerTimePopupDefault, url, urlParams } from 'src/constants';
 import { getListPaginatedBlocks } from 'src/services/explorer.services';
 import {
 	formatNumber,
 	formatTimestamp,
 	getTimeAgo,
-	shortenHash,
+	shortenHashWithPrefixSuffix,
 } from 'src/utils';
 import { NavLink } from 'react-router-dom';
 
 function ViewBlocks() {
-	const timeType = {
-		age: 'age',
-		dateTime: 'dateTime',
-	};
 	const listCard = [
 		{
 			id: 1,
@@ -50,24 +46,20 @@ function ViewBlocks() {
 	];
 
 	// change time column
-	const timeRef = useRef(timeType.dateTime);
-	const strDatetime = 'Date Time (UTC)';
-	const strDateTimePopup = `Click to show Age format`;
-	const strAge = 'Age';
-	const strAgePopup = 'Click to show DateTime format';
-	const [columnHeader, setColumnHeader] = useState(strDatetime);
-	const [columnPopup, setColumnPopup] = useState(strDateTimePopup);
+	const timeRef = useRef(headerTimeDefault);
+	const [columnHeader, setColumnHeader] = useState(headerTimeDefault);
+	const [columnPopup, setColumnPopup] = useState(headerTimePopupDefault);
 	const changeColClickHandle = () => {
 		switch (columnHeader) {
-			case strDatetime:
-				setColumnHeader(strAge);
-				setColumnPopup(strAgePopup);
-				timeRef.current = timeType.age;
+			case headerTime.dateTime:
+				setColumnHeader(headerTime.age);
+				setColumnPopup(headerTimePopup.age);
+				timeRef.current = headerTime.age;
 				break;
-			case strAge:
-				setColumnHeader(strDatetime);
-				setColumnPopup(strDateTimePopup);
-				timeRef.current = timeType.dateTime;
+			case headerTime.age:
+				setColumnHeader(headerTime.dateTime);
+				setColumnPopup(headerTimePopup.dateTime);
+				timeRef.current = headerTime.dateTime;
 				break;
 			default:
 				break;
@@ -144,7 +136,7 @@ function ViewBlocks() {
 	};
 	const renderTime = (item) => {
 		switch (timeRef.current) {
-			case timeType.dateTime:
+			case headerTime.dateTime:
 				return (
 					<Popover
 						key={`1-2`}
@@ -157,7 +149,7 @@ function ViewBlocks() {
 						{formatTimestamp(item.timestamp)}
 					</Popover>
 				);
-			case timeType.age:
+			case headerTime.age:
 				return (
 					<Popover
 						key={`1-2`}
@@ -208,7 +200,7 @@ function ViewBlocks() {
 								to={url.addressDetail.replace(urlParams.addressNumber, item.miner)}
 								className='--text-blue --hover-yellow --link-no-underline'
 							>
-								{shortenHash(item.miner)}
+								{shortenHashWithPrefixSuffix(item.miner)}
 							</NavLink>
 						</Popover>
 						<CopyButton content={item.miner} />

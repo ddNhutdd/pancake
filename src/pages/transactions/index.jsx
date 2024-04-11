@@ -1,50 +1,46 @@
 import Card from 'src/components/card';
 import css from './transactions.module.scss';
-import {TbBulb} from 'react-icons/tb';
-import {HiMiniArrowUpRight} from 'react-icons/hi2';
+import { TbBulb } from 'react-icons/tb';
+import { HiMiniArrowUpRight } from 'react-icons/hi2';
 import Popover, {
 	popoverPlacementType,
-	popoverTriggerType,
 } from 'src/components/popover';
-import Table from 'src/components/table';
-import {CiCircleQuestion} from 'react-icons/ci';
-import {MdOutlineRemoveRedEye} from 'react-icons/md';
+import Table, { tableRow } from 'src/components/table';
+import { CiCircleQuestion } from 'react-icons/ci';
 import HeaderComponent2 from 'src/components/header-component-2';
-import Button2, {button2Type} from 'src/components/button-2';
-import InfoTransaction from './info-transaction';
-
+import Button2, { button2Type } from 'src/components/button-2';
 import CopyButton from 'src/components/copy-button';
-import {useEffect, useState} from 'react';
+import { useEffect, useRef, useState } from 'react';
 import CirclePointRight from 'src/components/circle-point-right';
+import { apiStatus, headerTime, headerTimeDefault, headerTimePopup, headerTimePopupDefault, url, urlParams } from 'src/constants';
+import { getListPaginatedTransactions } from 'src/services/explorer.services';
+import { formatNumber, formatTimestamp, getTimeAgo, shortenHashWithPrefix, shortenHashWithPrefixSuffix } from 'src/utils';
+import { NavLink } from 'react-router-dom';
 
 function Transactions() {
-	const [showInfo, setShowInfo] = useState({});
-	const [page, setPage] = useState(1);
-	const [totalPages] = useState(20);
 
-	const showInfoClickHandle = (value, ev) => {
-		ev.stopPropagation();
-		const oldValue = showInfo[value];
-		const newValue = !oldValue;
+	// show time toggle 
+	const [headerTimeTable, setHeaderTimeTable] = useState(headerTimeDefault);
+	const headerTimeTableRuntime = useRef(headerTimeDefault);
+	const [headerTimeTablePopup, setHeaderTimeTablePopup] = useState(headerTimePopupDefault);
+	const headerTimeClickHandle = () => {
+		switch (headerTimeTable) {
+			case headerTime.age:
+				setHeaderTimeTable(headerTimeTableRuntime.current = headerTime.dateTime);
+				setHeaderTimeTablePopup(headerTimePopup.dateTime);
+				setMainDataObj(renderMainDataObj(mainData.current));
+				break;
+			case headerTime.dateTime:
+				setHeaderTimeTable(headerTimeTableRuntime.current = headerTime.age);
+				setHeaderTimeTablePopup(headerTimePopup.age);
+				setMainDataObj(renderMainDataObj(mainData.current));
+				break;
+			default:
+				break;
+		}
 
-		const newObj = {
-			[value]: newValue,
-		};
-
-		setShowInfo(newObj);
-	};
-	const closeAllInfo = () => {
-		setShowInfo({});
-	};
-	const pageChangeHandle = (page) => {
-		setPage(page);
-	};
-
+	}
 	const listCol = [
-		{
-			id: 1,
-			header: <CiCircleQuestion />,
-		},
 		{
 			id: 2,
 			header: 'Txn Hash',
@@ -55,9 +51,26 @@ function Transactions() {
 				<div className='flex items-center gap-1'>
 					Method
 					<div className='flex items-center'>
-						<CiCircleQuestion />
+						<Popover
+							placement={popoverPlacementType.right}
+							content={
+								<div className='flex flex-col'>
+									<div>
+										Function executed based on decoded input data.
+									</div>
+									<div>
+										For unidentified functions, method ID is displayed
+									</div>
+									<div>
+										instead
+									</div>
+								</div>
+							}
+						>
+							<CiCircleQuestion />
+						</Popover>
 					</div>
-				</div>
+				</div >
 			),
 		},
 		{
@@ -69,10 +82,12 @@ function Transactions() {
 			header: (
 				<Popover
 					placement={popoverPlacementType.top}
-					content={`Click to show datetime format`}
+					content={headerTimeTablePopup}
 					className={css['transactions--blue']}
 				>
-					Age
+					<div onClick={headerTimeClickHandle}>
+						{headerTimeTable}
+					</div>
 				</Popover>
 			),
 		},
@@ -105,311 +120,147 @@ function Transactions() {
 			),
 		},
 	];
-	const listRecord = [
-		{
-			id: 1,
-			cols: [
-				<Popover
-					key={`a1`}
-					trigger={popoverTriggerType.runtime}
-					placement={popoverPlacementType.right}
-					content={<InfoTransaction />}
-					classNamePopover={css.customPopover}
-					id={`1`}
-					show={showInfo[`a1`]}
-				>
-					<Button2
-						onClick={showInfoClickHandle.bind(null, 'a1')}
-						type={button2Type.outlineSmall}
-						classname={css.customButton}
-					>
-						<MdOutlineRemoveRedEye />
-					</Button2>
-				</Popover>,
-				<span
-					key={`a3`}
-					className={css['transactions--blue']}
-				>
-					0x46b45d6230550
-				</span>,
-				<Popover
-					key={`a2`}
-					placement={popoverPlacementType.top}
-					content={`Deposite`}
-				>
-					<Button2
-						type={button2Type.outlineSmall}
-						classname={css.customButton2}
-					>
-						Deposite
-					</Button2>
-				</Popover>,
-				<span
-					key={`a4`}
-					className={css['transactions--blue']}
-				>
-					37100493
-				</span>,
-				`7 secs ago`,
-				<span
-					key={`a5`}
-					className={css['transactions--blue']}
-				>
-					<Button2
-						type={button2Type.outlineSmall}
-						classname={css.customButton3}
-					>
-						0x123456...185
-					</Button2>
-					<CopyButton content='0x123456...185' />
-				</span>,
-				<CirclePointRight key={`a4`} />,
-				<span
-					key={`a5`}
-					className={css['transactions--blue']}
-				>
-					<Button2
-						type={button2Type.outlineSmall}
-						classname={css.customButton3}
-					>
-						BSC: Validator Set
-					</Button2>
-					<CopyButton content='BSC: Validator Set' />
-				</span>,
-				'0.063841559 BNB',
-				'0',
-			],
-		},
-		{
-			id: 2,
-			cols: [
-				<Popover
-					key={`a1`}
-					trigger={popoverTriggerType.runtime}
-					placement={popoverPlacementType.right}
-					content={<InfoTransaction />}
-					classNamePopover={css.customPopover}
-					id={`1`}
-					show={showInfo[`a2`]}
-				>
-					<Button2
-						onClick={showInfoClickHandle.bind(null, 'a2')}
-						type={button2Type.outlineSmall}
-						classname={css.customButton}
-					>
-						<MdOutlineRemoveRedEye />
-					</Button2>
-				</Popover>,
-				<span
-					key={`a3`}
-					className={css['transactions--blue']}
-				>
-					0x46b45d6230550
-				</span>,
-				<Popover
-					key={`a2`}
-					placement={popoverPlacementType.top}
-					content={`Deposite`}
-				>
-					<Button2
-						type={button2Type.outlineSmall}
-						classname={css.customButton2}
-					>
-						Deposite
-					</Button2>
-				</Popover>,
-				<span
-					key={`a4`}
-					className={css['transactions--blue']}
-				>
-					37100493
-				</span>,
-				`7 secs ago`,
-				<span
-					key={`a5`}
-					className={css['transactions--blue']}
-				>
-					<Button2
-						type={button2Type.outlineSmall}
-						classname={css.customButton3}
-					>
-						0x123456...185
-					</Button2>
-					<CopyButton content='0x123456...185' />
-				</span>,
-				<CirclePointRight key={`a4`} />,
-				<span
-					key={`a5`}
-					className={css['transactions--blue']}
-				>
-					<Button2
-						type={button2Type.outlineSmall}
-						classname={css.customButton3}
-					>
-						BSC: Validator Set
-					</Button2>
-					<CopyButton content='BSC: Validator Set' />
-				</span>,
-				'0.063841559 BNB',
-				'0',
-			],
-		},
-		{
-			id: 3,
-			cols: [
-				<Popover
-					key={`a1`}
-					trigger={popoverTriggerType.runtime}
-					placement={popoverPlacementType.right}
-					content={<InfoTransaction />}
-					classNamePopover={css.customPopover}
-					id={`1`}
-					show={showInfo[`a3`]}
-				>
-					<Button2
-						onClick={showInfoClickHandle.bind(null, 'a3')}
-						type={button2Type.outlineSmall}
-						classname={css.customButton}
-					>
-						<MdOutlineRemoveRedEye />
-					</Button2>
-				</Popover>,
-				<span
-					key={`a3`}
-					className={css['transactions--blue']}
-				>
-					0x46b45d6230550
-				</span>,
-				<Popover
-					key={`a2`}
-					placement={popoverPlacementType.top}
-					content={`Deposite`}
-				>
-					<Button2
-						type={button2Type.outlineSmall}
-						classname={css.customButton2}
-					>
-						Deposite
-					</Button2>
-				</Popover>,
-				<span
-					key={`a4`}
-					className={css['transactions--blue']}
-				>
-					37100493
-				</span>,
-				`7 secs ago`,
-				<span
-					key={`a5`}
-					className={css['transactions--blue']}
-				>
-					<Button2
-						type={button2Type.outlineSmall}
-						classname={css.customButton3}
-					>
-						0x123456...185
-					</Button2>
-					<CopyButton content='0x123456...185' />
-				</span>,
-				<CirclePointRight key={`a4`} />,
-				<span
-					key={`a5`}
-					className={css['transactions--blue']}
-				>
-					<Button2
-						type={button2Type.outlineSmall}
-						classname={css.customButton3}
-					>
-						BSC: Validator Set
-					</Button2>
-					<CopyButton content='BSC: Validator Set' />
-				</span>,
-				'0.063841559 BNB',
-				'0',
-			],
-		},
-		{
-			id: 4,
-			cols: [
-				<Popover
-					key={`a1`}
-					trigger={popoverTriggerType.runtime}
-					placement={popoverPlacementType.right}
-					content={<InfoTransaction />}
-					classNamePopover={css.customPopover}
-					id={`1`}
-					show={showInfo[`a4`]}
-				>
-					<Button2
-						onClick={showInfoClickHandle.bind(null, 'a4')}
-						type={button2Type.outlineSmall}
-						classname={css.customButton}
-					>
-						<MdOutlineRemoveRedEye />
-					</Button2>
-				</Popover>,
-				<span
-					key={`a3`}
-					className={css['transactions--blue']}
-				>
-					0x46b45d6230550
-				</span>,
-				<Popover
-					key={`a2`}
-					placement={popoverPlacementType.top}
-					content={`Deposite`}
-				>
-					<Button2
-						type={button2Type.outlineSmall}
-						classname={css.customButton2}
-					>
-						Deposite
-					</Button2>
-				</Popover>,
-				<span
-					key={`a4`}
-					className={css['transactions--blue']}
-				>
-					37100493
-				</span>,
-				`7 secs ago`,
-				<span
-					key={`a5`}
-					className={css['transactions--blue']}
-				>
-					<Button2
-						type={button2Type.outlineSmall}
-						classname={css.customButton3}
-					>
-						0x123456...185
-					</Button2>
-					<CopyButton content='0x123456...185' />
-				</span>,
-				<CirclePointRight key={`a4`} />,
-				<span
-					key={`a5`}
-					className={css['transactions--blue']}
-				>
-					<Button2
-						type={button2Type.outlineSmall}
-						classname={css.customButton3}
-					>
-						BSC: Validator Set
-					</Button2>
-					<CopyButton content='BSC: Validator Set' />
-				</span>,
-				'0.063841559 BNB',
-				'0',
-			],
-		},
-	];
+
+	// page 
+	const rowLimit = useRef(tableRow);
+	const showRowHandleChange = (item) => {
+		rowLimit.current = item;
+		console.log('run showRowHandleChange with row limit ', rowLimit.current);
+		fetchMainData(1, rowLimit.current);
+	}
+	const [page, setPage] = useState(1);
+	const [totalPages, setTotalPages] = useState(20);
+	const pageChangeHandle = (page) => fetchMainData(page, rowLimit.current);
+
+	// fetch list transaction 
+	const [fetchMainDataStatus, setFetchMainDataStatus] = useState(apiStatus.pending);
+	const [mainDataObj, setMainDataObj] = useState([]); // main data có chứa jsx
+	const mainData = useRef([]);
+	const fetchMainData = async (page, limit) => {
+		try {
+			if (fetchMainDataStatus === apiStatus.fetching) return;
+			setFetchMainDataStatus(apiStatus.fetching);
+			const resp = await getListPaginatedTransactions(page, limit);
+			const data = JSON.parse(resp?.data?.data);
+			setTotalPages(data?.totalPage);
+			setPage(data?.page);
+			setMainDataObj(renderMainDataObj(data?.result));
+			mainData.current = data?.result;
+			setFetchMainDataStatus(apiStatus.fullfiled);
+		} catch (error) {
+			setFetchMainDataStatus(apiStatus.rejected);
+		}
+	}
+	const renderCellTime = (timestamp) => {
+		if (headerTimeTableRuntime.current === headerTime.age) {
+			return <Popover
+				placement={popoverPlacementType.top}
+				content={formatTimestamp(timestamp)}
+			>
+				{getTimeAgo(timestamp)}
+			</Popover>
+		} else if (headerTimeTableRuntime.current === headerTime.dateTime) {
+			return <Popover
+				placement={popoverPlacementType.top}
+				content={getTimeAgo(timestamp)}
+			>
+				{formatTimestamp(timestamp)}
+			</Popover>
+		}
+	}
+	const renderMainDataObj = (list) => {
+		return list.map((item, index) => {
+			return (
+				{
+					id: index,
+					cols: [
+						<NavLink
+							key={`a3`}
+							to={url.transactionDetail.replace(urlParams.transactionNumber, item.hash)}
+							className={css['--link-no-underline']}
+						>
+							{shortenHashWithPrefix(item.hash)}
+						</NavLink>,
+						<Popover
+							key={`a2`}
+							placement={popoverPlacementType.top}
+							content={`Deposite`}
+						>
+							<Button2
+								type={button2Type.outlineSmall}
+								classname={css.customButton2}
+							>
+								Deposite
+							</Button2>
+						</Popover>,
+						<NavLink
+							key={`a4`}
+							to={url.blockDetail.replace(urlParams.blockNumber, item.blockNumber)}
+							className={css['--link-no-underline']}
+						>
+							{item.blockNumber}
+						</NavLink>,
+						renderCellTime(item.timestamp)
+						,
+						<>
+							<Popover
+								content={
+									item.from
+								}
+								placement={popoverPlacementType.top}
+								key={`a5`}
+								className={css['transactions--blue']}
+							>
+								<NavLink
+									className={`--link-no-underline`}
+									to={url.addressDetail.replace(urlParams.addressNumber, item.from)}
+								>
+									<Button2
+										type={button2Type.outlineSmall}
+										classname={css.customButton3}
+									>
+										{shortenHashWithPrefixSuffix(item.from)}
+									</Button2>
+								</NavLink>
+							</Popover>
+							<CopyButton content={item.from} />
+						</>
+						,
+						<CirclePointRight key={`a4`} />,
+						<>
+							<Popover
+								content={
+									item.to
+								}
+								placement={popoverPlacementType.top}
+								key={`a5`}
+								className={css['transactions--blue']}
+							>
+								<NavLink
+									className={`--link-no-underline`}
+									to={url.addressDetail.replace(urlParams.addressNumber, item.to)}
+								>
+									<Button2
+
+										type={button2Type.outlineSmall}
+										classname={css.customButton3}
+									>
+										{shortenHashWithPrefixSuffix(item.to)}
+									</Button2>
+								</NavLink>
+							</Popover>
+							<CopyButton content={item.to} />
+						</>,
+						formatNumber(item.value, undefined, 5) + ' BNB',
+						'0',
+					],
+				}
+			)
+		})
+	}
 
 	useEffect(() => {
-		document.addEventListener('click', closeAllInfo);
-
-		return () => {
-			document.removeEventListener('click', closeAllInfo);
-		};
+		fetchMainData(1, rowLimit.current);
 	}, []);
 
 	return (
@@ -523,7 +374,7 @@ function Transactions() {
 						<Card>
 							<Table
 								listCol={listCol}
-								listRecord={listRecord}
+								listRecord={mainDataObj}
 								headerLeftContent={
 									<>
 										<div>
@@ -538,6 +389,8 @@ function Transactions() {
 								page={page}
 								totalPage={totalPages}
 								pageChangeHandle={pageChangeHandle}
+								showRowChangeHandle={showRowHandleChange}
+								fetching={fetchMainDataStatus === apiStatus.fetching}
 							/>
 						</Card>
 					</div>

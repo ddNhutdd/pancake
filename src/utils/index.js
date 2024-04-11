@@ -1,4 +1,4 @@
-import {location} from 'src/constants';
+import { location } from 'src/constants';
 import * as XLSX from 'xlsx/xlsx.mjs';
 
 export const setLocalStorage = (key, data) => {
@@ -132,7 +132,9 @@ export const hasKey = (obj, key) => {
 export const formatNumber = (value, locales = location.en, digits) => {
 	if (digits) {
 		return new Intl.NumberFormat(locales, {
-			maximumSignificantDigits: digits,
+			minimumFractionDigits: 0, // Đảm bảo không có số 0 sau dấu thập phân
+			maximumFractionDigits: 5, // Chỉ lấy 5 số thập phân
+			trim: true, // Loại bỏ các số 0 cuối cùng
 		}).format(value);
 	} else {
 		return new Intl.NumberFormat(locales).format(value);
@@ -185,7 +187,7 @@ export const getTimeAgo = (timestamp) => {
 	}
 };
 
-export const shortenHash = (hash) => {
+export const shortenHashWithPrefixSuffix = (hash) => {
 	if (!hash) return;
 	const length = hash.length;
 	if (length <= 12) {
@@ -194,6 +196,16 @@ export const shortenHash = (hash) => {
 	const prefix = hash.substring(0, 6);
 	const suffix = hash.substring(length - 6);
 	return `${prefix}...${suffix}`;
+};
+
+export const shortenHashWithPrefix = (hash) => {
+	if (!hash) return;
+	const length = hash.length;
+	if (length <= 6) {
+		return hash;
+	}
+	const prefix = hash.substring(0, 6);
+	return `${prefix}...`;
 };
 
 export const exportExcel = function (data, nameSheet, nameFile) {
