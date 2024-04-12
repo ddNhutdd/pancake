@@ -18,7 +18,6 @@ import { formatNumber, formatTimestamp, getTimeAgo, shortenHashWithPrefix, short
 import { NavLink } from 'react-router-dom';
 
 function Transactions() {
-
 	// show time toggle 
 	const [headerTimeTable, setHeaderTimeTable] = useState(headerTimeDefault);
 	const headerTimeTableRuntime = useRef(headerTimeDefault);
@@ -28,12 +27,10 @@ function Transactions() {
 			case headerTime.age:
 				setHeaderTimeTable(headerTimeTableRuntime.current = headerTime.dateTime);
 				setHeaderTimeTablePopup(headerTimePopup.dateTime);
-				setMainDataObj(renderMainDataObj(mainData.current));
 				break;
 			case headerTime.dateTime:
 				setHeaderTimeTable(headerTimeTableRuntime.current = headerTime.age);
 				setHeaderTimeTablePopup(headerTimePopup.age);
-				setMainDataObj(renderMainDataObj(mainData.current));
 				break;
 			default:
 				break;
@@ -125,7 +122,6 @@ function Transactions() {
 	const rowLimit = useRef(tableRow);
 	const showRowHandleChange = (item) => {
 		rowLimit.current = item;
-		console.log('run showRowHandleChange with row limit ', rowLimit.current);
 		fetchMainData(1, rowLimit.current);
 	}
 	const [page, setPage] = useState(1);
@@ -134,8 +130,7 @@ function Transactions() {
 
 	// fetch list transaction 
 	const [fetchMainDataStatus, setFetchMainDataStatus] = useState(apiStatus.pending);
-	const [mainDataObj, setMainDataObj] = useState([]); // main data có chứa jsx
-	const mainData = useRef([]);
+	const [mainData, setMainData] = useState([]);
 	const fetchMainData = async (page, limit) => {
 		try {
 			if (fetchMainDataStatus === apiStatus.fetching) return;
@@ -144,8 +139,7 @@ function Transactions() {
 			const data = JSON.parse(resp?.data?.data);
 			setTotalPages(data?.totalPage);
 			setPage(data?.page);
-			setMainDataObj(renderMainDataObj(data?.result));
-			mainData.current = data?.result;
+			setMainData(() => data?.result);
 			setFetchMainDataStatus(apiStatus.fullfiled);
 		} catch (error) {
 			setFetchMainDataStatus(apiStatus.rejected);
@@ -168,19 +162,27 @@ function Transactions() {
 			</Popover>
 		}
 	}
+
+	// render obj (có chứa jsx)
 	const renderMainDataObj = (list) => {
 		return list.map((item, index) => {
 			return (
 				{
 					id: index,
 					cols: [
-						<NavLink
+						<Popover
 							key={`a3`}
-							to={url.transactionDetail.replace(urlParams.transactionNumber, item.hash)}
-							className={css['--link-no-underline']}
+							placement={popoverPlacementType.top}
+							content={item.hash}
 						>
-							{shortenHashWithPrefix(item.hash)}
-						</NavLink>,
+							<NavLink
+
+								to={url.transactionDetail.replace(urlParams.transactionNumber, item.hash)}
+								className={css['--link-no-underline']}
+							>
+								{shortenHashWithPrefix(item.hash)}
+							</NavLink>
+						</Popover>,
 						<Popover
 							key={`a2`}
 							placement={popoverPlacementType.top}
@@ -374,7 +376,7 @@ function Transactions() {
 						<Card>
 							<Table
 								listCol={listCol}
-								listRecord={mainDataObj}
+								listRecord={renderMainDataObj(mainData)}
 								headerLeftContent={
 									<>
 										<div>

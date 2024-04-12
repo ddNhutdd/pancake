@@ -64,7 +64,6 @@ function ViewBlocks() {
 			default:
 				break;
 		}
-		genObjRecord(listItem.current);
 	};
 	const listCol = [
 		{
@@ -116,8 +115,7 @@ function ViewBlocks() {
 	const [page, setPage] = useState(1);
 	const [totalPage, setTotalPage] = useState(100);
 	const [fetchApiStatus, setFetchApiStatus] = useState(apiStatus.pending);
-	const [listRecord, setListRecord] = useState([]); // list obj chứa jsx
-	const listItem = useRef([]); // list trả về từ api
+	const [mainData, setMainData] = useState([]); // list trả về từ api
 	const fetchMainData = async (page, limit) => {
 		try {
 			if (fetchApiStatus === apiStatus.fetching) return;
@@ -125,8 +123,7 @@ function ViewBlocks() {
 			const resp = await getListPaginatedBlocks(page, limit);
 			const data = JSON.parse(resp?.data?.data);
 			const list = data?.result;
-			listItem.current = list;
-			genObjRecord(list);
+			setMainData(list);
 			setTotalPage(data?.totalPage);
 			setPage(page);
 			setFetchApiStatus(apiStatus.fullfiled);
@@ -221,7 +218,7 @@ function ViewBlocks() {
 				],
 			};
 		});
-		setListRecord(result);
+		return (result);
 	};
 
 	//paging
@@ -248,7 +245,7 @@ function ViewBlocks() {
 				<Card>
 					<Table
 						listCol={listCol}
-						listRecord={listRecord}
+						listRecord={genObjRecord(mainData)}
 						page={page}
 						totalPage={totalPage}
 						pageChangeHandle={pageChangeHandle}

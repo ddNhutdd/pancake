@@ -8,16 +8,6 @@ import {I18nextProvider} from 'react-i18next';
 import i18n from 'src/translate/i18n.js';
 import AlertContainer from './context/alert-container';
 import {create, all} from 'mathjs';
-import {mainnet, ethersConfig, projectId} from 'src/constants';
-import {createWeb3Modal} from '@web3modal/ethers/react';
-
-createWeb3Modal({
-	ethersConfig,
-	chains: [mainnet],
-	projectId,
-	enableAnalytics: true,
-	themeMode: 'light',
-});
 
 const config = {};
 export const math = create(all, config);

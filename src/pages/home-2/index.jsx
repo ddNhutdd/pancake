@@ -211,7 +211,7 @@ function Home2() {
 			setBlockList(result);
 			return data;
 		} catch (error) {
-			setCallStatusRejected(ca)(error);
+			setCallStatusRejected(ca);
 		}
 	};
 	const fetchLatestTransactions = async (ca) => {
