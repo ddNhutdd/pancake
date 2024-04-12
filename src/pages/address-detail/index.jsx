@@ -5,44 +5,44 @@ import CopyButton from 'src/components/copy-button';
 import QRButton from 'src/components/qr-button';
 import ListCard from './list-card';
 import TableAddress from './table-address';
-import {useEffect, useState} from 'react';
-import {useDispatch} from 'react-redux';
-import {setShowMenu} from 'src/redux/slices/headerComponent2';
-import {NavLink} from 'react-router-dom';
-import Pill, {pillTypes} from 'src/components/pill';
-import {FiHash} from 'react-icons/fi';
-import {FiExternalLink} from 'react-icons/fi';
-import {FiTag} from 'react-icons/fi';
-import Button2, {button2Type} from 'src/components/button-2';
-import {FaRegStar} from 'react-icons/fa6';
+import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { setShowMenu } from 'src/redux/slices/headerComponent2';
+import { NavLink } from 'react-router-dom';
+import Pill, { pillTypes } from 'src/components/pill';
+import { FiHash } from 'react-icons/fi';
+import { FiExternalLink } from 'react-icons/fi';
+import { FiTag } from 'react-icons/fi';
+import Button2, { button2Type } from 'src/components/button-2';
+import { FaRegStar } from 'react-icons/fa6';
 import {
 	Dropdown2,
 	dropdown2Align,
 	dropdown2TriggerType,
 } from 'src/components/dropdown-2';
-import {IoDocumentText} from 'react-icons/io5';
-import {IoTimerOutline} from 'react-icons/io5';
-import {TbUserCog} from 'react-icons/tb';
-import {LuUserMinus2} from 'react-icons/lu';
-import {CiFlag1} from 'react-icons/ci';
-import {FaListCheck} from 'react-icons/fa6';
-import {IoChevronDownOutline} from 'react-icons/io5';
-import {splitStringToDivs} from 'src/utils/utils';
+import { IoDocumentText } from 'react-icons/io5';
+import { IoTimerOutline } from 'react-icons/io5';
+import { TbUserCog } from 'react-icons/tb';
+import { LuUserMinus2 } from 'react-icons/lu';
+import { CiFlag1 } from 'react-icons/ci';
+import { FaListCheck } from 'react-icons/fa6';
+import { IoChevronDownOutline } from 'react-icons/io5';
+import { splitStringToDivs } from 'src/utils/utils';
 import Loader from 'src/components/loader';
-import {useParams} from 'react-router-dom';
-import {apiStatus} from 'src/constants';
+import { useParams } from 'react-router-dom';
+import { apiStatus, commonString, searchType } from 'src/constants';
 import {
 	getAddressData,
+	getContractData,
 	getExchangeRateBNBtoUSD,
+	getLatestTransactionsByAddress,
+	search,
 } from 'src/services/explorer.services';
+import Empty from 'src/components/empty';
 
 const AddressDetail = function () {
-	//#region order hook
 	const dispatch = useDispatch();
-	const {addressnumber} = useParams();
-	//#endregion
 
-	//#region data
 	const listDropdown = [
 		{
 			id: 1,
@@ -94,44 +94,71 @@ const AddressDetail = function () {
 			),
 		},
 	];
-	//#endregion
 
-	//#region state
-	const [addressInfo, setAddressInfo] = useState();
-	const [bnbToUsd, setBnbToUsd] = useState();
-	const [fetchMainDataStatus, setFetchMainDataStatus] = useState(
-		apiStatus.pending,
-	);
-	//#endregion
-
-	//#region function
-	const fetchMainData = async () => {
-		try {
-			if (fetchMainDataStatus === apiStatus.fetching) return;
-			setFetchMainDataStatus(apiStatus.fetching);
-
-			const resp = await Promise.all([
-				getAddressData(addressnumber),
-				getExchangeRateBNBtoUSD(),
-			]);
-			const dataInfo = JSON.parse(resp[0]?.data?.data);
-			setAddressInfo(dataInfo);
-			const dataExchange = resp[1]?.data?.data;
-			setBnbToUsd(dataExchange);
-
-			setFetchMainDataStatus(apiStatus.fullfiled);
-		} catch (error) {
-			error;
-			setFetchMainDataStatus(apiStatus.rejected);
-		}
-	};
+	// render class show nội dung lên giao diện
 	const renderClassShowLoader = () =>
 		fetchMainDataStatus === apiStatus.fetching ? '' : 'd-0';
 	const renderClassShowContent = () =>
 		fetchMainDataStatus === apiStatus.fullfiled ? '' : 'd-0';
-	//#endregion
+	const renderClassShowError = () => fetchMainDataStatus === apiStatus.rejected ? '' : 'd-0'
 
-	//#region useEffect
+	// main data
+	const [fetchMainDataStatus, setFetchMainDataStatus] = useState(apiStatus.pending);
+	const { addressnumber } = useParams();
+	const [bnbToUsd, setBnbToUsd] = useState();
+	const [info, setInfo] = useState(); // thông tin chung, không bao gồm list transaction
+	const [header, setHeader] = useState();
+	const [listTransacitonInfo, setListTransactionInfo] = useState({});
+	const [error, setError] = useState();
+	const fetchMainData = async () => {
+		try {
+			if (fetchMainDataStatus === apiStatus.fetching) {
+				return;
+			}
+			setFetchMainDataStatus(apiStatus.fetching);
+			const resp = await Promise.all([getExchangeRateBNBtoUSD(), getData(), getLatestTransactionsByAddress(addressnumber)]);
+			setBnbToUsd(resp[0]?.data?.data);
+			setInfo(resp[1]);
+			setListTransactionInfo(JSON.parse(resp[2]?.data?.data))
+			setFetchMainDataStatus(apiStatus.fullfiled);
+		} catch (error) {
+			console.log(error)
+			const errorMess = error?.response?.data?.message;
+			setError(errorMess)
+			setFetchMainDataStatus(apiStatus.rejected);
+		}
+	};
+	const getData = async () => {
+		const respSearch = await search(addressnumber);
+		const dataSearch = JSON.parse(respSearch?.data?.data);
+		const type = dataSearch?.type;
+		setHeader(type);
+		let data;
+		if (type === searchType.addressEoa) {
+			const respAddress = await getAddressData(addressnumber);
+			data = respAddress;
+		} else if (type === searchType.addressContract) {
+			const respContract = await getContractData(addressnumber);
+			data = respContract;
+		}
+		return JSON.parse(data?.data?.data);
+	}
+
+	// header
+	const renderHeader = () => {
+		switch (header) {
+			case searchType.addressContract:
+				return commonString.contract;
+
+			case searchType.addressEoa:
+				return commonString.address;
+
+			default:
+				break;
+		}
+	}
+
+	// useEffect
 	useEffect(() => {
 		dispatch(setShowMenu(true));
 		fetchMainData();
@@ -139,7 +166,6 @@ const AddressDetail = function () {
 			dispatch(setShowMenu(false));
 		};
 	}, []);
-	//#endregion
 
 	return (
 		<div className={css.addressDetail}>
@@ -150,12 +176,14 @@ const AddressDetail = function () {
 							<div>
 								<NoUser />
 							</div>
-							<div>Address</div>
+							<div>
+								{renderHeader()}
+							</div>
 							<div className={`${css.addressDetail__address}`}>
-								{splitStringToDivs(addressnumber)}
+								{addressnumber}
 							</div>
 							<div className='flex items-center'>
-								<CopyButton />
+								<CopyButton content={addressnumber} />
 							</div>
 							<div className='flex items-center'>
 								<QRButton value={addressnumber} />
@@ -185,7 +213,7 @@ const AddressDetail = function () {
 						<Pill type={pillTypes.gray}>
 							<div
 								className='flex items-center gap-1'
-								style={{fontWeight: 400}}
+								style={{ fontWeight: 400 }}
 							>
 								<FiTag />
 								Validator: Alan Turing
@@ -195,7 +223,7 @@ const AddressDetail = function () {
 						<Pill type={pillTypes.white}>
 							<div
 								className='flex items-center gap-1'
-								style={{fontWeight: 400}}
+								style={{ fontWeight: 400 }}
 							>
 								<FiHash />
 								Validators
@@ -228,13 +256,18 @@ const AddressDetail = function () {
 					</div>
 				</div>
 				<ListCard
-					content={addressInfo}
+					type={header}
+					content={info}
 					bnbToUsd={bnbToUsd}
 				/>
-				<TableAddress />
+				<TableAddress dataInitial={listTransacitonInfo} />
 			</div>
 			<div className={renderClassShowLoader()}>
 				<Loader />
+			</div>
+			<div className={`flex flex-col justify-center items-center ${renderClassShowError()}`}>
+				<Empty />
+				<div>{error}</div>
 			</div>
 		</div>
 	);

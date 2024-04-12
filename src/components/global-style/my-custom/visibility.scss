@@ -1,0 +1,20 @@
+.visible {
+	visibility: visible;
+}
+
+.invisible {
+	visibility: hidden;
+}
+
+
+@each $breakpoint, $width in $responsive {
+	@media screen and (max-width: $width) {
+		.visible-#{$breakpoint} {
+			visibility: visible;
+		}
+
+		.invisible-#{$breakpoint} {
+			visibility: hidden;
+		}
+	}
+}

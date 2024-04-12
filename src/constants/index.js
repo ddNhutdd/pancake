@@ -78,6 +78,9 @@ export const commonString = {
 	emailNotMatch: 'Email not match',
 	passwordNotMatch: 'Password not match',
 	getLastedTransactionFail: 'Get Lasted Transaction Fail',
+	contract: 'Contract',
+	address: 'Address',
+	transfer: 'Transfer'
 };
 
 export const regular = {
@@ -105,6 +108,12 @@ export const transactionStatus = {
 	success: 'Success',
 	unKnow: 'Unknow',
 };
+
+// transaction type 
+export const transactionType = {
+	transfer: 2,
+
+}
 
 export const searchType = {
 	transaction: 'transaction',

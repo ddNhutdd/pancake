@@ -133,7 +133,8 @@ export const formatNumber = (value, locales = location.en, digits) => {
 	if (digits) {
 		return new Intl.NumberFormat(locales, {
 			minimumFractionDigits: 0, // Đảm bảo không có số 0 sau dấu thập phân
-			maximumFractionDigits: 5, // Chỉ lấy 5 số thập phân
+			maximumFractionDigits: digits,
+			style: 'decimal',
 			trim: true, // Loại bỏ các số 0 cuối cùng
 		}).format(value);
 	} else {
@@ -289,3 +290,16 @@ export const formatTimestamp = (timestamp) => {
 
 	return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
 };
+
+export const calcPercent = (bigNumber, smallNumber) => {
+	// Kiểm tra xem có chia cho 0 hay không
+	if (bigNumber === 0) {
+		return NaN;
+	}
+
+	// Tính toán phần trăm
+	const result = (smallNumber / bigNumber) * 100;
+
+	// Trả về kết quả
+	return result;
+}

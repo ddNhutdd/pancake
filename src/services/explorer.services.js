@@ -57,10 +57,10 @@ export const getAddressData = (data) => {
 	} catch (error) { }
 };
 
-export const getLatestTransactionsByAddress = (data) => {
+export const getLatestTransactionsByAddress = (address) => {
 	try {
 		return axiosWithoutAuth(
-			'api/explorer/getLatestTransactionsByAddress?address=' + data,
+			'api/explorer/getLatestTransactionsByAddress?address=' + address,
 		);
 	} catch (error) { }
 };
@@ -91,6 +91,12 @@ export const getListPaginatedTransactions = (page, limit) => {
 	try {
 		return axiosWithoutAuth(`api/explorer/getListPaginatedTransactions?limit=${limit}&page=${page}`);
 	} catch (error) {
-		console.log(error);
+	}
+}
+
+export const getContractData = (address) => {
+	try {
+		return axiosWithoutAuth(`api/explorer/getContractData?address=${address}`);
+	} catch (error) {
 	}
 }
