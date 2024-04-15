@@ -27,7 +27,6 @@ import { LuUserMinus2 } from 'react-icons/lu';
 import { CiFlag1 } from 'react-icons/ci';
 import { FaListCheck } from 'react-icons/fa6';
 import { IoChevronDownOutline } from 'react-icons/io5';
-import { splitStringToDivs } from 'src/utils/utils';
 import Loader from 'src/components/loader';
 import { useParams } from 'react-router-dom';
 import { apiStatus, commonString, searchType } from 'src/constants';
@@ -104,13 +103,13 @@ const AddressDetail = function () {
 
 	// main data
 	const [fetchMainDataStatus, setFetchMainDataStatus] = useState(apiStatus.pending);
-	const { addressnumber } = useParams();
+	const { addressnumber, tokennumber } = useParams();
 	const [bnbToUsd, setBnbToUsd] = useState();
 	const [info, setInfo] = useState(); // thông tin chung, không bao gồm list transaction
 	const [header, setHeader] = useState();
 	const [listTransacitonInfo, setListTransactionInfo] = useState({});
 	const [error, setError] = useState();
-	const fetchMainData = async () => {
+	const fetchMainDataForNotToken = async () => {
 		try {
 			if (fetchMainDataStatus === apiStatus.fetching) {
 				return;
@@ -160,7 +159,12 @@ const AddressDetail = function () {
 	// useEffect
 	useEffect(() => {
 		dispatch(setShowMenu(true));
-		fetchMainData();
+		if (addressnumber) {
+			fetchMainDataForNotToken();
+		}
+		if (tokennumber) {
+			setFetchMainDataStatus(apiStatus.fullfiled)
+		}
 		return () => {
 			dispatch(setShowMenu(false));
 		};
@@ -185,7 +189,7 @@ const AddressDetail = function () {
 								<CopyButton content={addressnumber} />
 							</div>
 							<div className='flex items-center'>
-								<QRButton value={addressnumber} />
+								<QRButton value={addressnumber || ''} />
 							</div>
 						</div>
 					}

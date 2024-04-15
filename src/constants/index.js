@@ -3,6 +3,7 @@ export const urlParams = {
 	blockNumber: ':blocknumber',
 	transactionNumber: ':transactionnumber',
 	addressNumber: ':addressnumber',
+	tokenNumber: ':tokennumber'
 };
 
 export const url = {
@@ -36,6 +37,7 @@ export const url = {
 	transactionDetail: '/transaction-detail/' + urlParams.transactionNumber,
 	addressDetail: '/address-detail/' + urlParams.addressNumber,
 	searchNotFound: '/search-not-found',
+	token: '/token/' + urlParams.tokenNumber,
 };
 
 export const localStorageVariable = {

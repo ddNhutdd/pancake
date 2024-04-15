@@ -34,7 +34,6 @@ const InputSearch = forwardRef((props, ref) => {
 			error === apiResponse.notFound
 		) {
 			navigate(url.searchNotFound);
-			setLocalStorage(localStorageVariable.search, searchValue);
 		} else if (
 			fetchApiStatus === apiStatus.rejected &&
 			error !== apiResponse.notFound

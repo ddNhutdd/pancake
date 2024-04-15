@@ -13,7 +13,7 @@ import PillSquare, { pillSquareType } from 'src/components/pill-square';
 import { CiFilter } from 'react-icons/ci';
 import Input from './input';
 import PropTypes from 'prop-types'
-import { shortenHashWithPrefixSuffix } from 'src/utils';
+import { formatNumber, shortenHashWithPrefixSuffix } from 'src/utils';
 import { url, urlParams } from 'src/constants';
 import { NavLink } from 'react-router-dom';
 
@@ -199,7 +199,7 @@ const LogRecord = function (props) {
 						<Input value={
 							<div>
 								<span className={css.logRecord__address__data}>amount: </span>
-								<span>{content?.data}</span>
+								<span>{formatNumber(content?.data).replaceAll(',', '')}</span>
 							</div>
 						} />
 					</div>

@@ -1,7 +1,7 @@
-import {useState} from 'react';
-import {apiStatus, searchType, url, urlParams} from 'src/constants';
-import {search} from 'src/services/explorer.services';
-import {useNavigate} from 'react-router-dom';
+import { useState } from 'react';
+import { apiStatus, searchType, url, urlParams } from 'src/constants';
+import { search } from 'src/services/explorer.services';
+import { useNavigate } from 'react-router-dom';
 
 export const useSearch = function () {
 	const [fetchApiStatus, setFetchApiStatus] = useState(apiStatus.pending);
@@ -27,6 +27,14 @@ export const useSearch = function () {
 				);
 				return;
 			case searchType.addressEoa:
+				navigate(
+					url.addressDetail.replace(
+						urlParams.addressNumber,
+						searchData.address,
+					),
+				);
+				return;
+			case searchType.addressContract:
 				navigate(
 					url.addressDetail.replace(
 						urlParams.addressNumber,

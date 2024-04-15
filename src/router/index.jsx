@@ -1,7 +1,7 @@
-import {createBrowserRouter} from 'react-router-dom';
-import {Suspense, lazy} from 'react';
+import { createBrowserRouter } from 'react-router-dom';
+import { Suspense, lazy } from 'react';
 import UserTemplate2 from 'src/templates/user2/user2.template';
-import {url} from 'src/constants';
+import { url } from 'src/constants';
 
 const Home2 = lazy(() => import('../pages/home-2'));
 const Transactions = lazy(() => import('../pages/transactions'));
@@ -284,6 +284,14 @@ export const router = createBrowserRouter([
 				element: (
 					<Suspense>
 						<SearchNotFound />
+					</Suspense>
+				),
+			},
+			{
+				path: url.token,
+				element: (
+					<Suspense>
+						<AddressDetail />
 					</Suspense>
 				),
 			},
