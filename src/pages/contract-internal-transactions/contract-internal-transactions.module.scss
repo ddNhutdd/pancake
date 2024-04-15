@@ -1,9 +1,6 @@
 @import 'components/global-style/base.scss';
 
 .contractInternalTransactions {
-	font-size: 15px;
-	font-weight: 300px;
-	color: $text-color-dark;
 
 	.contractInternalTransactions__container {
 		@include container2;

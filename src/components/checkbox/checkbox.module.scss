@@ -1,10 +1,6 @@
 @import 'components/global-style/base.scss';
 
 .checkbox {
-	font-size: 15px;
-	font-weight: 300;
-	color: $text-color-dark;
-
 	input[type='checkbox']:checked + label > .checkbox__square {
 		background-color: $background-15;
 

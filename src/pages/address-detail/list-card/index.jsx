@@ -16,7 +16,6 @@ const ListCard = function (props) {
 		content,
 		bnbToUsd
 	} = props;
-	console.log(content)
 
 	const renderBnbValue = () => {
 		return type === searchType.addressContract ? 'invisible' : '';

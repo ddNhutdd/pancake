@@ -122,7 +122,6 @@ const AddressDetail = function () {
 			setListTransactionInfo(JSON.parse(resp[2]?.data?.data))
 			setFetchMainDataStatus(apiStatus.fullfiled);
 		} catch (error) {
-			console.log(error)
 			const errorMess = error?.response?.data?.message;
 			setError(errorMess)
 			setFetchMainDataStatus(apiStatus.rejected);

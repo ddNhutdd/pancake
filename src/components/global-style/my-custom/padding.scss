@@ -52,7 +52,7 @@
 // padding bottom ----------------------------------------------------------------
 
 .pb-0 {
-	padding-bottom: 0;
+	padding-bottom: 0 !important;
 }
 
 .pb-1 {
@@ -113,6 +113,7 @@
 
 @each $breakpoint, $width in $responsive {
 	@media screen and (max-width: $width) {
+
 		// padiding ----------------------------------------------------------------
 		.p-#{$breakpoint}-0 {
 			padding: 0;

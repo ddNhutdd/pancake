@@ -1,4 +1,4 @@
-import Popover, {popoverPlacementType} from 'src/components/popover';
+import Popover, { popoverPlacementType } from 'src/components/popover';
 import css from './log-record.module.scss';
 import CopyButton from 'src/components/copy-button';
 import {
@@ -6,16 +6,23 @@ import {
 	dropdown2Align,
 	dropdown2TriggerType,
 } from 'src/components/dropdown-2';
-import {useState} from 'react';
-import {GrSearch} from 'react-icons/gr';
-import {FaAngleDown} from 'react-icons/fa6';
-import PillSquare, {pillSquareType} from 'src/components/pill-square';
-import {CiFilter} from 'react-icons/ci';
-import {FaLongArrowAltRight} from 'react-icons/fa';
+import { useState } from 'react';
+import { GrSearch } from 'react-icons/gr';
+import { FaAngleDown } from 'react-icons/fa6';
+import PillSquare, { pillSquareType } from 'src/components/pill-square';
+import { CiFilter } from 'react-icons/ci';
 import Input from './input';
+import PropTypes from 'prop-types'
+import { shortenHashWithPrefixSuffix } from 'src/utils';
+import { url, urlParams } from 'src/constants';
+import { NavLink } from 'react-router-dom';
+
 
 const LogRecord = function (props) {
-	const {content} = props;
+	const {
+		content,
+		index
+	} = props;
 	content;
 	const addressDropdownList = [
 		{
@@ -28,22 +35,8 @@ const LogRecord = function (props) {
 			),
 		},
 	];
-	const topicsDropdownList = [
-		{
-			id: 1,
-			content: 'code',
-		},
-		{
-			id: 2,
-			content: 'decode',
-		},
-	];
 
 	const [showAddressDropdown, setShowAddressDropdown] = useState();
-	const [showTopicsDropdown, setShowTopicsDropdown] = useState();
-	const [topicsDropdownSelected, setTopicsDropdownSelected] = useState(
-		topicsDropdownList[0],
-	);
 
 	const toggleAddressDropdown = () => {
 		setShowAddressDropdown((state) => !state);
@@ -51,87 +44,72 @@ const LogRecord = function (props) {
 	const addressDropdownChangeHandle = () => {
 		setShowAddressDropdown(false);
 	};
-	const toggleTopicsDropdown = () => {
-		setShowTopicsDropdown((state) => !state);
-	};
-	const topicsDropdownChangeHandle = (item) => {
-		setTopicsDropdownSelected(item);
-		setShowTopicsDropdown(false);
-	};
 	const renderTopics = (topics) => {
-		const length = topics?.length;
-		if (length === 1) {
-			return (
-				<div
-					style={{flexWrap: 'wrap'}}
-					className='flex items-center gap-1'
-				>
-					<PillSquare type={pillSquareType.normal}>0</PillSquare>
-					<div className={css['logRecord--wordBreak']}>
-						{topics[0]}
-					</div>
-				</div>
-			);
-		} else if (length === 2) {
-			return (
-				<>
-					<div
-						style={{flexWrap: 'wrap'}}
-						className='flex items-center gap-1'
-					>
-						<PillSquare type={pillSquareType.normal}>0</PillSquare>
-						<div className={css['logRecord--wordBreak']}>
-							{topics[0]}
-						</div>
-					</div>
-					<div
-						style={{flexWrap: 'wrap'}}
-						className='flex items-center gap-1'
-					>
-						<PillSquare
-							type={pillSquareType.normal}
-							className={css.topic__pillSquare__custom}
-						>
-							1: from
-						</PillSquare>
-						<div>
-							<Dropdown2
-								trigger={dropdown2TriggerType.runtime}
-								onChange={topicsDropdownChangeHandle}
-								list={topicsDropdownList}
-								show={showTopicsDropdown}
-								header={
-									<div
-										onClick={toggleTopicsDropdown}
-										className={
-											css.logRecord__address__dropdownHeader
-										}
-									>
-										{topicsDropdownSelected?.content}
-										<FaAngleDown />
-									</div>
-								}
-							/>
-						</div>
+		return topics.map((address, index) => {
+			switch (index) {
+				case 0:
+					return (
 						<div
-							style={{fontSize: '15px'}}
-							className='flex items-center'
+							key={index}
+							style={{ flexWrap: 'wrap' }}
+							className='flex items-center gap-1'
 						>
-							<FaLongArrowAltRight />
+							<PillSquare type={pillSquareType.normal}>0</PillSquare>
+							<div className={css['logRecord--wordBreak']}>
+								{address}
+							</div>
 						</div>
-						<div className={css['logRecord--wordBreak']}>
-							{topics[1]}
+					)
+				case 1:
+					return (
+						<div
+							key={index}
+							style={{ flexWrap: 'wrap' }}
+							className='flex items-center gap-1'
+						>
+							<PillSquare type={pillSquareType.normal}>1: from</PillSquare>
+							<div className={css['logRecord--wordBreak']}>
+								<NavLink
+									to={url.addressDetail.replace(urlParams.addressNumber, address)}
+									className={`--hover-yellow --link-no-underline`}
+								>
+									{address}
+								</NavLink>
+							</div>
 						</div>
-					</div>
-				</>
-			);
-		}
+					)
+				case 2:
+					return (
+						<div
+							key={index}
+							style={{ flexWrap: 'wrap' }}
+							className='flex items-center gap-1'
+						>
+							<PillSquare type={pillSquareType.normal}>2: to</PillSquare>
+							<div className={css['logRecord--wordBreak']}>
+								<NavLink
+									to={url.addressDetail.replace(urlParams.addressNumber, address)}
+									className={`--hover-yellow --link-no-underline`}
+								>
+									{address}
+								</NavLink>
+							</div>
+						</div>
+					)
+
+				default:
+					break;
+			}
+
+		})
 	};
+
+
 
 	return (
 		<div className={css.logRecord}>
 			<div className={css.logRecord__left}>
-				<div className={css.logRecord__circle}>{content.logIndex}</div>
+				<div className={css.logRecord__circle}>{index}</div>
 			</div>
 			<div className={css.logRecord__right}>
 				<div className={css.logRecord__row}>
@@ -141,7 +119,7 @@ const LogRecord = function (props) {
 						Address
 					</div>
 					<div
-						style={{flexWrap: 'wrap'}}
+						style={{ flexWrap: 'wrap' }}
 						className={css.logRecord__row__right}
 					>
 						<Popover
@@ -154,7 +132,7 @@ const LogRecord = function (props) {
 							}
 							className={`--text-blue --hover-yellow ${css.logRecord__address_popover}`}
 						>
-							BSC: System Reward
+							{shortenHashWithPrefixSuffix(content?.address)}
 						</Popover>
 						<CopyButton content={content.address} />
 						<div>
@@ -182,7 +160,7 @@ const LogRecord = function (props) {
 				<div className={css.logRecord__row}>
 					<div className={css.logRecord__row__left}>Name</div>
 					<div
-						style={{flexWrap: 'wrap'}}
+						style={{ flexWrap: 'wrap' }}
 						className={`${css.logRecord__row__right} ${`--text-gray`}`}
 					>
 						<div>receiveDeposit (index_topic_1</div>
@@ -218,7 +196,12 @@ const LogRecord = function (props) {
 				<div className={css.logRecord__row}>
 					<div className={css.logRecord__row__left}>Data</div>
 					<div className={css.logRecord__row__right}>
-						<Input value={content.data} />
+						<Input value={
+							<div>
+								<span className={css.logRecord__address__data}>amount: </span>
+								<span>{content?.data}</span>
+							</div>
+						} />
 					</div>
 				</div>
 			</div>
@@ -226,4 +209,10 @@ const LogRecord = function (props) {
 	);
 };
 
+LogRecord.propTypes = {
+	content: PropTypes.object,
+	index: PropTypes.number
+}
+
 export default LogRecord;
+

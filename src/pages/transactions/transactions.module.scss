@@ -1,10 +1,7 @@
 @import 'components/global-style/base.scss';
 
 .transactions {
-	font-size: 15px;
-	font-weight: 300;
-	color: $text-color-dark;
-
+	padding-bottom: 40px;
 	.transactions--blue {
 		color: $background-15;
 		cursor: pointer;

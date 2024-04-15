@@ -1,5 +1,6 @@
-import {useState} from 'react';
+import { useState } from 'react';
 import css from './input.module.scss';
+import PropTypes from 'prop-types';
 
 export const type = {
 	dec: 'Dec',
@@ -7,7 +8,9 @@ export const type = {
 };
 
 const Input = function (props) {
-	const {value} = props;
+	const {
+		value
+	} = props;
 
 	const [selectedType, setSelectedType] = useState(type.dec);
 	const renderClassDecActive = () =>
@@ -19,11 +22,9 @@ const Input = function (props) {
 
 	return (
 		<div className={css.input}>
-			<input
-				value={value}
-				type='text'
-				onChange={() => {}}
-			/>
+			<div className={css.content}>
+				{value}
+			</div>
 			<div className={css.input__button}>
 				<div
 					onClick={decClickHandle}
@@ -41,5 +42,9 @@ const Input = function (props) {
 		</div>
 	);
 };
+
+Input.propTypes = {
+	value: PropTypes.node
+}
 
 export default Input;

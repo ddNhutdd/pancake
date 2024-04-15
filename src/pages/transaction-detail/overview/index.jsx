@@ -447,7 +447,7 @@ const Overview = function () {
 											<span className={`--text-gray`}>
 												Position In Block:
 											</span>
-											---
+											{mainData?.transactionIndex}
 										</PillSquare>
 									</div>
 								</div>
@@ -600,7 +600,6 @@ const Overview = function () {
 										{mainData?.transactionTransferEvent?.senderAddress}
 									</NavLink>
 								</div>
-								<div>(Validator: Defibit)</div>
 								<CopyButton content={mainData?.from} />
 							</div>
 						</div>
@@ -636,7 +635,6 @@ const Overview = function () {
 								>
 									{mainData?.to}
 								</div>
-								<div>(BSC: Validator Set)</div>
 								<CopyButton content={mainData?.to} />
 								<div className={css2.check}>
 									<IoIosCheckmarkCircle />
@@ -932,12 +930,9 @@ const Overview = function () {
 	useEffect(() => {
 		fetchMainData();
 	}, [transactionnumber]);
-	useEffect(() => {
-		console.log(type);
-	}, [type])
 
 	return (
-		<div className={css.block}>
+		<div className={`${css.block} pb-0`}>
 			<div className={`${css.block__content} ${renderClassContent()}`}>
 				<Card className={css.block__card}>
 					<div className={css.block__cardRecord}>

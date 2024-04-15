@@ -1,35 +1,40 @@
 import HeaderComponent2 from 'src/components/header-component-2';
 import css from 'src/pages/block-detail/block.module.scss';
 import css2 from './transaction-detail.module.scss';
-import {useEffect, useState} from 'react';
-import {useDispatch} from 'react-redux';
-import {setShowMenu} from 'src/redux/slices/headerComponent2';
-import Button2, {button2Type} from 'src/components/button-2';
-import {FaAngleLeft} from 'react-icons/fa6';
-import {FaAngleRight} from 'react-icons/fa6';
-import {NavLink} from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { setShowMenu } from 'src/redux/slices/headerComponent2';
+import Button2, { button2Type } from 'src/components/button-2';
+import { FaAngleLeft } from 'react-icons/fa6';
+import { FaAngleRight } from 'react-icons/fa6';
+import { NavLink } from 'react-router-dom';
 import ListTabs from 'src/components/list-tabs';
 import {
 	Dropdown2,
 	dropdown2Align,
 	dropdown2TriggerType,
 } from 'src/components/dropdown-2';
-import {FaListCheck} from 'react-icons/fa6';
-import {IoChevronDownOutline} from 'react-icons/io5';
+import { FaListCheck } from 'react-icons/fa6';
+import { IoChevronDownOutline } from 'react-icons/io5';
 import Overview from './overview';
 import Log from './log';
 import State from './state';
 import Loader2 from 'src/components/loader-2';
-import {getTransactionReceiptEventLogs} from 'src/services/explorer.services';
-import {useParams} from 'react-router-dom';
-import {apiStatus} from 'src/constants';
+import { getTransactionReceiptEventLogs } from 'src/services/explorer.services';
+import { useParams } from 'react-router-dom';
+import { apiStatus } from 'src/constants';
+import useAlert from 'hooks/alert';
+import FooterComponent from 'src/components/footer-component';
 
 const TransactionDetail = function () {
 	// lấy tham số từ thanh địa chỉ
-	const {transactionnumber} = useParams();
+	const { transactionnumber } = useParams();
 
 	// dispatch
 	const dispatch = useDispatch();
+
+	//alert 
+	const alert = useAlert();
 
 	// dữ liệu tĩnh chưa làm
 	const listDropdown = [
@@ -49,10 +54,16 @@ const TransactionDetail = function () {
 	};
 
 	// list tab
+	const tabType = {
+		overview: 'overview',
+		logs: 'logs',
+		state: 'state'
+	}
 	const [listTab, setListTab] = useState([
 		{
 			id: 1,
 			content: 'Overview',
+			value: tabType.overview
 		},
 		{
 			id: 2,
@@ -61,27 +72,31 @@ const TransactionDetail = function () {
 					<Loader2 />
 				</div>
 			),
+			value: tabType.logs
 		},
 		{
 			id: 3,
 			content: 'State',
+			value: tabType.state
 		},
 	]);
-	const [selectedTab,] = useState(listTab[0]);
+	const [selectedTab, setSelectedTab] = useState(listTab[0]);
+	const tabChangeHandle = (selectedTab) => {
+		setSelectedTab(selectedTab);
+	}
 	const renderContent = () => {
-		switch (selectedTab.content) {
-			case listTab[0].content:
-				return <Overview />;
-			case listTab[1].content:
-				return (
-					<Log
-						list={listLogs}
-						status={fetchListLogsStatus}
-						error={error}
-					/>
-				);
-			case listTab[2].content:
-				return <State />;
+		switch (selectedTab.value) {
+			case tabType.overview:
+				return <Overview />
+
+			case tabType.logs:
+				return <Log
+					list={listLogs}
+					status={fetchListLogsStatus}
+					error={errorLog}
+				/>;
+			case tabType.state:
+				return <State />
 			default:
 				break;
 		}
@@ -92,7 +107,7 @@ const TransactionDetail = function () {
 		apiStatus.pending,
 	);
 	const [listLogs, setListLogs] = useState([]);
-	const [error, setError] = useState();
+	const [errorLog, setErrorLog] = useState();
 	const fetchLog = async () => {
 		try {
 			if (fetchListLogsStatus === apiStatus.fetching) return;
@@ -102,40 +117,56 @@ const TransactionDetail = function () {
 			const data = JSON.parse(resp?.data?.data);
 			setListLogs(data);
 			const length = data.length || 0;
-			setListTab([
-				{
-					id: 1,
-					content: 'Overview',
-				},
-				{
-					id: 2,
-					content: <div>Logs ({length})</div>,
-				},
-				{
-					id: 3,
-					content: 'State',
-				},
-			]);
+			if (length > 0) {
+				setListTab([
+					{
+						id: 1,
+						content: 'Overview',
+						value: tabType.overview
+					},
+					{
+						id: 2,
+						content: <div>Logs ({length})</div>,
+						value: tabType.logs
+					},
+					{
+						id: 3,
+						content: 'State',
+						value: tabType.state
+					},
+				]);
+			} else if (length <= 0) {
+				setListTab([
+					{
+						id: 1,
+						content: 'Overview',
+						value: tabType.overview
+					},
+					{
+						id: 3,
+						content: 'State',
+						value: tabType.state
+					},
+				]);
+			}
 			setFetchListLogsStatus(apiStatus.fullfiled);
 		} catch (error) {
-			error;
 			const err = error?.response?.data?.message;
-			setError(err);
+			setErrorLog(err);
 			setListTab([
 				{
 					id: 1,
 					content: 'Overview',
-				},
-				{
-					id: 2,
-					content: <div>Logs (0)</div>,
+					value: tabType.overview
 				},
 				{
 					id: 3,
 					content: 'State',
+					value: tabType.state
 				},
 			]);
 			setFetchListLogsStatus(apiStatus.rejected);
+			alert.error(err || 'Logs fail!');
 		}
 	};
 
@@ -143,6 +174,9 @@ const TransactionDetail = function () {
 		dispatch(setShowMenu(true));
 		fetchLog();
 	}, []);
+	useEffect(() => {
+		if (selectedTab === listTab[1]) fetchLog();
+	}, [selectedTab])
 
 	return (
 		<div className={css.block}>
@@ -172,6 +206,7 @@ const TransactionDetail = function () {
 						<ListTabs
 							list={listTab}
 							selectedItem={selectedTab}
+							onChange={tabChangeHandle}
 						/>
 					</div>
 					<div>
@@ -195,11 +230,8 @@ const TransactionDetail = function () {
 					</div>
 				</div>
 				{renderContent()}
-				<div>
-					A transaction is a cryptographically signed instruction that
-					changes the blockchain state. Block explorers track the
-					details of all transactions in the network. Learn more about
-					transactions in our Knowledge Base.
+				<div className={css2.footer}>
+					<FooterComponent />
 				</div>
 			</div>
 		</div>

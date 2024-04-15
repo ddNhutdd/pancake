@@ -13,7 +13,6 @@
 		display: flex;
 		align-items: center;
 		gap: 5px;
-		font-weight: 300;
 		color: $text-color-11;
 
 		@media screen and (max-width: 768px) {
@@ -71,7 +70,6 @@
 
 		.block__header {
 			font-size: 15px;
-			font-weight: 300;
 			margin-left: 5px;
 		}
 

@@ -3,13 +3,18 @@
 .logRecord {
 	.logRecord--black {
 		color: $text-color-dark !important;
+		position: relative;
+		top: 5px;
 	}
+
 	.logRecord--wordBreak {
 		word-break: break-all;
 	}
 
 	display: flex;
+
 	.logRecord__left {
+
 		width: fit-content;
 		flex-grow: 0;
 		flex-shrink: 0;
@@ -27,6 +32,7 @@
 			margin-right: 15px;
 		}
 	}
+
 	.logRecord__right {
 		flex-grow: 1;
 		display: flex;
@@ -46,7 +52,7 @@
 			padding-right: 15px;
 			text-align: right;
 			color: $text-color-11;
-			font-weight: 400;
+			font-weight: 500;
 
 			@media screen and (max-width: 576px) {
 				text-align: left;
@@ -83,4 +89,9 @@
 .topic__pillSquare__custom {
 	font-weight: 400;
 	white-space: nowrap;
+}
+
+.logRecord__address__data {
+	margin-right: 5px;
+	color: $text-color-11;
 }

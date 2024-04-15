@@ -1,7 +1,5 @@
 import Card from 'src/components/card';
 import css from './transactions.module.scss';
-import { TbBulb } from 'react-icons/tb';
-import { HiMiniArrowUpRight } from 'react-icons/hi2';
 import Popover, {
 	popoverPlacementType,
 } from 'src/components/popover';
@@ -16,6 +14,7 @@ import { apiStatus, headerTime, headerTimeDefault, headerTimePopup, headerTimePo
 import { getListPaginatedTransactions } from 'src/services/explorer.services';
 import { formatNumber, formatTimestamp, getTimeAgo, shortenHashWithPrefix, shortenHashWithPrefixSuffix } from 'src/utils';
 import { NavLink } from 'react-router-dom';
+import FooterComponent from 'src/components/footer-component';
 
 function Transactions() {
 	// show time toggle 
@@ -172,11 +171,10 @@ function Transactions() {
 					cols: [
 						<Popover
 							key={`a3`}
-							placement={popoverPlacementType.top}
+							placement={popoverPlacementType.right}
 							content={item.hash}
 						>
 							<NavLink
-
 								to={url.transactionDetail.replace(urlParams.transactionNumber, item.hash)}
 								className={css['--link-no-underline']}
 							>
@@ -230,10 +228,8 @@ function Transactions() {
 						,
 						<CirclePointRight key={`a4`} />,
 						<>
-							<Popover
-								content={
-									item.to
-								}
+							{item?.to && <><Popover
+								content={item.to}
 								placement={popoverPlacementType.top}
 								key={`a5`}
 								className={css['transactions--blue']}
@@ -251,7 +247,8 @@ function Transactions() {
 									</Button2>
 								</NavLink>
 							</Popover>
-							<CopyButton content={item.to} />
+								<CopyButton content={item.to} /></>}
+
 						</>,
 						formatNumber(item.value, undefined, 5) + ' BNB',
 						'0',
@@ -270,108 +267,6 @@ function Transactions() {
 			<div className={css.container}>
 				<HeaderComponent2 mainContent={`Transactions`} />
 				<div className={css.transactions__content}>
-					<div className={css.transactions__item}>
-						<Card>
-							<div className={`${css.transactions__item__row}`}>
-								TRANSACTIONS (24H)
-							</div>
-							<div className={css.transactions__item__row}>
-								<span
-									className={
-										css['transactions__item--hoverBlue']
-									}
-								>
-									4,160,032
-								</span>{' '}
-								<span
-									className={css['transactions__item--green']}
-								>
-									(2.68%)
-								</span>
-							</div>
-						</Card>
-						<span className={css.transactions__item__arrow}>
-							<HiMiniArrowUpRight />
-						</span>
-					</div>
-					<div className={css.transactions__item}>
-						<Card>
-							<div className={css.transactions__item__row}>
-								TRANSACTIONS (24H)
-							</div>
-							<div className={css.transactions__item__row}>
-								<span
-									className={
-										css['transactions__item--hoverBlue']
-									}
-								>
-									4,160,032
-								</span>{' '}
-								<span
-									className={
-										css['transactions__item--hoverBlue']
-									}
-								>
-									(2.68%)
-								</span>
-							</div>
-						</Card>
-						<span className={css.transactions__item__arrow}>
-							<HiMiniArrowUpRight />
-						</span>
-					</div>
-					<div className={css.transactions__item}>
-						<Card>
-							<div className={css.transactions__item__row}>
-								TRANSACTIONS (24H)
-							</div>
-							<div className={css.transactions__item__row}>
-								<Popover
-									className={
-										css['transactions__item--hoverBlue']
-									}
-									placement={popoverPlacementType.top}
-									content={`1.4564564645645 BNB`}
-								>
-									4,160,032
-								</Popover>{' '}
-								<span
-									className={css['transactions__item--red']}
-								>
-									(2.68%)
-								</span>
-							</div>
-						</Card>
-						<span className={css.transactions__item__arrow}>
-							<HiMiniArrowUpRight />
-						</span>
-					</div>
-					<div className={css.transactions__item}>
-						<Card>
-							<div className={css.transactions__item__row}>
-								TRANSACTIONS (24H)
-							</div>
-							<div className={css.transactions__item__row}>
-								<Popover
-									content={`0.13212456789 USD`}
-									className={
-										css['transactions__item--hoverBlue']
-									}
-									placement={popoverPlacementType.top}
-								>
-									4,160,032
-								</Popover>{' '}
-								<span
-									className={css['transactions__item--red']}
-								>
-									(2.68%)
-								</span>
-							</div>
-						</Card>
-						<span className={css.transactions__item__arrow}>
-							<HiMiniArrowUpRight />
-						</span>
-					</div>
 					<div className={css.transactions__item__table}>
 						<Card>
 							<Table
@@ -396,16 +291,8 @@ function Transactions() {
 							/>
 						</Card>
 					</div>
-					<div className={css.transactions__last}>
-						<TbBulb />A transaction is a cryptographically signed
-						instruction that changes the blockchain state. Block
-						explorers track the details of all transactions in the
-						network. Learn more about transactions in our{' '}
-						<span className={css['transactions--blue']}>
-							Knowledge Base.
-						</span>
-					</div>
 				</div>
+				<FooterComponent />
 			</div>
 		</div>
 	);

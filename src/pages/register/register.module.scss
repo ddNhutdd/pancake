@@ -3,9 +3,6 @@
 .register {
 	padding-top: 20px;
 	padding-bottom: 20px;
-	font-size: 15px;
-	font-weight: 300;
-	color: $text-color-dark;
 
 	.container {
 		@include container3;
