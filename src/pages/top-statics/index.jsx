@@ -334,8 +334,8 @@ function TopStatics() {
 		},
 	];
 
-	const [selectedType, setSelectedType] = useState(listType[0]);
-	const [selectedTime, setSelectedTime] = useState(listTime[0]);
+	const [selectedType,] = useState(listType[0]);
+	const [selectedTime,] = useState(listTime[0]);
 
 	const renderlistItem = () =>
 		listItem.map((item) => (
@@ -354,7 +354,6 @@ function TopStatics() {
 				<div className='py-3'>
 					<ListTabs
 						selectedItem={selectedType}
-						setSelectedItem={setSelectedType}
 						list={listType}
 					/>
 				</div>
@@ -364,7 +363,6 @@ function TopStatics() {
 							<ListTabs
 								list={listTime}
 								selectedItem={selectedTime}
-								setSelectedItem={setSelectedTime}
 							/>
 						</div>
 						<div

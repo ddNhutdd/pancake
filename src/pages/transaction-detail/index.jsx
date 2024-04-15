@@ -67,7 +67,7 @@ const TransactionDetail = function () {
 			content: 'State',
 		},
 	]);
-	const [selectedTab, setSelectedTab] = useState(listTab[0]);
+	const [selectedTab,] = useState(listTab[0]);
 	const renderContent = () => {
 		switch (selectedTab.content) {
 			case listTab[0].content:
@@ -172,7 +172,6 @@ const TransactionDetail = function () {
 						<ListTabs
 							list={listTab}
 							selectedItem={selectedTab}
-							setSelectedItem={setSelectedTab}
 						/>
 					</div>
 					<div>

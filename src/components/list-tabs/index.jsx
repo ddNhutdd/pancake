@@ -2,7 +2,11 @@ import css from './list-tabs.module.scss';
 import PropTypes from 'prop-types';
 
 function ListTabs(props) {
-	const {list, selectedItem, setSelectedItem} = props;
+	const {
+		list,
+		selectedItem,
+		onChange
+	} = props;
 
 	const renderList = () =>
 		list.map((item) => (
@@ -18,7 +22,7 @@ function ListTabs(props) {
 	const renderClassActive = (id) =>
 		id === selectedItem?.id ? css.active : '';
 	const itemClickHandle = (item) => {
-		setSelectedItem(item);
+		onChange(item);
 	};
 	return <ul className={css.listTabs}>{renderList()}</ul>;
 }
@@ -26,7 +30,7 @@ function ListTabs(props) {
 ListTabs.propTypes = {
 	list: PropTypes.array,
 	selectedItem: PropTypes.object,
-	setSelectedItem: PropTypes.func,
+	onChange: PropTypes.func,
 };
 
 export default ListTabs;

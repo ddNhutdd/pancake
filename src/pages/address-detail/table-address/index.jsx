@@ -39,7 +39,7 @@ const TableAddress = function ({ dataInitial }) {
 	} = dataInitial
 	//#endregion
 
-	//#region render render table
+	//#region render table
 	const [headerTimeTitle, setHeaderTimeTitle] = useState(headerTimeDefault);
 	const [headerTimeTitlePopup, setHeaderTimeTitlePopup] = useState(headerTimePopupDefault);
 	const headerTimeClickHandle = () => {
@@ -239,13 +239,13 @@ const TableAddress = function ({ dataInitial }) {
 			content: `Internal Transactions`,
 		},
 	];
-	const [tabSelected, setTabSelected] = useState(listTab[0]);
+	const [tabSelected,] = useState(listTab[0]);
 	//#endregion
 
 	//#region download 
 	const downLoadPageClickHandle = () => {
 		exportExcel(
-			transactionsRef.current,
+			transactionsArray,
 			'List Transaction',
 			'List Transaction',
 		);
@@ -327,7 +327,6 @@ const TableAddress = function ({ dataInitial }) {
 					<ListTabs
 						list={listTab}
 						selectedItem={tabSelected}
-						setSelectedItem={setTabSelected}
 					/>
 				</div>
 				<div>

@@ -21,7 +21,7 @@ import { FaAngleDown } from 'react-icons/fa6';
 import { FaCubes } from 'react-icons/fa';
 import { GrFilter } from 'react-icons/gr';
 import TextArea from 'src/components/text-area';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Dropdown2, dropdown2TriggerType } from 'src/components/dropdown-2';
 import Loader from 'src/components/loader';
@@ -37,6 +37,7 @@ import {
 import { calcPercent, calcTimestamp, convertBnbToUsd, formatNumber, shortenHashWithPrefixSuffix } from 'src/utils';
 import Loader2 from 'src/components/loader-2';
 import ListTabs from 'src/components/list-tabs';
+import Token from './token';
 
 const Overview = function () {
 	// dropdown tĩnh chưa làm
@@ -130,9 +131,12 @@ const Overview = function () {
 		}
 	]
 	const [tabTransferSelected, setTabTransferSelected] = useState(listTabTransfer.at(0));
-	//const showTab = (tab) => {
-
-	//}
+	const tabTransferChangeHandle = (selectedTab) => {
+		setTabTransferSelected(selectedTab);
+	}
+	const renderClassShowTab = (tabName) => {
+		return tabTransferSelected.content === tabName ? '' : 'd-0';
+	}
 
 	// render cho giao dien
 	const renderClassShowInfo_show = () => (cardCollapseShow ? '' : 'd-0');
@@ -663,17 +667,113 @@ const Overview = function () {
 							</div>
 							<div className={css.block__right}>
 								<div>
-									<ListTabs
-										list={listTabTransfer}
-										selectedItem={tabTransferSelected}
-										setSelectedItem={setTabTransferSelected}
-									/>
-									<div>
-										tab content
+									<div className='mb-2'>
+										<ListTabs
+											list={listTabTransfer}
+											selectedItem={tabTransferSelected}
+											onChange={tabTransferChangeHandle}
+										/>
 									</div>
-									<div>
-										<div>dsfafdasfdsa</div>
-										<div>fdsafdsafdsafdas</div>
+									<div
+										className={`flex items-center gap-1 flex-wrap ${renderClassShowTab(listTabTransfer.at(0).content)}`}
+									>
+										<FaCaretRight />
+										<div className='--light-bold'>
+											From
+										</div>
+										<div>
+											<Popover
+												placement={popoverPlacementType.top}
+												content={mainData?.from}
+											>
+												<NavLink
+													to={url.addressDetail.replace(urlParams.addressNumber, mainData?.from)}
+													className={`--link-no-underline --hover-yellow`}
+												>
+													{shortenHashWithPrefixSuffix(mainData?.from)}
+												</NavLink>
+											</Popover>
+
+										</div>
+										<div className='--light-bold'>
+											To
+										</div>
+										<div>
+											<Popover
+												placement={popoverPlacementType.top}
+												content={mainData?.to}
+											>
+												<NavLink
+													to={url.addressDetail.replace(urlParams.addressNumber, mainData?.to)}
+													className={`--link-no-underline --hover-yellow`}
+												>
+													{shortenHashWithPrefixSuffix(mainData?.to)}
+												</NavLink>
+											</Popover>
+
+										</div>
+										<div className='--light-bold'>
+											For
+										</div>
+										<div>
+											{mainData?.transactionTransferEvent?.convertedAmount}
+										</div>
+										<Token
+											to={mainData?.to}
+											tokenName={mainData?.transactionTransferEvent?.tokenName
+											}
+											tokenSymbol={mainData?.transactionTransferEvent?.tokenSymbol}
+										/>
+									</div>
+									<div className={renderClassShowTab(listTabTransfer.at(1).content)}>
+										<div className='flex items-center gap-1 flex-wrap'>
+											<Popover
+												placement={popoverPlacementType.top}
+												content={mainData?.transactionTransferEvent?.senderAddress}
+											>
+												<NavLink
+													className={`--link-no-underline --hover-yellow`}
+												>
+													{shortenHashWithPrefixSuffix(mainData?.transactionTransferEvent?.senderAddress)}
+												</NavLink>
+											</Popover>
+											<div className='--light-bold'>
+												send
+											</div>
+											<div>
+												{mainData?.transactionTransferEvent?.convertedAmount}
+											</div>
+											<Token
+												to={mainData?.to}
+												tokenName={mainData?.transactionTransferEvent?.tokenName
+												}
+												tokenSymbol={mainData?.transactionTransferEvent?.tokenSymbol}
+											/>
+										</div>
+										<div className='flex items-center gap-1 flex-wrap'>
+											<Popover
+												placement={popoverPlacementType.top}
+												content={mainData?.transactionTransferEvent?.recipientAddress}
+											>
+												<NavLink
+													className={`--link-no-underline --hover-yellow`}
+												>
+													{shortenHashWithPrefixSuffix(mainData?.transactionTransferEvent?.recipientAddress)}
+												</NavLink>
+											</Popover>
+											<div className='--light-bold'>
+												send
+											</div>
+											<div>
+												{mainData?.transactionTransferEvent?.convertedAmount}
+											</div>
+											<Token
+												to={mainData?.to}
+												tokenName={mainData?.transactionTransferEvent?.tokenName
+												}
+												tokenSymbol={mainData?.transactionTransferEvent?.tokenSymbol}
+											/>
+										</div>
 									</div>
 								</div>
 							</div>
