@@ -2,16 +2,19 @@ import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import Popover, { popoverPlacementType } from 'src/components/popover';
 import css from './token.module.scss';
+import { url, urlParams } from 'src/constants';
 
 function Token(props) {
 	const {
 		to,
 		tokenName,
 		tokenSymbol
-
 	} = props;
 	return (
-		<div className='--hover-yellow flex items-center gap-1 hover-p'>
+		<NavLink
+			to={url.token.replace(urlParams.tokenNumber, to)}
+			className='--hover-yellow flex items-center gap-1 hover-p --link-no-underline py-1'
+		>
 			<img
 				src="https://testnet.bscscan.com/assets/bsc/images/svg/empty-token.svg?v=24.4.1.0"
 				alt="bnb"
@@ -21,12 +24,8 @@ function Token(props) {
 				placement={popoverPlacementType.top}
 				content={to}
 			>
-				(<NavLink
 
-					className={`--link-no-underline`}
-				>
-					{tokenName}
-				</NavLink>)
+				{tokenName}
 			</Popover>
 			<Popover
 				placement={popoverPlacementType.top}
@@ -35,7 +34,7 @@ function Token(props) {
 				{tokenSymbol}
 			</Popover>
 
-		</div>
+		</NavLink >
 	)
 }
 

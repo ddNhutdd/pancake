@@ -29,10 +29,11 @@ import { FaListCheck } from 'react-icons/fa6';
 import { IoChevronDownOutline } from 'react-icons/io5';
 import Loader from 'src/components/loader';
 import { useParams } from 'react-router-dom';
-import { apiStatus, commonString, searchType } from 'src/constants';
+import { addressDetailType, apiStatus, searchType } from 'src/constants';
 import {
 	getAddressData,
 	getContractData,
+	getDetailToken,
 	getExchangeRateBNBtoUSD,
 	getLatestTransactionsByAddress,
 	search,
@@ -41,6 +42,7 @@ import Empty from 'src/components/empty';
 
 const AddressDetail = function () {
 	const dispatch = useDispatch();
+	const { addressnumber, tokennumber } = useParams();
 
 	const listDropdown = [
 		{
@@ -99,11 +101,99 @@ const AddressDetail = function () {
 		fetchMainDataStatus === apiStatus.fetching ? '' : 'd-0';
 	const renderClassShowContent = () =>
 		fetchMainDataStatus === apiStatus.fullfiled ? '' : 'd-0';
-	const renderClassShowError = () => fetchMainDataStatus === apiStatus.rejected ? '' : 'd-0'
+	const renderClassShowError = () => fetchMainDataStatus === apiStatus.rejected ? '' : 'd-0';
+	const renderMoreContent = () => {
+		switch (header) {
+			case addressDetailType.contract:
+			case addressDetailType.address:
+				return (
+					<>
+						<div className={css.addressDetail__sponsored}>
+							<div>
+								Sponsored:
+								<img
+									src='https://bscscan.com/images/gen/stake-4_20.png'
+									alt='bscc'
+								/>
+								Stake:
+							</div>
+							<div>
+								200% Bonus, 75k Raffle, Best VIP Program, Instant
+								Withdrawals - Provably Fair.
+							</div>
+							<NavLink className={css['--link']}>Claim Bonus</NavLink>
+						</div>
+						<div
+							className={`flex items-center justify-between mb-3 flex-sm-col gap-1`}
+						>
+							<div className='flex gap-1 flex-sm-col w-sm-100'>
+								<Pill type={pillTypes.gray}>
+									<div
+										className='flex items-center gap-1'
+										style={{ fontWeight: 400 }}
+									>
+										<FiTag />
+										Validator: Alan Turing
+										<FiExternalLink />
+									</div>
+								</Pill>
+								<Pill type={pillTypes.white}>
+									<div
+										className='flex items-center gap-1'
+										style={{ fontWeight: 400 }}
+									>
+										<FiHash />
+										Validators
+									</div>
+								</Pill>
+							</div>
+							<div className='flex gap-1 flex-sm-col w-sm-100'>
+								<div>
+									<Button2
+										classname={`py-1`}
+										type={button2Type.outlineSmall}
+									>
+										<FaRegStar />
+									</Button2>
+								</div>
+								<Dropdown2
+									trigger={dropdown2TriggerType.click}
+									header={
+										<Button2
+											classname={`py-1`}
+											type={button2Type.outlineSmall}
+										>
+											<FaListCheck />
+											<IoChevronDownOutline />
+										</Button2>
+									}
+									list={listDropdown}
+									align={dropdown2Align.right}
+								/>
+							</div>
+						</div>
+					</>
+				);
+
+			case addressDetailType.token:
+				return (
+					<div className='my-2'>
+						<Pill
+							type={pillTypes.white}
+						>
+							BEP-20
+						</Pill>
+					</div>
+
+				);
+
+			default:
+				break;
+		}
+	}
 
 	// main data
 	const [fetchMainDataStatus, setFetchMainDataStatus] = useState(apiStatus.pending);
-	const { addressnumber, tokennumber } = useParams();
 	const [bnbToUsd, setBnbToUsd] = useState();
 	const [info, setInfo] = useState(); // thông tin chung, không bao gồm list transaction
 	const [header, setHeader] = useState();
@@ -126,44 +216,111 @@ const AddressDetail = function () {
 			setFetchMainDataStatus(apiStatus.rejected);
 		}
 	};
+	// khi địa chỉ là addres number thì sẽ call api search để xác định xem địa chỉ address có phải là contract hay không ròi call api phù hợp
 	const getData = async () => {
 		const respSearch = await search(addressnumber);
 		const dataSearch = JSON.parse(respSearch?.data?.data);
 		const type = dataSearch?.type;
-		setHeader(type);
 		let data;
 		if (type === searchType.addressEoa) {
+			setHeader(addressDetailType.address);
 			const respAddress = await getAddressData(addressnumber);
 			data = respAddress;
 		} else if (type === searchType.addressContract) {
+			setHeader(addressDetailType.contract);
 			const respContract = await getContractData(addressnumber);
 			data = respContract;
 		}
 		return JSON.parse(data?.data?.data);
 	}
+	// nếu địa chỉ url là token 
+	const fetchMainDataForToken = async () => {
+		try {
+			if (fetchMainDataStatus === apiStatus.fetching) {
+				return;
+			}
+			setFetchMainDataStatus(apiStatus.fetching);
+
+			const resp = await getDetailToken(tokennumber);
+			const data = JSON.parse(resp?.data?.data);
+			setInfo(() => data);
+
+			setFetchMainDataStatus(apiStatus.fullfiled);
+
+		} catch (error) {
+			setFetchMainDataStatus(apiStatus.rejected);
+			console.log(error);
+		}
+	}
 
 	// header
 	const renderHeader = () => {
 		switch (header) {
-			case searchType.addressContract:
-				return commonString.contract;
+			case addressDetailType.contract:
+				return (
+					<>
+						<div>
+							{addressDetailType.contract}
+						</div>
+						<div className={`${css.addressDetail__address}`}>
+							{addressnumber}
+						</div>
+						<div className='flex items-center'>
+							<CopyButton content={addressnumber} />
+						</div>
+						<div className='flex items-center'>
+							<QRButton value={addressnumber || ''} />
+						</div>
+					</>
+				)
 
-			case searchType.addressEoa:
-				return commonString.address;
+			case addressDetailType.address:
+				return (
+					<>
+						<div>
+							{addressDetailType.address}
+						</div>
+						<div className={`${css.addressDetail__address}`}>
+							{addressnumber}
+						</div>
+						<div className='flex items-center'>
+							<CopyButton content={addressnumber} />
+						</div>
+						<div className='flex items-center'>
+							<QRButton value={addressnumber || ''} />
+						</div>
+					</>
+				)
+
+			case addressDetailType.token:
+				return (
+					<>
+						<div>{addressDetailType.token}</div>
+						<div style={{ fontSize: '15px' }} className='flex gap-1'>
+							<span>
+								{info?.tokenName}
+							</span>
+							<span className='--text-gray'>
+								({info?.tokenSymbol})
+							</span>
+						</div>
+					</>
+				)
 
 			default:
-				break;
+				return header;
 		}
 	}
 
 	// useEffect
 	useEffect(() => {
-		dispatch(setShowMenu(true));
 		if (addressnumber) {
+			dispatch(setShowMenu(true));
 			fetchMainDataForNotToken();
 		}
 		if (tokennumber) {
-			setFetchMainDataStatus(apiStatus.fullfiled)
+			setHeader(addressDetailType.token);
+			fetchMainDataForToken();
 		}
 		return () => {
 			dispatch(setShowMenu(false));
@@ -179,85 +336,11 @@ const AddressDetail = function () {
 							<div>
 								<NoUser />
 							</div>
-							<div>
-								{renderHeader()}
-							</div>
-							<div className={`${css.addressDetail__address}`}>
-								{addressnumber}
-							</div>
-							<div className='flex items-center'>
-								<CopyButton content={addressnumber} />
-							</div>
-							<div className='flex items-center'>
-								<QRButton value={addressnumber || ''} />
-							</div>
+							{renderHeader()}
 						</div>
 					}
 				/>
-				<div className={css.addressDetail__sponsored}>
-					<div>
-						Sponsored:
-						<img
-							src='https://bscscan.com/images/gen/stake-4_20.png'
-							alt='bscc'
-						/>
-						Stake:
-					</div>
-					<div>
-						200% Bonus, 75k Raffle, Best VIP Program, Instant
-						Withdrawals - Provably Fair.
-					</div>
-					<NavLink className={css['--link']}>Claim Bonus</NavLink>
-				</div>
-				<div
-					className={`flex items-center justify-between mb-3 flex-sm-col gap-1`}
-				>
-					<div className='flex gap-1 flex-sm-col w-sm-100'>
-						<Pill type={pillTypes.gray}>
-							<div
-								className='flex items-center gap-1'
-								style={{ fontWeight: 400 }}
-							>
-								<FiTag />
-								Validator: Alan Turing
-								<FiExternalLink />
-							</div>
-						</Pill>
-						<Pill type={pillTypes.white}>
-							<div
-								className='flex items-center gap-1'
-								style={{ fontWeight: 400 }}
-							>
-								<FiHash />
-								Validators
-							</div>
-						</Pill>
-					</div>
-					<div className='flex gap-1 flex-sm-col w-sm-100'>
-						<div>
-							<Button2
-								classname={`py-1`}
-								type={button2Type.outlineSmall}
-							>
-								<FaRegStar />
-							</Button2>
-						</div>
-						<Dropdown2
-							trigger={dropdown2TriggerType.click}
-							header={
-								<Button2
-									classname={`py-1`}
-									type={button2Type.outlineSmall}
-								>
-									<FaListCheck />
-									<IoChevronDownOutline />
-								</Button2>
-							}
-							list={listDropdown}
-							align={dropdown2Align.right}
-						/>
-					</div>
-				</div>
+				{renderMoreContent()}
 				<ListCard
 					type={header}
 					content={info}

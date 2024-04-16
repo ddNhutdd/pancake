@@ -45,19 +45,6 @@ export const localStorageVariable = {
 	search: '',
 };
 
-export const chainList = [
-	{
-		blockChain: 'Ethereum Mainnet',
-		ChainID: '1',
-		Currency: 'ETH',
-	},
-	{
-		blockChain: 'BNB Smart Chain Mainnet',
-		ChainID: '56',
-		Currency: 'BNB',
-	},
-];
-
 export const headerTime = {
 	age: 'Age',
 	dateTime: 'Date Time (UTC + 7)'
@@ -68,7 +55,6 @@ export const headerTimePopup = {
 }
 export const headerTimeDefault = headerTime.dateTime;
 export const headerTimePopupDefault = headerTimePopup.dateTime;
-
 
 // string
 export const commonString = {
@@ -114,7 +100,6 @@ export const transactionStatus = {
 // transaction type 
 export const transactionType = {
 	transfer: 2,
-
 }
 
 export const searchType = {
@@ -127,3 +112,9 @@ export const searchType = {
 export const apiResponse = {
 	notFound: 'Not found',
 };
+
+export const addressDetailType = {
+	contract: 'Contract',
+	address: 'Address',
+	token: 'Token'
+}

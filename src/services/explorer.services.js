@@ -100,3 +100,11 @@ export const getContractData = (address) => {
 	} catch (error) {
 	}
 }
+
+export const getDetailToken = (address) => {
+	try {
+		return axiosWithoutAuth(`api/explorer/getDetailToken?address=${address}`);
+	} catch (error) {
+		console.log(error);
+	}
+}

@@ -16,8 +16,8 @@ block: chuyển đến trang block
 trang tieu chuan
 Transaction Details: https://testnet.bscscan.com/tx/0x004649cb5bdd3b3a6a75330e7c615dbc3e3a4f77ed2260b64b45b2a7a87d8d89
 contract: https://testnet.bscscan.com/address/0xc51a578A1d290B501548046657950395A6037E6a
-address:
-https://testnet.bscscan.com/address/0x867e5d6d09513fdd071ae2a4d5cc8e9e6829ebf1
+address: https://testnet.bscscan.com/address/0x867e5d6d09513fdd071ae2a4d5cc8e9e6829ebf1
+token: https://testnet.bscscan.com/token/0xc51a578A1d290B501548046657950395A6037E6a
 
 
 trang contract, address detail, token đều tải component address detail

@@ -1,9 +1,6 @@
 @import 'components/global-style/base.scss';
 
 .viewBlocks {
-	font-size: 15px;
-	font-weight: 300;
-
 	.container {
 		@include container2;
 	}

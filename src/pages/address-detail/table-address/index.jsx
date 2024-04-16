@@ -31,15 +31,22 @@ import { exportExcel, formatNumber, formatTimestamp, getTimeAgo, shortenHashWith
 import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import { headerTime, headerTimeDefault, headerTimePopup, headerTimePopupDefault, url, urlParams } from 'src/constants';
+import { useNavigate } from 'react-router-dom';
 
 const TableAddress = function ({ dataInitial }) {
-	//#region lấy thông tin từ props
+
+	const navigate = useNavigate();
+
+	const redirectPage = (page) => {
+		navigate(page)
+	}
+
 	const {
 		transactionsArray,
 	} = dataInitial
-	//#endregion
 
-	//#region render table
+
+	//table
 	const [headerTimeTitle, setHeaderTimeTitle] = useState(headerTimeDefault);
 	const [headerTimeTitlePopup, setHeaderTimeTitlePopup] = useState(headerTimePopupDefault);
 	const headerTimeClickHandle = () => {
@@ -226,9 +233,8 @@ const TableAddress = function ({ dataInitial }) {
 		});
 		return result;
 	};
-	//#endregion
 
-	//#region tabs 
+	// tabs 
 	const listTab = [
 		{
 			id: 1,
@@ -240,9 +246,8 @@ const TableAddress = function ({ dataInitial }) {
 		},
 	];
 	const [tabSelected,] = useState(listTab[0]);
-	//#endregion
 
-	//#region download 
+	// download 
 	const downLoadPageClickHandle = () => {
 		exportExcel(
 			transactionsArray,
@@ -250,9 +255,8 @@ const TableAddress = function ({ dataInitial }) {
 			'List Transaction',
 		);
 	};
-	//#endregion
 
-	//#region dropdown filter
+	// dropdown filter
 	const [dropdownFilterShow, setDropdownFilterShow] = useState(false);
 	const listSearchItem = [
 		{
@@ -318,7 +322,6 @@ const TableAddress = function ({ dataInitial }) {
 		},
 	];
 	const dropdownFilterToggle = () => setDropdownFilterShow((state) => !state);
-	//#endregion
 
 	return (
 		<div className={css.table}>
@@ -387,7 +390,10 @@ const TableAddress = function ({ dataInitial }) {
 						listRecord={renderTransaction(transactionsArray)}
 					/>
 				</div>
-				<div className={css.table__footer}>
+				<div
+					onClick={redirectPage.bind(null, url.transactions)}
+					className={css.table__footer}
+				>
 					View all transactions
 					<MdArrowRightAlt />
 				</div>
